@@ -9,9 +9,9 @@ from test_performance import TestPerformance
 class ModelTrainer():
     def __init__(self):
 
-        self.training_data_count = 30000 # set to None if train on the entire dataset
+        self.training_data_count = None # 30000 # set to None if train on the entire dataset
         self.max_length = 1024
-        self.output_dir = "./fine_tuned_model_30000"
+        self.output_dir = "./fine_tuned_model_entire_UltraMedical_batch_32"
 
         self.model = None
         self.tokenizer = None
@@ -152,14 +152,15 @@ class ModelTrainer():
         print(f"----------- start training model:{self.model.name_or_path} ------------")
         training_args = TrainingArguments(
             output_dir = "./fine_tuned_model_checkpoints",
-            save_strategy = "no", # TODO, now don't save checkpoints #"epoch",
-            per_device_train_batch_size = 1, # As specified in the paper: batch_size: 32
+            save_strategy = "steps", # save checkpoints # "epoch", "steps", "no"
+            save_steps = 20000, # total_steps = dataset_size / batch_size
+            # save_total_limit = 5, # keep only the last N checkpoint
+            per_device_train_batch_size = 4, # As specified in the paper: batch_size: 32
             num_train_epochs = 3, # As specified in the paper: 3 epochs
             learning_rate = 1e-4, # As specified in the paper: 1e-4
-            # save_total_limit = 1, # TODO, now keep only the last checkpoint
             fp16 = False, # TODO
             bf16 = True, # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
-            logging_steps = 10,
+            logging_steps = 100,
             logging_dir = "./logs",  # Directory for logs
             # report_to = ["tensorboard"],  # Enable logging to TensorBoard
         )
