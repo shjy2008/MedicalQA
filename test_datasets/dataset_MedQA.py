@@ -42,5 +42,25 @@ def main():
 
     print(medqa["train"][0])
 
+def check_train_contains_test():
+    test_dataset = load_dataset("GBaker/MedQA-USMLE-4-options")["test"]
+    train_dataset = load_dataset("TsinghuaC3I/UltraMedical")["train"]
+
+    progress = 0
+    total_progress = len(test_dataset) * len(train_dataset)
+    for test in test_dataset:
+        for train in train_dataset:
+            test_question = test["question"][:10]
+            train_question = train["conversations"][0]["value"][:10]
+            if test_question == train_question:
+                return True
+            
+            progress += 1
+            if progress % 10000 == 0:
+                print(f"{progress}/{total_progress} {progress/total_progress * 100}%")
+
+    return False
+
 if __name__ == "__main__":
-    main()
+    # main()
+    print("train contains test:", check_train_contains_test())
