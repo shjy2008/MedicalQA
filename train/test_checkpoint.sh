@@ -4,7 +4,7 @@
 # #SBATCH --time=00:01:00 # job time limit of 1 minute (hh:mm:ss)
 # #SBATCH --partition=aoraki # 'aoraki' or 'aoraki_gpu' (for gpu access)
 
-#SBATCH --job-name=llm
+#SBATCH --job-name=checkpoint_test
 #SBATCH --account=sheju347
 
 # #SBATCH --partition=aoraki
@@ -14,14 +14,14 @@
 # #SBATCH --cpus-per-task=20
 # #SBATCH --time=00:00:30
 
-# #SBATCH --out=log.txt
+#SBATCH --out=log_checkpoint.txt
 
 # #SBATCH --partition=aoraki_gpu
-#SBATCH --partition=aoraki_gpu_H100
-# #SBATCH --partition=aoraki_gpu_A100_80GB
+# #SBATCH --partition=aoraki_gpu_H100
+#SBATCH --partition=aoraki_gpu_A100_80GB
 #SBATCH --gpus-per-node=1
 #SBATCH --mem=60GB
-#SBATCH --time=60:00:00
+#SBATCH --time=4:00:00
 
 # echo "hello world"
 
@@ -40,6 +40,6 @@ conda activate LLM
 
 echo "conda acticate LLM"
 
-python ./train_phi_3_mini.py
+python ./test_checkpoint.py
 
 echo "my script has finished."
