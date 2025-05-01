@@ -5,7 +5,7 @@ from transformers import Trainer, TrainingArguments
 from trl import SFTTrainer, SFTConfig
 from datetime import datetime
 import shutil
-from test_performance import TestPerformance
+from test_performance import TestPerformance, DatasetPath, MMLU_Subset
 
 class ModelTrainer():
     def __init__(self):
@@ -264,10 +264,10 @@ class ModelTrainer():
         print(f"----------- finish testing model {self.model.name_or_path} performance ------------")
     
     # Test the performance on MedQA test dataset of current model
-    def test_model_MedQA_accuracy(self, is_ensemble = False):
+    def test_model_accuracy(self, dataset_path, subset_name = None, is_ensemble = False):
         print(f"----------- start testing model {self.model.name_or_path} accuracy ------------")
         test = TestPerformance(self.model, self.tokenizer, self.device)
-        test.test_MedQA_test_data_accuracy(is_ensemble = is_ensemble)
+        test.test_accuracy(dataset_path, subset_name = subset_name, is_ensemble = is_ensemble)
         print(f"----------- finish testing model {self.model.name_or_path} accuracy ------------")
 
 
@@ -280,21 +280,21 @@ if __name__ == "__main__":
     # model_name = "Qwen/Qwen2.5-0.5B"
     # model_name = "Qwen/Qwen2.5-0.5B-instruct"
     # model_name = "KrithikV/MedMobile"
-    # model_name = "./fine_tuned_model_entire_UltraMedical_batch_4"
+    # model_name = "./saved_models/fine_tuned_model_entire_UltraMedical_batch_4"
     trainer.load_model(model_name)
     # trainer.load_fine_tuned_model()
 
-    # For training
-    trainer.load_dataset()
-    # trainer.convert_to_tokenized_training_data(trainer.dataset[0])
-    trainer.preprocess_training_data()
-    trainer.train_model()
-    trainer.save_trained_model()
+    # # For training
+    # trainer.load_dataset()
+    # # trainer.convert_to_tokenized_training_data(trainer.dataset[0])
+    # trainer.preprocess_training_data()
+    # trainer.train_model()
+    # trainer.save_trained_model()
 
-    # # For Testing
-    trainer.load_fine_tuned_model()
-    trainer.test_model_MedQA_response()
-    trainer.test_model_MedQA_accuracy(is_ensemble = True)
+    # # # For Testing
+    # trainer.load_fine_tuned_model()
+    # trainer.test_model_MedQA_response()
+    trainer.test_model_accuracy(DatasetPath.MedMCQA, is_ensemble = False)
 
     print("All done.")
 

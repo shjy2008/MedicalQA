@@ -2,6 +2,22 @@ from datasets import load_dataset
 import torch
 import re
 import time
+import logging
+
+class DatasetPath:
+    MedQA = "GBaker/MedQA-USMLE-4-options"
+    MedMCQA = "openlifescienceai/medmcqa"
+    PubMedQA = "qiaojin/PubMedQA"
+    MMLU = "cais/mmlu"
+
+class MMLU_Subset:
+    Clinical_knowledge = "clinical_knowledge"
+    Medical_genetics = "medical_genetics"
+    Anatomy = "anatomy"
+    Professional_medicine = "professional_medicine"
+    College_biology = "college_biology"
+    College_medicine = "college_medicine"
+    
 
 class TestPerformance():
 
@@ -10,6 +26,43 @@ class TestPerformance():
         self.tokenizer = tokenizer
         self.device = device
         self.temperature = temperature
+
+        self.MAX_TOKEN_OUTPUT = 1024
+        self.SPLIT = "test"
+        self.DATA_RANGE = None #range(0, 100)
+
+        regex_pattern=r"[\(\[]([A-Z])[\)\]]"
+        self.regex = re.compile(regex_pattern)
+
+
+    # input: a row of data in the dataset
+    # output: (question, choices({"A":xxx, "B":xxx, ...}), answer_key("A" or "B"...))
+    def get_question_info(self, data, dataset_path):
+        if dataset_path == DatasetPath.MedQA:
+            question = data["question"]
+            choices = data["options"]
+            answer_key = data["answer_idx"]
+        elif dataset_path == DatasetPath.MedMCQA:
+            question = data["question"]
+            choices = {"A": data['opa'], "B": data['opb'], "C": data['opc'], "D": data['opd']}
+            answer_key = chr(data['cop']+65)
+        elif dataset_path == DatasetPath.PubMedQA:
+            contexts = data["context"]["contexts"]
+            question = f"Context: \n"
+            for context in contexts:
+                question += context + '\n'
+            question += data["question"]
+            choices = {'A': "yes", 'B': "no", 'C': "maybe"}
+            answer = data["final_decision"]
+            answer_dict = {"yes": 'A', "no": 'B', "maybe": 'C'}
+            answer_key = answer_dict.get(answer)
+        elif dataset_path == DatasetPath.MMLU:
+            question = data['question']
+            choices = {"A": data['choices'][0], "B": data['choices'][1], "C": data['choices'][2], "D": data['choices'][3]}
+            answer_key = chr(data['answer']+65)
+        
+        return (question, choices, answer_key)
+
     
     def test_MedQA_response(self):# Test apply_chat_template // https://huggingface.co/docs/transformers/main/en/chat_templating
         print(self.model.name_or_path)
@@ -105,133 +158,138 @@ class TestPerformance():
             print("correct: ", example["correct"])
             print("\n\n")
 
-    def test_MedQA_test_data_accuracy(self, is_ensemble = False):
+    def run_inference_get_answer_letter(self, inputs, temperature):
+        with torch.no_grad():
+            outputs = self.model.generate(
+                inputs,
+                max_new_tokens = self.MAX_TOKEN_OUTPUT,
+                do_sample=True,
+                temperature = temperature,
+            )
 
-        MAX_TOKEN_OUTPUT = 1024
-        SPLIT = "test"
-        DATA_RANGE = None #range(0, 100)
+        # print("temperature:", temperature)
+        # print("inputs", inputs)
+        
+        text = self.tokenizer.batch_decode(outputs)[0]
+        # print("outputs text:", text)
+        text = text.split("<|assistant|>")[-1]
+        # answer = tokenizer.decode(output[0], skip_special_tokens = True)
 
-        regex_pattern=r"[\(\[]([A-Z])[\)\]]"
-        regex = re.compile(regex_pattern)
+        answer = self.extract_answer(text).strip("()")
+        
+        print(f"answer: {answer}")
+        logging.info(f"answer: {answer}")
+        
+        return answer
 
-        def format_choices(choices):
-            a = zip(list(choices.keys()), choices.values())
-            final_answers = []
-            for x,y in a:
-                final_answers.append(f'[{x}] : {y}')
-            return "\n".join(final_answers)
+    def extract_answer(self, response):
+        matchFirst = re.search(r'the answer is .(\w).', response)
+        if matchFirst:
+            return f"({matchFirst.group(1)})"
+        match = self.find_match(self.regex, response) 
+        if match:
+            return f"({match})"
+        return "[invalid]"
 
-        def find_match(regex, resp, convert_dict={}):
-            match = regex.findall(resp)
-            if match:
-                match = match[-1]
-                if isinstance(match, tuple):
-                    match = [m for m in match if m][0]
-                match = match.strip()
-                if match and match in convert_dict: 
-                    match = convert_dict[match]
-            return match
-                
-        def extract_answer(response):
-            matchFirst = re.search(r'the answer is .(\w).', response)
-            if matchFirst:
-                return f"({matchFirst.group(1)})"
-            match = find_match(regex, response) 
-            if match:
-                return f"({match})"
-            return "[invalid]"
+    def format_choices(self, choices):
+        a = zip(list(choices.keys()), choices.values())
+        final_answers = []
+        for x,y in a:
+            final_answers.append(f'[{x}] : {y}')
+        return "\n".join(final_answers)
 
-        def run_inference_get_answer_letter(inputs, temperature):
-            with torch.no_grad():
-                outputs = self.model.generate(
-                    inputs,
-                    max_new_tokens = MAX_TOKEN_OUTPUT,
-                    do_sample=True,
-                    temperature = temperature,
-                )
-
-            # print("temperature:", temperature)
-            # print("inputs", inputs)
+    def find_match(self, regex, resp, convert_dict={}):
+        match = regex.findall(resp)
+        if match:
+            match = match[-1]
+            if isinstance(match, tuple):
+                match = [m for m in match if m][0]
+            match = match.strip()
+            if match and match in convert_dict: 
+                match = convert_dict[match]
+        return match
             
-            text = self.tokenizer.batch_decode(outputs)[0]
-            # print("outputs text:", text)
-            text = text.split("<|assistant|>")[-1]
-            # answer = tokenizer.decode(output[0], skip_special_tokens = True)
+    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False):
 
-            answer = extract_answer(text).strip("()")
-            
-            print(f"answer: {answer}")
-            
-            return answer
-                
-        def get_medqa_accuracy():
-            # Load MedQA dataset
-            # med_qa = load_dataset("bigbio/med_qa", trust_remote_code = True)
-            med_qa = load_dataset("GBaker/MedQA-USMLE-4-options", trust_remote_code = True)
-            keys = med_qa.keys()
-            # print(len(med_qa["train"]), len(med_qa["validation"]), len(med_qa["test"]))
+        logging.basicConfig(
+            filename=f'{dataset_path.split("/")[-1]}{"_" + subset_name if subset_name != None else ""}.txt',      # Log file name
+            filemode='a',                    # Append mode
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            level=logging.INFO               # Log level
+        )
 
-            print(f"model: {self.model.name_or_path}")
-            
-            start_time = time.time()
-            
-            data_list = med_qa[SPLIT]
-            if DATA_RANGE != None:
-                data_list = data_list.select(DATA_RANGE)
-            count = 0
-            correct_count = 0
-            for data in data_list:
-                question = data["question"]
-                answer_idx = data["answer_idx"]
-                choices = data["options"]
+        if subset_name == None:
+            if dataset_path == DatasetPath.PubMedQA:
+                subset_name = "pqa_labeled" # pqa_artificial, pqa_labeled, pqa_unlabeled
 
-                prompt = f'''\n{{question}}\n{{choices}}\n'''
+        # Load dataset
+        dataset = load_dataset(dataset_path, name = subset_name, trust_remote_code = True)
 
-                formated_choices = format_choices(choices)
-                
-                model_prompt = prompt.format(question = question, choices = formated_choices)
-                
-                messages = [{"role": "user", "content": f"{model_prompt}"}]
-                inputs = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt").to(self.device)
-                
-                # print("messages: ", messages)
-                # break
-                
-                # print("correct answer: ", answer_idx)
+        print(f"model: {self.model.name_or_path}")
+        logging.info(f"model: {self.model.name_or_path}")
+        
+        start_time = time.time()
 
-                if is_ensemble:
-                    answer_dict = {}
-                    for i in range(0, 5):
-                        # inputs = tokenizer(model_prompt, return_tensors = "pt", padding=False).to(device)
-                        current_answer = run_inference_get_answer_letter(inputs, temperature = 0.7)
-                        if current_answer in answer_dict:
-                            answer_dict[current_answer] += 1
-                        else:
-                            answer_dict[current_answer] = 1
-                    answer = max(answer_dict, key = answer_dict.get)
-                else:
-                    answer = run_inference_get_answer_letter(inputs, temperature = self.temperature)
-                
-                correct_answer = answer_idx
-            
-                is_correct = (answer == correct_answer)
-                # print("Correct!!!" if is_correct else "Wrong")
-            
-            
-                if is_correct:
-                    correct_count += 1
-            
-                count += 1
+        split = self.SPLIT
+        if dataset_path == DatasetPath.MedMCQA:
+            split = "validation" # because test dataset doesn't have an answer
+        elif dataset_path == DatasetPath.PubMedQA:
+            split = "train" # only train in PubMedQA
+        
+        data_list = dataset[split]
+        if self.DATA_RANGE != None:
+            data_list = data_list.select(self.DATA_RANGE)
+        count = 0
+        correct_count = 0
+        for data in data_list:
+            question, choices, answer_key = self.get_question_info(data, dataset_path)
 
-                print(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
-            
-            accuracy = correct_count / count
-            print(f"Total questions: {count}, correct: {correct_count}, accuracy: {accuracy}")
-            
-            finish_time = time.time()
-            elapse_time = finish_time - start_time
-            print(f"elapse_time: {elapse_time}")
+            prompt = f'''\n{{question}}\n{{choices}}\n'''
 
-            return accuracy
+            formated_choices = self.format_choices(choices)
+            
+            model_prompt = prompt.format(question = question, choices = formated_choices)
+            
+            messages = [{"role": "user", "content": f"{model_prompt}"}]
+            inputs = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt").to(self.device)
+            
+            # print("messages: ", messages)
+            # break
+            
+            # print("correct answer: ", answer_idx)
 
-        get_medqa_accuracy()
+            if is_ensemble:
+                answer_dict = {}
+                for i in range(0, 5):
+                    # inputs = tokenizer(model_prompt, return_tensors = "pt", padding=False).to(device)
+                    current_answer = self.run_inference_get_answer_letter(inputs, temperature = 0.7)
+                    if current_answer in answer_dict:
+                        answer_dict[current_answer] += 1
+                    else:
+                        answer_dict[current_answer] = 1
+                answer = max(answer_dict, key = answer_dict.get)
+            else:
+                answer = self.run_inference_get_answer_letter(inputs, temperature = self.temperature)
+            
+            correct_answer = answer_key
+        
+            is_correct = (answer == correct_answer)
+            # print("Correct!!!" if is_correct else "Wrong")
+        
+        
+            if is_correct:
+                correct_count += 1
+        
+            count += 1
+
+            print(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+            logging.info(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+        
+        accuracy = correct_count / count
+        print(f"Total questions: {count}, correct: {correct_count}, accuracy: {accuracy}")
+        logging.info(f"Total questions: {count}, correct: {correct_count}, accuracy: {accuracy}")
+        
+        finish_time = time.time()
+        elapse_time = finish_time - start_time
+        print(f"elapse_time: {elapse_time}")
+        logging.info(f"elapse_time: {elapse_time}")
