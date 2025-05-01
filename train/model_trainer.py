@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, T5Tokenizer, T5ForConditionalGeneration
 import torch
 from datasets import load_dataset
 from transformers import Trainer, TrainingArguments
@@ -46,6 +46,30 @@ class ModelTrainer():
         tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code = False)
         print("finish loading tokenizer")
         model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code = False, 
+                                                    #  torch_dtype= torch.float16 # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
+                                                     torch_dtype = torch.bfloat16 if self.is_bf16_supported else torch.float16
+                                                     )
+        print("finish loading model")
+        print("torch_dtype:", model.config.torch_dtype)
+
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        model.to(device)
+
+        print("cuda available:", torch.cuda.is_available())
+        print("device:", device)
+
+        self.model = model
+        self.tokenizer = tokenizer
+        self.device = device
+
+        print(f"---------- finish loading model:{self.model.name_or_path} -----------")
+
+    # Load model
+    def load_model_t5(self, model_name):
+        print(f"---------- start loading model:{model_name} -----------")
+        tokenizer = T5Tokenizer.from_pretrained(model_name, trust_remote_code = False)
+        print("finish loading tokenizer")
+        model = T5ForConditionalGeneration.from_pretrained(model_name, trust_remote_code = False, 
                                                     #  torch_dtype= torch.float16 # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
                                                      torch_dtype = torch.bfloat16 if self.is_bf16_supported else torch.float16
                                                      )
