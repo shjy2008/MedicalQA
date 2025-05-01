@@ -21,10 +21,11 @@ class MMLU_Subset:
 
 class TestPerformance():
 
-    def __init__(self, model, tokenizer, device, temperature = 0.00001):
+    def __init__(self, model, tokenizer, device, is_encoder_decoder = False, temperature = 0.00001):
         self.model = model
         self.tokenizer = tokenizer
         self.device = device
+        self.is_encoder_decoder = is_encoder_decoder # like T5, no apply_chat_template
         self.temperature = temperature
 
         self.MAX_TOKEN_OUTPUT = 1024
@@ -76,11 +77,17 @@ class TestPerformance():
 
 
         def run_inference(content, model, tokenizer, max_new_tokens, temperature):
-            messages = [{"role": "user", "content": f"{content}"}]
-            # add_generation_prompt indicates the start of a response
-            inputs = tokenizer.apply_chat_template(messages, add_generation_prompt = True, return_tensors = "pt").to(self.device)
-            # print("inputs:", tokenizer.apply_chat_template(messages, add_generation_prompt = True, tokenize = False))
-            outputs = model.generate(inputs, max_new_tokens = max_new_tokens, do_sample = True, temperature = temperature)
+            if self.is_encoder_decoder:
+                inputs = tokenizer(content, return_tensors="pt").to(self.device)
+            else:
+                messages = [{"role": "user", "content": f"{content}"}]
+                # add_generation_prompt indicates the start of a response
+                inputs = tokenizer.apply_chat_template(messages, add_generation_prompt = True, return_tensors = "pt").to(self.device)
+                # print("inputs:", tokenizer.apply_chat_template(messages, add_generation_prompt = True, tokenize = False))
+            outputs = model.generate(**inputs if self.is_encoder_decoder else inputs, 
+                                     max_new_tokens = max_new_tokens, 
+                                     do_sample = True, 
+                                     temperature = temperature)
             text = tokenizer.batch_decode(outputs)[0]
             return text
 
@@ -158,10 +165,16 @@ class TestPerformance():
             print("correct: ", example["correct"])
             print("\n\n")
 
-    def run_inference_get_answer_letter(self, inputs, temperature):
+    def run_inference_get_answer_letter(self, content, temperature):
+        if self.is_encoder_decoder:
+            inputs = self.tokenizer(content, return_tensors="pt").to(self.device)
+        else:
+            messages = [{"role": "user", "content": f"{content}"}]
+            inputs = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt").to(self.device)
+        
         with torch.no_grad():
             outputs = self.model.generate(
-                inputs,
+                **inputs if self.is_encoder_decoder else inputs,
                 max_new_tokens = self.MAX_TOKEN_OUTPUT,
                 do_sample=True,
                 temperature = temperature,
@@ -171,8 +184,9 @@ class TestPerformance():
         # print("inputs", inputs)
         
         text = self.tokenizer.batch_decode(outputs)[0]
-        # print("outputs text:", text)
-        text = text.split("<|assistant|>")[-1]
+        print("outputs text:", text)
+        if not self.is_encoder_decoder:
+            text = text.split("<|assistant|>")[-1]
         # answer = tokenizer.decode(output[0], skip_special_tokens = True)
 
         answer = self.extract_answer(text).strip("()")
@@ -248,10 +262,7 @@ class TestPerformance():
 
             formated_choices = self.format_choices(choices)
             
-            model_prompt = prompt.format(question = question, choices = formated_choices)
-            
-            messages = [{"role": "user", "content": f"{model_prompt}"}]
-            inputs = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt").to(self.device)
+            content = prompt.format(question = question, choices = formated_choices)
             
             # print("messages: ", messages)
             # break
@@ -262,14 +273,14 @@ class TestPerformance():
                 answer_dict = {}
                 for i in range(0, 5):
                     # inputs = tokenizer(model_prompt, return_tensors = "pt", padding=False).to(device)
-                    current_answer = self.run_inference_get_answer_letter(inputs, temperature = 0.7)
+                    current_answer = self.run_inference_get_answer_letter(content, temperature = 0.7)
                     if current_answer in answer_dict:
                         answer_dict[current_answer] += 1
                     else:
                         answer_dict[current_answer] = 1
                 answer = max(answer_dict, key = answer_dict.get)
             else:
-                answer = self.run_inference_get_answer_letter(inputs, temperature = self.temperature)
+                answer = self.run_inference_get_answer_letter(content, temperature = self.temperature)
             
             correct_answer = answer_key
         
