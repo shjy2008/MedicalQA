@@ -77,17 +77,22 @@ class TestPerformance():
 
 
         def run_inference(content, model, tokenizer, max_new_tokens, temperature):
+            generate_kwargs = {
+                "max_new_tokens": max_new_tokens, 
+                "do_sample": True, 
+                "temperature": temperature
+            }
+
             if self.is_encoder_decoder:
                 inputs = tokenizer(content, return_tensors="pt").to(self.device)
+                outputs = model.generate(**inputs, **generate_kwargs)
             else:
                 messages = [{"role": "user", "content": f"{content}"}]
                 # add_generation_prompt indicates the start of a response
                 inputs = tokenizer.apply_chat_template(messages, add_generation_prompt = True, return_tensors = "pt").to(self.device)
                 # print("inputs:", tokenizer.apply_chat_template(messages, add_generation_prompt = True, tokenize = False))
-            outputs = model.generate(**inputs if self.is_encoder_decoder else inputs, 
-                                     max_new_tokens = max_new_tokens, 
-                                     do_sample = True, 
-                                     temperature = temperature)
+                outputs = model.generate(inputs, **generate_kwargs)
+            
             text = tokenizer.batch_decode(outputs)[0]
             return text
 
@@ -166,25 +171,28 @@ class TestPerformance():
             print("\n\n")
 
     def run_inference_get_answer_letter(self, content, temperature):
+        generate_kwargs = {
+            "max_new_tokens": self.MAX_TOKEN_OUTPUT,
+            "do_sample": True,
+            "temperature": temperature,
+        }
+
         if self.is_encoder_decoder:
             inputs = self.tokenizer(content, return_tensors="pt").to(self.device)
+            with torch.no_grad():
+                outputs = self.model.generate(**inputs, **generate_kwargs)
         else:
             messages = [{"role": "user", "content": f"{content}"}]
             inputs = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt").to(self.device)
+            with torch.no_grad():
+                outputs = self.model.generate(inputs, **generate_kwargs)
         
-        with torch.no_grad():
-            outputs = self.model.generate(
-                **inputs if self.is_encoder_decoder else inputs,
-                max_new_tokens = self.MAX_TOKEN_OUTPUT,
-                do_sample=True,
-                temperature = temperature,
-            )
 
         # print("temperature:", temperature)
         # print("inputs", inputs)
         
         text = self.tokenizer.batch_decode(outputs)[0]
-        print("outputs text:", text)
+        # print("outputs text:", text)
         if not self.is_encoder_decoder:
             text = text.split("<|assistant|>")[-1]
         # answer = tokenizer.decode(output[0], skip_special_tokens = True)
