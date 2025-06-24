@@ -6,6 +6,8 @@
 #include <unordered_map>
 #include <cmath>
 #include <algorithm>
+#include <tuple>
+#include <cstdint>
 
 // Extract words from a text string
 std::vector<std::string> extractWords(const std::string& text) {
@@ -66,6 +68,9 @@ private:
 	// DOCNO list ["WSJ870323-0139", ...]
 	std::vector<std::string> vecDocNo;
 
+	// Document offset table
+	std::unordered_map<uint32_t, std::tuple<uint64_t, uint8_t, uint16_t> > docOffsetTable;
+
 public:
 	SearchEngine() {
 	}
@@ -74,6 +79,7 @@ public:
 		this->loadWords(); // load word postings index from disk
 		this->loadDocNo(); // load DOCNO to a string list
 		this->loadDocLengths();
+		this->loadDocOffsetTable();
 
 		wordPostingsFile.open("index_wordPostings.bin");
 	}
@@ -84,7 +90,7 @@ public:
 		docLengthsFile.open("index_docLengths.bin");
 
 		docLengthsFile.seekg(0, std::fstream::end);
-		long fileSize = docLengthsFile.tellg();
+		uint64_t fileSize = docLengthsFile.tellg();
 		docLengthsFile.seekg(0, std::fstream::beg);
 
 		char* buffer = new char[fileSize];
@@ -130,7 +136,7 @@ public:
 
 		// Get how many bytes the words.bin have
 		wordsFile.seekg(0, std::ifstream::end);
-		long fileSize = wordsFile.tellg();
+		uint64_t fileSize = wordsFile.tellg();
 		wordsFile.seekg(0, std::ifstream::beg);
 
 		// Batch reading is faster than reading byte by byte
@@ -163,6 +169,65 @@ public:
 		delete[] buffer;
 	}
 
+	// Load index_docOffsetTable.bin and update this->docOffsetTable
+	void loadDocOffsetTable() {
+		std::ifstream docOffsetTableFile;
+		docOffsetTableFile.open("index_docOffsetTable.bin");
+
+		// Get how many bytes the "index_docOffsetTable.bin" have
+		docOffsetTableFile.seekg(0, std::ifstream::end);
+		uint64_t fileSize = docOffsetTableFile.tellg();
+		docOffsetTableFile.seekg(0, std::ifstream::beg);
+
+		// Batch reading is faster than reading byte-by-byte
+		char* buffer = new char[fileSize];
+		docOffsetTableFile.read(buffer, fileSize);
+
+		docOffsetTableFile.close();
+
+		char* pointer = buffer;
+		uint32_t docId = 0;
+		while (pointer < buffer + fileSize) {
+			uint64_t offset = *reinterpret_cast<uint64_t*>(pointer);
+			pointer += sizeof(offset);
+
+			uint8_t docNoLength = *reinterpret_cast<uint8_t*>(pointer);
+			pointer += sizeof(docNoLength);
+
+			uint16_t documentLength = *reinterpret_cast<uint16_t*>(pointer);
+			pointer += sizeof(documentLength);
+
+			++docId;
+			this->docOffsetTable[docId] = std::tuple<uint64_t, uint8_t, uint16_t>(offset, docNoLength, documentLength);
+		}
+
+		delete[] buffer;
+	}
+
+	// Read this->docOffsetTable and get <docNo and document> with docId
+	std::pair<std::string, std::string> getDocData(uint32_t docId) {
+		std::tuple<uint64_t, uint8_t, uint16_t> tableData = this->docOffsetTable[docId];
+		uint64_t offset = std::get<0>(tableData);
+		uint8_t docNoLength = std::get<1>(tableData);
+		uint16_t documentLength = std::get<2>(tableData);
+
+		std::ifstream documentsFile;
+		documentsFile.open("index_documents.bin");
+		documentsFile.seekg(offset, std::ifstream::beg);
+
+		char* buffer = new char[docNoLength];
+		documentsFile.read(buffer, docNoLength);
+		std::string docNo(buffer, docNoLength);
+		delete[] buffer;
+
+		buffer = new char[documentLength];
+		documentsFile.read(buffer, documentLength);
+		std::string document(buffer, documentLength);
+		delete[] buffer;
+
+		return std::pair<std::string, std::string>(docNo, document);
+	}
+
 	// Load DocNo.bin and push_back to this->vecDocNo
 	void loadDocNo() {
 		std::ifstream docNoFile; 
@@ -170,7 +235,7 @@ public:
 
 		// Get the file size
 		docNoFile.seekg(0, std::ifstream::end);
-		long fileSize = docNoFile.tellg();
+		uint64_t fileSize = docNoFile.tellg();
 		docNoFile.seekg(0, std::ifstream::beg);
 
 		// Create a buffer and load the entire file
@@ -297,9 +362,13 @@ public:
 	void run() {
 		// std::string query = "rosenfield wall street unilateral representation";
 		// std::string query = "hello";
-		std::string query;
-		std::getline(std::cin, query);
+		std::string query = "In vitro studies about the antipeptic activity";
+		// std::string query;
+		// std::getline(std::cin, query);
+
 		std::vector<std::pair<uint32_t, float> > vecDocIdScore = this->getSortedRelevantDocuments(query);
+
+		std::vector<uint32_t> bestDocIdList;
 
 		// Print the sorted list of docNo and score
 		for (size_t i = 0; i < vecDocIdScore.size(); ++i) {
@@ -308,9 +377,23 @@ public:
 			float score = vecDocIdScore[i].second;
 
 			std::cout << docNo << " " << score << std::endl;
+
+			if (i < 2) {
+				bestDocIdList.push_back(docId);
+			}
 		}
 
 		this->wordPostingsFile.close();
+
+		// Print the first two docId and document content
+		for (size_t i = 0; i < bestDocIdList.size(); ++i) {
+			std::pair<std::string, std::string> docData = this->getDocData(bestDocIdList[i]);
+			std::string docNo = docData.first;
+			std::string document = docData.second;
+
+			std::cout << std::endl << docNo << std::endl;
+			std::cout << std::endl << document << std::endl;
+		}
 	}
 };
 

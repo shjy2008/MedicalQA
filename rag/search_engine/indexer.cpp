@@ -64,10 +64,6 @@ private:
 	// e.g. {"aircraft": [(6, 1), ...], "first": [(5, 1), (6, 2), ...], ...}
 	std::unordered_map<std::string, std::vector<std::pair<uint32_t, uint32_t> > > wordToPostings; 
 
-	// DOCNO list 
-	// e.g. [WSJ870324-0001, WSJ870323-0181, ...]
-	std::vector<std::string> docNoList;
-
 	// Document length list
 	// e.g. [159, 64, 48, 30, 106, 129, ...]
 	std::vector<uint32_t> documentLengthList;
@@ -82,13 +78,6 @@ public:
 		std::ofstream docLengthsFile("index_docLengths.bin"); // an uint32_t(4 byte) for each document length
 		for (size_t i = 0; i < documentLengthList.size(); ++i) {
 			docLengthsFile.write((const char*)&documentLengthList[i], 4);
-		}
-
-		// Save DOCNO list
-		std::ofstream docNoFile("index_docNo.bin"); // docNo("WSJ870324-0001") string splitted by \0
-		for (size_t i = 0; i < this->docNoList.size(); ++i) {
-			std::string s = this->docNoList[i] + '\0'; // Add '\0' to the end to split strings
-			docNoFile.write(s.c_str(), s.length());
 		}
 
 		// Save wordToPostings
@@ -156,6 +145,17 @@ public:
 
 		uint32_t documentIndex = 0; // ++ when encounter </DOC>
 
+		std::ofstream docNoFile("index_docNo.bin"); // Write documents file (docNo + document) while processing the xml
+
+		// Document offset table
+		// For each document length,  offset(8 byte) + docNoLength(1 byte) + documentLength(how many bytes, not words)(2 bytes)
+		std::ofstream docOffsetTableFile("index_docOffsetTable.bin");
+		uint64_t docOffset = 0;
+
+		// Document store
+		// For each document, docNo(str) + document(str)
+		std::ofstream documentsFile("index_documents.bin");
+
 		while (getline(file, line)) {
 
 			readStartIndex = 0;
@@ -172,8 +172,21 @@ public:
 						std::vector<std::string> words = extractWords(currentText);
 
 						if (currentTagName == "DOCNO") { // the '<' of </DOCNO>, the close tag of a document no.
-							currentDocNo = words[0]; //stripString(currentText); // Don't need to strip, extracted words are in good format
-							this->docNoList.push_back(currentDocNo);
+							// currentDocNo = words[0]; //stripString(currentText); // Don't need to strip, extracted words are in good format
+							currentDocNo = stripString(currentText);
+							
+							// TODO: docNoFile should be deleted
+							std::string s = currentDocNo + '\0';
+							docNoFile.write(s.c_str(), s.length());
+
+							// Write document offset table
+							docOffsetTableFile.write(reinterpret_cast<const char*>(&docOffset), sizeof(docOffset));
+							uint8_t docNoLength = currentDocNo.length();
+							docOffsetTableFile.write(reinterpret_cast<const char*>(&docNoLength), sizeof(docNoLength));
+							docOffset += docNoLength;
+
+							// Write docNo to document store
+							documentsFile.write(currentDocNo.c_str(), currentDocNo.size());
 						}
 
 						// Output the words, and save to postings
@@ -214,8 +227,7 @@ public:
 								// Save current document length
 								this->documentLengthList.push_back(currentDocumentLength);
 								currentDocumentLength = 0;
-
-
+								
 								// Output an blank line between documents
 								// std::cout << std::endl;
 
@@ -224,6 +236,17 @@ public:
 									std::cout << documentIndex << " documents processed." << std::endl;
 								}
 								++documentIndex;
+							}
+
+							// Reach the end of </TEXT>
+							if (tagName == "/TEXT") {
+								// Write document offset table
+								uint16_t textLength = currentText.length();
+								docOffsetTableFile.write(reinterpret_cast<const char*>(&textLength), sizeof(textLength));
+								docOffset += textLength;
+
+								// Write document content to document store
+								documentsFile.write(currentText.c_str(), currentText.size());
 							}
 
 							currentTagName = "";
@@ -244,7 +267,8 @@ public:
 			// Add the rest of the line to currentText
 			if (readingContent) {
 				std::string content = line.substr(readStartIndex, line.length() - readStartIndex);
-				currentText += content + "\n";
+				if (content.length() > 0)
+					currentText += content + "\n";
 			}
 		}
 
@@ -257,12 +281,14 @@ public:
 };
 
 int main(int argc, char* argv[]) {
-	if (argc != 2) {
-		std::cout << "Usage: enter a parameter as the file to create index. Example: ./indexer wsj.xml" << std::endl;
-		return 0;
-	}
+	// if (argc != 2) {
+	// 	std::cout << "Usage: enter a parameter as the file to create index. Example: ./indexer wsj.xml" << std::endl;
+	// 	return 0;
+	// }
 
-	Indexer indexer(argv[1]);
+	// Indexer indexer(argv[1]);
+
+	Indexer indexer("PubMed/PubMed_abstract_100.xml");
 	indexer.runIndexer();
 
 	return 0;
