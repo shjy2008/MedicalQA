@@ -145,8 +145,6 @@ public:
 
 		uint32_t documentIndex = 0; // ++ when encounter </DOC>
 
-		std::ofstream docNoFile("index_docNo.bin"); // Write documents file (docNo + document) while processing the xml
-
 		// Document offset table
 		// For each document length,  offset(8 byte) + docNoLength(1 byte) + documentLength(how many bytes, not words)(2 bytes)
 		std::ofstream docOffsetTableFile("index_docOffsetTable.bin");
@@ -175,10 +173,6 @@ public:
 							// currentDocNo = words[0]; //stripString(currentText); // Don't need to strip, extracted words are in good format
 							currentDocNo = stripString(currentText);
 							
-							// TODO: docNoFile should be deleted
-							std::string s = currentDocNo + '\0';
-							docNoFile.write(s.c_str(), s.length());
-
 							// Write document offset table
 							docOffsetTableFile.write(reinterpret_cast<const char*>(&docOffset), sizeof(docOffset));
 							uint8_t docNoLength = currentDocNo.length();

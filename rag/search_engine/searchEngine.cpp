@@ -45,11 +45,12 @@ bool sortScoreCompare(const std::pair<uint32_t, float>& a, const std::pair<uint3
 	return a.second > b.second;
 }
 
-// There are four .bin index files:
+// Index files:
 // 1. index_docLengths.bin: Document lengths for calculating scores. 4 bytes uint32_t each document length
-// 2. index_docNo.bin: DOCNO file, for showing DOCNO after retrieving docId. String splited by \0 (docNo1 \0 docNo2 \0 ...)
-// 3. index_words.bin: Words and their postings index, for seeking and reading word postings. Stored as 4 bytes word count + (wordLength(uint8_t), word, pos(uint32_t), docCount(uint32_t))
-// 4. index_wordPostings.bin: Word postings file, stored as (docId1, tf1, docId2, tf2, ...) each 4 bytes
+// 2. index_docOffsetTable.bin: For each document length,  offset(8 byte) + docNoLength(1 byte) + documentLength(how many bytes, not words)(2 bytes)
+// 3. index_documents.bin: For each document, docNo(str) + document(str)
+// 4. index_words.bin: Words and their postings index, for seeking and reading word postings. Stored as 4 bytes word count + (wordLength(uint8_t), word, pos(uint32_t), docCount(uint32_t))
+// 5. index_wordPostings.bin: Word postings file, stored as (docId1, tf1, docId2, tf2, ...) each 4 bytes
 
 class SearchEngine {
 
@@ -65,9 +66,6 @@ private:
 	// -- docCount: how many documents the word appears in
 	std::unordered_map<std::string, std::pair<uint32_t, uint32_t> > wordToPostingsIndex;
 
-	// DOCNO list ["WSJ870323-0139", ...]
-	std::vector<std::string> vecDocNo;
-
 	// Document offset table
 	std::unordered_map<uint32_t, std::tuple<uint64_t, uint8_t, uint16_t> > docOffsetTable;
 
@@ -77,7 +75,6 @@ public:
 
 	void load() {
 		this->loadWords(); // load word postings index from disk
-		this->loadDocNo(); // load DOCNO to a string list
 		this->loadDocLengths();
 		this->loadDocOffsetTable();
 
@@ -228,33 +225,6 @@ public:
 		return std::pair<std::string, std::string>(docNo, document);
 	}
 
-	// Load DocNo.bin and push_back to this->vecDocNo
-	void loadDocNo() {
-		std::ifstream docNoFile; 
-		docNoFile.open("index_docNo.bin");
-
-		// Get the file size
-		docNoFile.seekg(0, std::ifstream::end);
-		uint64_t fileSize = docNoFile.tellg();
-		docNoFile.seekg(0, std::ifstream::beg);
-
-		// Create a buffer and load the entire file
-		char* buffer = new char[fileSize];
-		docNoFile.read(buffer, fileSize);
-
-		docNoFile.close();
-
-		char* pointer = buffer;
-
-		while (pointer < buffer + fileSize) {
-			std::string docNo(pointer);
-			this->vecDocNo.push_back(docNo);
-			pointer += (docNo.size() + 1); // +1 for the '\0' between pointers
-		}
-
-		delete[] buffer; // Release the buffer
-	}
-
 	// Get word postings. input: word
 	// return: [(docId1, tf1), (docId2, tf2), ...], e.g. [(2, 3), (3, 6), ...]
 	std::vector<std::pair<uint32_t, uint32_t> > getWordPostings(const std::string& word) {
@@ -349,6 +319,10 @@ public:
 
 		std::vector<std::pair<uint32_t, float> > vecDocIdScore; // docId and score: [(docId1, score1), (docId2, score2), ...]
 		for (std::unordered_map<uint32_t, float>::iterator itrMapDocIdScore = mapDocIdScore.begin(); itrMapDocIdScore != mapDocIdScore.end(); ++itrMapDocIdScore) {
+			// filter out score < a threshold
+			if (itrMapDocIdScore->second < 2) {
+				continue;
+			}
 			vecDocIdScore.push_back(std::pair<uint32_t, float>(itrMapDocIdScore->first, itrMapDocIdScore->second));			
 		}
 
@@ -373,10 +347,9 @@ public:
 		// Print the sorted list of docNo and score
 		for (size_t i = 0; i < vecDocIdScore.size(); ++i) {
 			uint32_t docId = vecDocIdScore[i].first;
-			std::string docNo = this->vecDocNo[docId - 1];
 			float score = vecDocIdScore[i].second;
 
-			std::cout << docNo << " " << score << std::endl;
+			std::cout << docId << "  " << score << std::endl;
 
 			if (i < 2) {
 				bestDocIdList.push_back(docId);
