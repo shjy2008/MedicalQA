@@ -68,6 +68,11 @@ private:
 	// e.g. [159, 64, 48, 30, 106, 129, ...]
 	std::vector<uint32_t> documentLengthList;
 
+	// Save postings in batch, not create all postings before saving (memory issue)
+	const uint32_t postingsBatchSize = 10; // Postings batch size. Save postings index every batch, then merge them
+	uint32_t postingsBatchCounter = 0; // reset to 0 after each batch
+	uint32_t postingsBatchIndex = 0; // increment after each batch
+
 public:
 	Indexer(std::string fileName) {
 		this->fileName = fileName;
@@ -79,42 +84,253 @@ public:
 		for (size_t i = 0; i < documentLengthList.size(); ++i) {
 			docLengthsFile.write((const char*)&documentLengthList[i], 4);
 		}
+	}
 
-		// Save wordToPostings
+	void savePostingBatch() {
+		uint32_t wordCount = (uint32_t)this->wordToPostings.size();
+		if (wordCount == 0)
+			return;
+
+		uint32_t batchIndex = this->postingsBatchIndex;
+		++this->postingsBatchIndex;
+
 		// Stored as (docId1 for word1, term frequency 1 for word1, docId2 for word1, tf2 for word1, 
 		// 				docId1 for word2, tf1 for word2, ...) each in 4 bytes uint32_t
-		std::ofstream wordPostingsFile("index_wordPostings.bin");
+		std::ofstream postingsBatchFile("index_postings_" + std::to_string(batchIndex) + ".bin");
 		
 		// Stored as: 4 byte word count + [(wordLength(1 byte), word, pos(4 bytes), docCount(4 bytes)), ...]
 		// -- pos: how many documents before the word's first document
 		// -- docCount: how many documents the word appears in (vector's size) 
-		std::ofstream wordsFile("index_words.bin");
+		std::ofstream wordsBatchFile("index_words_" + std::to_string(batchIndex) + ".bin");
 
-		uint32_t wordCount = (uint32_t)wordToPostings.size();
-		wordsFile.write((const char*)&wordCount, 4); // 4 byte word count
+		wordsBatchFile.write((const char*)&wordCount, 4); // 4 byte word count
 
+		// Convert to vector and sort term->[<docId, tf>, ...] in alphabetical order
+		std::vector<std::pair<std::string, std::vector<std::pair<uint32_t, uint32_t> > > > sortedPostings(
+			this->wordToPostings.begin(), this->wordToPostings.end());
+		std::sort(sortedPostings.begin(), sortedPostings.end(), 
+				[](const auto& a, const auto& b) {
+					return a.first < b.first;
+				});
+		
 		uint32_t docCounter = 0;
-		for (std::unordered_map<std::string, std::vector<std::pair<uint32_t, uint32_t> > >::iterator it 
-					= wordToPostings.begin(); it != wordToPostings.end(); ++it) 
+		for (auto it = sortedPostings.begin(); it != sortedPostings.end(); ++it) 
 		{
 			std::string word = it->first;
 			std::vector<std::pair<uint32_t, uint32_t> > postings = it->second;
 			uint32_t docCount = postings.size();
 
 			uint8_t wordLength = (uint8_t)word.length();
-			wordsFile.write((const char*)&wordLength, 1);
-			wordsFile.write(word.c_str(), wordLength);
-			wordsFile.write((const char*)&docCounter, 4);
-			wordsFile.write((const char*)&docCount, 4);
+			wordsBatchFile.write((const char*)&wordLength, 1);
+			wordsBatchFile.write(word.c_str(), wordLength);
+			wordsBatchFile.write((const char*)&docCounter, 4);
+			wordsBatchFile.write((const char*)&docCount, 4);
 
 			for (uint32_t i = 0; i < docCount; ++i) {
 				uint32_t docId = postings[i].first;
 				uint32_t tf = postings[i].second;
-				wordPostingsFile.write((const char*)&docId, 4);
-				wordPostingsFile.write((const char*)&tf, 4);
+				postingsBatchFile.write((const char*)&docId, 4);
+				postingsBatchFile.write((const char*)&tf, 4);
 
 				++docCounter;
 			}
+		}
+
+		this->wordToPostings.clear();
+	}
+
+	void mergePostingsBatch() {
+		// const uint32_t mergeFileCount = 3; // How many postings_xx.bin files to merge
+		// const uint32_t mergeCount = std::ceil((float)this->postingsBatchIndex / mergeFileCount); // Merge how many times
+		const uint32_t mergeFileCount = this->postingsBatchIndex;
+
+		// [ batch1:[ <term, <pos, docCount> > , ...], batch2: [...] ]
+		std::vector<std::vector<std::pair<std::string, std::pair<uint32_t, uint32_t> > > > allBatchWordsData;
+
+		// Read all batched words file: index_words_xx.bin
+		for (uint32_t i = 0; i < mergeFileCount; ++i) {
+			std::ifstream wordsBatchFile("index_words_" + std::to_string(i) + ".bin");
+			
+			// Get how many bytes the words.bin have
+			wordsBatchFile.seekg(0, std::ifstream::end);
+			uint64_t fileSize = wordsBatchFile.tellg();
+			wordsBatchFile.seekg(0, std::ifstream::beg);
+
+			// Batch reading is faster than reading byte by byte
+			char* buffer = new char[fileSize];
+			wordsBatchFile.read(buffer, fileSize);
+			
+			wordsBatchFile.close();
+
+			char* pointer = buffer;
+
+			uint32_t wordCount = *reinterpret_cast<uint32_t*>(pointer);
+			pointer += 4;
+			
+			std::vector<std::pair<std::string, std::pair<uint32_t, uint32_t> > > batchWordsData;
+
+			for (uint32_t j = 0; j < wordCount; ++j) {
+				uint8_t wordLength = *pointer; //*reinterpret_cast<uint8_t*>(pointer);
+				++pointer;
+
+				std::string word(pointer, wordLength);
+				pointer += wordLength;
+
+				uint32_t pos = *reinterpret_cast<uint32_t*>(pointer);
+				pointer += 4;
+
+				uint32_t docCount = *reinterpret_cast<uint32_t*>(pointer);
+				pointer += 4;
+
+				batchWordsData.push_back(std::pair<std::string, std::pair<uint32_t, uint32_t> >(word, std::pair<uint32_t, uint32_t>(pos, docCount)));
+			}
+
+			allBatchWordsData.push_back(batchWordsData);
+		}
+
+		std::unordered_map<uint32_t, uint32_t> batchIndexToWordIndex;
+		std::vector<std::ifstream> postingsFileList(mergeFileCount);
+
+		for (uint32_t i = 0; i < mergeFileCount; ++i) {
+			postingsFileList[i].open("index_postings_" + std::to_string(i) + ".bin");
+			batchIndexToWordIndex[i] = 0;
+		}
+
+		// Merge all batches into a single postings file and a single words file
+		std::ofstream mergedPostingsFile("index_postings.bin");
+		std::ofstream mergedWordsFile("index_words.bin");
+
+		uint32_t docCounter = 0;
+		std::vector<std::pair<std::string, std::pair<uint32_t, uint32_t> > > allWordsData;
+
+		while (true)
+		{
+			// Check if all words are processed
+			bool finished = true;
+			for (uint32_t i = 0; i < mergeFileCount; ++i) {
+				uint32_t wordCount = allBatchWordsData[i].size();
+				if (batchIndexToWordIndex[i] < wordCount) {
+					finished = false;
+					break;
+				}
+			}
+			if (finished)
+				break;
+			
+			// Merge all batch postings, one word at a time, in alphabetical order
+			std::string currentWord = "";
+			uint32_t currentWordDocCounter = 0;
+			std::unordered_map<uint32_t, std::pair<uint32_t, uint32_t> > batchIndexToPosAndDocCount;
+			for (uint32_t i = 0; i < mergeFileCount; ++i) {
+				uint32_t wordIndex = batchIndexToWordIndex[i];
+				if (wordIndex >= allBatchWordsData[i].size()) { // If word list of a batch file is all done, don't need to process it
+					continue;
+				}
+				std::pair<std::string, std::pair<uint32_t, uint32_t> >& currentWordData = allBatchWordsData[i][wordIndex];
+				if (currentWord == "" || currentWordData.first <= currentWord) {
+					if (currentWordData.first < currentWord) {
+						batchIndexToPosAndDocCount.clear();
+					}
+					batchIndexToPosAndDocCount[i] = currentWordData.second;
+					currentWord = currentWordData.first;
+				}
+			}
+
+			int pos = docCounter; // How many docs before
+
+			// {batch_index1: [<docId1, tf1>, ...], batch_index2: [<docId, tf, ...], ...}
+			std::unordered_map<uint32_t, std::vector<std::pair<uint32_t, uint32_t> > > batchIndexToPostings; 
+			for (auto itr = batchIndexToPosAndDocCount.begin(); itr != batchIndexToPosAndDocCount.end(); ++itr) {
+				uint32_t batchIndex = itr->first;
+				uint32_t pos = itr->second.first;
+				uint32_t docCount = itr->second.second;
+				postingsFileList[batchIndex].seekg(sizeof(uint32_t) * pos * 2, std::ifstream::beg); // * 2 because every doc has docId and term frequency
+				
+				std::vector<std::pair<uint32_t, uint32_t> > postings;
+				for (uint32_t j = 0; j < docCount; ++j) {
+					uint32_t docId = 0;
+					uint32_t tf = 0;
+					postingsFileList[batchIndex].read((char*)&docId, 4);
+					postingsFileList[batchIndex].read((char*)&tf, 4);
+		
+					postings.push_back(std::pair<uint32_t, uint32_t>(docId, tf));
+				}
+				batchIndexToPostings[batchIndex] = postings;
+
+				batchIndexToWordIndex[batchIndex] += 1; // Advance the wordList after processing
+			}
+
+			// Merge and write postings to postings.bin, one docId at a time, in incremental order
+			uint32_t currentDocId = 0;
+			std::unordered_map<uint32_t, uint32_t> batchIndexToCurrentDocIdIndex;
+			for (uint32_t i = 0; i < mergeFileCount; ++i) {
+				batchIndexToCurrentDocIdIndex[i] = 0;
+			}
+
+			while (true) {
+				// Check if all docIds of current word are processed
+				bool finishCurrentWord = true;
+				for (const auto& [j, postings] : batchIndexToPostings) {
+					if (batchIndexToCurrentDocIdIndex[j] < postings.size()) {
+						finishCurrentWord = false;
+						break;
+					}
+				}
+				if (finishCurrentWord)
+					break;
+
+				std::vector<std::pair<uint32_t, std::pair<uint32_t, uint32_t> > > currentDocIdAndTfList; // [<batch_index, <docId, tf> >, ...]
+				for (const auto& [j, postings] : batchIndexToPostings) {
+					if (batchIndexToCurrentDocIdIndex[j] >= postings.size()) { // if a docIdList is finished, don't need to process it
+						continue;
+					}
+					std::pair<uint32_t, uint32_t> docIdAndTf = postings[batchIndexToCurrentDocIdIndex[j]];
+					if (currentDocId == 0 || docIdAndTf.first <= currentDocId) {
+						if (docIdAndTf.first < currentDocId) {
+							currentDocIdAndTfList.clear();
+						}
+						currentDocIdAndTfList.push_back(std::pair<uint32_t, std::pair<uint32_t, uint32_t> >(j, docIdAndTf));
+						currentDocId = docIdAndTf.first;
+					}
+				}
+
+				uint32_t tf = 0;
+				for (auto itr = currentDocIdAndTfList.begin(); itr != currentDocIdAndTfList.end(); ++itr) {
+					tf += itr->second.second; // Sum the term frequencies
+					batchIndexToCurrentDocIdIndex[itr->first] += 1; // Advance the docIdList after processing
+				}
+
+				mergedPostingsFile.write((const char*)&currentDocId, 4);
+				mergedPostingsFile.write((const char*)&tf, 4);
+
+				// std::cout << "save <docId, tf>:" << currentDocId << " " << tf << std::endl;
+
+				++docCounter;
+				++currentWordDocCounter;
+
+				currentDocId = 0; // Reset to 0, process next docId
+
+			}
+
+			// std::cout << "word:" << currentWord << "  currentWordDocCounter:" << currentWordDocCounter << std::endl;
+			std::cout << currentWord << std::endl;
+
+			allWordsData.push_back(std::pair<std::string, std::pair<uint32_t, uint32_t> >(currentWord, std::pair<uint32_t, uint32_t>(pos, currentWordDocCounter)));
+			
+			currentWordDocCounter = 0;
+			currentWord = ""; // Reset to "", process next word
+		}
+
+		uint32_t wordCount = allWordsData.size();
+		mergedWordsFile.write((const char*)&wordCount, 4); // 4 byte word count
+		
+		for (const auto& wordData : allWordsData) {
+			std::string word = wordData.first;
+			uint8_t wordLength = (uint8_t)word.length();
+			mergedWordsFile.write((const char*)&wordLength, 1);
+			mergedWordsFile.write(word.c_str(), wordLength);
+			mergedWordsFile.write((const char*)&wordData.second.first, 4);
+			mergedWordsFile.write((const char*)&wordData.second.second, 4);
 		}
 	}
 
@@ -214,6 +430,17 @@ public:
 						}
 						else { // It's a close tag. e.g. </DOC>
 
+							// Reach the end of </TEXT>
+							if (tagName == "/TEXT") {
+								// Write document offset table
+								uint16_t textLength = currentText.length();
+								docOffsetTableFile.write(reinterpret_cast<const char*>(&textLength), sizeof(textLength));
+								docOffset += textLength;
+
+								// Write document content to document store
+								documentsFile.write(currentText.c_str(), currentText.size());
+							}
+
 							// Reach the end of a document
 							if (tagName == "/DOC") { 
 								currentDocNo = "";
@@ -225,22 +452,18 @@ public:
 								// Output an blank line between documents
 								// std::cout << std::endl;
 
+								// Save batch postings
+								++this->postingsBatchCounter;
+								if (this->postingsBatchCounter >= this->postingsBatchSize) {
+									this->postingsBatchCounter = 0;
+									this->savePostingBatch();
+								}
+
 								if (documentIndex % 1000 == 0) 
 								{
 									std::cout << documentIndex << " documents processed." << std::endl;
 								}
 								++documentIndex;
-							}
-
-							// Reach the end of </TEXT>
-							if (tagName == "/TEXT") {
-								// Write document offset table
-								uint16_t textLength = currentText.length();
-								docOffsetTableFile.write(reinterpret_cast<const char*>(&textLength), sizeof(textLength));
-								docOffset += textLength;
-
-								// Write document content to document store
-								documentsFile.write(currentText.c_str(), currentText.size());
 							}
 
 							currentTagName = "";
@@ -265,6 +488,12 @@ public:
 					currentText += content + "\n";
 			}
 		}
+		
+		// Save the last batch
+		this->savePostingBatch();
+
+		std::cout << "Merging postings..." << std::endl;
+		this->mergePostingsBatch();
 
 		std::cout << "All " << documentIndex << " documents processed." << std::endl;
 
