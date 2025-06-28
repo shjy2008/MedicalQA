@@ -78,7 +78,7 @@ public:
 		this->loadDocLengths();
 		this->loadDocOffsetTable();
 
-		wordPostingsFile.open("index_wordPostings.bin");
+		wordPostingsFile.open("index_postings.bin");
 	}
 
 	// Load document lengths and get: 1. totalDocuments 2. average document length 3. docIdToLength (Used for BM25)
@@ -320,7 +320,7 @@ public:
 		std::vector<std::pair<uint32_t, float> > vecDocIdScore; // docId and score: [(docId1, score1), (docId2, score2), ...]
 		for (std::unordered_map<uint32_t, float>::iterator itrMapDocIdScore = mapDocIdScore.begin(); itrMapDocIdScore != mapDocIdScore.end(); ++itrMapDocIdScore) {
 			// filter out score < a threshold
-			if (itrMapDocIdScore->second < 2) {
+			if (itrMapDocIdScore->second < 5) {
 				continue;
 			}
 			vecDocIdScore.push_back(std::pair<uint32_t, float>(itrMapDocIdScore->first, itrMapDocIdScore->second));			
