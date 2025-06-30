@@ -2,12 +2,20 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <queue>
 #include <string>
 #include <unordered_map>
 #include <cmath>
 #include <algorithm>
 #include <tuple>
 #include <cstdint>
+
+// Index files:
+// 1. index_docLengths.bin: Document lengths for calculating scores. 4 bytes uint32_t each document length
+// 2. index_docOffsetTable.bin: For each document length,  offset(8 byte) + docNoLength(1 byte) + documentLength(how many bytes, not words)(2 bytes)
+// 3. index_documents.bin: For each document, docNo(str) + document(str)
+// 4. index_words.bin: Words and their postings index, for seeking and reading word postings. Stored as 4 bytes word count + (wordLength(uint8_t), word, pos(uint32_t), docCount(uint32_t))
+// 5. index_wordPostings.bin: Word postings file, stored as (docId1, tf1, docId2, tf2, ...) each 4 bytes
 
 // Extract words from a text string
 std::vector<std::string> extractWords(const std::string& text) {
@@ -45,12 +53,16 @@ bool sortScoreCompare(const std::pair<uint32_t, float>& a, const std::pair<uint3
 	return a.second > b.second;
 }
 
-// Index files:
-// 1. index_docLengths.bin: Document lengths for calculating scores. 4 bytes uint32_t each document length
-// 2. index_docOffsetTable.bin: For each document length,  offset(8 byte) + docNoLength(1 byte) + documentLength(how many bytes, not words)(2 bytes)
-// 3. index_documents.bin: For each document, docNo(str) + document(str)
-// 4. index_words.bin: Words and their postings index, for seeking and reading word postings. Stored as 4 bytes word count + (wordLength(uint8_t), word, pos(uint32_t), docCount(uint32_t))
-// 5. index_wordPostings.bin: Word postings file, stored as (docId1, tf1, docId2, tf2, ...) each 4 bytes
+struct SearchResult {
+	uint32_t docId;
+	float score;
+
+	SearchResult(uint32_t docId, float score) : docId(docId), score(score) {}
+
+	bool operator > (const SearchResult& other) const {
+		return score > other.score; // min-heap based on score
+	}
+};
 
 class SearchEngine {
 
@@ -172,7 +184,7 @@ public:
 
 		delete[] buffer;
 
-		std::cout << "Finish loading words" << std::endl;
+		std::cout << "Finish loading words: " << wordCount << std::endl;
 	}
 
 	// Load index_docOffsetTable.bin and update this->docOffsetTable
@@ -292,7 +304,7 @@ public:
 
 	// input: query (multiple words) e.g. italy commercial
 	// output: a list of sorted docId and score. e.g. [(1, 2.5), (10, 2.1), ...]
-	std::vector<std::pair<uint32_t, float> > getSortedRelevantDocuments(const std::string& query) {
+	std::vector<SearchResult> getSortedRelevantDocuments(const std::string& query) {
 		std::vector<std::string> words = extractWords(query);
 
 		std::unordered_map<uint32_t, float> mapDocIdScore;
@@ -333,17 +345,34 @@ public:
 			}	
 		}
 
-		std::vector<std::pair<uint32_t, float> > vecDocIdScore; // docId and score: [(docId1, score1), (docId2, score2), ...]
+		std::priority_queue<SearchResult, std::vector<SearchResult>, std::greater<SearchResult> > minHeap; 
+		const int topK = 10;
 		for (std::unordered_map<uint32_t, float>::iterator itrMapDocIdScore = mapDocIdScore.begin(); itrMapDocIdScore != mapDocIdScore.end(); ++itrMapDocIdScore) {
 			// filter out score < a threshold
-			if (itrMapDocIdScore->second < 5) {
-				continue;
+			// if (itrMapDocIdScore->second < 5) {
+			// 	continue;
+			// }
+
+			if (minHeap.size() < topK) {
+				minHeap.push(SearchResult(itrMapDocIdScore->first, itrMapDocIdScore->second));
 			}
-			vecDocIdScore.push_back(std::pair<uint32_t, float>(itrMapDocIdScore->first, itrMapDocIdScore->second));			
+			else {
+				if (itrMapDocIdScore->second > minHeap.top().score) {
+					minHeap.pop();
+					minHeap.push(SearchResult(itrMapDocIdScore->first, itrMapDocIdScore->second));
+				}
+			}
+		}
+
+		std::vector<SearchResult> vecDocIdScore; // docId and score: [(docId1, score1), (docId2, score2), ...]
+		while (!minHeap.empty()) {
+			vecDocIdScore.push_back(minHeap.top());
+			minHeap.pop();
 		}
 
 		// Sort by score
-		std::sort(vecDocIdScore.begin(), vecDocIdScore.end(), sortScoreCompare);
+		// std::sort(vecDocIdScore.begin(), vecDocIdScore.end(), sortScoreCompare);
+		std::reverse(vecDocIdScore.begin(), vecDocIdScore.end());
 
 		return vecDocIdScore;
 	}
@@ -354,22 +383,24 @@ public:
 		// std::string query = "in antipeptic activity";
 		// std::string query = "the";
 		// std::string query = "in";
-		std::string query = "In vitro studies about the antipeptic activity";
+		// std::string query = "In vitro studies about the antipeptic activity";
+		// GBaker/MedQA-USMLE-4-options test index 0
+		std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
 		// std::string query;
 		// std::getline(std::cin, query);
 
-		std::vector<std::pair<uint32_t, float> > vecDocIdScore = this->getSortedRelevantDocuments(query);
+		std::vector<SearchResult> vecDocIdScore = this->getSortedRelevantDocuments(query);
 
 		std::vector<uint32_t> bestDocIdList;
 
 		// Print the sorted list of docNo and score
 		for (size_t i = 0; i < vecDocIdScore.size(); ++i) {
-			uint32_t docId = vecDocIdScore[i].first;
-			float score = vecDocIdScore[i].second;
+			uint32_t docId = vecDocIdScore[i].docId;
+			float score = vecDocIdScore[i].score;
 
 			std::cout << docId << "  " << score << std::endl;
 
-			if (i < 2) {
+			if (i < 10) {
 				bestDocIdList.push_back(docId);
 			}
 		}
@@ -390,15 +421,18 @@ public:
 
 int main() {
 	
-	// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+	std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 
 	SearchEngine engine;
 	engine.load();
+
+	std::chrono::steady_clock::time_point time_loadFinished = std::chrono::steady_clock::now();
+	std::cout << "Loading time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_loadFinished - time_begin).count() << "ms" << std::endl;
+
 	engine.run();
 
-	// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-
-	// std::cout << "Time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_begin).count() << "ms" << std::endl;
+	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
 
 	return 0;
 }
