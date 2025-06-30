@@ -407,6 +407,9 @@ public:
 		// For each document, docNo(str) + document(str)
 		std::ofstream documentsFile("index_documents.bin");
 
+		const uint32_t maxDocCount = INT_MAX; //15000000;
+		bool reachMaxDocCount = false;
+
 		while (getline(file, line)) {
 
 			readStartIndex = 0;
@@ -496,11 +499,15 @@ public:
 									this->savePostingBatch();
 								}
 
-								if (documentIndex % 1000 == 0) 
+								if (documentIndex % 10000 == 0) 
 								{
 									std::cout << documentIndex << " documents processed." << std::endl;
 								}
 								++documentIndex;
+
+								if (documentIndex >= maxDocCount) {
+									reachMaxDocCount = true;
+								}
 							}
 
 							currentTagName = "";
@@ -524,6 +531,9 @@ public:
 				if (content.length() > 0)
 					currentText += content + "\n";
 			}
+
+			if (reachMaxDocCount)
+				break;
 		}
 		
 		// Save the last batch

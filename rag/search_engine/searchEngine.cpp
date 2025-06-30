@@ -115,6 +115,13 @@ public:
 
 		this->totalDocuments = docId;
 		this->averageDocumentLength = (float)totalLength / this->totalDocuments;
+
+		std::cout << "Finish loading document lengths" << std::endl;
+
+		// int a = getDocumentLength(1);
+		// int b = getDocumentLength(2);
+		// int c = getDocumentLength(1000000);
+		// int d = 0;
 	}
 
 	// Get document length(how many words in doc) with docId: 1, 2, 3, ... (read from the postings)
@@ -164,6 +171,8 @@ public:
 		}
 
 		delete[] buffer;
+
+		std::cout << "Finish loading words" << std::endl;
 	}
 
 	// Load index_docOffsetTable.bin and update this->docOffsetTable
@@ -199,6 +208,8 @@ public:
 		}
 
 		delete[] buffer;
+
+		std::cout << "Finish loading document offset table" << std::endl;
 	}
 
 	// Read this->docOffsetTable and get <docNo and document> with docId
@@ -296,13 +307,18 @@ public:
 			// Okapi BM25 https://en.wikipedia.org/wiki/Okapi_BM25
 			float idf = std::log((this->totalDocuments - docCountContainWord + 0.5) / (docCountContainWord + 0.5) + 1); // Ensure positive
 
+			//std::cout << postings.size() << std::endl;
 			for (size_t i = 0; i < postings.size(); ++i) {
 				uint32_t docId = postings[i].first; // docId (1, 2, 3, ...)
 				uint32_t tf_td = postings[i].second; // term frequency in doc
 	
+				// std::cout << docId << " " << tf_td << std::endl;
+
 				uint32_t docLength = this->getDocumentLength(docId);
 
 				float score = this->getRankingScore(tf_td, docLength, idf);
+
+				// std::cout << docLength << " " << score << std::endl;
 
 				// Add score to mapDocIdScore
 				if (score > 0) {
@@ -335,7 +351,9 @@ public:
 
 	void run() {
 		// std::string query = "rosenfield wall street unilateral representation";
-		// std::string query = "hello";
+		// std::string query = "in antipeptic activity";
+		// std::string query = "the";
+		// std::string query = "in";
 		std::string query = "In vitro studies about the antipeptic activity";
 		// std::string query;
 		// std::getline(std::cin, query);
