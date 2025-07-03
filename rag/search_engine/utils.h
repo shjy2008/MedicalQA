@@ -20,6 +20,14 @@ struct WordData {
     WordData(uint32_t postingsPos, uint32_t postingsDocCount, float impactScore) : postingsPos(postingsPos), postingsDocCount(postingsDocCount), impactScore(impactScore) {}
 };
 
+struct DocumentOffset {
+    uint64_t offset;
+    uint8_t docNoLength;
+    uint16_t documentLength;
+
+    DocumentOffset(uint64_t offset, uint8_t docNoLength, uint16_t documentLength) : offset(offset), docNoLength(docNoLength), documentLength(documentLength) {}
+};
+
 struct SearchResult {
 	uint32_t docId;
 	float score;

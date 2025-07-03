@@ -34,7 +34,7 @@ private:
 	std::unordered_map<std::string, WordData> wordToWordData;
 
 	// Document offset table
-	std::vector<std::tuple<uint64_t, uint8_t, uint16_t> > docOffsetTable;
+	std::vector<DocumentOffset> docOffsetTable;
 
 public:
 	SearchEngine() {
@@ -44,7 +44,6 @@ public:
 		this->loadWords(); // load word postings index from disk
 		this->loadDocLengths();
 		this->loadDocOffsetTable();
-		this->loadImpactScores();
 
 		wordPostingsFile.open("index_postings.bin");
 	}
@@ -161,7 +160,7 @@ public:
 			pointer += sizeof(documentLength);
 
 			++docId;
-			this->docOffsetTable.push_back(std::tuple<uint64_t, uint8_t, uint16_t>(offset, docNoLength, documentLength));
+			this->docOffsetTable.push_back(DocumentOffset(offset, docNoLength, documentLength));
 		}
 
 		delete[] buffer;
@@ -169,61 +168,22 @@ public:
 		std::cout << "Finish loading document offset table: " << docId << std::endl;
 	}
 
-	// Load impact scores of every word
-	void loadImpactScores() {
-		return;
-
-		// std::ifstream impactScoresFile;
-		// impactScoresFile.open("index_impactScores.bin");
-
-		// // Get how many bytes the "index_impactScores.bin" have
-		// impactScoresFile.seekg(0, std::ifstream::end);
-		// uint64_t fileSize = impactScoresFile.tellg();
-		// impactScoresFile.seekg(0, std::ifstream::beg);
-
-		// // Batch reading is faster than reading byte-by-byte
-		// char* buffer = new char[fileSize];
-		// impactScoresFile.read(buffer, fileSize);
-
-		// impactScoresFile.close();
-
-		// char* pointer = buffer;
-		// uint32_t docId = 0;
-		// while (pointer < buffer + fileSize) {
-		// 	float impactScore = *reinterpret_cast<float*>(pointer);
-		// 	pointer += 4;
-
-		// 	++docId;
-		// 	this->impactScoreTable.push_back(impactScore);
-		// }
-
-		// delete[] buffer;
-
-		// std::cout << "Finish loading document offset table: " << docId << std::endl;
-
-		// std::cout << this->impactScoreTable[""]
-		
-	}
-
 	// Read this->docOffsetTable and get <docNo and document> with docId
 	std::pair<std::string, std::string> getDocData(uint32_t docId) {
-		std::tuple<uint64_t, uint8_t, uint16_t> tableData = this->docOffsetTable[docId - 1];
-		uint64_t offset = std::get<0>(tableData);
-		uint8_t docNoLength = std::get<1>(tableData);
-		uint16_t documentLength = std::get<2>(tableData);
+		DocumentOffset offsetData = this->docOffsetTable[docId - 1];
 
 		std::ifstream documentsFile;
 		documentsFile.open("index_documents.bin");
-		documentsFile.seekg(offset, std::ifstream::beg);
+		documentsFile.seekg(offsetData.offset, std::ifstream::beg);
 
-		char* buffer = new char[docNoLength];
-		documentsFile.read(buffer, docNoLength);
-		std::string docNo(buffer, docNoLength);
+		char* buffer = new char[offsetData.docNoLength];
+		documentsFile.read(buffer, offsetData.docNoLength);
+		std::string docNo(buffer, offsetData.docNoLength);
 		delete[] buffer;
 
-		buffer = new char[documentLength];
-		documentsFile.read(buffer, documentLength);
-		std::string document(buffer, documentLength);
+		buffer = new char[offsetData.documentLength];
+		documentsFile.read(buffer, offsetData.documentLength);
+		std::string document(buffer, offsetData.documentLength);
 		delete[] buffer;
 
 		return std::pair<std::string, std::string>(docNo, document);
@@ -302,11 +262,6 @@ public:
 		std::priority_queue<SearchResult, std::vector<SearchResult>, std::greater<SearchResult> > minHeap; 
 		const int topK = 10;
 		for (std::unordered_map<uint32_t, float>::iterator itrMapDocIdScore = mapDocIdScore.begin(); itrMapDocIdScore != mapDocIdScore.end(); ++itrMapDocIdScore) {
-			// filter out score < a threshold
-			// if (itrMapDocIdScore->second < 5) {
-			// 	continue;
-			// }
-
 			if (minHeap.size() < topK) {
 				minHeap.push(SearchResult(itrMapDocIdScore->first, itrMapDocIdScore->second));
 			}
