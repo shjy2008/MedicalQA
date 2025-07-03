@@ -205,14 +205,19 @@ public:
 
 		// Seek and read wordPostings.bin to find the postings(docId and tf) of this word
 		wordPostingsFile.seekg(sizeof(uint32_t) * pos * 2, std::ifstream::beg); // * 2 because every doc has docId and term frequency
-		for (uint32_t i = 0; i < docCount; ++i) {
-			uint32_t docId = 0;
-			uint32_t tf = 0;
-			wordPostingsFile.read((char*)&docId, 4);
-			wordPostingsFile.read((char*)&tf, 4);
 
-			postings.push_back(Posting(docId, tf));
-		}
+		// Optimization: batch reading instead of reading docId and tf one by one
+		postings.resize(docCount);
+		wordPostingsFile.read(reinterpret_cast<char*>(postings.data()), docCount * sizeof(Posting));
+
+		// for (uint32_t i = 0; i < docCount; ++i) {
+		// 	uint32_t docId = 0;
+		// 	uint32_t tf = 0;
+		// 	wordPostingsFile.read((char*)&docId, 4);
+		// 	wordPostingsFile.read((char*)&tf, 4);
+
+		// 	postings.push_back(Posting(docId, tf));
+		// }
 
 		return postings;
 	}
@@ -225,6 +230,11 @@ public:
 		std::unordered_map<uint32_t, float> mapDocIdScore;
 		for (std::vector<std::string>::iterator itrWords = words.begin(); itrWords != words.end(); ++itrWords) {
 			std::string word = *itrWords;
+			// Stop words
+			if (std::find(stopWords.begin(), stopWords.end(), word) != stopWords.end()) {
+				continue;
+			}
+				
 			for (size_t i = 0; i < word.length(); ++i)
 				word[i] = std::tolower(word[i]);
 
@@ -291,9 +301,12 @@ public:
 		// std::string query = "in antipeptic activity";
 		// std::string query = "the";
 		// std::string query = "in";
-		std::string query = "In vitro studies about the antipeptic activity";
+		// std::string query = "In vitro studies about the antipeptic activity";
+		// std::string query = "vitro studies antipeptic activity";
+		// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair";
 		// GBaker/MedQA-USMLE-4-options test index 0
-		// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
+		std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
+		// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair department chairman attending physician. During case, resident inadvertently cuts flexor tendon. tendon repaired complication. attending tells resident patient fine, need report minor complication harm patient, he want make patient worry unnecessarily. He tells resident leave this complication operative report. Which following correct next action resident take?";
 		// std::string query;
 		// std::getline(std::cin, query);
 
