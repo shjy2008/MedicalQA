@@ -27,16 +27,14 @@ private:
 	float averageDocumentLength; // Average length of all the documents, used for BM25
 	std::vector<uint32_t> docLengthTable; // docId -> documentLength
 
-	// word -> (pos, docCount)
+	// word -> (pos, docCount, impactScore)
 	// -- pos: how many documents before the word's first document
 	// -- docCount: how many documents the word appears in
-	std::unordered_map<std::string, std::pair<uint32_t, uint32_t> > wordToPostingsIndex;
+	// -- impactScore: max impact score of a word for all documents
+	std::unordered_map<std::string, WordData> wordToWordData;
 
 	// Document offset table
 	std::vector<std::tuple<uint64_t, uint8_t, uint16_t> > docOffsetTable;
-
-	// word -> impact score
-	std::unordered_map<std::string, float> wordToImpactScore; 
 
 public:
 	SearchEngine() {
@@ -89,7 +87,7 @@ public:
 		std::cout << "Finish loading document lengths" << std::endl;
 	}
 
-	// Load words and get the postings offset (this->wordToPostingsIndex)
+	// Load words and get the postings offset (this->wordToWordData)
 	void loadWords() {
 		std::ifstream wordsFile;
 		wordsFile.open("index_words.bin");
@@ -123,7 +121,10 @@ public:
 			uint32_t docCount = *reinterpret_cast<uint32_t*>(pointer);
 			pointer += 4;
 
-			this->wordToPostingsIndex[word] = std::pair<uint32_t, uint32_t>(pos, docCount);
+			float impactScore = *reinterpret_cast<float*>(pointer);
+			pointer += 4;
+
+			this->wordToWordData[word] = WordData(pos, docCount, impactScore);
 		}
 
 		delete[] buffer;
@@ -230,17 +231,17 @@ public:
 
 	// Get word postings. input: word
 	// return: [(docId1, tf1), (docId2, tf2), ...], e.g. [(2, 3), (3, 6), ...]
-	std::vector<std::pair<uint32_t, uint32_t> > getWordPostings(const std::string& word) {
-		std::vector<std::pair<uint32_t, uint32_t> > postings;
+	std::vector<Posting> getWordPostings(const std::string& word) {
+		std::vector<Posting> postings;
 
-		std::unordered_map<std::string, std::pair<uint32_t, uint32_t> >::iterator postingsIndexIt = this->wordToPostingsIndex.find(word);
-		if (postingsIndexIt == this->wordToPostingsIndex.end()) {
+		std::unordered_map<std::string, WordData>::iterator wordDataItr = this->wordToWordData.find(word);
+		if (wordDataItr == this->wordToWordData.end()) {
 			return postings; // Can't find the word, return empty vector
 		}
 
-		std::pair<uint32_t, uint32_t> postingsIndexPair = postingsIndexIt->second;
-		uint32_t pos = postingsIndexPair.first;
-		uint32_t docCount = postingsIndexPair.second;
+		WordData postingsIndexPair = wordDataItr->second;
+		uint32_t pos = postingsIndexPair.postingsPos;
+		uint32_t docCount = postingsIndexPair.postingsDocCount;
 
 		// Seek and read wordPostings.bin to find the postings(docId and tf) of this word
 		wordPostingsFile.seekg(sizeof(uint32_t) * pos * 2, std::ifstream::beg); // * 2 because every doc has docId and term frequency
@@ -250,7 +251,7 @@ public:
 			wordPostingsFile.read((char*)&docId, 4);
 			wordPostingsFile.read((char*)&tf, 4);
 
-			postings.push_back(std::pair<uint32_t, uint32_t>(docId, tf));
+			postings.push_back(Posting(docId, tf));
 		}
 
 		return postings;
@@ -267,15 +268,15 @@ public:
 			for (size_t i = 0; i < word.length(); ++i)
 				word[i] = std::tolower(word[i]);
 
-			std::vector<std::pair<uint32_t, uint32_t> > postings = this->getWordPostings(word);
+			std::vector<Posting> postings = this->getWordPostings(word);
 			uint32_t docCountContainWord = postings.size();
 
 			float idf = Utils::getIDF(docCountContainWord, this->totalDocuments);
 
 			//std::cout << postings.size() << std::endl;
 			for (size_t i = 0; i < postings.size(); ++i) {
-				uint32_t docId = postings[i].first; // docId (1, 2, 3, ...)
-				uint32_t tf_td = postings[i].second; // term frequency in doc
+				uint32_t docId = postings[i].docId; // docId (1, 2, 3, ...)
+				uint32_t tf_td = postings[i].tf; // term frequency in doc
 	
 				// std::cout << docId << " " << tf_td << std::endl;
 

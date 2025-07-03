@@ -337,7 +337,7 @@ public:
 			mergedWordsFile.write(word.c_str(), wordLength);
 			mergedWordsFile.write((const char*)&wordData.second.postingsPos, 4);
 			mergedWordsFile.write((const char*)&wordData.second.postingsDocCount, 4);
-			// mergedWordsFile.write((const char*)&wordData.second.impactScore, 4);
+			mergedWordsFile.write((const char*)&wordData.second.impactScore, 4);
 		}
 	}
 
