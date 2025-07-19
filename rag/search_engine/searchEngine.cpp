@@ -191,17 +191,18 @@ public:
 
 	// Get word postings. input: word
 	// return: [(docId1, tf1), (docId2, tf2), ...], e.g. [(2, 3), (3, 6), ...]
-	std::vector<Posting> getWordPostings(const std::string& word) {
+	std::pair<std::vector<Posting>, float> getWordPostings(const std::string& word) {
 		std::vector<Posting> postings;
 
 		std::unordered_map<std::string, WordData>::iterator wordDataItr = this->wordToWordData.find(word);
 		if (wordDataItr == this->wordToWordData.end()) {
-			return postings; // Can't find the word, return empty vector
+			return std::pair<std::vector<Posting>, float>(postings, 0); // Can't find the word, return empty vector
 		}
 
-		WordData postingsIndexPair = wordDataItr->second;
-		uint32_t pos = postingsIndexPair.postingsPos;
-		uint32_t docCount = postingsIndexPair.postingsDocCount;
+		WordData wordData = wordDataItr->second;
+		uint32_t pos = wordData.postingsPos;
+		uint32_t docCount = wordData.postingsDocCount;
+		float impactScore = wordData.impactScore;
 
 		// Seek and read wordPostings.bin to find the postings(docId and tf) of this word
 		wordPostingsFile.seekg(sizeof(uint32_t) * pos * 2, std::ifstream::beg); // * 2 because every doc has docId and term frequency
@@ -219,7 +220,46 @@ public:
 		// 	postings.push_back(Posting(docId, tf));
 		// }
 
-		return postings;
+		return std::pair<std::vector<Posting>, float>(postings, impactScore);
+	}
+
+	std::pair<bool, SearchResult> calculateDocScore(const std::vector<std::pair<uint32_t, std::vector<Posting> > >& vecPostingsLists, 
+						std::unordered_map<uint32_t, uint32_t>& wordIndexToPostingsProgress) {
+		float currentScore = 0.0f;
+		uint32_t currentDocId = 0;
+		SearchResult result = SearchResult(currentDocId, currentScore);
+		for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
+			uint32_t wordIndex = vecPostingsLists[i].first;
+			std::vector<Posting> postings = vecPostingsLists[i].second;
+			// If the first one is done, then all done
+			if (i == 0 && wordIndexToPostingsProgress[wordIndex] >= postings.size()) {
+				return std::pair<bool, SearchResult>(true, result);
+				// allFinished = true;
+				// break;
+			}
+			
+			Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
+
+			uint32_t docCountContainWord = postings.size();
+			float idf = Utils::getIDF(docCountContainWord, this->totalDocuments);
+
+			if (i == 0 || posting.docId == currentDocId) {
+				if (i == 0) {
+					currentDocId = posting.docId;
+				}
+				uint32_t docLength = this->docLengthTable[currentDocId - 1];
+				float score = Utils::getRankingScore(posting.tf, docLength, idf, this->averageDocumentLength);
+				currentScore += score;
+
+				wordIndexToPostingsProgress[wordIndex] += 1; // Advance the progress
+			}
+			else {
+				break;
+			}
+		}
+
+		result = SearchResult(currentDocId, currentScore);
+		return std::pair<bool, SearchResult>(false, result);
 	}
 
 	// input: query (multiple words) e.g. italy commercial
@@ -227,8 +267,11 @@ public:
 	std::vector<SearchResult> getSortedRelevantDocuments(const std::string& query) {
 		std::vector<std::string> words = Utils::extractWords(query);
 
+		std::priority_queue<SearchResult, std::vector<SearchResult>, std::greater<SearchResult> > minHeap;
+
 		// DAAT
 		std::vector<std::pair<uint32_t, std::vector<Posting> > > vecPostingsLists; // [(wordIndex, Posting), ...]
+		std::unordered_map<uint32_t, float> wordIndexToImpactScores; // wordIndex -> impactScore
 		std::unordered_map<uint32_t, uint32_t> wordIndexToPostingsProgress; // wordIndex -> postingsProgress (from 0 to len(posting) - 1)
 		
 		uint32_t wordIndex = 0;
@@ -238,78 +281,101 @@ public:
 			if (std::find(stopWords.begin(), stopWords.end(), word) != stopWords.end()) {
 				continue;
 			}
-			std::vector<Posting> postings = this->getWordPostings(word);
-			vecPostingsLists.push_back(std::pair<uint32_t, std::vector<Posting> >(wordIndex, postings));
+			std::pair<std::vector<Posting>, float> postingsAndImpactScore = this->getWordPostings(word);
+			vecPostingsLists.push_back(std::pair<uint32_t, std::vector<Posting> >(wordIndex, postingsAndImpactScore.first));
+			wordIndexToImpactScores[wordIndex] = postingsAndImpactScore.second;
 			wordIndexToPostingsProgress[wordIndex] = 0;
 			++wordIndex;
 		}
 
 		// WAND
-		std::priority_queue<SearchResult, std::vector<SearchResult>, std::greater<SearchResult> > minHeap;
 		const int topK = 10;
 		float minScoreOfHeap = 0.0f;
 		while (true) {
+			// Remove the finished postings. todo: only erase if needed
+			std::vector<std::pair<uint32_t, std::vector<Posting> > > newVecPostingsLists;
+			for (const auto& itr : vecPostingsLists) {
+				if (wordIndexToPostingsProgress[itr.first] < itr.second.size()) {
+					newVecPostingsLists.push_back(itr);
+				}
+			}
+			vecPostingsLists = newVecPostingsLists;
+
 			// Sort the postings lists on increasing current docId
 			std::sort(vecPostingsLists.begin(), vecPostingsLists.end(), [&](const auto& a, const auto& b) {
-				bool aFinished = wordIndexToPostingsProgress[a.first] >= a.second.size();
-				bool bFinished = wordIndexToPostingsProgress[b.first] >= b.second.size();
-				if (aFinished && !bFinished) {
-					return false;
-				}
-				else if (!aFinished && bFinished) {
-					return true;
-				}
-				else if (aFinished && bFinished) {
-					return a.first < b.first;
-				}
-				else {
-					return a.second[wordIndexToPostingsProgress[a.first]].docId < b.second[wordIndexToPostingsProgress[b.first]].docId;
-				}
+				return a.second[wordIndexToPostingsProgress[a.first]].docId < b.second[wordIndexToPostingsProgress[b.first]].docId;
 			});
 
-			float currentScore = 0.0f;
-			uint32_t currentDocId = 0;
 			bool allFinished = false;
-			for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
-				std::vector<Posting> postings = vecPostingsLists[i].second;
-				if (wordIndexToPostingsProgress[vecPostingsLists[i].first] >= postings.size()) {
+			if (minHeap.size() < topK) {
+				std::pair<bool, SearchResult> ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress);
+				if (ret.first == true) {
 					allFinished = true;
 					break;
 				}
-				Posting posting = postings[wordIndexToPostingsProgress[vecPostingsLists[i].first]];
-				uint32_t docCountContainWord = postings.size();
-				float idf = Utils::getIDF(docCountContainWord, this->totalDocuments);
-
-				if (i == 0 || posting.docId == currentDocId) {
-					if (i == 0) {
-						currentDocId = posting.docId;
-					}
-					uint32_t docLength = this->docLengthTable[currentDocId - 1];
-					float score = Utils::getRankingScore(posting.tf, docLength, idf, this->averageDocumentLength);
-					currentScore += score;
-
-					wordIndexToPostingsProgress[vecPostingsLists[i].first] += 1; // Advance the progress
-				}
 				else {
-					break;
+					minHeap.push(ret.second);
+					minScoreOfHeap = minHeap.top().score;
+				}
+			}
+			else {
+				float currentImpactScore = 0.0f;
+				
+				uint32_t firstDocId = 0;
+				for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
+					uint32_t wordIndex = vecPostingsLists[i].first;
+					std::vector<Posting> postings = vecPostingsLists[i].second;
+					Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
+					if (i == 0) {
+						firstDocId = posting.docId;
+					}
+
+					float impactScore = wordIndexToImpactScores[wordIndex];
+					currentImpactScore += impactScore;
+					if (currentImpactScore > minScoreOfHeap) {
+						if (posting.docId != firstDocId) { // d_p != d_0
+							// Advance all lists to d >= d_p
+							for (uint32_t j = 0; j < i; ++j) {
+								uint32_t wordIndex_j = vecPostingsLists[j].first;
+								std::vector<Posting> postings_j = vecPostingsLists[j].second;
+								while (true) {
+									if (wordIndexToPostingsProgress[wordIndex_j] >= postings_j.size()) {
+										break;
+									}
+									if (postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId >= posting.docId) {
+										// std::cout << wordIndex << " " << postings.size() << " " << wordIndexToPostingsProgress[wordIndex] << " " << postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId << ">=" << posting.docId << std::endl;
+										break;
+									}
+									wordIndexToPostingsProgress[wordIndex_j] += 1;
+								}
+							}
+							break;
+						}
+						else { // d_p == d_0
+							std::pair<bool, SearchResult> ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress);
+							if (ret.second.score > minScoreOfHeap) {
+								minHeap.pop();
+								minHeap.push(ret.second);
+								minScoreOfHeap = minHeap.top().score;
+							}
+						}
+						break;
+					}
+					else {
+						if (i >= vecPostingsLists.size() - 1) {
+							allFinished = true;
+							break;
+						}
+					}
 				}
 			}
 
 			if (allFinished) {
 				break;
 			}
-
-			// Add to the heap
-			if (minHeap.size() < topK || currentScore > minScoreOfHeap) {
-				if (minHeap.size() >= topK) {
-					minHeap.pop();
-				}
-				minHeap.push(SearchResult(currentDocId, currentScore));
-				minScoreOfHeap = minHeap.top().score;
-			}
 		}
 
-		// TAAT
+		// // TAAT
 		// std::unordered_map<uint32_t, float> mapDocIdScore;
 		// for (std::vector<std::string>::iterator itrWords = words.begin(); itrWords != words.end(); ++itrWords) {
 		// 	std::string word = *itrWords;
@@ -321,7 +387,7 @@ public:
 		// 		continue;
 		// 	}
 
-		// 	std::vector<Posting> postings = this->getWordPostings(word);
+		// 	std::vector<Posting> postings = this->getWordPostings(word).first;
 		// 	uint32_t docCountContainWord = postings.size();
 		// 	float idf = Utils::getIDF(docCountContainWord, this->totalDocuments);
 
@@ -384,9 +450,10 @@ public:
 		// std::string query = "in";
 		// std::string query = "In vitro studies about the antipeptic activity";
 		// std::string query = "vitro studies antipeptic activity";
-		// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair";
+		std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair";
 		// GBaker/MedQA-USMLE-4-options test index 0
-		std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
+		// std::string query = "junior orthopaedic";
+		// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
 		// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair department chairman attending physician. During case, resident inadvertently cuts flexor tendon. tendon repaired complication. attending tells resident patient fine, need report minor complication harm patient, he want make patient worry unnecessarily. He tells resident leave this complication operative report. Which following correct next action resident take?";
 		// std::string query;
 		// std::getline(std::cin, query);
