@@ -37,6 +37,8 @@ private:
 	std::vector<DocumentOffset> docOffsetTable;
 
 public:
+    static int calculateCounter;
+
 	SearchEngine() {
 	}
 
@@ -227,20 +229,22 @@ public:
 	std::vector<SearchResult> getSortedRelevantDocuments(const std::string& query) {
 		std::vector<std::string> words = Utils::extractWords(query);
 
+		std::priority_queue<SearchResult, std::vector<SearchResult>, std::greater<SearchResult> > minHeap;
+
+		// TAAT
 		std::unordered_map<uint32_t, float> mapDocIdScore;
 		for (std::vector<std::string>::iterator itrWords = words.begin(); itrWords != words.end(); ++itrWords) {
 			std::string word = *itrWords;
+			for (size_t i = 0; i < word.length(); ++i)
+				word[i] = std::tolower(word[i]);
+
 			// Stop words
 			if (std::find(stopWords.begin(), stopWords.end(), word) != stopWords.end()) {
 				continue;
 			}
-				
-			for (size_t i = 0; i < word.length(); ++i)
-				word[i] = std::tolower(word[i]);
 
 			std::vector<Posting> postings = this->getWordPostings(word);
 			uint32_t docCountContainWord = postings.size();
-
 			float idf = Utils::getIDF(docCountContainWord, this->totalDocuments);
 
 			//std::cout << postings.size() << std::endl;
@@ -253,6 +257,8 @@ public:
 				uint32_t docLength = this->docLengthTable[docId - 1];
 
 				float score = Utils::getRankingScore(tf_td, docLength, idf, this->averageDocumentLength);
+
+                calculateCounter += 1;
 
 				// std::cout << docLength << " " << score << std::endl;
 
@@ -269,7 +275,6 @@ public:
 			}	
 		}
 
-		std::priority_queue<SearchResult, std::vector<SearchResult>, std::greater<SearchResult> > minHeap; 
 		const int topK = 10;
 		for (std::unordered_map<uint32_t, float>::iterator itrMapDocIdScore = mapDocIdScore.begin(); itrMapDocIdScore != mapDocIdScore.end(); ++itrMapDocIdScore) {
 			if (minHeap.size() < topK) {
@@ -340,6 +345,8 @@ public:
 	}
 };
 
+int SearchEngine::calculateCounter = 0;
+
 int main() {
 	
 	std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
@@ -354,6 +361,8 @@ int main() {
 
 	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
 	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
+
+	std::cout << "counter:" << engine.calculateCounter << std::endl;
 
 	return 0;
 }

@@ -5,6 +5,7 @@
 #include <queue>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <cmath>
 #include <algorithm>
 #include <tuple>
@@ -37,6 +38,8 @@ private:
 	std::vector<DocumentOffset> docOffsetTable;
 
 public:
+	static int calculateCounter;
+
 	SearchEngine() {
 	}
 
@@ -223,20 +226,15 @@ public:
 		return std::pair<std::vector<Posting>, float>(postings, impactScore);
 	}
 
-	std::pair<bool, SearchResult> calculateDocScore(const std::vector<std::pair<uint32_t, std::vector<Posting> > >& vecPostingsLists, 
-						std::unordered_map<uint32_t, uint32_t>& wordIndexToPostingsProgress) {
+	SearchResult calculateDocScore(const std::vector<std::pair<uint32_t, std::vector<Posting> > >& vecPostingsLists, 
+						std::unordered_map<uint32_t, uint32_t>& wordIndexToPostingsProgress,
+						std::unordered_set<uint32_t>& finishedWordIndexSet) {
 		float currentScore = 0.0f;
 		uint32_t currentDocId = 0;
 		SearchResult result = SearchResult(currentDocId, currentScore);
 		for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
 			uint32_t wordIndex = vecPostingsLists[i].first;
 			std::vector<Posting> postings = vecPostingsLists[i].second;
-			// If the first one is done, then all done
-			if (i == 0 && wordIndexToPostingsProgress[wordIndex] >= postings.size()) {
-				return std::pair<bool, SearchResult>(true, result);
-				// allFinished = true;
-				// break;
-			}
 			
 			Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
 
@@ -251,7 +249,13 @@ public:
 				float score = Utils::getRankingScore(posting.tf, docLength, idf, this->averageDocumentLength);
 				currentScore += score;
 
+				calculateCounter += 1;
+
 				wordIndexToPostingsProgress[wordIndex] += 1; // Advance the progress
+
+				if (wordIndexToPostingsProgress[wordIndex] >= postings.size()) {
+					finishedWordIndexSet.insert(wordIndex);
+				}
 			}
 			else {
 				break;
@@ -259,7 +263,7 @@ public:
 		}
 
 		result = SearchResult(currentDocId, currentScore);
-		return std::pair<bool, SearchResult>(false, result);
+		return result;
 	}
 
 	// input: query (multiple words) e.g. italy commercial
@@ -291,32 +295,37 @@ public:
 		// WAND
 		const int topK = 10;
 		float minScoreOfHeap = 0.0f;
+		std::unordered_set<uint32_t> finishedWordIndexSet;
 		while (true) {
+			bool allFinished = false;
+
 			// Remove the finished postings. todo: only erase if needed
-			std::vector<std::pair<uint32_t, std::vector<Posting> > > newVecPostingsLists;
-			for (const auto& itr : vecPostingsLists) {
-				if (wordIndexToPostingsProgress[itr.first] < itr.second.size()) {
-					newVecPostingsLists.push_back(itr);
+			if (finishedWordIndexSet.size() > 0) {
+				std::vector<std::pair<uint32_t, std::vector<Posting> > > newVecPostingsLists;
+				for (const auto& itr : vecPostingsLists) {
+					// if (wordIndexToPostingsProgress[itr.first] < itr.second.size()) {
+					if (finishedWordIndexSet.count(itr.first) == 0) {
+						newVecPostingsLists.push_back(itr);
+					}
 				}
+				vecPostingsLists = newVecPostingsLists;
+				if (vecPostingsLists.size() == 0) {
+					allFinished = true;
+					break;
+				}
+
+				finishedWordIndexSet.clear();
 			}
-			vecPostingsLists = newVecPostingsLists;
 
 			// Sort the postings lists on increasing current docId
 			std::sort(vecPostingsLists.begin(), vecPostingsLists.end(), [&](const auto& a, const auto& b) {
 				return a.second[wordIndexToPostingsProgress[a.first]].docId < b.second[wordIndexToPostingsProgress[b.first]].docId;
 			});
 
-			bool allFinished = false;
 			if (minHeap.size() < topK) {
-				std::pair<bool, SearchResult> ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress);
-				if (ret.first == true) {
-					allFinished = true;
-					break;
-				}
-				else {
-					minHeap.push(ret.second);
-					minScoreOfHeap = minHeap.top().score;
-				}
+				SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, finishedWordIndexSet);
+				minHeap.push(ret);
+				minScoreOfHeap = minHeap.top().score;
 			}
 			else {
 				float currentImpactScore = 0.0f;
@@ -340,6 +349,7 @@ public:
 								std::vector<Posting> postings_j = vecPostingsLists[j].second;
 								while (true) {
 									if (wordIndexToPostingsProgress[wordIndex_j] >= postings_j.size()) {
+										finishedWordIndexSet.insert(wordIndex_j);
 										break;
 									}
 									if (postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId >= posting.docId) {
@@ -352,10 +362,10 @@ public:
 							break;
 						}
 						else { // d_p == d_0
-							std::pair<bool, SearchResult> ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress);
-							if (ret.second.score > minScoreOfHeap) {
+							SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, finishedWordIndexSet);
+							if (ret.score > minScoreOfHeap) {
 								minHeap.pop();
-								minHeap.push(ret.second);
+								minHeap.push(ret);
 								minScoreOfHeap = minHeap.top().score;
 							}
 						}
@@ -450,10 +460,10 @@ public:
 		// std::string query = "in";
 		// std::string query = "In vitro studies about the antipeptic activity";
 		// std::string query = "vitro studies antipeptic activity";
-		std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair";
+		// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair";
 		// GBaker/MedQA-USMLE-4-options test index 0
 		// std::string query = "junior orthopaedic";
-		// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
+		std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
 		// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair department chairman attending physician. During case, resident inadvertently cuts flexor tendon. tendon repaired complication. attending tells resident patient fine, need report minor complication harm patient, he want make patient worry unnecessarily. He tells resident leave this complication operative report. Which following correct next action resident take?";
 		// std::string query;
 		// std::getline(std::cin, query);
@@ -487,6 +497,7 @@ public:
 		}
 	}
 };
+int SearchEngine::calculateCounter = 0;
 
 int main() {
 	
@@ -502,6 +513,8 @@ int main() {
 
 	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
 	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
+
+	std::cout << "counter:" << engine.calculateCounter << std::endl;
 
 	return 0;
 }
