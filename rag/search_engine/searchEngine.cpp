@@ -38,6 +38,7 @@ private:
 	std::vector<DocumentOffset> docOffsetTable;
 
 public:
+	// For performance debugging
 	static int calculateCounter;
 	static std::chrono::steady_clock::duration timeCounter;
 
@@ -300,16 +301,16 @@ public:
 		while (true) {
 			bool allFinished = false;
 
-			// Remove the finished postings. todo: only erase if needed
+			// Remove the finished postings
 			if (finishedWordIndexSet.size() > 0) {
-				std::vector<std::pair<uint32_t, std::vector<Posting> > > newVecPostingsLists;
-				for (const auto& itr : vecPostingsLists) {
-					// if (wordIndexToPostingsProgress[itr.first] < itr.second.size()) {
-					if (finishedWordIndexSet.count(itr.first) == 0) {
-						newVecPostingsLists.push_back(itr);
-					}
-				}
-				vecPostingsLists = newVecPostingsLists;
+
+				vecPostingsLists.erase(
+					std::remove_if(vecPostingsLists.begin(), vecPostingsLists.end(),
+						[&](const auto& p) {
+							return finishedWordIndexSet.count(p.first) > 0;
+						}),
+					vecPostingsLists.end());
+					
 				if (vecPostingsLists.size() == 0) {
 					allFinished = true;
 					break;
@@ -318,10 +319,20 @@ public:
 				finishedWordIndexSet.clear();
 			}
 
+			std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+
+
 			// Sort the postings lists on increasing current docId
 			std::sort(vecPostingsLists.begin(), vecPostingsLists.end(), [&](const auto& a, const auto& b) {
 				return a.second[wordIndexToPostingsProgress[a.first]].docId < b.second[wordIndexToPostingsProgress[b.first]].docId;
 			});
+
+			// std::cout << vecPostingsLists.size() << std::endl;
+
+			std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+			this->timeCounter += time_end - time_begin;
+
+
 
 			if (minHeap.size() < topK) {
 				SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, finishedWordIndexSet);
@@ -370,12 +381,9 @@ public:
 
 						}
 						else { // d_p == d_0
-							std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 
 							SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, finishedWordIndexSet);
 							
-							std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-							this->timeCounter += time_end - time_begin;
 							if (ret.score > minScoreOfHeap) {
 								minHeap.pop();
 								minHeap.push(ret);

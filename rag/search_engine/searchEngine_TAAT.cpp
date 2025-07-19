@@ -37,7 +37,9 @@ private:
 	std::vector<DocumentOffset> docOffsetTable;
 
 public:
+	// For performance debugging
     static int calculateCounter;
+	static std::chrono::steady_clock::duration timeCounter;
 
 	SearchEngine() {
 	}
@@ -262,17 +264,24 @@ public:
 
 				// std::cout << docLength << " " << score << std::endl;
 
+				std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 				// Add score to mapDocIdScore
 				if (score > 0) {
-					std::unordered_map<uint32_t, float>::iterator itrMapDocIdScore = mapDocIdScore.find(docId);
-					if (itrMapDocIdScore != mapDocIdScore.end()) {
-						itrMapDocIdScore->second += score;
-					}
-					else {
-						mapDocIdScore[docId] = score;
-					}
+					// std::unordered_map<uint32_t, float>::iterator itrMapDocIdScore = mapDocIdScore.find(docId);
+					// if (itrMapDocIdScore != mapDocIdScore.end()) {
+					// 	itrMapDocIdScore->second += score;
+					// }
+					// else {
+					// 	mapDocIdScore[docId] = score;
+					// }
+					mapDocIdScore[docId] += score;
 				}
+
+				std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+				this->timeCounter += time_end - time_begin;
+
 			}	
+			
 		}
 
 		const int topK = 10;
@@ -346,6 +355,7 @@ public:
 };
 
 int SearchEngine::calculateCounter = 0;
+std::chrono::steady_clock::duration SearchEngine::timeCounter;
 
 int main() {
 	
@@ -363,6 +373,7 @@ int main() {
 	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
 
 	std::cout << "counter:" << engine.calculateCounter << std::endl;
+	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
 
 	return 0;
 }
