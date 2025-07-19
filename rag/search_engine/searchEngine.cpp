@@ -39,6 +39,7 @@ private:
 
 public:
 	static int calculateCounter;
+	static std::chrono::steady_clock::duration timeCounter;
 
 	SearchEngine() {
 	}
@@ -226,7 +227,7 @@ public:
 		return std::pair<std::vector<Posting>, float>(postings, impactScore);
 	}
 
-	SearchResult calculateDocScore(const std::vector<std::pair<uint32_t, std::vector<Posting> > >& vecPostingsLists, 
+	SearchResult calculateDocScore(std::vector<std::pair<uint32_t, std::vector<Posting> > >& vecPostingsLists, 
 						std::unordered_map<uint32_t, uint32_t>& wordIndexToPostingsProgress,
 						std::unordered_set<uint32_t>& finishedWordIndexSet) {
 		float currentScore = 0.0f;
@@ -234,7 +235,7 @@ public:
 		SearchResult result = SearchResult(currentDocId, currentScore);
 		for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
 			uint32_t wordIndex = vecPostingsLists[i].first;
-			std::vector<Posting> postings = vecPostingsLists[i].second;
+			std::vector<Posting>& postings = vecPostingsLists[i].second;
 			
 			Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
 
@@ -333,8 +334,11 @@ public:
 				uint32_t firstDocId = 0;
 				for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
 					uint32_t wordIndex = vecPostingsLists[i].first;
-					std::vector<Posting> postings = vecPostingsLists[i].second;
+					std::vector<Posting>& postings = vecPostingsLists[i].second; // Notice that here need to use & reference, or will copy postings
+
 					Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
+					
+
 					if (i == 0) {
 						firstDocId = posting.docId;
 					}
@@ -343,26 +347,35 @@ public:
 					currentImpactScore += impactScore;
 					if (currentImpactScore > minScoreOfHeap) {
 						if (posting.docId != firstDocId) { // d_p != d_0
+
+
 							// Advance all lists to d >= d_p
 							for (uint32_t j = 0; j < i; ++j) {
 								uint32_t wordIndex_j = vecPostingsLists[j].first;
-								std::vector<Posting> postings_j = vecPostingsLists[j].second;
+								std::vector<Posting>& postings_j = vecPostingsLists[j].second;
 								while (true) {
-									if (wordIndexToPostingsProgress[wordIndex_j] >= postings_j.size()) {
+									bool a = wordIndexToPostingsProgress[wordIndex_j] >= postings_j.size();
+									bool b = postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId >= posting.docId;
+									if (a) {
 										finishedWordIndexSet.insert(wordIndex_j);
 										break;
 									}
-									if (postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId >= posting.docId) {
+									if (b) {
 										// std::cout << wordIndex << " " << postings.size() << " " << wordIndexToPostingsProgress[wordIndex] << " " << postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId << ">=" << posting.docId << std::endl;
 										break;
 									}
 									wordIndexToPostingsProgress[wordIndex_j] += 1;
 								}
 							}
-							break;
+
 						}
 						else { // d_p == d_0
+							std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+
 							SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, finishedWordIndexSet);
+							
+							std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+							this->timeCounter += time_end - time_begin;
 							if (ret.score > minScoreOfHeap) {
 								minHeap.pop();
 								minHeap.push(ret);
@@ -498,6 +511,7 @@ public:
 	}
 };
 int SearchEngine::calculateCounter = 0;
+std::chrono::steady_clock::duration SearchEngine::timeCounter;
 
 int main() {
 	
@@ -514,7 +528,8 @@ int main() {
 	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
 	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
 
-	std::cout << "counter:" << engine.calculateCounter << std::endl;
+	std::cout << "calculate counter:" << engine.calculateCounter << std::endl;
+	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
 
 	return 0;
 }
