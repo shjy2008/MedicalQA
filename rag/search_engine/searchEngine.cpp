@@ -19,6 +19,17 @@
 // 4. index_words.bin: Words and their postings index, for seeking and reading word postings. Stored as 4 bytes word count + (wordLength(uint8_t), word, pos(uint32_t), docCount(uint32_t))
 // 5. index_wordPostings.bin: Word postings file, stored as (docId1, tf1, docId2, tf2, ...) each 4 bytes
 
+struct Cursor {
+	uint32_t wordIndex;
+	uint32_t currentDocId;
+
+	Cursor(uint32_t wordIndex, uint32_t currentDocId) : wordIndex(wordIndex), currentDocId(currentDocId) {}
+
+	bool operator > (const Cursor& other) const {
+		return currentDocId > other.currentDocId;
+	}
+};
+
 class SearchEngine {
 
 private:
@@ -228,15 +239,17 @@ public:
 		return std::pair<std::vector<Posting>, float>(postings, impactScore);
 	}
 
-	SearchResult calculateDocScore(std::vector<std::pair<uint32_t, std::vector<Posting> > >& vecPostingsLists, 
+	SearchResult calculateDocScore(std::vector<std::vector<Posting> >& vecPostingsLists, 
 						std::unordered_map<uint32_t, uint32_t>& wordIndexToPostingsProgress,
-						std::unordered_set<uint32_t>& finishedWordIndexSet) {
+						std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor> >& cursorMinHeap) {
 		float currentScore = 0.0f;
 		uint32_t currentDocId = 0;
 		SearchResult result = SearchResult(currentDocId, currentScore);
-		for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
-			uint32_t wordIndex = vecPostingsLists[i].first;
-			std::vector<Posting>& postings = vecPostingsLists[i].second;
+		uint32_t i = 0;
+		while (cursorMinHeap.size() > 0) {
+			Cursor cursor = cursorMinHeap.top();
+			uint32_t wordIndex = cursor.wordIndex;
+			std::vector<Posting>& postings = vecPostingsLists[wordIndex];
 			
 			Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
 
@@ -255,13 +268,17 @@ public:
 
 				wordIndexToPostingsProgress[wordIndex] += 1; // Advance the progress
 
-				if (wordIndexToPostingsProgress[wordIndex] >= postings.size()) {
-					finishedWordIndexSet.insert(wordIndex);
+				cursorMinHeap.pop();
+
+				if (wordIndexToPostingsProgress[wordIndex] < postings.size()) {
+					cursorMinHeap.push(Cursor(wordIndex, postings[wordIndexToPostingsProgress[wordIndex]].docId));
 				}
 			}
 			else {
 				break;
 			}
+
+			++i;
 		}
 
 		result = SearchResult(currentDocId, currentScore);
@@ -273,13 +290,14 @@ public:
 	std::vector<SearchResult> getSortedRelevantDocuments(const std::string& query) {
 		std::vector<std::string> words = Utils::extractWords(query);
 
-		std::priority_queue<SearchResult, std::vector<SearchResult>, std::greater<SearchResult> > minHeap;
+		std::priority_queue<SearchResult, std::vector<SearchResult>, std::greater<SearchResult> > resultMinHeap;
 
 		// DAAT
-		std::vector<std::pair<uint32_t, std::vector<Posting> > > vecPostingsLists; // [(wordIndex, Posting), ...]
+		std::vector<std::vector<Posting> > vecPostingsLists; // [Postings, ...]
 		std::unordered_map<uint32_t, float> wordIndexToImpactScores; // wordIndex -> impactScore
 		std::unordered_map<uint32_t, uint32_t> wordIndexToPostingsProgress; // wordIndex -> postingsProgress (from 0 to len(posting) - 1)
 		
+
 		uint32_t wordIndex = 0;
 		for (uint32_t i = 0; i < words.size(); ++i) {
 			std::string word = words[i];
@@ -288,68 +306,50 @@ public:
 				continue;
 			}
 			std::pair<std::vector<Posting>, float> postingsAndImpactScore = this->getWordPostings(word);
-			vecPostingsLists.push_back(std::pair<uint32_t, std::vector<Posting> >(wordIndex, postingsAndImpactScore.first));
+			if (postingsAndImpactScore.first.size() == 0 || postingsAndImpactScore.second == 0) {
+				continue;
+			}
+			vecPostingsLists.push_back(postingsAndImpactScore.first);
 			wordIndexToImpactScores[wordIndex] = postingsAndImpactScore.second;
 			wordIndexToPostingsProgress[wordIndex] = 0;
 			++wordIndex;
+
+			// std::cout << "word:" << word << " postings size: " << postingsAndImpactScore.first.size() << std::endl;
 		}
 
 		// WAND
 		const int topK = 10;
 		float minScoreOfHeap = 0.0f;
-		std::unordered_set<uint32_t> finishedWordIndexSet;
-		while (true) {
+
+		// Use a min-heap to store the cursor of each word's postings
+		std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor> > cursorMinHeap; 
+		for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
+			cursorMinHeap.push(Cursor(i, vecPostingsLists[i][0].docId));
+		}
+
+		while (cursorMinHeap.size() > 0) {
 			bool allFinished = false;
 
-			// Remove the finished postings
-			if (finishedWordIndexSet.size() > 0) {
-
-				vecPostingsLists.erase(
-					std::remove_if(vecPostingsLists.begin(), vecPostingsLists.end(),
-						[&](const auto& p) {
-							return finishedWordIndexSet.count(p.first) > 0;
-						}),
-					vecPostingsLists.end());
-					
-				if (vecPostingsLists.size() == 0) {
-					allFinished = true;
-					break;
-				}
-
-				finishedWordIndexSet.clear();
-			}
-
-			std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
-
-
-			// Sort the postings lists on increasing current docId
-			std::sort(vecPostingsLists.begin(), vecPostingsLists.end(), [&](const auto& a, const auto& b) {
-				return a.second[wordIndexToPostingsProgress[a.first]].docId < b.second[wordIndexToPostingsProgress[b.first]].docId;
-			});
-
-			// std::cout << vecPostingsLists.size() << std::endl;
-
-			std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-			this->timeCounter += time_end - time_begin;
-
-
-
-			if (minHeap.size() < topK) {
-				SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, finishedWordIndexSet);
-				minHeap.push(ret);
-				minScoreOfHeap = minHeap.top().score;
+			if (resultMinHeap.size() < topK) {
+				SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, cursorMinHeap);
+				resultMinHeap.push(ret);
+				minScoreOfHeap = resultMinHeap.top().score;
 			}
 			else {
 				float currentImpactScore = 0.0f;
 				
 				uint32_t firstDocId = 0;
-				for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
-					uint32_t wordIndex = vecPostingsLists[i].first;
-					std::vector<Posting>& postings = vecPostingsLists[i].second; // Notice that here need to use & reference, or will copy postings
+				uint32_t i = 0;
+				std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor>> cursorMinHeapCopy = cursorMinHeap;
+				while (cursorMinHeapCopy.size() > 0) {
+					Cursor curosr = cursorMinHeapCopy.top();
+					cursorMinHeapCopy.pop();
+					uint32_t wordIndex = curosr.wordIndex;
+					// uint32_t wordIndex = vecPostingsLists[i].first;
+					std::vector<Posting>& postings = vecPostingsLists[wordIndex]; // Notice that here need to use & reference, or will copy postings
 
 					Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
 					
-
 					if (i == 0) {
 						firstDocId = posting.docId;
 					}
@@ -359,45 +359,53 @@ public:
 					if (currentImpactScore > minScoreOfHeap) {
 						if (posting.docId != firstDocId) { // d_p != d_0
 
-
 							// Advance all lists to d >= d_p
+							// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 							for (uint32_t j = 0; j < i; ++j) {
-								uint32_t wordIndex_j = vecPostingsLists[j].first;
-								std::vector<Posting>& postings_j = vecPostingsLists[j].second;
+								Cursor cursor_j = cursorMinHeap.top();
+								uint32_t wordIndex_j = cursor_j.wordIndex;
+								std::vector<Posting>& postings_j = vecPostingsLists[wordIndex_j];
+								bool finishedPostings_j = false;
 								while (true) {
-									bool a = wordIndexToPostingsProgress[wordIndex_j] >= postings_j.size();
-									bool b = postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId >= posting.docId;
-									if (a) {
-										finishedWordIndexSet.insert(wordIndex_j);
+									if (wordIndexToPostingsProgress[wordIndex_j] >= postings_j.size()) {
+										finishedPostings_j = true;
 										break;
 									}
-									if (b) {
+									if (postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId >= posting.docId) {
 										// std::cout << wordIndex << " " << postings.size() << " " << wordIndexToPostingsProgress[wordIndex] << " " << postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId << ">=" << posting.docId << std::endl;
 										break;
 									}
+
 									wordIndexToPostingsProgress[wordIndex_j] += 1;
 								}
+
+								cursorMinHeap.pop();
+								if (!finishedPostings_j) {
+									cursorMinHeap.push(Cursor(wordIndex_j, postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId));
+								}
 							}
+							// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+							// this->timeCounter += time_end - time_begin;	
 
 						}
 						else { // d_p == d_0
-
-							SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, finishedWordIndexSet);
-							
+							SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, cursorMinHeap);
 							if (ret.score > minScoreOfHeap) {
-								minHeap.pop();
-								minHeap.push(ret);
-								minScoreOfHeap = minHeap.top().score;
+								resultMinHeap.pop();
+								resultMinHeap.push(ret);
+								minScoreOfHeap = resultMinHeap.top().score;
 							}
 						}
 						break;
 					}
 					else {
-						if (i >= vecPostingsLists.size() - 1) {
+						if (i >= cursorMinHeap.size() - 1) {
 							allFinished = true;
 							break;
 						}
 					}
+
+					++i;
 				}
 			}
 
@@ -406,65 +414,10 @@ public:
 			}
 		}
 
-		// // TAAT
-		// std::unordered_map<uint32_t, float> mapDocIdScore;
-		// for (std::vector<std::string>::iterator itrWords = words.begin(); itrWords != words.end(); ++itrWords) {
-		// 	std::string word = *itrWords;
-		// 	for (size_t i = 0; i < word.length(); ++i)
-		// 		word[i] = std::tolower(word[i]);
-
-		// 	// Stop words
-		// 	if (std::find(stopWords.begin(), stopWords.end(), word) != stopWords.end()) {
-		// 		continue;
-		// 	}
-
-		// 	std::vector<Posting> postings = this->getWordPostings(word).first;
-		// 	uint32_t docCountContainWord = postings.size();
-		// 	float idf = Utils::getIDF(docCountContainWord, this->totalDocuments);
-
-		// 	//std::cout << postings.size() << std::endl;
-		// 	for (size_t i = 0; i < postings.size(); ++i) {
-		// 		uint32_t docId = postings[i].docId; // docId (1, 2, 3, ...)
-		// 		uint32_t tf_td = postings[i].tf; // term frequency in doc
-	
-		// 		// std::cout << docId << " " << tf_td << std::endl;
-
-		// 		uint32_t docLength = this->docLengthTable[docId - 1];
-
-		// 		float score = Utils::getRankingScore(tf_td, docLength, idf, this->averageDocumentLength);
-
-		// 		// std::cout << docLength << " " << score << std::endl;
-
-		// 		// Add score to mapDocIdScore
-		// 		if (score > 0) {
-		// 			std::unordered_map<uint32_t, float>::iterator itrMapDocIdScore = mapDocIdScore.find(docId);
-		// 			if (itrMapDocIdScore != mapDocIdScore.end()) {
-		// 				itrMapDocIdScore->second += score;
-		// 			}
-		// 			else {
-		// 				mapDocIdScore[docId] = score;
-		// 			}
-		// 		}
-		// 	}	
-		// }
-
-		// const int topK = 10;
-		// for (std::unordered_map<uint32_t, float>::iterator itrMapDocIdScore = mapDocIdScore.begin(); itrMapDocIdScore != mapDocIdScore.end(); ++itrMapDocIdScore) {
-		// 	if (minHeap.size() < topK) {
-		// 		minHeap.push(SearchResult(itrMapDocIdScore->first, itrMapDocIdScore->second));
-		// 	}
-		// 	else {
-		// 		if (itrMapDocIdScore->second > minHeap.top().score) {
-		// 			minHeap.pop();
-		// 			minHeap.push(SearchResult(itrMapDocIdScore->first, itrMapDocIdScore->second));
-		// 		}
-		// 	}
-		// }
-
 		std::vector<SearchResult> vecDocIdScore; // docId and score: [(docId1, score1), (docId2, score2), ...]
-		while (!minHeap.empty()) {
-			vecDocIdScore.push_back(minHeap.top());
-			minHeap.pop();
+		while (!resultMinHeap.empty()) {
+			vecDocIdScore.push_back(resultMinHeap.top());
+			resultMinHeap.pop();
 		}
 
 		// Sort by score
