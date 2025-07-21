@@ -239,7 +239,7 @@ public:
 		return std::pair<std::vector<Posting>, float>(postings, impactScore);
 	}
 
-	SearchResult calculateDocScore(std::vector<std::vector<Posting> >& vecPostingsLists, 
+	inline SearchResult calculateDocScore(std::vector<std::vector<Posting> >& vecPostingsLists, 
 						std::unordered_map<uint32_t, uint32_t>& wordIndexToPostingsProgress,
 						std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor> >& cursorMinHeap) {
 		float currentScore = 0.0f;
@@ -345,7 +345,6 @@ public:
 					Cursor curosr = cursorMinHeapCopy.top();
 					cursorMinHeapCopy.pop();
 					uint32_t wordIndex = curosr.wordIndex;
-					// uint32_t wordIndex = vecPostingsLists[i].first;
 					std::vector<Posting>& postings = vecPostingsLists[wordIndex]; // Notice that here need to use & reference, or will copy postings
 
 					Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
@@ -365,22 +364,63 @@ public:
 								Cursor cursor_j = cursorMinHeap.top();
 								uint32_t wordIndex_j = cursor_j.wordIndex;
 								std::vector<Posting>& postings_j = vecPostingsLists[wordIndex_j];
-								bool finishedPostings_j = false;
-								while (true) {
-									if (wordIndexToPostingsProgress[wordIndex_j] >= postings_j.size()) {
-										finishedPostings_j = true;
-										break;
-									}
-									if (postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId >= posting.docId) {
-										// std::cout << wordIndex << " " << postings.size() << " " << wordIndexToPostingsProgress[wordIndex] << " " << postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId << ">=" << posting.docId << std::endl;
-										break;
-									}
-
-									wordIndexToPostingsProgress[wordIndex_j] += 1;
-								}
 
 								cursorMinHeap.pop();
-								if (!finishedPostings_j) {
+								// Only if the last posting > d_p, progress the cursor. Otherwise, the postings of this word are all done
+								if (postings_j[postings_j.size() - 1].docId >= posting.docId) {
+									// Replaced by Straddle Linear Search
+									// while (true) {
+									// 	if (postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId >= posting.docId) {
+									// 		// std::cout << wordIndex << " " << postings.size() << " " << wordIndexToPostingsProgress[wordIndex] << " " << postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId << ">=" << posting.docId << std::endl;
+									// 		break;
+									// 	}
+
+									// 	wordIndexToPostingsProgress[wordIndex_j] += 1;
+									// }
+
+									// Straddle linear search
+									uint32_t currentIndex = wordIndexToPostingsProgress[wordIndex_j];
+									uint32_t searchDocId = posting.docId;
+									uint32_t newProgress;
+									if (postings_j[currentIndex].docId >= searchDocId) {
+										newProgress = currentIndex;
+									}
+									else {
+										// Straddle linear search
+										uint32_t left = currentIndex;
+										uint32_t right = 0;
+										uint32_t jump = 2;
+										while (true) {
+											right = left + jump;
+											if (right > postings_j.size() - 1) {
+												right = postings_j.size() - 1;
+											}
+											if (postings_j[right].docId >= searchDocId) {
+												break;
+											}
+
+											jump <<= 1; //jump *= 2;
+											left = right;
+										}
+
+										// binary search
+										while (true) {
+											uint32_t gap = right - left;
+											uint32_t middle = left + gap / 2;
+											if (postings_j[middle].docId < searchDocId) {
+												left = middle;
+											}
+											else {
+												right = middle;
+											}
+											if (left == right - 1) {
+												newProgress = right;
+												break;
+											}
+										}
+									}
+									wordIndexToPostingsProgress[wordIndex_j] = newProgress;
+
 									cursorMinHeap.push(Cursor(wordIndex_j, postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId));
 								}
 							}
@@ -425,7 +465,6 @@ public:
 
 		return vecDocIdScore;
 	}
-
 
 	void run() {
 		// std::string query = "rosenfield wall street unilateral representation";
