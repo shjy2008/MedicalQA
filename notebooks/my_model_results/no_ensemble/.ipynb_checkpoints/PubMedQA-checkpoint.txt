@@ -1,0 +1,96 @@
+2025-04-30 23:50:34,841 - INFO - model: ../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-04-30 23:53:26,606 - INFO - model: ../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-04-30 23:53:33,886 - INFO - answer: A
+2025-04-30 23:53:33,887 - INFO - question 1/1000 answer:A correct_answer:A True
+2025-04-30 23:53:38,523 - INFO - answer: A
+2025-04-30 23:53:38,523 - INFO - question 2/1000 answer:A correct_answer:B False
+2025-04-30 23:53:45,276 - INFO - answer: A
+2025-04-30 23:53:45,276 - INFO - question 3/1000 answer:A correct_answer:A True
+2025-04-30 23:53:49,336 - INFO - answer: A
+2025-04-30 23:53:49,337 - INFO - question 4/1000 answer:A correct_answer:B False
+2025-04-30 23:53:51,820 - INFO - answer: A
+2025-04-30 23:53:51,820 - INFO - question 5/1000 answer:A correct_answer:A True
+2025-04-30 23:53:58,518 - INFO - answer: A
+2025-04-30 23:53:58,519 - INFO - question 6/1000 answer:A correct_answer:A True
+2025-04-30 23:54:03,178 - INFO - answer: A
+2025-04-30 23:54:03,179 - INFO - question 7/1000 answer:A correct_answer:C False
+2025-04-30 23:54:10,812 - INFO - answer: A
+2025-04-30 23:54:10,813 - INFO - question 8/1000 answer:A correct_answer:B False
+2025-04-30 23:54:16,253 - INFO - answer: B
+2025-04-30 23:54:16,254 - INFO - question 9/1000 answer:B correct_answer:B True
+2025-04-30 23:54:19,522 - INFO - answer: A
+2025-04-30 23:54:19,522 - INFO - question 10/1000 answer:A correct_answer:A True
+2025-04-30 23:54:23,746 - INFO - answer: A
+2025-04-30 23:54:23,746 - INFO - question 11/1000 answer:A correct_answer:A True
+2025-04-30 23:54:29,096 - INFO - answer: B
+2025-04-30 23:54:29,097 - INFO - question 12/1000 answer:B correct_answer:B True
+2025-04-30 23:54:34,071 - INFO - answer: A
+2025-04-30 23:54:34,071 - INFO - question 13/1000 answer:A correct_answer:A True
+2025-04-30 23:54:39,006 - INFO - answer: B
+2025-04-30 23:54:39,006 - INFO - question 14/1000 answer:B correct_answer:B True
+2025-04-30 23:54:42,165 - INFO - answer: A
+2025-04-30 23:54:42,165 - INFO - question 15/1000 answer:A correct_answer:A True
+2025-04-30 23:54:47,592 - INFO - answer: A
+2025-04-30 23:54:47,592 - INFO - question 16/1000 answer:A correct_answer:A True
+2025-04-30 23:54:53,744 - INFO - answer: A
+2025-04-30 23:54:53,744 - INFO - question 17/1000 answer:A correct_answer:A True
+2025-04-30 23:54:58,695 - INFO - answer: A
+2025-04-30 23:54:58,695 - INFO - question 18/1000 answer:A correct_answer:A True
+2025-04-30 23:55:02,603 - INFO - answer: A
+2025-04-30 23:55:02,603 - INFO - question 19/1000 answer:A correct_answer:A True
+2025-04-30 23:55:07,395 - INFO - answer: A
+2025-04-30 23:55:07,395 - INFO - question 20/1000 answer:A correct_answer:A True
+2025-04-30 23:55:13,103 - INFO - answer: A
+2025-04-30 23:55:13,103 - INFO - question 21/1000 answer:A correct_answer:A True
+2025-04-30 23:55:16,813 - INFO - answer: A
+2025-04-30 23:55:16,813 - INFO - question 22/1000 answer:A correct_answer:A True
+2025-04-30 23:55:21,778 - INFO - answer: A
+2025-04-30 23:55:21,779 - INFO - question 23/1000 answer:A correct_answer:A True
+2025-04-30 23:55:26,271 - INFO - answer: A
+2025-04-30 23:55:26,272 - INFO - question 24/1000 answer:A correct_answer:A True
+2025-04-30 23:55:31,298 - INFO - answer: A
+2025-04-30 23:55:31,298 - INFO - question 25/1000 answer:A correct_answer:A True
+2025-04-30 23:55:35,749 - INFO - answer: B
+2025-04-30 23:55:35,749 - INFO - question 26/1000 answer:B correct_answer:B True
+2025-04-30 23:55:40,561 - INFO - answer: B
+2025-04-30 23:55:40,561 - INFO - question 27/1000 answer:B correct_answer:A False
+2025-04-30 23:55:45,545 - INFO - answer: A
+2025-04-30 23:55:45,545 - INFO - question 28/1000 answer:A correct_answer:C False
+2025-04-30 23:55:49,251 - INFO - answer: A
+2025-04-30 23:55:49,251 - INFO - question 29/1000 answer:A correct_answer:A True
+2025-04-30 23:55:53,337 - INFO - answer: A
+2025-04-30 23:55:53,337 - INFO - question 30/1000 answer:A correct_answer:A True
+2025-04-30 23:55:57,893 - INFO - answer: B
+2025-04-30 23:55:57,893 - INFO - question 31/1000 answer:B correct_answer:B True
+2025-04-30 23:56:04,775 - INFO - answer: A
+2025-04-30 23:56:04,775 - INFO - question 32/1000 answer:A correct_answer:C False
+2025-04-30 23:56:07,095 - INFO - answer: B
+2025-04-30 23:56:07,095 - INFO - question 33/1000 answer:B correct_answer:B True
+2025-04-30 23:56:09,861 - INFO - answer: A
+2025-04-30 23:56:09,862 - INFO - question 34/1000 answer:A correct_answer:A True
+2025-04-30 23:56:14,774 - INFO - answer: A
+2025-04-30 23:56:14,774 - INFO - question 35/1000 answer:A correct_answer:A True
+2025-04-30 23:56:19,813 - INFO - answer: A
+2025-04-30 23:56:19,813 - INFO - question 36/1000 answer:A correct_answer:B False
+2025-04-30 23:56:25,488 - INFO - answer: A
+2025-04-30 23:56:25,489 - INFO - question 37/1000 answer:A correct_answer:B False
+2025-04-30 23:56:28,635 - INFO - answer: A
+2025-04-30 23:56:28,635 - INFO - question 38/1000 answer:A correct_answer:B False
+2025-04-30 23:56:33,232 - INFO - answer: A
+2025-04-30 23:56:33,232 - INFO - question 39/1000 answer:A correct_answer:A True
+2025-04-30 23:56:38,697 - INFO - answer: B
+2025-04-30 23:56:38,698 - INFO - question 40/1000 answer:B correct_answer:B True
+2025-04-30 23:56:47,260 - INFO - answer: A
+2025-04-30 23:56:47,260 - INFO - question 41/1000 answer:A correct_answer:A True
+2025-04-30 23:56:50,720 - INFO - answer: A
+2025-04-30 23:56:50,721 - INFO - question 42/1000 answer:A correct_answer:A True
+2025-04-30 23:56:56,337 - INFO - answer: B
+2025-04-30 23:56:56,337 - INFO - question 43/1000 answer:B correct_answer:C False
+2025-04-30 23:57:05,813 - INFO - answer: B
+2025-04-30 23:57:05,813 - INFO - question 44/1000 answer:B correct_answer:B True
+2025-04-30 23:57:13,622 - INFO - answer: B
+2025-04-30 23:57:13,622 - INFO - question 45/1000 answer:B correct_answer:A False
+2025-04-30 23:57:17,728 - INFO - answer: A
+2025-04-30 23:57:17,728 - INFO - question 46/1000 answer:A correct_answer:A True
+2025-04-30 23:57:23,962 - INFO - answer: A
+2025-04-30 23:57:23,962 - INFO - question 47/1000 answer:A correct_answer:A True

@@ -1,0 +1,2006 @@
+2025-04-30 23:50:34,841 - INFO - model: ../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-04-30 23:53:26,606 - INFO - model: ../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-04-30 23:53:33,886 - INFO - answer: A
+2025-04-30 23:53:33,887 - INFO - question 1/1000 answer:A correct_answer:A True
+2025-04-30 23:53:38,523 - INFO - answer: A
+2025-04-30 23:53:38,523 - INFO - question 2/1000 answer:A correct_answer:B False
+2025-04-30 23:53:45,276 - INFO - answer: A
+2025-04-30 23:53:45,276 - INFO - question 3/1000 answer:A correct_answer:A True
+2025-04-30 23:53:49,336 - INFO - answer: A
+2025-04-30 23:53:49,337 - INFO - question 4/1000 answer:A correct_answer:B False
+2025-04-30 23:53:51,820 - INFO - answer: A
+2025-04-30 23:53:51,820 - INFO - question 5/1000 answer:A correct_answer:A True
+2025-04-30 23:53:58,518 - INFO - answer: A
+2025-04-30 23:53:58,519 - INFO - question 6/1000 answer:A correct_answer:A True
+2025-04-30 23:54:03,178 - INFO - answer: A
+2025-04-30 23:54:03,179 - INFO - question 7/1000 answer:A correct_answer:C False
+2025-04-30 23:54:10,812 - INFO - answer: A
+2025-04-30 23:54:10,813 - INFO - question 8/1000 answer:A correct_answer:B False
+2025-04-30 23:54:16,253 - INFO - answer: B
+2025-04-30 23:54:16,254 - INFO - question 9/1000 answer:B correct_answer:B True
+2025-04-30 23:54:19,522 - INFO - answer: A
+2025-04-30 23:54:19,522 - INFO - question 10/1000 answer:A correct_answer:A True
+2025-04-30 23:54:23,746 - INFO - answer: A
+2025-04-30 23:54:23,746 - INFO - question 11/1000 answer:A correct_answer:A True
+2025-04-30 23:54:29,096 - INFO - answer: B
+2025-04-30 23:54:29,097 - INFO - question 12/1000 answer:B correct_answer:B True
+2025-04-30 23:54:34,071 - INFO - answer: A
+2025-04-30 23:54:34,071 - INFO - question 13/1000 answer:A correct_answer:A True
+2025-04-30 23:54:39,006 - INFO - answer: B
+2025-04-30 23:54:39,006 - INFO - question 14/1000 answer:B correct_answer:B True
+2025-04-30 23:54:42,165 - INFO - answer: A
+2025-04-30 23:54:42,165 - INFO - question 15/1000 answer:A correct_answer:A True
+2025-04-30 23:54:47,592 - INFO - answer: A
+2025-04-30 23:54:47,592 - INFO - question 16/1000 answer:A correct_answer:A True
+2025-04-30 23:54:53,744 - INFO - answer: A
+2025-04-30 23:54:53,744 - INFO - question 17/1000 answer:A correct_answer:A True
+2025-04-30 23:54:58,695 - INFO - answer: A
+2025-04-30 23:54:58,695 - INFO - question 18/1000 answer:A correct_answer:A True
+2025-04-30 23:55:02,603 - INFO - answer: A
+2025-04-30 23:55:02,603 - INFO - question 19/1000 answer:A correct_answer:A True
+2025-04-30 23:55:07,395 - INFO - answer: A
+2025-04-30 23:55:07,395 - INFO - question 20/1000 answer:A correct_answer:A True
+2025-04-30 23:55:13,103 - INFO - answer: A
+2025-04-30 23:55:13,103 - INFO - question 21/1000 answer:A correct_answer:A True
+2025-04-30 23:55:16,813 - INFO - answer: A
+2025-04-30 23:55:16,813 - INFO - question 22/1000 answer:A correct_answer:A True
+2025-04-30 23:55:21,778 - INFO - answer: A
+2025-04-30 23:55:21,779 - INFO - question 23/1000 answer:A correct_answer:A True
+2025-04-30 23:55:26,271 - INFO - answer: A
+2025-04-30 23:55:26,272 - INFO - question 24/1000 answer:A correct_answer:A True
+2025-04-30 23:55:31,298 - INFO - answer: A
+2025-04-30 23:55:31,298 - INFO - question 25/1000 answer:A correct_answer:A True
+2025-04-30 23:55:35,749 - INFO - answer: B
+2025-04-30 23:55:35,749 - INFO - question 26/1000 answer:B correct_answer:B True
+2025-04-30 23:55:40,561 - INFO - answer: B
+2025-04-30 23:55:40,561 - INFO - question 27/1000 answer:B correct_answer:A False
+2025-04-30 23:55:45,545 - INFO - answer: A
+2025-04-30 23:55:45,545 - INFO - question 28/1000 answer:A correct_answer:C False
+2025-04-30 23:55:49,251 - INFO - answer: A
+2025-04-30 23:55:49,251 - INFO - question 29/1000 answer:A correct_answer:A True
+2025-04-30 23:55:53,337 - INFO - answer: A
+2025-04-30 23:55:53,337 - INFO - question 30/1000 answer:A correct_answer:A True
+2025-04-30 23:55:57,893 - INFO - answer: B
+2025-04-30 23:55:57,893 - INFO - question 31/1000 answer:B correct_answer:B True
+2025-04-30 23:56:04,775 - INFO - answer: A
+2025-04-30 23:56:04,775 - INFO - question 32/1000 answer:A correct_answer:C False
+2025-04-30 23:56:07,095 - INFO - answer: B
+2025-04-30 23:56:07,095 - INFO - question 33/1000 answer:B correct_answer:B True
+2025-04-30 23:56:09,861 - INFO - answer: A
+2025-04-30 23:56:09,862 - INFO - question 34/1000 answer:A correct_answer:A True
+2025-04-30 23:56:14,774 - INFO - answer: A
+2025-04-30 23:56:14,774 - INFO - question 35/1000 answer:A correct_answer:A True
+2025-04-30 23:56:19,813 - INFO - answer: A
+2025-04-30 23:56:19,813 - INFO - question 36/1000 answer:A correct_answer:B False
+2025-04-30 23:56:25,488 - INFO - answer: A
+2025-04-30 23:56:25,489 - INFO - question 37/1000 answer:A correct_answer:B False
+2025-04-30 23:56:28,635 - INFO - answer: A
+2025-04-30 23:56:28,635 - INFO - question 38/1000 answer:A correct_answer:B False
+2025-04-30 23:56:33,232 - INFO - answer: A
+2025-04-30 23:56:33,232 - INFO - question 39/1000 answer:A correct_answer:A True
+2025-04-30 23:56:38,697 - INFO - answer: B
+2025-04-30 23:56:38,698 - INFO - question 40/1000 answer:B correct_answer:B True
+2025-04-30 23:56:47,260 - INFO - answer: A
+2025-04-30 23:56:47,260 - INFO - question 41/1000 answer:A correct_answer:A True
+2025-04-30 23:56:50,720 - INFO - answer: A
+2025-04-30 23:56:50,721 - INFO - question 42/1000 answer:A correct_answer:A True
+2025-04-30 23:56:56,337 - INFO - answer: B
+2025-04-30 23:56:56,337 - INFO - question 43/1000 answer:B correct_answer:C False
+2025-04-30 23:57:05,813 - INFO - answer: B
+2025-04-30 23:57:05,813 - INFO - question 44/1000 answer:B correct_answer:B True
+2025-04-30 23:57:13,622 - INFO - answer: B
+2025-04-30 23:57:13,622 - INFO - question 45/1000 answer:B correct_answer:A False
+2025-04-30 23:57:17,728 - INFO - answer: A
+2025-04-30 23:57:17,728 - INFO - question 46/1000 answer:A correct_answer:A True
+2025-04-30 23:57:23,962 - INFO - answer: A
+2025-04-30 23:57:23,962 - INFO - question 47/1000 answer:A correct_answer:A True
+2025-04-30 23:57:28,712 - INFO - answer: A
+2025-04-30 23:57:28,712 - INFO - question 48/1000 answer:A correct_answer:A True
+2025-04-30 23:57:32,115 - INFO - answer: A
+2025-04-30 23:57:32,115 - INFO - question 49/1000 answer:A correct_answer:A True
+2025-04-30 23:57:37,827 - INFO - answer: A
+2025-04-30 23:57:37,828 - INFO - question 50/1000 answer:A correct_answer:B False
+2025-04-30 23:57:44,467 - INFO - answer: A
+2025-04-30 23:57:44,468 - INFO - question 51/1000 answer:A correct_answer:C False
+2025-04-30 23:57:48,846 - INFO - answer: A
+2025-04-30 23:57:48,846 - INFO - question 52/1000 answer:A correct_answer:C False
+2025-04-30 23:57:52,918 - INFO - answer: B
+2025-04-30 23:57:52,918 - INFO - question 53/1000 answer:B correct_answer:B True
+2025-04-30 23:57:57,385 - INFO - answer: A
+2025-04-30 23:57:57,385 - INFO - question 54/1000 answer:A correct_answer:A True
+2025-04-30 23:58:00,990 - INFO - answer: A
+2025-04-30 23:58:00,990 - INFO - question 55/1000 answer:A correct_answer:C False
+2025-04-30 23:58:05,921 - INFO - answer: A
+2025-04-30 23:58:05,921 - INFO - question 56/1000 answer:A correct_answer:A True
+2025-04-30 23:58:09,089 - INFO - answer: B
+2025-04-30 23:58:09,089 - INFO - question 57/1000 answer:B correct_answer:B True
+2025-04-30 23:58:16,934 - INFO - answer: B
+2025-04-30 23:58:16,934 - INFO - question 58/1000 answer:B correct_answer:C False
+2025-04-30 23:58:23,913 - INFO - answer: A
+2025-04-30 23:58:23,913 - INFO - question 59/1000 answer:A correct_answer:B False
+2025-04-30 23:58:27,742 - INFO - answer: A
+2025-04-30 23:58:27,743 - INFO - question 60/1000 answer:A correct_answer:A True
+2025-04-30 23:58:33,378 - INFO - answer: A
+2025-04-30 23:58:33,378 - INFO - question 61/1000 answer:A correct_answer:A True
+2025-04-30 23:58:37,629 - INFO - answer: B
+2025-04-30 23:58:37,629 - INFO - question 62/1000 answer:B correct_answer:B True
+2025-04-30 23:58:40,114 - INFO - answer: A
+2025-04-30 23:58:40,115 - INFO - question 63/1000 answer:A correct_answer:A True
+2025-04-30 23:58:43,203 - INFO - answer: A
+2025-04-30 23:58:43,203 - INFO - question 64/1000 answer:A correct_answer:A True
+2025-04-30 23:58:51,118 - INFO - answer: A
+2025-04-30 23:58:51,118 - INFO - question 65/1000 answer:A correct_answer:B False
+2025-04-30 23:58:57,939 - INFO - answer: A
+2025-04-30 23:58:57,939 - INFO - question 66/1000 answer:A correct_answer:B False
+2025-04-30 23:59:01,751 - INFO - answer: B
+2025-04-30 23:59:01,751 - INFO - question 67/1000 answer:B correct_answer:B True
+2025-04-30 23:59:05,967 - INFO - answer: A
+2025-04-30 23:59:05,968 - INFO - question 68/1000 answer:A correct_answer:A True
+2025-04-30 23:59:11,953 - INFO - answer: B
+2025-04-30 23:59:11,954 - INFO - question 69/1000 answer:B correct_answer:B True
+2025-04-30 23:59:14,753 - INFO - answer: A
+2025-04-30 23:59:14,753 - INFO - question 70/1000 answer:A correct_answer:A True
+2025-04-30 23:59:17,944 - INFO - answer: B
+2025-04-30 23:59:17,944 - INFO - question 71/1000 answer:B correct_answer:C False
+2025-04-30 23:59:22,699 - INFO - answer: A
+2025-04-30 23:59:22,699 - INFO - question 72/1000 answer:A correct_answer:A True
+2025-04-30 23:59:28,697 - INFO - answer: A
+2025-04-30 23:59:28,698 - INFO - question 73/1000 answer:A correct_answer:A True
+2025-04-30 23:59:33,878 - INFO - answer: A
+2025-04-30 23:59:33,878 - INFO - question 74/1000 answer:A correct_answer:A True
+2025-04-30 23:59:38,183 - INFO - answer: A
+2025-04-30 23:59:38,183 - INFO - question 75/1000 answer:A correct_answer:A True
+2025-04-30 23:59:42,637 - INFO - answer: A
+2025-04-30 23:59:42,637 - INFO - question 76/1000 answer:A correct_answer:C False
+2025-04-30 23:59:47,243 - INFO - answer: A
+2025-04-30 23:59:47,244 - INFO - question 77/1000 answer:A correct_answer:A True
+2025-04-30 23:59:55,553 - INFO - answer: B
+2025-04-30 23:59:55,554 - INFO - question 78/1000 answer:B correct_answer:C False
+2025-04-30 23:59:59,449 - INFO - answer: A
+2025-04-30 23:59:59,449 - INFO - question 79/1000 answer:A correct_answer:A True
+2025-05-01 00:00:05,319 - INFO - answer: A
+2025-05-01 00:00:05,320 - INFO - question 80/1000 answer:A correct_answer:A True
+2025-05-01 00:00:10,537 - INFO - answer: A
+2025-05-01 00:00:10,538 - INFO - question 81/1000 answer:A correct_answer:A True
+2025-05-01 00:00:14,674 - INFO - answer: A
+2025-05-01 00:00:14,674 - INFO - question 82/1000 answer:A correct_answer:A True
+2025-05-01 00:00:19,597 - INFO - answer: A
+2025-05-01 00:00:19,597 - INFO - question 83/1000 answer:A correct_answer:A True
+2025-05-01 00:00:24,868 - INFO - answer: A
+2025-05-01 00:00:24,868 - INFO - question 84/1000 answer:A correct_answer:A True
+2025-05-01 00:00:28,520 - INFO - answer: A
+2025-05-01 00:00:28,520 - INFO - question 85/1000 answer:A correct_answer:C False
+2025-05-01 00:00:31,987 - INFO - answer: A
+2025-05-01 00:00:31,987 - INFO - question 86/1000 answer:A correct_answer:C False
+2025-05-01 00:00:38,200 - INFO - answer: C
+2025-05-01 00:00:38,200 - INFO - question 87/1000 answer:C correct_answer:C True
+2025-05-01 00:00:40,583 - INFO - answer: A
+2025-05-01 00:00:40,583 - INFO - question 88/1000 answer:A correct_answer:A True
+2025-05-01 00:00:44,892 - INFO - answer: A
+2025-05-01 00:00:44,893 - INFO - question 89/1000 answer:A correct_answer:A True
+2025-05-01 00:00:48,569 - INFO - answer: B
+2025-05-01 00:00:48,570 - INFO - question 90/1000 answer:B correct_answer:C False
+2025-05-01 00:00:55,614 - INFO - answer: A
+2025-05-01 00:00:55,614 - INFO - question 91/1000 answer:A correct_answer:A True
+2025-05-01 00:01:02,648 - INFO - answer: B
+2025-05-01 00:01:02,648 - INFO - question 92/1000 answer:B correct_answer:C False
+2025-05-01 00:01:08,797 - INFO - answer: A
+2025-05-01 00:01:08,798 - INFO - question 93/1000 answer:A correct_answer:A True
+2025-05-01 00:01:12,839 - INFO - answer: A
+2025-05-01 00:01:12,840 - INFO - question 94/1000 answer:A correct_answer:A True
+2025-05-01 00:01:17,922 - INFO - answer: A
+2025-05-01 00:01:17,922 - INFO - question 95/1000 answer:A correct_answer:B False
+2025-05-01 00:01:20,830 - INFO - answer: B
+2025-05-01 00:01:20,830 - INFO - question 96/1000 answer:B correct_answer:B True
+2025-05-01 00:01:26,685 - INFO - answer: A
+2025-05-01 00:01:26,685 - INFO - question 97/1000 answer:A correct_answer:A True
+2025-05-01 00:01:30,173 - INFO - answer: A
+2025-05-01 00:01:30,173 - INFO - question 98/1000 answer:A correct_answer:A True
+2025-05-01 00:01:35,056 - INFO - answer: B
+2025-05-01 00:01:35,056 - INFO - question 99/1000 answer:B correct_answer:B True
+2025-05-01 00:01:39,170 - INFO - answer: A
+2025-05-01 00:01:39,171 - INFO - question 100/1000 answer:A correct_answer:A True
+2025-05-01 00:01:46,679 - INFO - answer: A
+2025-05-01 00:01:46,680 - INFO - question 101/1000 answer:A correct_answer:A True
+2025-05-01 00:01:52,204 - INFO - answer: A
+2025-05-01 00:01:52,205 - INFO - question 102/1000 answer:A correct_answer:A True
+2025-05-01 00:01:55,304 - INFO - answer: A
+2025-05-01 00:01:55,304 - INFO - question 103/1000 answer:A correct_answer:A True
+2025-05-01 00:01:59,837 - INFO - answer: A
+2025-05-01 00:01:59,837 - INFO - question 104/1000 answer:A correct_answer:A True
+2025-05-01 00:02:04,535 - INFO - answer: A
+2025-05-01 00:02:04,535 - INFO - question 105/1000 answer:A correct_answer:C False
+2025-05-01 00:02:08,193 - INFO - answer: A
+2025-05-01 00:02:08,194 - INFO - question 106/1000 answer:A correct_answer:A True
+2025-05-01 00:02:13,191 - INFO - answer: B
+2025-05-01 00:02:13,192 - INFO - question 107/1000 answer:B correct_answer:C False
+2025-05-01 00:02:18,861 - INFO - answer: B
+2025-05-01 00:02:18,861 - INFO - question 108/1000 answer:B correct_answer:B True
+2025-05-01 00:02:24,921 - INFO - answer: B
+2025-05-01 00:02:24,921 - INFO - question 109/1000 answer:B correct_answer:A False
+2025-05-01 00:02:30,031 - INFO - answer: A
+2025-05-01 00:02:30,032 - INFO - question 110/1000 answer:A correct_answer:A True
+2025-05-01 00:02:32,248 - INFO - answer: B
+2025-05-01 00:02:32,248 - INFO - question 111/1000 answer:B correct_answer:C False
+2025-05-01 00:02:39,775 - INFO - answer: B
+2025-05-01 00:02:39,775 - INFO - question 112/1000 answer:B correct_answer:C False
+2025-05-01 00:02:46,693 - INFO - answer: B
+2025-05-01 00:02:46,693 - INFO - question 113/1000 answer:B correct_answer:B True
+2025-05-01 00:02:49,558 - INFO - answer: B
+2025-05-01 00:02:49,559 - INFO - question 114/1000 answer:B correct_answer:B True
+2025-05-01 00:02:54,037 - INFO - answer: B
+2025-05-01 00:02:54,037 - INFO - question 115/1000 answer:B correct_answer:B True
+2025-05-01 00:03:00,363 - INFO - answer: A
+2025-05-01 00:03:00,363 - INFO - question 116/1000 answer:A correct_answer:C False
+2025-05-01 00:03:03,924 - INFO - answer: A
+2025-05-01 00:03:03,924 - INFO - question 117/1000 answer:A correct_answer:A True
+2025-05-01 00:03:07,739 - INFO - answer: A
+2025-05-01 00:03:07,739 - INFO - question 118/1000 answer:A correct_answer:A True
+2025-05-01 00:03:13,908 - INFO - answer: A
+2025-05-01 00:03:13,908 - INFO - question 119/1000 answer:A correct_answer:A True
+2025-05-01 00:03:17,420 - INFO - answer: A
+2025-05-01 00:03:17,420 - INFO - question 120/1000 answer:A correct_answer:A True
+2025-05-01 00:03:22,755 - INFO - answer: A
+2025-05-01 00:03:22,755 - INFO - question 121/1000 answer:A correct_answer:A True
+2025-05-01 00:03:25,791 - INFO - answer: A
+2025-05-01 00:03:25,791 - INFO - question 122/1000 answer:A correct_answer:A True
+2025-05-01 00:03:28,163 - INFO - answer: A
+2025-05-01 00:03:28,163 - INFO - question 123/1000 answer:A correct_answer:A True
+2025-05-01 00:03:34,254 - INFO - answer: A
+2025-05-01 00:03:34,254 - INFO - question 124/1000 answer:A correct_answer:C False
+2025-05-01 00:03:38,959 - INFO - answer: A
+2025-05-01 00:03:38,960 - INFO - question 125/1000 answer:A correct_answer:A True
+2025-05-01 00:03:43,143 - INFO - answer: A
+2025-05-01 00:03:43,143 - INFO - question 126/1000 answer:A correct_answer:A True
+2025-05-01 00:03:47,385 - INFO - answer: A
+2025-05-01 00:03:47,386 - INFO - question 127/1000 answer:A correct_answer:C False
+2025-05-01 00:03:52,493 - INFO - answer: A
+2025-05-01 00:03:52,493 - INFO - question 128/1000 answer:A correct_answer:C False
+2025-05-01 00:03:56,842 - INFO - answer: A
+2025-05-01 00:03:56,842 - INFO - question 129/1000 answer:A correct_answer:C False
+2025-05-01 00:03:59,015 - INFO - answer: A
+2025-05-01 00:03:59,015 - INFO - question 130/1000 answer:A correct_answer:C False
+2025-05-01 00:04:03,737 - INFO - answer: A
+2025-05-01 00:04:03,737 - INFO - question 131/1000 answer:A correct_answer:B False
+2025-05-01 00:04:08,381 - INFO - answer: A
+2025-05-01 00:04:08,382 - INFO - question 132/1000 answer:A correct_answer:A True
+2025-05-01 00:04:15,367 - INFO - answer: B
+2025-05-01 00:04:15,368 - INFO - question 133/1000 answer:B correct_answer:B True
+2025-05-01 00:04:22,605 - INFO - answer: A
+2025-05-01 00:04:22,605 - INFO - question 134/1000 answer:A correct_answer:A True
+2025-05-01 00:04:25,460 - INFO - answer: A
+2025-05-01 00:04:25,460 - INFO - question 135/1000 answer:A correct_answer:A True
+2025-05-01 00:04:30,081 - INFO - answer: A
+2025-05-01 00:04:30,082 - INFO - question 136/1000 answer:A correct_answer:A True
+2025-05-01 00:04:35,621 - INFO - answer: A
+2025-05-01 00:04:35,621 - INFO - question 137/1000 answer:A correct_answer:A True
+2025-05-01 00:04:40,647 - INFO - answer: A
+2025-05-01 00:04:40,647 - INFO - question 138/1000 answer:A correct_answer:A True
+2025-05-01 00:04:44,646 - INFO - answer: A
+2025-05-01 00:04:44,646 - INFO - question 139/1000 answer:A correct_answer:C False
+2025-05-01 00:04:50,190 - INFO - answer: A
+2025-05-01 00:04:50,191 - INFO - question 140/1000 answer:A correct_answer:A True
+2025-05-01 00:04:54,893 - INFO - answer: A
+2025-05-01 00:04:54,893 - INFO - question 141/1000 answer:A correct_answer:A True
+2025-05-01 00:05:01,543 - INFO - answer: A
+2025-05-01 00:05:01,544 - INFO - question 142/1000 answer:A correct_answer:A True
+2025-05-01 00:05:06,729 - INFO - answer: A
+2025-05-01 00:05:06,729 - INFO - question 143/1000 answer:A correct_answer:C False
+2025-05-01 00:05:09,624 - INFO - answer: B
+2025-05-01 00:05:09,625 - INFO - question 144/1000 answer:B correct_answer:B True
+2025-05-01 00:05:15,392 - INFO - answer: A
+2025-05-01 00:05:15,393 - INFO - question 145/1000 answer:A correct_answer:A True
+2025-05-01 00:05:20,698 - INFO - answer: A
+2025-05-01 00:05:20,698 - INFO - question 146/1000 answer:A correct_answer:A True
+2025-05-01 00:05:23,753 - INFO - answer: A
+2025-05-01 00:05:23,753 - INFO - question 147/1000 answer:A correct_answer:B False
+2025-05-01 00:05:29,575 - INFO - answer: A
+2025-05-01 00:05:29,575 - INFO - question 148/1000 answer:A correct_answer:C False
+2025-05-01 00:05:32,755 - INFO - answer: A
+2025-05-01 00:05:32,755 - INFO - question 149/1000 answer:A correct_answer:A True
+2025-05-01 00:05:37,306 - INFO - answer: A
+2025-05-01 00:05:37,306 - INFO - question 150/1000 answer:A correct_answer:B False
+2025-05-01 00:05:40,867 - INFO - answer: B
+2025-05-01 00:05:40,868 - INFO - question 151/1000 answer:B correct_answer:B True
+2025-05-01 00:05:43,770 - INFO - answer: B
+2025-05-01 00:05:43,770 - INFO - question 152/1000 answer:B correct_answer:B True
+2025-05-01 00:05:48,989 - INFO - answer: A
+2025-05-01 00:05:48,989 - INFO - question 153/1000 answer:A correct_answer:A True
+2025-05-01 00:05:53,543 - INFO - answer: A
+2025-05-01 00:05:53,543 - INFO - question 154/1000 answer:A correct_answer:A True
+2025-05-01 00:05:56,924 - INFO - answer: A
+2025-05-01 00:05:56,924 - INFO - question 155/1000 answer:A correct_answer:A True
+2025-05-01 00:06:01,693 - INFO - answer: A
+2025-05-01 00:06:01,693 - INFO - question 156/1000 answer:A correct_answer:A True
+2025-05-01 00:06:07,701 - INFO - answer: A
+2025-05-01 00:06:07,701 - INFO - question 157/1000 answer:A correct_answer:A True
+2025-05-01 00:06:13,686 - INFO - answer: C
+2025-05-01 00:06:13,687 - INFO - question 158/1000 answer:C correct_answer:C True
+2025-05-01 00:06:22,643 - INFO - answer: B
+2025-05-01 00:06:22,644 - INFO - question 159/1000 answer:B correct_answer:C False
+2025-05-01 00:06:25,594 - INFO - answer: B
+2025-05-01 00:06:25,594 - INFO - question 160/1000 answer:B correct_answer:B True
+2025-05-01 00:06:31,271 - INFO - answer: A
+2025-05-01 00:06:31,271 - INFO - question 161/1000 answer:A correct_answer:A True
+2025-05-01 00:06:41,265 - INFO - answer: A
+2025-05-01 00:06:41,266 - INFO - question 162/1000 answer:A correct_answer:A True
+2025-05-01 00:06:45,480 - INFO - answer: B
+2025-05-01 00:06:45,480 - INFO - question 163/1000 answer:B correct_answer:B True
+2025-05-01 00:06:49,648 - INFO - answer: B
+2025-05-01 00:06:49,648 - INFO - question 164/1000 answer:B correct_answer:B True
+2025-05-01 00:06:53,185 - INFO - answer: A
+2025-05-01 00:06:53,186 - INFO - question 165/1000 answer:A correct_answer:A True
+2025-05-01 00:06:59,365 - INFO - answer: A
+2025-05-01 00:06:59,365 - INFO - question 166/1000 answer:A correct_answer:A True
+2025-05-01 00:07:03,836 - INFO - answer: A
+2025-05-01 00:07:03,837 - INFO - question 167/1000 answer:A correct_answer:A True
+2025-05-01 00:07:09,485 - INFO - answer: A
+2025-05-01 00:07:09,485 - INFO - question 168/1000 answer:A correct_answer:B False
+2025-05-01 00:07:14,647 - INFO - answer: B
+2025-05-01 00:07:14,647 - INFO - question 169/1000 answer:B correct_answer:B True
+2025-05-01 00:07:19,385 - INFO - answer: A
+2025-05-01 00:07:19,385 - INFO - question 170/1000 answer:A correct_answer:C False
+2025-05-01 00:07:25,009 - INFO - answer: B
+2025-05-01 00:07:25,009 - INFO - question 171/1000 answer:B correct_answer:B True
+2025-05-01 00:07:29,687 - INFO - answer: A
+2025-05-01 00:07:29,688 - INFO - question 172/1000 answer:A correct_answer:A True
+2025-05-01 00:07:32,192 - INFO - answer: A
+2025-05-01 00:07:32,192 - INFO - question 173/1000 answer:A correct_answer:A True
+2025-05-01 00:07:35,990 - INFO - answer: A
+2025-05-01 00:07:35,990 - INFO - question 174/1000 answer:A correct_answer:A True
+2025-05-01 00:07:40,920 - INFO - answer: B
+2025-05-01 00:07:40,921 - INFO - question 175/1000 answer:B correct_answer:A False
+2025-05-01 00:07:45,310 - INFO - answer: A
+2025-05-01 00:07:45,310 - INFO - question 176/1000 answer:A correct_answer:C False
+2025-05-01 00:07:48,392 - INFO - answer: A
+2025-05-01 00:07:48,392 - INFO - question 177/1000 answer:A correct_answer:A True
+2025-05-01 00:07:51,001 - INFO - answer: B
+2025-05-01 00:07:51,001 - INFO - question 178/1000 answer:B correct_answer:B True
+2025-05-01 00:07:55,570 - INFO - answer: A
+2025-05-01 00:07:55,571 - INFO - question 179/1000 answer:A correct_answer:A True
+2025-05-01 00:08:00,011 - INFO - answer: B
+2025-05-01 00:08:00,011 - INFO - question 180/1000 answer:B correct_answer:B True
+2025-05-01 00:08:03,503 - INFO - answer: B
+2025-05-01 00:08:03,503 - INFO - question 181/1000 answer:B correct_answer:B True
+2025-05-01 00:08:06,335 - INFO - answer: A
+2025-05-01 00:08:06,335 - INFO - question 182/1000 answer:A correct_answer:A True
+2025-05-01 00:08:11,109 - INFO - answer: B
+2025-05-01 00:08:11,109 - INFO - question 183/1000 answer:B correct_answer:A False
+2025-05-01 00:08:17,040 - INFO - answer: A
+2025-05-01 00:08:17,041 - INFO - question 184/1000 answer:A correct_answer:A True
+2025-05-01 00:08:20,612 - INFO - answer: A
+2025-05-01 00:08:20,612 - INFO - question 185/1000 answer:A correct_answer:A True
+2025-05-01 00:08:23,512 - INFO - answer: B
+2025-05-01 00:08:23,513 - INFO - question 186/1000 answer:B correct_answer:B True
+2025-05-01 00:08:26,404 - INFO - answer: A
+2025-05-01 00:08:26,405 - INFO - question 187/1000 answer:A correct_answer:C False
+2025-05-01 00:08:32,934 - INFO - answer: A
+2025-05-01 00:08:32,935 - INFO - question 188/1000 answer:A correct_answer:A True
+2025-05-01 00:08:37,802 - INFO - answer: B
+2025-05-01 00:08:37,803 - INFO - question 189/1000 answer:B correct_answer:B True
+2025-05-01 00:08:43,595 - INFO - answer: B
+2025-05-01 00:08:43,595 - INFO - question 190/1000 answer:B correct_answer:B True
+2025-05-01 00:08:46,312 - INFO - answer: B
+2025-05-01 00:08:46,313 - INFO - question 191/1000 answer:B correct_answer:B True
+2025-05-01 00:08:51,491 - INFO - answer: A
+2025-05-01 00:08:51,492 - INFO - question 192/1000 answer:A correct_answer:A True
+2025-05-01 00:09:00,036 - INFO - answer: C
+2025-05-01 00:09:00,037 - INFO - question 193/1000 answer:C correct_answer:A False
+2025-05-01 00:09:04,323 - INFO - answer: B
+2025-05-01 00:09:04,323 - INFO - question 194/1000 answer:B correct_answer:B True
+2025-05-01 00:09:07,142 - INFO - answer: B
+2025-05-01 00:09:07,143 - INFO - question 195/1000 answer:B correct_answer:B True
+2025-05-01 00:09:13,709 - INFO - answer: B
+2025-05-01 00:09:13,709 - INFO - question 196/1000 answer:B correct_answer:B True
+2025-05-01 00:09:19,004 - INFO - answer: B
+2025-05-01 00:09:19,004 - INFO - question 197/1000 answer:B correct_answer:C False
+2025-05-01 00:09:23,701 - INFO - answer: B
+2025-05-01 00:09:23,701 - INFO - question 198/1000 answer:B correct_answer:A False
+2025-05-01 00:09:31,157 - INFO - answer: A
+2025-05-01 00:09:31,157 - INFO - question 199/1000 answer:A correct_answer:A True
+2025-05-01 00:09:36,480 - INFO - answer: A
+2025-05-01 00:09:36,481 - INFO - question 200/1000 answer:A correct_answer:A True
+2025-05-01 00:09:43,468 - INFO - answer: A
+2025-05-01 00:09:43,468 - INFO - question 201/1000 answer:A correct_answer:A True
+2025-05-01 00:09:48,071 - INFO - answer: A
+2025-05-01 00:09:48,071 - INFO - question 202/1000 answer:A correct_answer:A True
+2025-05-01 00:09:52,713 - INFO - answer: B
+2025-05-01 00:09:52,713 - INFO - question 203/1000 answer:B correct_answer:C False
+2025-05-01 00:09:59,189 - INFO - answer: B
+2025-05-01 00:09:59,189 - INFO - question 204/1000 answer:B correct_answer:B True
+2025-05-01 00:10:04,393 - INFO - answer: B
+2025-05-01 00:10:04,394 - INFO - question 205/1000 answer:B correct_answer:B True
+2025-05-01 00:10:09,314 - INFO - answer: B
+2025-05-01 00:10:09,314 - INFO - question 206/1000 answer:B correct_answer:B True
+2025-05-01 00:10:18,141 - INFO - answer: A
+2025-05-01 00:10:18,142 - INFO - question 207/1000 answer:A correct_answer:A True
+2025-05-01 00:10:20,082 - INFO - answer: A
+2025-05-01 00:10:20,082 - INFO - question 208/1000 answer:A correct_answer:A True
+2025-05-01 00:10:27,075 - INFO - answer: A
+2025-05-01 00:10:27,075 - INFO - question 209/1000 answer:A correct_answer:A True
+2025-05-01 00:10:33,341 - INFO - answer: A
+2025-05-01 00:10:33,342 - INFO - question 210/1000 answer:A correct_answer:A True
+2025-05-01 00:10:38,697 - INFO - answer: A
+2025-05-01 00:10:38,697 - INFO - question 211/1000 answer:A correct_answer:B False
+2025-05-01 00:10:42,912 - INFO - answer: A
+2025-05-01 00:10:42,912 - INFO - question 212/1000 answer:A correct_answer:A True
+2025-05-01 00:10:48,489 - INFO - answer: A
+2025-05-01 00:10:48,489 - INFO - question 213/1000 answer:A correct_answer:A True
+2025-05-01 00:10:51,863 - INFO - answer: A
+2025-05-01 00:10:51,864 - INFO - question 214/1000 answer:A correct_answer:A True
+2025-05-01 00:11:00,115 - INFO - answer: A
+2025-05-01 00:11:00,115 - INFO - question 215/1000 answer:A correct_answer:A True
+2025-05-01 00:11:02,813 - INFO - answer: B
+2025-05-01 00:11:02,813 - INFO - question 216/1000 answer:B correct_answer:B True
+2025-05-01 00:11:09,201 - INFO - answer: A
+2025-05-01 00:11:09,202 - INFO - question 217/1000 answer:A correct_answer:A True
+2025-05-01 00:11:14,406 - INFO - answer: B
+2025-05-01 00:11:14,406 - INFO - question 218/1000 answer:B correct_answer:B True
+2025-05-01 00:11:20,088 - INFO - answer: A
+2025-05-01 00:11:20,088 - INFO - question 219/1000 answer:A correct_answer:A True
+2025-05-01 00:11:24,639 - INFO - answer: A
+2025-05-01 00:11:24,640 - INFO - question 220/1000 answer:A correct_answer:A True
+2025-05-01 00:11:30,678 - INFO - answer: B
+2025-05-01 00:11:30,679 - INFO - question 221/1000 answer:B correct_answer:B True
+2025-05-01 00:11:35,593 - INFO - answer: A
+2025-05-01 00:11:35,593 - INFO - question 222/1000 answer:A correct_answer:B False
+2025-05-01 00:11:41,833 - INFO - answer: A
+2025-05-01 00:11:41,833 - INFO - question 223/1000 answer:A correct_answer:C False
+2025-05-01 00:11:45,339 - INFO - answer: B
+2025-05-01 00:11:45,339 - INFO - question 224/1000 answer:B correct_answer:B True
+2025-05-01 00:11:51,029 - INFO - answer: B
+2025-05-01 00:11:51,029 - INFO - question 225/1000 answer:B correct_answer:C False
+2025-05-01 00:11:53,512 - INFO - answer: A
+2025-05-01 00:11:53,512 - INFO - question 226/1000 answer:A correct_answer:A True
+2025-05-01 00:11:58,889 - INFO - answer: A
+2025-05-01 00:11:58,889 - INFO - question 227/1000 answer:A correct_answer:B False
+2025-05-01 00:12:02,930 - INFO - answer: B
+2025-05-01 00:12:02,931 - INFO - question 228/1000 answer:B correct_answer:B True
+2025-05-01 00:12:08,128 - INFO - answer: A
+2025-05-01 00:12:08,128 - INFO - question 229/1000 answer:A correct_answer:C False
+2025-05-01 00:12:12,027 - INFO - answer: B
+2025-05-01 00:12:12,028 - INFO - question 230/1000 answer:B correct_answer:B True
+2025-05-01 00:12:17,270 - INFO - answer: B
+2025-05-01 00:12:17,271 - INFO - question 231/1000 answer:B correct_answer:A False
+2025-05-01 00:12:24,779 - INFO - answer: A
+2025-05-01 00:12:24,780 - INFO - question 232/1000 answer:A correct_answer:A True
+2025-05-01 00:12:34,672 - INFO - answer: A
+2025-05-01 00:12:34,672 - INFO - question 233/1000 answer:A correct_answer:A True
+2025-05-01 00:12:41,227 - INFO - answer: B
+2025-05-01 00:12:41,227 - INFO - question 234/1000 answer:B correct_answer:B True
+2025-05-01 00:12:45,168 - INFO - answer: A
+2025-05-01 00:12:45,168 - INFO - question 235/1000 answer:A correct_answer:A True
+2025-05-01 00:12:51,213 - INFO - answer: B
+2025-05-01 00:12:51,213 - INFO - question 236/1000 answer:B correct_answer:C False
+2025-05-01 00:12:56,922 - INFO - answer: B
+2025-05-01 00:12:56,922 - INFO - question 237/1000 answer:B correct_answer:A False
+2025-05-01 00:13:03,120 - INFO - answer: B
+2025-05-01 00:13:03,121 - INFO - question 238/1000 answer:B correct_answer:A False
+2025-05-01 00:13:09,011 - INFO - answer: B
+2025-05-01 00:13:09,012 - INFO - question 239/1000 answer:B correct_answer:C False
+2025-05-01 00:13:13,450 - INFO - answer: A
+2025-05-01 00:13:13,451 - INFO - question 240/1000 answer:A correct_answer:A True
+2025-05-01 00:13:19,823 - INFO - answer: A
+2025-05-01 00:13:19,823 - INFO - question 241/1000 answer:A correct_answer:A True
+2025-05-01 00:13:24,517 - INFO - answer: A
+2025-05-01 00:13:24,518 - INFO - question 242/1000 answer:A correct_answer:A True
+2025-05-01 00:13:29,170 - INFO - answer: A
+2025-05-01 00:13:29,170 - INFO - question 243/1000 answer:A correct_answer:C False
+2025-05-01 00:13:35,446 - INFO - answer: A
+2025-05-01 00:13:35,446 - INFO - question 244/1000 answer:A correct_answer:A True
+2025-05-01 00:13:41,619 - INFO - answer: A
+2025-05-01 00:13:41,619 - INFO - question 245/1000 answer:A correct_answer:C False
+2025-05-01 00:13:46,181 - INFO - answer: B
+2025-05-01 00:13:46,181 - INFO - question 246/1000 answer:B correct_answer:B True
+2025-05-01 00:13:48,393 - INFO - answer: A
+2025-05-01 00:13:48,393 - INFO - question 247/1000 answer:A correct_answer:A True
+2025-05-01 00:13:57,230 - INFO - answer: A
+2025-05-01 00:13:57,231 - INFO - question 248/1000 answer:A correct_answer:C False
+2025-05-01 00:13:59,867 - INFO - answer: A
+2025-05-01 00:13:59,867 - INFO - question 249/1000 answer:A correct_answer:A True
+2025-05-01 00:14:07,804 - INFO - answer: A
+2025-05-01 00:14:07,804 - INFO - question 250/1000 answer:A correct_answer:B False
+2025-05-01 00:14:14,200 - INFO - answer: A
+2025-05-01 00:14:14,200 - INFO - question 251/1000 answer:A correct_answer:A True
+2025-05-01 00:14:20,103 - INFO - answer: A
+2025-05-01 00:14:20,103 - INFO - question 252/1000 answer:A correct_answer:A True
+2025-05-01 00:14:27,979 - INFO - answer: B
+2025-05-01 00:14:27,979 - INFO - question 253/1000 answer:B correct_answer:B True
+2025-05-01 00:14:32,846 - INFO - answer: B
+2025-05-01 00:14:32,846 - INFO - question 254/1000 answer:B correct_answer:B True
+2025-05-01 00:14:37,634 - INFO - answer: B
+2025-05-01 00:14:37,635 - INFO - question 255/1000 answer:B correct_answer:B True
+2025-05-01 00:14:43,170 - INFO - answer: A
+2025-05-01 00:14:43,170 - INFO - question 256/1000 answer:A correct_answer:C False
+2025-05-01 00:14:47,827 - INFO - answer: C
+2025-05-01 00:14:47,828 - INFO - question 257/1000 answer:C correct_answer:A False
+2025-05-01 00:14:51,595 - INFO - answer: B
+2025-05-01 00:14:51,595 - INFO - question 258/1000 answer:B correct_answer:B True
+2025-05-01 00:14:57,822 - INFO - answer: B
+2025-05-01 00:14:57,823 - INFO - question 259/1000 answer:B correct_answer:B True
+2025-05-01 00:15:03,568 - INFO - answer: A
+2025-05-01 00:15:03,568 - INFO - question 260/1000 answer:A correct_answer:B False
+2025-05-01 00:15:07,271 - INFO - answer: A
+2025-05-01 00:15:07,271 - INFO - question 261/1000 answer:A correct_answer:A True
+2025-05-01 00:15:11,172 - INFO - answer: A
+2025-05-01 00:15:11,172 - INFO - question 262/1000 answer:A correct_answer:A True
+2025-05-01 00:15:15,960 - INFO - answer: B
+2025-05-01 00:15:15,960 - INFO - question 263/1000 answer:B correct_answer:B True
+2025-05-01 00:15:18,802 - INFO - answer: B
+2025-05-01 00:15:18,802 - INFO - question 264/1000 answer:B correct_answer:B True
+2025-05-01 00:15:21,215 - INFO - answer: B
+2025-05-01 00:15:21,215 - INFO - question 265/1000 answer:B correct_answer:B True
+2025-05-01 00:15:26,930 - INFO - answer: A
+2025-05-01 00:15:26,930 - INFO - question 266/1000 answer:A correct_answer:A True
+2025-05-01 00:15:29,347 - INFO - answer: B
+2025-05-01 00:15:29,347 - INFO - question 267/1000 answer:B correct_answer:A False
+2025-05-01 00:15:34,536 - INFO - answer: A
+2025-05-01 00:15:34,537 - INFO - question 268/1000 answer:A correct_answer:C False
+2025-05-01 00:15:37,872 - INFO - answer: B
+2025-05-01 00:15:37,873 - INFO - question 269/1000 answer:B correct_answer:B True
+2025-05-01 00:15:42,900 - INFO - answer: B
+2025-05-01 00:15:42,901 - INFO - question 270/1000 answer:B correct_answer:C False
+2025-05-01 00:15:49,748 - INFO - answer: A
+2025-05-01 00:15:49,748 - INFO - question 271/1000 answer:A correct_answer:A True
+2025-05-01 00:15:55,365 - INFO - answer: A
+2025-05-01 00:15:55,365 - INFO - question 272/1000 answer:A correct_answer:A True
+2025-05-01 00:16:02,105 - INFO - answer: C
+2025-05-01 00:16:02,105 - INFO - question 273/1000 answer:C correct_answer:B False
+2025-05-01 00:16:05,628 - INFO - answer: A
+2025-05-01 00:16:05,629 - INFO - question 274/1000 answer:A correct_answer:A True
+2025-05-01 00:16:07,857 - INFO - answer: B
+2025-05-01 00:16:07,858 - INFO - question 275/1000 answer:B correct_answer:B True
+2025-05-01 00:16:13,695 - INFO - answer: A
+2025-05-01 00:16:13,695 - INFO - question 276/1000 answer:A correct_answer:A True
+2025-05-01 00:16:18,229 - INFO - answer: A
+2025-05-01 00:16:18,230 - INFO - question 277/1000 answer:A correct_answer:A True
+2025-05-01 00:16:22,053 - INFO - answer: A
+2025-05-01 00:16:22,053 - INFO - question 278/1000 answer:A correct_answer:A True
+2025-05-01 00:16:27,624 - INFO - answer: A
+2025-05-01 00:16:27,624 - INFO - question 279/1000 answer:A correct_answer:A True
+2025-05-01 00:16:31,412 - INFO - answer: B
+2025-05-01 00:16:31,412 - INFO - question 280/1000 answer:B correct_answer:B True
+2025-05-01 00:16:36,379 - INFO - answer: A
+2025-05-01 00:16:36,379 - INFO - question 281/1000 answer:A correct_answer:A True
+2025-05-01 00:16:39,298 - INFO - answer: A
+2025-05-01 00:16:39,298 - INFO - question 282/1000 answer:A correct_answer:C False
+2025-05-01 00:16:41,306 - INFO - answer: A
+2025-05-01 00:16:41,306 - INFO - question 283/1000 answer:A correct_answer:A True
+2025-05-01 00:16:45,205 - INFO - answer: A
+2025-05-01 00:16:45,205 - INFO - question 284/1000 answer:A correct_answer:A True
+2025-05-01 00:16:49,003 - INFO - answer: A
+2025-05-01 00:16:49,003 - INFO - question 285/1000 answer:A correct_answer:A True
+2025-05-01 00:16:55,745 - INFO - answer: A
+2025-05-01 00:16:55,745 - INFO - question 286/1000 answer:A correct_answer:C False
+2025-05-01 00:17:02,686 - INFO - answer: A
+2025-05-01 00:17:02,686 - INFO - question 287/1000 answer:A correct_answer:B False
+2025-05-01 00:17:05,096 - INFO - answer: A
+2025-05-01 00:17:05,096 - INFO - question 288/1000 answer:A correct_answer:A True
+2025-05-01 00:17:09,965 - INFO - answer: B
+2025-05-01 00:17:09,965 - INFO - question 289/1000 answer:B correct_answer:A False
+2025-05-01 00:17:12,924 - INFO - answer: B
+2025-05-01 00:17:12,925 - INFO - question 290/1000 answer:B correct_answer:B True
+2025-05-01 00:17:18,871 - INFO - answer: A
+2025-05-01 00:17:18,872 - INFO - question 291/1000 answer:A correct_answer:A True
+2025-05-01 00:17:28,094 - INFO - answer: A
+2025-05-01 00:17:28,094 - INFO - question 292/1000 answer:A correct_answer:C False
+2025-05-01 00:17:34,612 - INFO - answer: B
+2025-05-01 00:17:34,613 - INFO - question 293/1000 answer:B correct_answer:B True
+2025-05-01 00:17:39,020 - INFO - answer: B
+2025-05-01 00:17:39,020 - INFO - question 294/1000 answer:B correct_answer:C False
+2025-05-01 00:17:47,015 - INFO - answer: A
+2025-05-01 00:17:47,016 - INFO - question 295/1000 answer:A correct_answer:A True
+2025-05-01 00:17:52,211 - INFO - answer: A
+2025-05-01 00:17:52,211 - INFO - question 296/1000 answer:A correct_answer:A True
+2025-05-01 00:17:57,876 - INFO - answer: A
+2025-05-01 00:17:57,877 - INFO - question 297/1000 answer:A correct_answer:A True
+2025-05-01 00:18:03,998 - INFO - answer: A
+2025-05-01 00:18:03,998 - INFO - question 298/1000 answer:A correct_answer:B False
+2025-05-01 00:18:10,667 - INFO - answer: A
+2025-05-01 00:18:10,667 - INFO - question 299/1000 answer:A correct_answer:A True
+2025-05-01 00:18:16,843 - INFO - answer: A
+2025-05-01 00:18:16,843 - INFO - question 300/1000 answer:A correct_answer:A True
+2025-05-01 00:18:20,986 - INFO - answer: A
+2025-05-01 00:18:20,986 - INFO - question 301/1000 answer:A correct_answer:A True
+2025-05-01 00:18:29,402 - INFO - answer: B
+2025-05-01 00:18:29,402 - INFO - question 302/1000 answer:B correct_answer:B True
+2025-05-01 00:18:36,053 - INFO - answer: A
+2025-05-01 00:18:36,053 - INFO - question 303/1000 answer:A correct_answer:B False
+2025-05-01 00:18:38,561 - INFO - answer: A
+2025-05-01 00:18:38,562 - INFO - question 304/1000 answer:A correct_answer:A True
+2025-05-01 00:18:43,814 - INFO - answer: A
+2025-05-01 00:18:43,814 - INFO - question 305/1000 answer:A correct_answer:A True
+2025-05-01 00:18:47,955 - INFO - answer: A
+2025-05-01 00:18:47,955 - INFO - question 306/1000 answer:A correct_answer:A True
+2025-05-01 00:18:52,877 - INFO - answer: A
+2025-05-01 00:18:52,878 - INFO - question 307/1000 answer:A correct_answer:A True
+2025-05-01 00:18:57,520 - INFO - answer: A
+2025-05-01 00:18:57,520 - INFO - question 308/1000 answer:A correct_answer:A True
+2025-05-01 00:18:59,884 - INFO - answer: B
+2025-05-01 00:18:59,885 - INFO - question 309/1000 answer:B correct_answer:A False
+2025-05-01 00:19:04,089 - INFO - answer: A
+2025-05-01 00:19:04,089 - INFO - question 310/1000 answer:A correct_answer:C False
+2025-05-01 00:19:09,664 - INFO - answer: B
+2025-05-01 00:19:09,664 - INFO - question 311/1000 answer:B correct_answer:A False
+2025-05-01 00:19:16,398 - INFO - answer: A
+2025-05-01 00:19:16,398 - INFO - question 312/1000 answer:A correct_answer:B False
+2025-05-01 00:19:21,022 - INFO - answer: A
+2025-05-01 00:19:21,023 - INFO - question 313/1000 answer:A correct_answer:A True
+2025-05-01 00:19:25,688 - INFO - answer: A
+2025-05-01 00:19:25,688 - INFO - question 314/1000 answer:A correct_answer:A True
+2025-05-01 00:19:30,169 - INFO - answer: A
+2025-05-01 00:19:30,169 - INFO - question 315/1000 answer:A correct_answer:A True
+2025-05-01 00:19:37,807 - INFO - answer: B
+2025-05-01 00:19:37,808 - INFO - question 316/1000 answer:B correct_answer:B True
+2025-05-01 00:19:40,097 - INFO - answer: A
+2025-05-01 00:19:40,097 - INFO - question 317/1000 answer:A correct_answer:A True
+2025-05-01 00:19:46,266 - INFO - answer: A
+2025-05-01 00:19:46,267 - INFO - question 318/1000 answer:A correct_answer:B False
+2025-05-01 00:19:48,832 - INFO - answer: A
+2025-05-01 00:19:48,832 - INFO - question 319/1000 answer:A correct_answer:A True
+2025-05-01 00:19:54,271 - INFO - answer: A
+2025-05-01 00:19:54,271 - INFO - question 320/1000 answer:A correct_answer:A True
+2025-05-01 00:20:03,745 - INFO - answer: B
+2025-05-01 00:20:03,745 - INFO - question 321/1000 answer:B correct_answer:B True
+2025-05-01 00:20:07,571 - INFO - answer: B
+2025-05-01 00:20:07,572 - INFO - question 322/1000 answer:B correct_answer:B True
+2025-05-01 00:20:14,486 - INFO - answer: A
+2025-05-01 00:20:14,487 - INFO - question 323/1000 answer:A correct_answer:C False
+2025-05-01 00:20:19,617 - INFO - answer: A
+2025-05-01 00:20:19,617 - INFO - question 324/1000 answer:A correct_answer:A True
+2025-05-01 00:20:25,250 - INFO - answer: B
+2025-05-01 00:20:25,250 - INFO - question 325/1000 answer:B correct_answer:B True
+2025-05-01 00:20:28,958 - INFO - answer: A
+2025-05-01 00:20:28,958 - INFO - question 326/1000 answer:A correct_answer:A True
+2025-05-01 00:20:33,388 - INFO - answer: A
+2025-05-01 00:20:33,388 - INFO - question 327/1000 answer:A correct_answer:A True
+2025-05-01 00:20:38,069 - INFO - answer: A
+2025-05-01 00:20:38,069 - INFO - question 328/1000 answer:A correct_answer:C False
+2025-05-01 00:20:44,095 - INFO - answer: B
+2025-05-01 00:20:44,096 - INFO - question 329/1000 answer:B correct_answer:B True
+2025-05-01 00:20:50,633 - INFO - answer: A
+2025-05-01 00:20:50,634 - INFO - question 330/1000 answer:A correct_answer:A True
+2025-05-01 00:20:55,367 - INFO - answer: A
+2025-05-01 00:20:55,367 - INFO - question 331/1000 answer:A correct_answer:A True
+2025-05-01 00:21:00,955 - INFO - answer: A
+2025-05-01 00:21:00,956 - INFO - question 332/1000 answer:A correct_answer:A True
+2025-05-01 00:21:05,782 - INFO - answer: A
+2025-05-01 00:21:05,782 - INFO - question 333/1000 answer:A correct_answer:A True
+2025-05-01 00:21:10,697 - INFO - answer: A
+2025-05-01 00:21:10,698 - INFO - question 334/1000 answer:A correct_answer:B False
+2025-05-01 00:21:13,718 - INFO - answer: B
+2025-05-01 00:21:13,718 - INFO - question 335/1000 answer:B correct_answer:B True
+2025-05-01 00:21:16,816 - INFO - answer: B
+2025-05-01 00:21:16,816 - INFO - question 336/1000 answer:B correct_answer:B True
+2025-05-01 00:21:21,371 - INFO - answer: A
+2025-05-01 00:21:21,372 - INFO - question 337/1000 answer:A correct_answer:A True
+2025-05-01 00:21:28,323 - INFO - answer: B
+2025-05-01 00:21:28,323 - INFO - question 338/1000 answer:B correct_answer:A False
+2025-05-01 00:21:33,017 - INFO - answer: A
+2025-05-01 00:21:33,018 - INFO - question 339/1000 answer:A correct_answer:A True
+2025-05-01 00:21:37,031 - INFO - answer: A
+2025-05-01 00:21:37,031 - INFO - question 340/1000 answer:A correct_answer:A True
+2025-05-01 00:21:39,800 - INFO - answer: B
+2025-05-01 00:21:39,800 - INFO - question 341/1000 answer:B correct_answer:C False
+2025-05-01 00:21:44,580 - INFO - answer: B
+2025-05-01 00:21:44,580 - INFO - question 342/1000 answer:B correct_answer:B True
+2025-05-01 00:21:51,205 - INFO - answer: B
+2025-05-01 00:21:51,205 - INFO - question 343/1000 answer:B correct_answer:B True
+2025-05-01 00:21:53,704 - INFO - answer: B
+2025-05-01 00:21:53,704 - INFO - question 344/1000 answer:B correct_answer:C False
+2025-05-01 00:21:58,559 - INFO - answer: B
+2025-05-01 00:21:58,559 - INFO - question 345/1000 answer:B correct_answer:B True
+2025-05-01 00:22:02,842 - INFO - answer: A
+2025-05-01 00:22:02,842 - INFO - question 346/1000 answer:A correct_answer:C False
+2025-05-01 00:22:09,587 - INFO - answer: A
+2025-05-01 00:22:09,587 - INFO - question 347/1000 answer:A correct_answer:B False
+2025-05-01 00:22:14,306 - INFO - answer: A
+2025-05-01 00:22:14,307 - INFO - question 348/1000 answer:A correct_answer:A True
+2025-05-01 00:22:19,576 - INFO - answer: A
+2025-05-01 00:22:19,576 - INFO - question 349/1000 answer:A correct_answer:A True
+2025-05-01 00:22:22,026 - INFO - answer: A
+2025-05-01 00:22:22,026 - INFO - question 350/1000 answer:A correct_answer:A True
+2025-05-01 00:22:27,197 - INFO - answer: B
+2025-05-01 00:22:27,198 - INFO - question 351/1000 answer:B correct_answer:B True
+2025-05-01 00:22:33,132 - INFO - answer: A
+2025-05-01 00:22:33,132 - INFO - question 352/1000 answer:A correct_answer:A True
+2025-05-01 00:22:40,292 - INFO - answer: A
+2025-05-01 00:22:40,292 - INFO - question 353/1000 answer:A correct_answer:C False
+2025-05-01 00:22:47,192 - INFO - answer: A
+2025-05-01 00:22:47,193 - INFO - question 354/1000 answer:A correct_answer:A True
+2025-05-01 00:22:51,040 - INFO - answer: A
+2025-05-01 00:22:51,041 - INFO - question 355/1000 answer:A correct_answer:A True
+2025-05-01 00:22:54,246 - INFO - answer: A
+2025-05-01 00:22:54,246 - INFO - question 356/1000 answer:A correct_answer:C False
+2025-05-01 00:22:59,847 - INFO - answer: B
+2025-05-01 00:22:59,847 - INFO - question 357/1000 answer:B correct_answer:B True
+2025-05-01 00:23:06,364 - INFO - answer: B
+2025-05-01 00:23:06,364 - INFO - question 358/1000 answer:B correct_answer:B True
+2025-05-01 00:23:11,121 - INFO - answer: A
+2025-05-01 00:23:11,121 - INFO - question 359/1000 answer:A correct_answer:B False
+2025-05-01 00:23:15,078 - INFO - answer: B
+2025-05-01 00:23:15,079 - INFO - question 360/1000 answer:B correct_answer:B True
+2025-05-01 00:23:17,828 - INFO - answer: A
+2025-05-01 00:23:17,828 - INFO - question 361/1000 answer:A correct_answer:A True
+2025-05-01 00:23:23,812 - INFO - answer: A
+2025-05-01 00:23:23,813 - INFO - question 362/1000 answer:A correct_answer:A True
+2025-05-01 00:23:28,896 - INFO - answer: C
+2025-05-01 00:23:28,896 - INFO - question 363/1000 answer:C correct_answer:A False
+2025-05-01 00:23:30,864 - INFO - answer: B
+2025-05-01 00:23:30,864 - INFO - question 364/1000 answer:B correct_answer:B True
+2025-05-01 00:23:33,668 - INFO - answer: B
+2025-05-01 00:23:33,668 - INFO - question 365/1000 answer:B correct_answer:B True
+2025-05-01 00:23:40,296 - INFO - answer: A
+2025-05-01 00:23:40,296 - INFO - question 366/1000 answer:A correct_answer:B False
+2025-05-01 00:23:45,217 - INFO - answer: A
+2025-05-01 00:23:45,217 - INFO - question 367/1000 answer:A correct_answer:A True
+2025-05-01 00:23:48,421 - INFO - answer: A
+2025-05-01 00:23:48,421 - INFO - question 368/1000 answer:A correct_answer:A True
+2025-05-01 00:23:53,125 - INFO - answer: B
+2025-05-01 00:23:53,125 - INFO - question 369/1000 answer:B correct_answer:B True
+2025-05-01 00:23:58,034 - INFO - answer: A
+2025-05-01 00:23:58,035 - INFO - question 370/1000 answer:A correct_answer:C False
+2025-05-01 00:24:02,846 - INFO - answer: A
+2025-05-01 00:24:02,846 - INFO - question 371/1000 answer:A correct_answer:A True
+2025-05-01 00:24:08,468 - INFO - answer: A
+2025-05-01 00:24:08,469 - INFO - question 372/1000 answer:A correct_answer:A True
+2025-05-01 00:24:15,217 - INFO - answer: B
+2025-05-01 00:24:15,217 - INFO - question 373/1000 answer:B correct_answer:B True
+2025-05-01 00:24:21,641 - INFO - answer: B
+2025-05-01 00:24:21,641 - INFO - question 374/1000 answer:B correct_answer:B True
+2025-05-01 00:24:25,533 - INFO - answer: B
+2025-05-01 00:24:25,533 - INFO - question 375/1000 answer:B correct_answer:B True
+2025-05-01 00:24:30,488 - INFO - answer: A
+2025-05-01 00:24:30,489 - INFO - question 376/1000 answer:A correct_answer:A True
+2025-05-01 00:24:36,332 - INFO - answer: A
+2025-05-01 00:24:36,332 - INFO - question 377/1000 answer:A correct_answer:A True
+2025-05-01 00:24:39,926 - INFO - answer: A
+2025-05-01 00:24:39,926 - INFO - question 378/1000 answer:A correct_answer:A True
+2025-05-01 00:24:43,792 - INFO - answer: A
+2025-05-01 00:24:43,793 - INFO - question 379/1000 answer:A correct_answer:A True
+2025-05-01 00:24:47,910 - INFO - answer: B
+2025-05-01 00:24:47,911 - INFO - question 380/1000 answer:B correct_answer:B True
+2025-05-01 00:24:52,616 - INFO - answer: B
+2025-05-01 00:24:52,616 - INFO - question 381/1000 answer:B correct_answer:B True
+2025-05-01 00:24:59,368 - INFO - answer: A
+2025-05-01 00:24:59,369 - INFO - question 382/1000 answer:A correct_answer:A True
+2025-05-01 00:25:05,642 - INFO - answer: B
+2025-05-01 00:25:05,643 - INFO - question 383/1000 answer:B correct_answer:B True
+2025-05-01 00:25:10,662 - INFO - answer: A
+2025-05-01 00:25:10,662 - INFO - question 384/1000 answer:A correct_answer:A True
+2025-05-01 00:25:21,295 - INFO - answer: A
+2025-05-01 00:25:21,295 - INFO - question 385/1000 answer:A correct_answer:C False
+2025-05-01 00:25:24,422 - INFO - answer: A
+2025-05-01 00:25:24,422 - INFO - question 386/1000 answer:A correct_answer:C False
+2025-05-01 00:25:31,679 - INFO - answer: B
+2025-05-01 00:25:31,679 - INFO - question 387/1000 answer:B correct_answer:B True
+2025-05-01 00:25:36,531 - INFO - answer: A
+2025-05-01 00:25:36,531 - INFO - question 388/1000 answer:A correct_answer:A True
+2025-05-01 00:25:40,984 - INFO - answer: A
+2025-05-01 00:25:40,984 - INFO - question 389/1000 answer:A correct_answer:A True
+2025-05-01 00:25:46,326 - INFO - answer: A
+2025-05-01 00:25:46,327 - INFO - question 390/1000 answer:A correct_answer:A True
+2025-05-01 00:25:51,554 - INFO - answer: B
+2025-05-01 00:25:51,555 - INFO - question 391/1000 answer:B correct_answer:B True
+2025-05-01 00:25:57,815 - INFO - answer: B
+2025-05-01 00:25:57,815 - INFO - question 392/1000 answer:B correct_answer:B True
+2025-05-01 00:26:04,263 - INFO - answer: B
+2025-05-01 00:26:04,263 - INFO - question 393/1000 answer:B correct_answer:B True
+2025-05-01 00:26:09,242 - INFO - answer: A
+2025-05-01 00:26:09,243 - INFO - question 394/1000 answer:A correct_answer:A True
+2025-05-01 00:26:18,304 - INFO - answer: B
+2025-05-01 00:26:18,304 - INFO - question 395/1000 answer:B correct_answer:B True
+2025-05-01 00:26:21,914 - INFO - answer: A
+2025-05-01 00:26:21,914 - INFO - question 396/1000 answer:A correct_answer:A True
+2025-05-01 00:26:27,629 - INFO - answer: A
+2025-05-01 00:26:27,629 - INFO - question 397/1000 answer:A correct_answer:A True
+2025-05-01 00:26:34,746 - INFO - answer: A
+2025-05-01 00:26:34,747 - INFO - question 398/1000 answer:A correct_answer:A True
+2025-05-01 00:26:38,610 - INFO - answer: B
+2025-05-01 00:26:38,611 - INFO - question 399/1000 answer:B correct_answer:B True
+2025-05-01 00:26:44,841 - INFO - answer: A
+2025-05-01 00:26:44,842 - INFO - question 400/1000 answer:A correct_answer:A True
+2025-05-01 00:26:51,301 - INFO - answer: A
+2025-05-01 00:26:51,302 - INFO - question 401/1000 answer:A correct_answer:B False
+2025-05-01 00:26:54,068 - INFO - answer: A
+2025-05-01 00:26:54,068 - INFO - question 402/1000 answer:A correct_answer:A True
+2025-05-01 00:26:57,731 - INFO - answer: A
+2025-05-01 00:26:57,731 - INFO - question 403/1000 answer:A correct_answer:A True
+2025-05-01 00:27:01,996 - INFO - answer: A
+2025-05-01 00:27:01,997 - INFO - question 404/1000 answer:A correct_answer:A True
+2025-05-01 00:27:05,487 - INFO - answer: B
+2025-05-01 00:27:05,487 - INFO - question 405/1000 answer:B correct_answer:B True
+2025-05-01 00:27:10,779 - INFO - answer: A
+2025-05-01 00:27:10,780 - INFO - question 406/1000 answer:A correct_answer:A True
+2025-05-01 00:27:16,757 - INFO - answer: B
+2025-05-01 00:27:16,757 - INFO - question 407/1000 answer:B correct_answer:B True
+2025-05-01 00:27:22,739 - INFO - answer: A
+2025-05-01 00:27:22,739 - INFO - question 408/1000 answer:A correct_answer:C False
+2025-05-01 00:27:25,770 - INFO - answer: A
+2025-05-01 00:27:25,770 - INFO - question 409/1000 answer:A correct_answer:A True
+2025-05-01 00:27:30,430 - INFO - answer: B
+2025-05-01 00:27:30,430 - INFO - question 410/1000 answer:B correct_answer:A False
+2025-05-01 00:27:35,123 - INFO - answer: A
+2025-05-01 00:27:35,124 - INFO - question 411/1000 answer:A correct_answer:A True
+2025-05-01 00:27:46,874 - INFO - answer: [invalid]
+2025-05-01 00:27:46,875 - INFO - question 412/1000 answer:[invalid] correct_answer:A False
+2025-05-01 00:27:51,277 - INFO - answer: B
+2025-05-01 00:27:51,278 - INFO - question 413/1000 answer:B correct_answer:B True
+2025-05-01 00:27:56,566 - INFO - answer: B
+2025-05-01 00:27:56,566 - INFO - question 414/1000 answer:B correct_answer:B True
+2025-05-01 00:28:01,779 - INFO - answer: B
+2025-05-01 00:28:01,779 - INFO - question 415/1000 answer:B correct_answer:B True
+2025-05-01 00:28:10,042 - INFO - answer: A
+2025-05-01 00:28:10,042 - INFO - question 416/1000 answer:A correct_answer:A True
+2025-05-01 00:28:14,275 - INFO - answer: A
+2025-05-01 00:28:14,276 - INFO - question 417/1000 answer:A correct_answer:C False
+2025-05-01 00:28:19,790 - INFO - answer: A
+2025-05-01 00:28:19,790 - INFO - question 418/1000 answer:A correct_answer:A True
+2025-05-01 00:28:25,399 - INFO - answer: B
+2025-05-01 00:28:25,400 - INFO - question 419/1000 answer:B correct_answer:B True
+2025-05-01 00:28:29,934 - INFO - answer: B
+2025-05-01 00:28:29,934 - INFO - question 420/1000 answer:B correct_answer:B True
+2025-05-01 00:28:32,748 - INFO - answer: A
+2025-05-01 00:28:32,749 - INFO - question 421/1000 answer:A correct_answer:C False
+2025-05-01 00:28:38,188 - INFO - answer: A
+2025-05-01 00:28:38,188 - INFO - question 422/1000 answer:A correct_answer:A True
+2025-05-01 00:28:41,729 - INFO - answer: B
+2025-05-01 00:28:41,730 - INFO - question 423/1000 answer:B correct_answer:A False
+2025-05-01 00:28:46,387 - INFO - answer: A
+2025-05-01 00:28:46,388 - INFO - question 424/1000 answer:A correct_answer:A True
+2025-05-01 00:28:51,037 - INFO - answer: A
+2025-05-01 00:28:51,037 - INFO - question 425/1000 answer:A correct_answer:A True
+2025-05-01 00:28:57,688 - INFO - answer: A
+2025-05-01 00:28:57,688 - INFO - question 426/1000 answer:A correct_answer:B False
+2025-05-01 00:29:00,870 - INFO - answer: A
+2025-05-01 00:29:00,870 - INFO - question 427/1000 answer:A correct_answer:A True
+2025-05-01 00:29:06,502 - INFO - answer: A
+2025-05-01 00:29:06,502 - INFO - question 428/1000 answer:A correct_answer:A True
+2025-05-01 00:29:13,300 - INFO - answer: B
+2025-05-01 00:29:13,301 - INFO - question 429/1000 answer:B correct_answer:B True
+2025-05-01 00:29:18,020 - INFO - answer: A
+2025-05-01 00:29:18,021 - INFO - question 430/1000 answer:A correct_answer:A True
+2025-05-01 00:29:22,273 - INFO - answer: B
+2025-05-01 00:29:22,273 - INFO - question 431/1000 answer:B correct_answer:A False
+2025-05-01 00:29:27,165 - INFO - answer: A
+2025-05-01 00:29:27,166 - INFO - question 432/1000 answer:A correct_answer:A True
+2025-05-01 00:29:30,321 - INFO - answer: B
+2025-05-01 00:29:30,322 - INFO - question 433/1000 answer:B correct_answer:B True
+2025-05-01 00:29:34,959 - INFO - answer: A
+2025-05-01 00:29:34,959 - INFO - question 434/1000 answer:A correct_answer:A True
+2025-05-01 00:29:37,416 - INFO - answer: B
+2025-05-01 00:29:37,417 - INFO - question 435/1000 answer:B correct_answer:B True
+2025-05-01 00:29:40,741 - INFO - answer: A
+2025-05-01 00:29:40,741 - INFO - question 436/1000 answer:A correct_answer:A True
+2025-05-01 00:29:44,748 - INFO - answer: A
+2025-05-01 00:29:44,748 - INFO - question 437/1000 answer:A correct_answer:A True
+2025-05-01 00:29:47,585 - INFO - answer: B
+2025-05-01 00:29:47,585 - INFO - question 438/1000 answer:B correct_answer:B True
+2025-05-01 00:29:54,556 - INFO - answer: A
+2025-05-01 00:29:54,556 - INFO - question 439/1000 answer:A correct_answer:A True
+2025-05-01 00:29:58,471 - INFO - answer: A
+2025-05-01 00:29:58,472 - INFO - question 440/1000 answer:A correct_answer:A True
+2025-05-01 00:30:03,349 - INFO - answer: B
+2025-05-01 00:30:03,349 - INFO - question 441/1000 answer:B correct_answer:B True
+2025-05-01 00:30:08,042 - INFO - answer: B
+2025-05-01 00:30:08,042 - INFO - question 442/1000 answer:B correct_answer:B True
+2025-05-01 00:30:15,302 - INFO - answer: B
+2025-05-01 00:30:15,303 - INFO - question 443/1000 answer:B correct_answer:B True
+2025-05-01 00:30:19,975 - INFO - answer: A
+2025-05-01 00:30:19,975 - INFO - question 444/1000 answer:A correct_answer:A True
+2025-05-01 00:30:22,802 - INFO - answer: A
+2025-05-01 00:30:22,803 - INFO - question 445/1000 answer:A correct_answer:A True
+2025-05-01 00:30:26,804 - INFO - answer: B
+2025-05-01 00:30:26,804 - INFO - question 446/1000 answer:B correct_answer:B True
+2025-05-01 00:30:31,214 - INFO - answer: B
+2025-05-01 00:30:31,215 - INFO - question 447/1000 answer:B correct_answer:B True
+2025-05-01 00:30:39,424 - INFO - answer: B
+2025-05-01 00:30:39,424 - INFO - question 448/1000 answer:B correct_answer:B True
+2025-05-01 00:30:42,113 - INFO - answer: B
+2025-05-01 00:30:42,113 - INFO - question 449/1000 answer:B correct_answer:B True
+2025-05-01 00:30:47,025 - INFO - answer: A
+2025-05-01 00:30:47,025 - INFO - question 450/1000 answer:A correct_answer:A True
+2025-05-01 00:30:50,647 - INFO - answer: B
+2025-05-01 00:30:50,648 - INFO - question 451/1000 answer:B correct_answer:A False
+2025-05-01 00:30:56,426 - INFO - answer: A
+2025-05-01 00:30:56,426 - INFO - question 452/1000 answer:A correct_answer:A True
+2025-05-01 00:31:02,536 - INFO - answer: B
+2025-05-01 00:31:02,537 - INFO - question 453/1000 answer:B correct_answer:B True
+2025-05-01 00:31:05,646 - INFO - answer: A
+2025-05-01 00:31:05,646 - INFO - question 454/1000 answer:A correct_answer:A True
+2025-05-01 00:31:08,591 - INFO - answer: B
+2025-05-01 00:31:08,591 - INFO - question 455/1000 answer:B correct_answer:B True
+2025-05-01 00:31:14,771 - INFO - answer: B
+2025-05-01 00:31:14,771 - INFO - question 456/1000 answer:B correct_answer:B True
+2025-05-01 00:31:19,988 - INFO - answer: B
+2025-05-01 00:31:19,989 - INFO - question 457/1000 answer:B correct_answer:B True
+2025-05-01 00:31:23,777 - INFO - answer: B
+2025-05-01 00:31:23,777 - INFO - question 458/1000 answer:B correct_answer:B True
+2025-05-01 00:31:29,438 - INFO - answer: B
+2025-05-01 00:31:29,438 - INFO - question 459/1000 answer:B correct_answer:B True
+2025-05-01 00:31:34,227 - INFO - answer: B
+2025-05-01 00:31:34,227 - INFO - question 460/1000 answer:B correct_answer:B True
+2025-05-01 00:31:36,345 - INFO - answer: A
+2025-05-01 00:31:36,345 - INFO - question 461/1000 answer:A correct_answer:A True
+2025-05-01 00:31:42,913 - INFO - answer: B
+2025-05-01 00:31:42,913 - INFO - question 462/1000 answer:B correct_answer:B True
+2025-05-01 00:31:46,586 - INFO - answer: B
+2025-05-01 00:31:46,586 - INFO - question 463/1000 answer:B correct_answer:B True
+2025-05-01 00:31:52,016 - INFO - answer: A
+2025-05-01 00:31:52,016 - INFO - question 464/1000 answer:A correct_answer:A True
+2025-05-01 00:31:57,021 - INFO - answer: A
+2025-05-01 00:31:57,021 - INFO - question 465/1000 answer:A correct_answer:A True
+2025-05-01 00:32:01,043 - INFO - answer: A
+2025-05-01 00:32:01,043 - INFO - question 466/1000 answer:A correct_answer:A True
+2025-05-01 00:32:06,443 - INFO - answer: A
+2025-05-01 00:32:06,443 - INFO - question 467/1000 answer:A correct_answer:A True
+2025-05-01 00:32:12,830 - INFO - answer: A
+2025-05-01 00:32:12,830 - INFO - question 468/1000 answer:A correct_answer:A True
+2025-05-01 00:32:19,027 - INFO - answer: B
+2025-05-01 00:32:19,027 - INFO - question 469/1000 answer:B correct_answer:B True
+2025-05-01 00:32:28,262 - INFO - answer: C
+2025-05-01 00:32:28,263 - INFO - question 470/1000 answer:C correct_answer:A False
+2025-05-01 00:32:36,313 - INFO - answer: B
+2025-05-01 00:32:36,313 - INFO - question 471/1000 answer:B correct_answer:A False
+2025-05-01 00:32:40,603 - INFO - answer: A
+2025-05-01 00:32:40,603 - INFO - question 472/1000 answer:A correct_answer:A True
+2025-05-01 00:32:47,942 - INFO - answer: A
+2025-05-01 00:32:47,942 - INFO - question 473/1000 answer:A correct_answer:A True
+2025-05-01 00:32:51,835 - INFO - answer: A
+2025-05-01 00:32:51,835 - INFO - question 474/1000 answer:A correct_answer:A True
+2025-05-01 00:32:58,619 - INFO - answer: A
+2025-05-01 00:32:58,619 - INFO - question 475/1000 answer:A correct_answer:A True
+2025-05-01 00:33:05,079 - INFO - answer: A
+2025-05-01 00:33:05,080 - INFO - question 476/1000 answer:A correct_answer:A True
+2025-05-01 00:33:09,519 - INFO - answer: A
+2025-05-01 00:33:09,519 - INFO - question 477/1000 answer:A correct_answer:A True
+2025-05-01 00:33:14,271 - INFO - answer: A
+2025-05-01 00:33:14,271 - INFO - question 478/1000 answer:A correct_answer:A True
+2025-05-01 00:33:20,463 - INFO - answer: A
+2025-05-01 00:33:20,463 - INFO - question 479/1000 answer:A correct_answer:C False
+2025-05-01 00:33:25,700 - INFO - answer: B
+2025-05-01 00:33:25,700 - INFO - question 480/1000 answer:B correct_answer:A False
+2025-05-01 00:33:31,890 - INFO - answer: A
+2025-05-01 00:33:31,891 - INFO - question 481/1000 answer:A correct_answer:A True
+2025-05-01 00:33:36,537 - INFO - answer: o
+2025-05-01 00:33:36,537 - INFO - question 482/1000 answer:o correct_answer:B False
+2025-05-01 00:33:41,412 - INFO - answer: A
+2025-05-01 00:33:41,412 - INFO - question 483/1000 answer:A correct_answer:A True
+2025-05-01 00:33:48,379 - INFO - answer: A
+2025-05-01 00:33:48,380 - INFO - question 484/1000 answer:A correct_answer:A True
+2025-05-01 00:33:52,400 - INFO - answer: A
+2025-05-01 00:33:52,400 - INFO - question 485/1000 answer:A correct_answer:A True
+2025-05-01 00:33:56,981 - INFO - answer: A
+2025-05-01 00:33:56,982 - INFO - question 486/1000 answer:A correct_answer:A True
+2025-05-01 00:34:02,404 - INFO - answer: A
+2025-05-01 00:34:02,405 - INFO - question 487/1000 answer:A correct_answer:A True
+2025-05-01 00:34:06,676 - INFO - answer: A
+2025-05-01 00:34:06,676 - INFO - question 488/1000 answer:A correct_answer:A True
+2025-05-01 00:34:13,830 - INFO - answer: A
+2025-05-01 00:34:13,830 - INFO - question 489/1000 answer:A correct_answer:A True
+2025-05-01 00:34:18,979 - INFO - answer: B
+2025-05-01 00:34:18,979 - INFO - question 490/1000 answer:B correct_answer:B True
+2025-05-01 00:34:22,441 - INFO - answer: B
+2025-05-01 00:34:22,441 - INFO - question 491/1000 answer:B correct_answer:B True
+2025-05-01 00:34:28,648 - INFO - answer: A
+2025-05-01 00:34:28,648 - INFO - question 492/1000 answer:A correct_answer:A True
+2025-05-01 00:34:31,943 - INFO - answer: A
+2025-05-01 00:34:31,943 - INFO - question 493/1000 answer:A correct_answer:B False
+2025-05-01 00:34:37,701 - INFO - answer: A
+2025-05-01 00:34:37,701 - INFO - question 494/1000 answer:A correct_answer:A True
+2025-05-01 00:34:41,510 - INFO - answer: A
+2025-05-01 00:34:41,510 - INFO - question 495/1000 answer:A correct_answer:A True
+2025-05-01 00:34:48,154 - INFO - answer: A
+2025-05-01 00:34:48,154 - INFO - question 496/1000 answer:A correct_answer:A True
+2025-05-01 00:34:54,382 - INFO - answer: A
+2025-05-01 00:34:54,382 - INFO - question 497/1000 answer:A correct_answer:A True
+2025-05-01 00:34:57,720 - INFO - answer: B
+2025-05-01 00:34:57,720 - INFO - question 498/1000 answer:B correct_answer:B True
+2025-05-01 00:35:03,052 - INFO - answer: B
+2025-05-01 00:35:03,052 - INFO - question 499/1000 answer:B correct_answer:B True
+2025-05-01 00:35:05,994 - INFO - answer: B
+2025-05-01 00:35:05,994 - INFO - question 500/1000 answer:B correct_answer:B True
+2025-05-01 00:35:10,497 - INFO - answer: A
+2025-05-01 00:35:10,497 - INFO - question 501/1000 answer:A correct_answer:C False
+2025-05-01 00:35:14,146 - INFO - answer: A
+2025-05-01 00:35:14,146 - INFO - question 502/1000 answer:A correct_answer:A True
+2025-05-01 00:35:18,878 - INFO - answer: B
+2025-05-01 00:35:18,878 - INFO - question 503/1000 answer:B correct_answer:B True
+2025-05-01 00:35:23,308 - INFO - answer: A
+2025-05-01 00:35:23,308 - INFO - question 504/1000 answer:A correct_answer:A True
+2025-05-01 00:35:27,392 - INFO - answer: B
+2025-05-01 00:35:27,392 - INFO - question 505/1000 answer:B correct_answer:B True
+2025-05-01 00:35:31,862 - INFO - answer: A
+2025-05-01 00:35:31,863 - INFO - question 506/1000 answer:A correct_answer:A True
+2025-05-01 00:35:38,432 - INFO - answer: B
+2025-05-01 00:35:38,432 - INFO - question 507/1000 answer:B correct_answer:B True
+2025-05-01 00:35:44,414 - INFO - answer: A
+2025-05-01 00:35:44,415 - INFO - question 508/1000 answer:A correct_answer:B False
+2025-05-01 00:35:46,285 - INFO - answer: A
+2025-05-01 00:35:46,285 - INFO - question 509/1000 answer:A correct_answer:A True
+2025-05-01 00:35:50,918 - INFO - answer: A
+2025-05-01 00:35:50,918 - INFO - question 510/1000 answer:A correct_answer:A True
+2025-05-01 00:35:54,330 - INFO - answer: A
+2025-05-01 00:35:54,330 - INFO - question 511/1000 answer:A correct_answer:A True
+2025-05-01 00:35:57,181 - INFO - answer: B
+2025-05-01 00:35:57,181 - INFO - question 512/1000 answer:B correct_answer:A False
+2025-05-01 00:36:03,636 - INFO - answer: A
+2025-05-01 00:36:03,637 - INFO - question 513/1000 answer:A correct_answer:B False
+2025-05-01 00:36:07,239 - INFO - answer: A
+2025-05-01 00:36:07,239 - INFO - question 514/1000 answer:A correct_answer:A True
+2025-05-01 00:36:12,659 - INFO - answer: A
+2025-05-01 00:36:12,660 - INFO - question 515/1000 answer:A correct_answer:C False
+2025-05-01 00:36:15,228 - INFO - answer: B
+2025-05-01 00:36:15,228 - INFO - question 516/1000 answer:B correct_answer:B True
+2025-05-01 00:36:18,312 - INFO - answer: A
+2025-05-01 00:36:18,313 - INFO - question 517/1000 answer:A correct_answer:A True
+2025-05-01 00:36:22,678 - INFO - answer: A
+2025-05-01 00:36:22,678 - INFO - question 518/1000 answer:A correct_answer:A True
+2025-05-01 00:36:28,913 - INFO - answer: A
+2025-05-01 00:36:28,914 - INFO - question 519/1000 answer:A correct_answer:B False
+2025-05-01 00:36:33,931 - INFO - answer: A
+2025-05-01 00:36:33,932 - INFO - question 520/1000 answer:A correct_answer:A True
+2025-05-01 00:36:41,975 - INFO - answer: A
+2025-05-01 00:36:41,975 - INFO - question 521/1000 answer:A correct_answer:A True
+2025-05-01 00:36:47,481 - INFO - answer: A
+2025-05-01 00:36:47,482 - INFO - question 522/1000 answer:A correct_answer:A True
+2025-05-01 00:36:54,599 - INFO - answer: A
+2025-05-01 00:36:54,599 - INFO - question 523/1000 answer:A correct_answer:A True
+2025-05-01 00:37:00,634 - INFO - answer: B
+2025-05-01 00:37:00,635 - INFO - question 524/1000 answer:B correct_answer:B True
+2025-05-01 00:37:05,237 - INFO - answer: A
+2025-05-01 00:37:05,238 - INFO - question 525/1000 answer:A correct_answer:A True
+2025-05-01 00:37:09,320 - INFO - answer: A
+2025-05-01 00:37:09,320 - INFO - question 526/1000 answer:A correct_answer:A True
+2025-05-01 00:37:12,446 - INFO - answer: A
+2025-05-01 00:37:12,447 - INFO - question 527/1000 answer:A correct_answer:A True
+2025-05-01 00:37:17,713 - INFO - answer: o
+2025-05-01 00:37:17,714 - INFO - question 528/1000 answer:o correct_answer:B False
+2025-05-01 00:37:24,063 - INFO - answer: A
+2025-05-01 00:37:24,064 - INFO - question 529/1000 answer:A correct_answer:A True
+2025-05-01 00:37:28,178 - INFO - answer: A
+2025-05-01 00:37:28,179 - INFO - question 530/1000 answer:A correct_answer:A True
+2025-05-01 00:37:34,043 - INFO - answer: A
+2025-05-01 00:37:34,043 - INFO - question 531/1000 answer:A correct_answer:A True
+2025-05-01 00:37:39,750 - INFO - answer: A
+2025-05-01 00:37:39,750 - INFO - question 532/1000 answer:A correct_answer:A True
+2025-05-01 00:37:48,912 - INFO - answer: A
+2025-05-01 00:37:48,912 - INFO - question 533/1000 answer:A correct_answer:A True
+2025-05-01 00:37:56,159 - INFO - answer: A
+2025-05-01 00:37:56,160 - INFO - question 534/1000 answer:A correct_answer:A True
+2025-05-01 00:38:02,399 - INFO - answer: A
+2025-05-01 00:38:02,399 - INFO - question 535/1000 answer:A correct_answer:A True
+2025-05-01 00:38:10,347 - INFO - answer: A
+2025-05-01 00:38:10,348 - INFO - question 536/1000 answer:A correct_answer:A True
+2025-05-01 00:38:14,947 - INFO - answer: B
+2025-05-01 00:38:14,947 - INFO - question 537/1000 answer:B correct_answer:B True
+2025-05-01 00:38:18,404 - INFO - answer: B
+2025-05-01 00:38:18,404 - INFO - question 538/1000 answer:B correct_answer:B True
+2025-05-01 00:38:22,026 - INFO - answer: B
+2025-05-01 00:38:22,027 - INFO - question 539/1000 answer:B correct_answer:B True
+2025-05-01 00:38:27,591 - INFO - answer: A
+2025-05-01 00:38:27,591 - INFO - question 540/1000 answer:A correct_answer:A True
+2025-05-01 00:38:34,465 - INFO - answer: A
+2025-05-01 00:38:34,465 - INFO - question 541/1000 answer:A correct_answer:A True
+2025-05-01 00:38:41,723 - INFO - answer: A
+2025-05-01 00:38:41,723 - INFO - question 542/1000 answer:A correct_answer:A True
+2025-05-01 00:38:48,042 - INFO - answer: A
+2025-05-01 00:38:48,042 - INFO - question 543/1000 answer:A correct_answer:A True
+2025-05-01 00:38:51,087 - INFO - answer: B
+2025-05-01 00:38:51,087 - INFO - question 544/1000 answer:B correct_answer:A False
+2025-05-01 00:38:55,028 - INFO - answer: A
+2025-05-01 00:38:55,028 - INFO - question 545/1000 answer:A correct_answer:A True
+2025-05-01 00:38:58,613 - INFO - answer: A
+2025-05-01 00:38:58,614 - INFO - question 546/1000 answer:A correct_answer:A True
+2025-05-01 00:39:01,740 - INFO - answer: A
+2025-05-01 00:39:01,740 - INFO - question 547/1000 answer:A correct_answer:A True
+2025-05-01 00:39:06,670 - INFO - answer: A
+2025-05-01 00:39:06,671 - INFO - question 548/1000 answer:A correct_answer:A True
+2025-05-01 00:39:13,354 - INFO - answer: A
+2025-05-01 00:39:13,355 - INFO - question 549/1000 answer:A correct_answer:A True
+2025-05-01 00:39:19,137 - INFO - answer: B
+2025-05-01 00:39:19,137 - INFO - question 550/1000 answer:B correct_answer:B True
+2025-05-01 00:39:27,067 - INFO - answer: A
+2025-05-01 00:39:27,067 - INFO - question 551/1000 answer:A correct_answer:A True
+2025-05-01 00:39:32,173 - INFO - answer: B
+2025-05-01 00:39:32,174 - INFO - question 552/1000 answer:B correct_answer:B True
+2025-05-01 00:39:39,746 - INFO - answer: A
+2025-05-01 00:39:39,746 - INFO - question 553/1000 answer:A correct_answer:A True
+2025-05-01 00:39:49,724 - INFO - answer: B
+2025-05-01 00:39:49,725 - INFO - question 554/1000 answer:B correct_answer:B True
+2025-05-01 00:39:57,112 - INFO - answer: B
+2025-05-01 00:39:57,112 - INFO - question 555/1000 answer:B correct_answer:B True
+2025-05-01 00:39:59,721 - INFO - answer: A
+2025-05-01 00:39:59,722 - INFO - question 556/1000 answer:A correct_answer:A True
+2025-05-01 00:40:06,809 - INFO - answer: A
+2025-05-01 00:40:06,809 - INFO - question 557/1000 answer:A correct_answer:A True
+2025-05-01 00:40:11,405 - INFO - answer: B
+2025-05-01 00:40:11,405 - INFO - question 558/1000 answer:B correct_answer:B True
+2025-05-01 00:40:18,695 - INFO - answer: B
+2025-05-01 00:40:18,695 - INFO - question 559/1000 answer:B correct_answer:A False
+2025-05-01 00:40:21,172 - INFO - answer: B
+2025-05-01 00:40:21,172 - INFO - question 560/1000 answer:B correct_answer:B True
+2025-05-01 00:40:26,733 - INFO - answer: A
+2025-05-01 00:40:26,734 - INFO - question 561/1000 answer:A correct_answer:B False
+2025-05-01 00:40:31,304 - INFO - answer: A
+2025-05-01 00:40:31,305 - INFO - question 562/1000 answer:A correct_answer:A True
+2025-05-01 00:40:38,515 - INFO - answer: B
+2025-05-01 00:40:38,515 - INFO - question 563/1000 answer:B correct_answer:B True
+2025-05-01 00:40:44,247 - INFO - answer: A
+2025-05-01 00:40:44,247 - INFO - question 564/1000 answer:A correct_answer:A True
+2025-05-01 00:40:48,722 - INFO - answer: A
+2025-05-01 00:40:48,722 - INFO - question 565/1000 answer:A correct_answer:A True
+2025-05-01 00:40:57,257 - INFO - answer: B
+2025-05-01 00:40:57,257 - INFO - question 566/1000 answer:B correct_answer:B True
+2025-05-01 00:41:02,803 - INFO - answer: A
+2025-05-01 00:41:02,803 - INFO - question 567/1000 answer:A correct_answer:A True
+2025-05-01 00:41:09,019 - INFO - answer: A
+2025-05-01 00:41:09,019 - INFO - question 568/1000 answer:A correct_answer:A True
+2025-05-01 00:41:13,192 - INFO - answer: A
+2025-05-01 00:41:13,192 - INFO - question 569/1000 answer:A correct_answer:A True
+2025-05-01 00:41:17,007 - INFO - answer: A
+2025-05-01 00:41:17,007 - INFO - question 570/1000 answer:A correct_answer:A True
+2025-05-01 00:41:23,058 - INFO - answer: A
+2025-05-01 00:41:23,059 - INFO - question 571/1000 answer:A correct_answer:A True
+2025-05-01 00:41:27,621 - INFO - answer: A
+2025-05-01 00:41:27,622 - INFO - question 572/1000 answer:A correct_answer:A True
+2025-05-01 00:41:31,586 - INFO - answer: B
+2025-05-01 00:41:31,587 - INFO - question 573/1000 answer:B correct_answer:B True
+2025-05-01 00:41:36,066 - INFO - answer: A
+2025-05-01 00:41:36,067 - INFO - question 574/1000 answer:A correct_answer:A True
+2025-05-01 00:41:42,593 - INFO - answer: A
+2025-05-01 00:41:42,593 - INFO - question 575/1000 answer:A correct_answer:A True
+2025-05-01 00:41:48,805 - INFO - answer: A
+2025-05-01 00:41:48,805 - INFO - question 576/1000 answer:A correct_answer:A True
+2025-05-01 00:41:54,525 - INFO - answer: A
+2025-05-01 00:41:54,525 - INFO - question 577/1000 answer:A correct_answer:A True
+2025-05-01 00:42:01,472 - INFO - answer: B
+2025-05-01 00:42:01,473 - INFO - question 578/1000 answer:B correct_answer:B True
+2025-05-01 00:42:06,014 - INFO - answer: A
+2025-05-01 00:42:06,014 - INFO - question 579/1000 answer:A correct_answer:A True
+2025-05-01 00:42:09,081 - INFO - answer: A
+2025-05-01 00:42:09,081 - INFO - question 580/1000 answer:A correct_answer:A True
+2025-05-01 00:42:16,173 - INFO - answer: B
+2025-05-01 00:42:16,173 - INFO - question 581/1000 answer:B correct_answer:B True
+2025-05-01 00:42:18,385 - INFO - answer: A
+2025-05-01 00:42:18,385 - INFO - question 582/1000 answer:A correct_answer:B False
+2025-05-01 00:42:24,702 - INFO - answer: A
+2025-05-01 00:42:24,703 - INFO - question 583/1000 answer:A correct_answer:A True
+2025-05-01 00:42:29,563 - INFO - answer: A
+2025-05-01 00:42:29,564 - INFO - question 584/1000 answer:A correct_answer:A True
+2025-05-01 00:42:34,351 - INFO - answer: B
+2025-05-01 00:42:34,351 - INFO - question 585/1000 answer:B correct_answer:B True
+2025-05-01 00:42:39,772 - INFO - answer: A
+2025-05-01 00:42:39,773 - INFO - question 586/1000 answer:A correct_answer:A True
+2025-05-01 00:42:42,782 - INFO - answer: A
+2025-05-01 00:42:42,782 - INFO - question 587/1000 answer:A correct_answer:C False
+2025-05-01 00:42:48,252 - INFO - answer: A
+2025-05-01 00:42:48,253 - INFO - question 588/1000 answer:A correct_answer:A True
+2025-05-01 00:42:52,824 - INFO - answer: B
+2025-05-01 00:42:52,824 - INFO - question 589/1000 answer:B correct_answer:B True
+2025-05-01 00:42:57,645 - INFO - answer: A
+2025-05-01 00:42:57,645 - INFO - question 590/1000 answer:A correct_answer:A True
+2025-05-01 00:43:04,683 - INFO - answer: o
+2025-05-01 00:43:04,684 - INFO - question 591/1000 answer:o correct_answer:B False
+2025-05-01 00:43:07,905 - INFO - answer: A
+2025-05-01 00:43:07,905 - INFO - question 592/1000 answer:A correct_answer:A True
+2025-05-01 00:43:12,100 - INFO - answer: A
+2025-05-01 00:43:12,100 - INFO - question 593/1000 answer:A correct_answer:C False
+2025-05-01 00:43:16,232 - INFO - answer: B
+2025-05-01 00:43:16,232 - INFO - question 594/1000 answer:B correct_answer:C False
+2025-05-01 00:43:23,634 - INFO - answer: A
+2025-05-01 00:43:23,634 - INFO - question 595/1000 answer:A correct_answer:C False
+2025-05-01 00:43:27,863 - INFO - answer: B
+2025-05-01 00:43:27,863 - INFO - question 596/1000 answer:B correct_answer:B True
+2025-05-01 00:43:35,819 - INFO - answer: A
+2025-05-01 00:43:35,819 - INFO - question 597/1000 answer:A correct_answer:A True
+2025-05-01 00:43:40,057 - INFO - answer: B
+2025-05-01 00:43:40,057 - INFO - question 598/1000 answer:B correct_answer:B True
+2025-05-01 00:43:44,766 - INFO - answer: A
+2025-05-01 00:43:44,767 - INFO - question 599/1000 answer:A correct_answer:A True
+2025-05-01 00:43:49,950 - INFO - answer: A
+2025-05-01 00:43:49,950 - INFO - question 600/1000 answer:A correct_answer:A True
+2025-05-01 00:43:56,009 - INFO - answer: A
+2025-05-01 00:43:56,009 - INFO - question 601/1000 answer:A correct_answer:A True
+2025-05-01 00:43:58,329 - INFO - answer: A
+2025-05-01 00:43:58,330 - INFO - question 602/1000 answer:A correct_answer:A True
+2025-05-01 00:44:04,228 - INFO - answer: B
+2025-05-01 00:44:04,229 - INFO - question 603/1000 answer:B correct_answer:A False
+2025-05-01 00:44:08,825 - INFO - answer: A
+2025-05-01 00:44:08,826 - INFO - question 604/1000 answer:A correct_answer:A True
+2025-05-01 00:44:13,917 - INFO - answer: A
+2025-05-01 00:44:13,917 - INFO - question 605/1000 answer:A correct_answer:A True
+2025-05-01 00:44:16,263 - INFO - answer: A
+2025-05-01 00:44:16,264 - INFO - question 606/1000 answer:A correct_answer:B False
+2025-05-01 00:44:19,054 - INFO - answer: A
+2025-05-01 00:44:19,055 - INFO - question 607/1000 answer:A correct_answer:A True
+2025-05-01 00:44:24,712 - INFO - answer: A
+2025-05-01 00:44:24,712 - INFO - question 608/1000 answer:A correct_answer:A True
+2025-05-01 00:44:28,994 - INFO - answer: B
+2025-05-01 00:44:28,994 - INFO - question 609/1000 answer:B correct_answer:B True
+2025-05-01 00:44:33,833 - INFO - answer: A
+2025-05-01 00:44:33,833 - INFO - question 610/1000 answer:A correct_answer:A True
+2025-05-01 00:44:36,132 - INFO - answer: A
+2025-05-01 00:44:36,132 - INFO - question 611/1000 answer:A correct_answer:A True
+2025-05-01 00:44:42,415 - INFO - answer: A
+2025-05-01 00:44:42,415 - INFO - question 612/1000 answer:A correct_answer:B False
+2025-05-01 00:44:46,101 - INFO - answer: B
+2025-05-01 00:44:46,101 - INFO - question 613/1000 answer:B correct_answer:B True
+2025-05-01 00:44:53,288 - INFO - answer: B
+2025-05-01 00:44:53,289 - INFO - question 614/1000 answer:B correct_answer:C False
+2025-05-01 00:44:56,415 - INFO - answer: A
+2025-05-01 00:44:56,415 - INFO - question 615/1000 answer:A correct_answer:A True
+2025-05-01 00:44:59,976 - INFO - answer: A
+2025-05-01 00:44:59,976 - INFO - question 616/1000 answer:A correct_answer:A True
+2025-05-01 00:45:05,423 - INFO - answer: B
+2025-05-01 00:45:05,423 - INFO - question 617/1000 answer:B correct_answer:B True
+2025-05-01 00:45:09,465 - INFO - answer: A
+2025-05-01 00:45:09,465 - INFO - question 618/1000 answer:A correct_answer:A True
+2025-05-01 00:45:16,649 - INFO - answer: A
+2025-05-01 00:45:16,650 - INFO - question 619/1000 answer:A correct_answer:A True
+2025-05-01 00:45:21,697 - INFO - answer: B
+2025-05-01 00:45:21,698 - INFO - question 620/1000 answer:B correct_answer:B True
+2025-05-01 00:45:25,525 - INFO - answer: A
+2025-05-01 00:45:25,526 - INFO - question 621/1000 answer:A correct_answer:A True
+2025-05-01 00:45:31,373 - INFO - answer: A
+2025-05-01 00:45:31,373 - INFO - question 622/1000 answer:A correct_answer:A True
+2025-05-01 00:45:36,374 - INFO - answer: A
+2025-05-01 00:45:36,374 - INFO - question 623/1000 answer:A correct_answer:A True
+2025-05-01 00:45:41,274 - INFO - answer: B
+2025-05-01 00:45:41,274 - INFO - question 624/1000 answer:B correct_answer:B True
+2025-05-01 00:45:44,803 - INFO - answer: A
+2025-05-01 00:45:44,803 - INFO - question 625/1000 answer:A correct_answer:A True
+2025-05-01 00:45:50,761 - INFO - answer: B
+2025-05-01 00:45:50,762 - INFO - question 626/1000 answer:B correct_answer:A False
+2025-05-01 00:45:56,253 - INFO - answer: B
+2025-05-01 00:45:56,253 - INFO - question 627/1000 answer:B correct_answer:B True
+2025-05-01 00:46:00,101 - INFO - answer: B
+2025-05-01 00:46:00,101 - INFO - question 628/1000 answer:B correct_answer:B True
+2025-05-01 00:46:03,309 - INFO - answer: A
+2025-05-01 00:46:03,309 - INFO - question 629/1000 answer:A correct_answer:A True
+2025-05-01 00:46:06,161 - INFO - answer: B
+2025-05-01 00:46:06,161 - INFO - question 630/1000 answer:B correct_answer:C False
+2025-05-01 00:46:14,159 - INFO - answer: A
+2025-05-01 00:46:14,159 - INFO - question 631/1000 answer:A correct_answer:A True
+2025-05-01 00:46:18,215 - INFO - answer: A
+2025-05-01 00:46:18,215 - INFO - question 632/1000 answer:A correct_answer:A True
+2025-05-01 00:46:23,112 - INFO - answer: B
+2025-05-01 00:46:23,112 - INFO - question 633/1000 answer:B correct_answer:B True
+2025-05-01 00:46:31,298 - INFO - answer: C
+2025-05-01 00:46:31,298 - INFO - question 634/1000 answer:C correct_answer:B False
+2025-05-01 00:46:34,024 - INFO - answer: B
+2025-05-01 00:46:34,024 - INFO - question 635/1000 answer:B correct_answer:B True
+2025-05-01 00:46:38,092 - INFO - answer: A
+2025-05-01 00:46:38,092 - INFO - question 636/1000 answer:A correct_answer:B False
+2025-05-01 00:46:42,191 - INFO - answer: A
+2025-05-01 00:46:42,192 - INFO - question 637/1000 answer:A correct_answer:A True
+2025-05-01 00:46:45,305 - INFO - answer: B
+2025-05-01 00:46:45,305 - INFO - question 638/1000 answer:B correct_answer:B True
+2025-05-01 00:46:52,524 - INFO - answer: A
+2025-05-01 00:46:52,524 - INFO - question 639/1000 answer:A correct_answer:A True
+2025-05-01 00:46:55,457 - INFO - answer: A
+2025-05-01 00:46:55,457 - INFO - question 640/1000 answer:A correct_answer:A True
+2025-05-01 00:46:58,489 - INFO - answer: B
+2025-05-01 00:46:58,489 - INFO - question 641/1000 answer:B correct_answer:B True
+2025-05-01 00:47:05,216 - INFO - answer: A
+2025-05-01 00:47:05,216 - INFO - question 642/1000 answer:A correct_answer:B False
+2025-05-01 00:47:09,268 - INFO - answer: B
+2025-05-01 00:47:09,268 - INFO - question 643/1000 answer:B correct_answer:B True
+2025-05-01 00:47:13,837 - INFO - answer: A
+2025-05-01 00:47:13,837 - INFO - question 644/1000 answer:A correct_answer:A True
+2025-05-01 00:47:16,311 - INFO - answer: B
+2025-05-01 00:47:16,312 - INFO - question 645/1000 answer:B correct_answer:B True
+2025-05-01 00:47:21,966 - INFO - answer: A
+2025-05-01 00:47:21,966 - INFO - question 646/1000 answer:A correct_answer:B False
+2025-05-01 00:47:28,381 - INFO - answer: A
+2025-05-01 00:47:28,381 - INFO - question 647/1000 answer:A correct_answer:A True
+2025-05-01 00:47:32,522 - INFO - answer: A
+2025-05-01 00:47:32,522 - INFO - question 648/1000 answer:A correct_answer:A True
+2025-05-01 00:47:35,255 - INFO - answer: B
+2025-05-01 00:47:35,255 - INFO - question 649/1000 answer:B correct_answer:B True
+2025-05-01 00:47:39,753 - INFO - answer: A
+2025-05-01 00:47:39,754 - INFO - question 650/1000 answer:A correct_answer:A True
+2025-05-01 00:47:45,215 - INFO - answer: A
+2025-05-01 00:47:45,215 - INFO - question 651/1000 answer:A correct_answer:B False
+2025-05-01 00:47:50,548 - INFO - answer: A
+2025-05-01 00:47:50,548 - INFO - question 652/1000 answer:A correct_answer:B False
+2025-05-01 00:47:56,851 - INFO - answer: A
+2025-05-01 00:47:56,851 - INFO - question 653/1000 answer:A correct_answer:B False
+2025-05-01 00:48:01,156 - INFO - answer: B
+2025-05-01 00:48:01,156 - INFO - question 654/1000 answer:B correct_answer:B True
+2025-05-01 00:48:05,205 - INFO - answer: A
+2025-05-01 00:48:05,206 - INFO - question 655/1000 answer:A correct_answer:A True
+2025-05-01 00:48:10,942 - INFO - answer: B
+2025-05-01 00:48:10,942 - INFO - question 656/1000 answer:B correct_answer:B True
+2025-05-01 00:48:14,487 - INFO - answer: B
+2025-05-01 00:48:14,487 - INFO - question 657/1000 answer:B correct_answer:B True
+2025-05-01 00:48:18,057 - INFO - answer: A
+2025-05-01 00:48:18,057 - INFO - question 658/1000 answer:A correct_answer:A True
+2025-05-01 00:48:25,790 - INFO - answer: A
+2025-05-01 00:48:25,790 - INFO - question 659/1000 answer:A correct_answer:A True
+2025-05-01 00:48:29,645 - INFO - answer: A
+2025-05-01 00:48:29,645 - INFO - question 660/1000 answer:A correct_answer:A True
+2025-05-01 00:48:32,569 - INFO - answer: A
+2025-05-01 00:48:32,570 - INFO - question 661/1000 answer:A correct_answer:A True
+2025-05-01 00:48:37,897 - INFO - answer: B
+2025-05-01 00:48:37,897 - INFO - question 662/1000 answer:B correct_answer:B True
+2025-05-01 00:48:42,800 - INFO - answer: B
+2025-05-01 00:48:42,800 - INFO - question 663/1000 answer:B correct_answer:B True
+2025-05-01 00:48:48,211 - INFO - answer: A
+2025-05-01 00:48:48,211 - INFO - question 664/1000 answer:A correct_answer:A True
+2025-05-01 00:48:52,165 - INFO - answer: A
+2025-05-01 00:48:52,165 - INFO - question 665/1000 answer:A correct_answer:A True
+2025-05-01 00:48:58,289 - INFO - answer: B
+2025-05-01 00:48:58,289 - INFO - question 666/1000 answer:B correct_answer:B True
+2025-05-01 00:49:03,290 - INFO - answer: A
+2025-05-01 00:49:03,290 - INFO - question 667/1000 answer:A correct_answer:A True
+2025-05-01 00:49:07,708 - INFO - answer: A
+2025-05-01 00:49:07,708 - INFO - question 668/1000 answer:A correct_answer:A True
+2025-05-01 00:49:16,053 - INFO - answer: A
+2025-05-01 00:49:16,053 - INFO - question 669/1000 answer:A correct_answer:B False
+2025-05-01 00:49:20,307 - INFO - answer: A
+2025-05-01 00:49:20,308 - INFO - question 670/1000 answer:A correct_answer:A True
+2025-05-01 00:49:22,610 - INFO - answer: B
+2025-05-01 00:49:22,610 - INFO - question 671/1000 answer:B correct_answer:B True
+2025-05-01 00:49:27,445 - INFO - answer: A
+2025-05-01 00:49:27,445 - INFO - question 672/1000 answer:A correct_answer:B False
+2025-05-01 00:49:30,947 - INFO - answer: B
+2025-05-01 00:49:30,948 - INFO - question 673/1000 answer:B correct_answer:B True
+2025-05-01 00:49:36,082 - INFO - answer: A
+2025-05-01 00:49:36,082 - INFO - question 674/1000 answer:A correct_answer:A True
+2025-05-01 00:49:39,967 - INFO - answer: A
+2025-05-01 00:49:39,967 - INFO - question 675/1000 answer:A correct_answer:A True
+2025-05-01 00:49:43,107 - INFO - answer: A
+2025-05-01 00:49:43,107 - INFO - question 676/1000 answer:A correct_answer:A True
+2025-05-01 00:49:47,872 - INFO - answer: A
+2025-05-01 00:49:47,873 - INFO - question 677/1000 answer:A correct_answer:A True
+2025-05-01 00:49:50,659 - INFO - answer: B
+2025-05-01 00:49:50,660 - INFO - question 678/1000 answer:B correct_answer:B True
+2025-05-01 00:49:55,246 - INFO - answer: o
+2025-05-01 00:49:55,246 - INFO - question 679/1000 answer:o correct_answer:A False
+2025-05-01 00:49:59,410 - INFO - answer: A
+2025-05-01 00:49:59,410 - INFO - question 680/1000 answer:A correct_answer:A True
+2025-05-01 00:50:03,205 - INFO - answer: A
+2025-05-01 00:50:03,205 - INFO - question 681/1000 answer:A correct_answer:A True
+2025-05-01 00:50:05,824 - INFO - answer: A
+2025-05-01 00:50:05,824 - INFO - question 682/1000 answer:A correct_answer:A True
+2025-05-01 00:50:12,211 - INFO - answer: B
+2025-05-01 00:50:12,211 - INFO - question 683/1000 answer:B correct_answer:A False
+2025-05-01 00:50:14,610 - INFO - answer: A
+2025-05-01 00:50:14,610 - INFO - question 684/1000 answer:A correct_answer:A True
+2025-05-01 00:50:19,024 - INFO - answer: B
+2025-05-01 00:50:19,024 - INFO - question 685/1000 answer:B correct_answer:B True
+2025-05-01 00:50:23,881 - INFO - answer: A
+2025-05-01 00:50:23,882 - INFO - question 686/1000 answer:A correct_answer:A True
+2025-05-01 00:50:28,071 - INFO - answer: A
+2025-05-01 00:50:28,071 - INFO - question 687/1000 answer:A correct_answer:A True
+2025-05-01 00:50:32,262 - INFO - answer: B
+2025-05-01 00:50:32,262 - INFO - question 688/1000 answer:B correct_answer:B True
+2025-05-01 00:50:37,947 - INFO - answer: B
+2025-05-01 00:50:37,947 - INFO - question 689/1000 answer:B correct_answer:B True
+2025-05-01 00:50:42,607 - INFO - answer: B
+2025-05-01 00:50:42,608 - INFO - question 690/1000 answer:B correct_answer:A False
+2025-05-01 00:50:47,355 - INFO - answer: A
+2025-05-01 00:50:47,355 - INFO - question 691/1000 answer:A correct_answer:A True
+2025-05-01 00:50:53,466 - INFO - answer: A
+2025-05-01 00:50:53,466 - INFO - question 692/1000 answer:A correct_answer:A True
+2025-05-01 00:51:00,811 - INFO - answer: B
+2025-05-01 00:51:00,811 - INFO - question 693/1000 answer:B correct_answer:B True
+2025-05-01 00:51:03,337 - INFO - answer: A
+2025-05-01 00:51:03,338 - INFO - question 694/1000 answer:A correct_answer:A True
+2025-05-01 00:51:05,951 - INFO - answer: A
+2025-05-01 00:51:05,951 - INFO - question 695/1000 answer:A correct_answer:A True
+2025-05-01 00:51:12,578 - INFO - answer: A
+2025-05-01 00:51:12,578 - INFO - question 696/1000 answer:A correct_answer:B False
+2025-05-01 00:51:16,232 - INFO - answer: A
+2025-05-01 00:51:16,232 - INFO - question 697/1000 answer:A correct_answer:A True
+2025-05-01 00:51:21,458 - INFO - answer: A
+2025-05-01 00:51:21,458 - INFO - question 698/1000 answer:A correct_answer:A True
+2025-05-01 00:51:25,896 - INFO - answer: A
+2025-05-01 00:51:25,896 - INFO - question 699/1000 answer:A correct_answer:A True
+2025-05-01 00:51:30,529 - INFO - answer: A
+2025-05-01 00:51:30,529 - INFO - question 700/1000 answer:A correct_answer:C False
+2025-05-01 00:51:33,787 - INFO - answer: A
+2025-05-01 00:51:33,788 - INFO - question 701/1000 answer:A correct_answer:A True
+2025-05-01 00:51:38,227 - INFO - answer: A
+2025-05-01 00:51:38,227 - INFO - question 702/1000 answer:A correct_answer:A True
+2025-05-01 00:51:43,949 - INFO - answer: A
+2025-05-01 00:51:43,949 - INFO - question 703/1000 answer:A correct_answer:A True
+2025-05-01 00:51:48,240 - INFO - answer: A
+2025-05-01 00:51:48,240 - INFO - question 704/1000 answer:A correct_answer:A True
+2025-05-01 00:51:51,298 - INFO - answer: A
+2025-05-01 00:51:51,299 - INFO - question 705/1000 answer:A correct_answer:A True
+2025-05-01 00:51:59,003 - INFO - answer: B
+2025-05-01 00:51:59,004 - INFO - question 706/1000 answer:B correct_answer:B True
+2025-05-01 00:52:05,438 - INFO - answer: A
+2025-05-01 00:52:05,438 - INFO - question 707/1000 answer:A correct_answer:A True
+2025-05-01 00:52:09,459 - INFO - answer: A
+2025-05-01 00:52:09,460 - INFO - question 708/1000 answer:A correct_answer:A True
+2025-05-01 00:52:12,411 - INFO - answer: B
+2025-05-01 00:52:12,411 - INFO - question 709/1000 answer:B correct_answer:B True
+2025-05-01 00:52:16,588 - INFO - answer: A
+2025-05-01 00:52:16,588 - INFO - question 710/1000 answer:A correct_answer:B False
+2025-05-01 00:52:20,697 - INFO - answer: B
+2025-05-01 00:52:20,698 - INFO - question 711/1000 answer:B correct_answer:B True
+2025-05-01 00:52:31,362 - INFO - answer: A
+2025-05-01 00:52:31,362 - INFO - question 712/1000 answer:A correct_answer:A True
+2025-05-01 00:52:40,623 - INFO - answer: o
+2025-05-01 00:52:40,624 - INFO - question 713/1000 answer:o correct_answer:B False
+2025-05-01 00:52:48,456 - INFO - answer: A
+2025-05-01 00:52:48,456 - INFO - question 714/1000 answer:A correct_answer:A True
+2025-05-01 00:52:54,411 - INFO - answer: B
+2025-05-01 00:52:54,412 - INFO - question 715/1000 answer:B correct_answer:B True
+2025-05-01 00:52:58,291 - INFO - answer: B
+2025-05-01 00:52:58,292 - INFO - question 716/1000 answer:B correct_answer:B True
+2025-05-01 00:53:03,178 - INFO - answer: A
+2025-05-01 00:53:03,179 - INFO - question 717/1000 answer:A correct_answer:A True
+2025-05-01 00:53:06,369 - INFO - answer: A
+2025-05-01 00:53:06,369 - INFO - question 718/1000 answer:A correct_answer:C False
+2025-05-01 00:53:11,292 - INFO - answer: B
+2025-05-01 00:53:11,292 - INFO - question 719/1000 answer:B correct_answer:B True
+2025-05-01 00:53:16,714 - INFO - answer: B
+2025-05-01 00:53:16,714 - INFO - question 720/1000 answer:B correct_answer:B True
+2025-05-01 00:53:22,907 - INFO - answer: A
+2025-05-01 00:53:22,907 - INFO - question 721/1000 answer:A correct_answer:C False
+2025-05-01 00:53:30,249 - INFO - answer: B
+2025-05-01 00:53:30,249 - INFO - question 722/1000 answer:B correct_answer:A False
+2025-05-01 00:53:33,797 - INFO - answer: A
+2025-05-01 00:53:33,797 - INFO - question 723/1000 answer:A correct_answer:A True
+2025-05-01 00:53:38,769 - INFO - answer: A
+2025-05-01 00:53:38,769 - INFO - question 724/1000 answer:A correct_answer:A True
+2025-05-01 00:53:43,189 - INFO - answer: A
+2025-05-01 00:53:43,190 - INFO - question 725/1000 answer:A correct_answer:A True
+2025-05-01 00:53:50,212 - INFO - answer: B
+2025-05-01 00:53:50,212 - INFO - question 726/1000 answer:B correct_answer:B True
+2025-05-01 00:53:53,044 - INFO - answer: A
+2025-05-01 00:53:53,044 - INFO - question 727/1000 answer:A correct_answer:A True
+2025-05-01 00:53:57,974 - INFO - answer: A
+2025-05-01 00:53:57,974 - INFO - question 728/1000 answer:A correct_answer:A True
+2025-05-01 00:54:05,299 - INFO - answer: A
+2025-05-01 00:54:05,299 - INFO - question 729/1000 answer:A correct_answer:C False
+2025-05-01 00:54:09,911 - INFO - answer: B
+2025-05-01 00:54:09,912 - INFO - question 730/1000 answer:B correct_answer:B True
+2025-05-01 00:54:16,455 - INFO - answer: B
+2025-05-01 00:54:16,455 - INFO - question 731/1000 answer:B correct_answer:B True
+2025-05-01 00:54:18,789 - INFO - answer: B
+2025-05-01 00:54:18,789 - INFO - question 732/1000 answer:B correct_answer:B True
+2025-05-01 00:54:21,779 - INFO - answer: B
+2025-05-01 00:54:21,780 - INFO - question 733/1000 answer:B correct_answer:B True
+2025-05-01 00:54:27,204 - INFO - answer: A
+2025-05-01 00:54:27,204 - INFO - question 734/1000 answer:A correct_answer:C False
+2025-05-01 00:54:31,311 - INFO - answer: A
+2025-05-01 00:54:31,311 - INFO - question 735/1000 answer:A correct_answer:A True
+2025-05-01 00:54:36,101 - INFO - answer: A
+2025-05-01 00:54:36,101 - INFO - question 736/1000 answer:A correct_answer:C False
+2025-05-01 00:54:41,970 - INFO - answer: A
+2025-05-01 00:54:41,971 - INFO - question 737/1000 answer:A correct_answer:A True
+2025-05-01 00:54:48,683 - INFO - answer: B
+2025-05-01 00:54:48,683 - INFO - question 738/1000 answer:B correct_answer:B True
+2025-05-01 00:54:52,888 - INFO - answer: A
+2025-05-01 00:54:52,888 - INFO - question 739/1000 answer:A correct_answer:A True
+2025-05-01 00:54:59,329 - INFO - answer: A
+2025-05-01 00:54:59,330 - INFO - question 740/1000 answer:A correct_answer:B False
+2025-05-01 00:55:03,150 - INFO - answer: A
+2025-05-01 00:55:03,150 - INFO - question 741/1000 answer:A correct_answer:A True
+2025-05-01 00:55:07,861 - INFO - answer: A
+2025-05-01 00:55:07,861 - INFO - question 742/1000 answer:A correct_answer:A True
+2025-05-01 00:55:14,773 - INFO - answer: B
+2025-05-01 00:55:14,774 - INFO - question 743/1000 answer:B correct_answer:B True
+2025-05-01 00:55:17,705 - INFO - answer: B
+2025-05-01 00:55:17,705 - INFO - question 744/1000 answer:B correct_answer:B True
+2025-05-01 00:55:21,959 - INFO - answer: A
+2025-05-01 00:55:21,960 - INFO - question 745/1000 answer:A correct_answer:A True
+2025-05-01 00:55:27,535 - INFO - answer: B
+2025-05-01 00:55:27,536 - INFO - question 746/1000 answer:B correct_answer:B True
+2025-05-01 00:55:30,822 - INFO - answer: A
+2025-05-01 00:55:30,823 - INFO - question 747/1000 answer:A correct_answer:A True
+2025-05-01 00:55:35,819 - INFO - answer: A
+2025-05-01 00:55:35,819 - INFO - question 748/1000 answer:A correct_answer:A True
+2025-05-01 00:55:42,958 - INFO - answer: A
+2025-05-01 00:55:42,958 - INFO - question 749/1000 answer:A correct_answer:C False
+2025-05-01 00:55:48,046 - INFO - answer: A
+2025-05-01 00:55:48,046 - INFO - question 750/1000 answer:A correct_answer:A True
+2025-05-01 00:55:53,291 - INFO - answer: A
+2025-05-01 00:55:53,291 - INFO - question 751/1000 answer:A correct_answer:A True
+2025-05-01 00:55:59,712 - INFO - answer: B
+2025-05-01 00:55:59,712 - INFO - question 752/1000 answer:B correct_answer:C False
+2025-05-01 00:56:06,984 - INFO - answer: B
+2025-05-01 00:56:06,984 - INFO - question 753/1000 answer:B correct_answer:B True
+2025-05-01 00:56:14,598 - INFO - answer: A
+2025-05-01 00:56:14,599 - INFO - question 754/1000 answer:A correct_answer:A True
+2025-05-01 00:56:18,806 - INFO - answer: A
+2025-05-01 00:56:18,806 - INFO - question 755/1000 answer:A correct_answer:A True
+2025-05-01 00:56:21,243 - INFO - answer: A
+2025-05-01 00:56:21,243 - INFO - question 756/1000 answer:A correct_answer:A True
+2025-05-01 00:56:26,031 - INFO - answer: A
+2025-05-01 00:56:26,031 - INFO - question 757/1000 answer:A correct_answer:A True
+2025-05-01 00:56:32,573 - INFO - answer: B
+2025-05-01 00:56:32,573 - INFO - question 758/1000 answer:B correct_answer:B True
+2025-05-01 00:56:37,341 - INFO - answer: A
+2025-05-01 00:56:37,341 - INFO - question 759/1000 answer:A correct_answer:A True
+2025-05-01 00:56:40,079 - INFO - answer: A
+2025-05-01 00:56:40,080 - INFO - question 760/1000 answer:A correct_answer:C False
+2025-05-01 00:56:47,387 - INFO - answer: B
+2025-05-01 00:56:47,387 - INFO - question 761/1000 answer:B correct_answer:A False
+2025-05-01 00:56:53,269 - INFO - answer: B
+2025-05-01 00:56:53,269 - INFO - question 762/1000 answer:B correct_answer:B True
+2025-05-01 00:56:56,809 - INFO - answer: B
+2025-05-01 00:56:56,810 - INFO - question 763/1000 answer:B correct_answer:B True
+2025-05-01 00:57:00,098 - INFO - answer: A
+2025-05-01 00:57:00,098 - INFO - question 764/1000 answer:A correct_answer:C False
+2025-05-01 00:57:04,813 - INFO - answer: B
+2025-05-01 00:57:04,814 - INFO - question 765/1000 answer:B correct_answer:B True
+2025-05-01 00:57:10,311 - INFO - answer: A
+2025-05-01 00:57:10,311 - INFO - question 766/1000 answer:A correct_answer:A True
+2025-05-01 00:57:14,899 - INFO - answer: C
+2025-05-01 00:57:14,899 - INFO - question 767/1000 answer:C correct_answer:C True
+2025-05-01 00:57:24,265 - INFO - answer: B
+2025-05-01 00:57:24,265 - INFO - question 768/1000 answer:B correct_answer:B True
+2025-05-01 00:57:31,037 - INFO - answer: A
+2025-05-01 00:57:31,038 - INFO - question 769/1000 answer:A correct_answer:C False
+2025-05-01 00:57:34,643 - INFO - answer: A
+2025-05-01 00:57:34,644 - INFO - question 770/1000 answer:A correct_answer:B False
+2025-05-01 00:57:39,104 - INFO - answer: A
+2025-05-01 00:57:39,105 - INFO - question 771/1000 answer:A correct_answer:A True
+2025-05-01 00:57:42,748 - INFO - answer: A
+2025-05-01 00:57:42,748 - INFO - question 772/1000 answer:A correct_answer:A True
+2025-05-01 00:57:47,239 - INFO - answer: B
+2025-05-01 00:57:47,240 - INFO - question 773/1000 answer:B correct_answer:B True
+2025-05-01 00:57:52,128 - INFO - answer: B
+2025-05-01 00:57:52,128 - INFO - question 774/1000 answer:B correct_answer:B True
+2025-05-01 00:57:56,107 - INFO - answer: A
+2025-05-01 00:57:56,107 - INFO - question 775/1000 answer:A correct_answer:A True
+2025-05-01 00:58:02,641 - INFO - answer: A
+2025-05-01 00:58:02,641 - INFO - question 776/1000 answer:A correct_answer:C False
+2025-05-01 00:58:08,932 - INFO - answer: A
+2025-05-01 00:58:08,932 - INFO - question 777/1000 answer:A correct_answer:A True
+2025-05-01 00:58:12,515 - INFO - answer: B
+2025-05-01 00:58:12,515 - INFO - question 778/1000 answer:B correct_answer:B True
+2025-05-01 00:58:15,744 - INFO - answer: A
+2025-05-01 00:58:15,744 - INFO - question 779/1000 answer:A correct_answer:A True
+2025-05-01 00:58:20,821 - INFO - answer: A
+2025-05-01 00:58:20,821 - INFO - question 780/1000 answer:A correct_answer:A True
+2025-05-01 00:58:25,004 - INFO - answer: A
+2025-05-01 00:58:25,005 - INFO - question 781/1000 answer:A correct_answer:A True
+2025-05-01 00:58:29,174 - INFO - answer: A
+2025-05-01 00:58:29,174 - INFO - question 782/1000 answer:A correct_answer:A True
+2025-05-01 00:58:36,961 - INFO - answer: A
+2025-05-01 00:58:36,961 - INFO - question 783/1000 answer:A correct_answer:C False
+2025-05-01 00:58:40,969 - INFO - answer: B
+2025-05-01 00:58:40,969 - INFO - question 784/1000 answer:B correct_answer:B True
+2025-05-01 00:58:44,444 - INFO - answer: A
+2025-05-01 00:58:44,445 - INFO - question 785/1000 answer:A correct_answer:A True
+2025-05-01 00:58:50,491 - INFO - answer: A
+2025-05-01 00:58:50,491 - INFO - question 786/1000 answer:A correct_answer:C False
+2025-05-01 00:58:55,824 - INFO - answer: A
+2025-05-01 00:58:55,825 - INFO - question 787/1000 answer:A correct_answer:A True
+2025-05-01 00:58:58,466 - INFO - answer: B
+2025-05-01 00:58:58,467 - INFO - question 788/1000 answer:B correct_answer:B True
+2025-05-01 00:59:03,646 - INFO - answer: B
+2025-05-01 00:59:03,646 - INFO - question 789/1000 answer:B correct_answer:B True
+2025-05-01 00:59:08,556 - INFO - answer: B
+2025-05-01 00:59:08,556 - INFO - question 790/1000 answer:B correct_answer:B True
+2025-05-01 00:59:13,336 - INFO - answer: B
+2025-05-01 00:59:13,336 - INFO - question 791/1000 answer:B correct_answer:B True
+2025-05-01 00:59:20,260 - INFO - answer: A
+2025-05-01 00:59:20,260 - INFO - question 792/1000 answer:A correct_answer:B False
+2025-05-01 00:59:28,782 - INFO - answer: B
+2025-05-01 00:59:28,782 - INFO - question 793/1000 answer:B correct_answer:B True
+2025-05-01 00:59:31,336 - INFO - answer: B
+2025-05-01 00:59:31,336 - INFO - question 794/1000 answer:B correct_answer:B True
+2025-05-01 00:59:34,326 - INFO - answer: A
+2025-05-01 00:59:34,326 - INFO - question 795/1000 answer:A correct_answer:A True
+2025-05-01 00:59:37,709 - INFO - answer: B
+2025-05-01 00:59:37,709 - INFO - question 796/1000 answer:B correct_answer:B True
+2025-05-01 00:59:42,925 - INFO - answer: B
+2025-05-01 00:59:42,925 - INFO - question 797/1000 answer:B correct_answer:B True
+2025-05-01 00:59:46,314 - INFO - answer: B
+2025-05-01 00:59:46,314 - INFO - question 798/1000 answer:B correct_answer:A False
+2025-05-01 00:59:51,724 - INFO - answer: A
+2025-05-01 00:59:51,725 - INFO - question 799/1000 answer:A correct_answer:C False
+2025-05-01 00:59:56,238 - INFO - answer: A
+2025-05-01 00:59:56,238 - INFO - question 800/1000 answer:A correct_answer:A True
+2025-05-01 01:00:01,279 - INFO - answer: A
+2025-05-01 01:00:01,279 - INFO - question 801/1000 answer:A correct_answer:A True
+2025-05-01 01:00:05,224 - INFO - answer: A
+2025-05-01 01:00:05,224 - INFO - question 802/1000 answer:A correct_answer:C False
+2025-05-01 01:00:09,123 - INFO - answer: A
+2025-05-01 01:00:09,124 - INFO - question 803/1000 answer:A correct_answer:A True
+2025-05-01 01:00:12,654 - INFO - answer: A
+2025-05-01 01:00:12,654 - INFO - question 804/1000 answer:A correct_answer:A True
+2025-05-01 01:00:15,846 - INFO - answer: A
+2025-05-01 01:00:15,847 - INFO - question 805/1000 answer:A correct_answer:A True
+2025-05-01 01:00:21,790 - INFO - answer: B
+2025-05-01 01:00:21,790 - INFO - question 806/1000 answer:B correct_answer:B True
+2025-05-01 01:00:24,772 - INFO - answer: A
+2025-05-01 01:00:24,773 - INFO - question 807/1000 answer:A correct_answer:A True
+2025-05-01 01:00:28,539 - INFO - answer: A
+2025-05-01 01:00:28,539 - INFO - question 808/1000 answer:A correct_answer:A True
+2025-05-01 01:00:32,797 - INFO - answer: A
+2025-05-01 01:00:32,797 - INFO - question 809/1000 answer:A correct_answer:A True
+2025-05-01 01:00:37,659 - INFO - answer: A
+2025-05-01 01:00:37,659 - INFO - question 810/1000 answer:A correct_answer:A True
+2025-05-01 01:00:42,342 - INFO - answer: B
+2025-05-01 01:00:42,343 - INFO - question 811/1000 answer:B correct_answer:B True
+2025-05-01 01:00:48,224 - INFO - answer: A
+2025-05-01 01:00:48,224 - INFO - question 812/1000 answer:A correct_answer:A True
+2025-05-01 01:00:53,387 - INFO - answer: B
+2025-05-01 01:00:53,387 - INFO - question 813/1000 answer:B correct_answer:B True
+2025-05-01 01:01:01,103 - INFO - answer: A
+2025-05-01 01:01:01,104 - INFO - question 814/1000 answer:A correct_answer:A True
+2025-05-01 01:01:03,533 - INFO - answer: A
+2025-05-01 01:01:03,533 - INFO - question 815/1000 answer:A correct_answer:A True
+2025-05-01 01:01:10,467 - INFO - answer: A
+2025-05-01 01:01:10,467 - INFO - question 816/1000 answer:A correct_answer:B False
+2025-05-01 01:01:15,532 - INFO - answer: A
+2025-05-01 01:01:15,532 - INFO - question 817/1000 answer:A correct_answer:A True
+2025-05-01 01:01:19,941 - INFO - answer: A
+2025-05-01 01:01:19,941 - INFO - question 818/1000 answer:A correct_answer:A True
+2025-05-01 01:01:23,567 - INFO - answer: A
+2025-05-01 01:01:23,568 - INFO - question 819/1000 answer:A correct_answer:A True
+2025-05-01 01:01:28,688 - INFO - answer: B
+2025-05-01 01:01:28,689 - INFO - question 820/1000 answer:B correct_answer:B True
+2025-05-01 01:01:33,148 - INFO - answer: A
+2025-05-01 01:01:33,149 - INFO - question 821/1000 answer:A correct_answer:A True
+2025-05-01 01:01:35,772 - INFO - answer: A
+2025-05-01 01:01:35,772 - INFO - question 822/1000 answer:A correct_answer:A True
+2025-05-01 01:01:42,022 - INFO - answer: A
+2025-05-01 01:01:42,022 - INFO - question 823/1000 answer:A correct_answer:A True
+2025-05-01 01:01:46,402 - INFO - answer: B
+2025-05-01 01:01:46,402 - INFO - question 824/1000 answer:B correct_answer:B True
+2025-05-01 01:01:52,650 - INFO - answer: A
+2025-05-01 01:01:52,650 - INFO - question 825/1000 answer:A correct_answer:A True
+2025-05-01 01:02:00,594 - INFO - answer: A
+2025-05-01 01:02:00,594 - INFO - question 826/1000 answer:A correct_answer:B False
+2025-05-01 01:02:05,263 - INFO - answer: A
+2025-05-01 01:02:05,263 - INFO - question 827/1000 answer:A correct_answer:A True
+2025-05-01 01:02:11,068 - INFO - answer: A
+2025-05-01 01:02:11,068 - INFO - question 828/1000 answer:A correct_answer:A True
+2025-05-01 01:02:18,065 - INFO - answer: A
+2025-05-01 01:02:18,066 - INFO - question 829/1000 answer:A correct_answer:C False
+2025-05-01 01:02:20,610 - INFO - answer: B
+2025-05-01 01:02:20,610 - INFO - question 830/1000 answer:B correct_answer:B True
+2025-05-01 01:02:25,035 - INFO - answer: A
+2025-05-01 01:02:25,035 - INFO - question 831/1000 answer:A correct_answer:A True
+2025-05-01 01:02:28,062 - INFO - answer: B
+2025-05-01 01:02:28,062 - INFO - question 832/1000 answer:B correct_answer:B True
+2025-05-01 01:02:31,116 - INFO - answer: A
+2025-05-01 01:02:31,117 - INFO - question 833/1000 answer:A correct_answer:A True
+2025-05-01 01:02:34,947 - INFO - answer: A
+2025-05-01 01:02:34,948 - INFO - question 834/1000 answer:A correct_answer:B False
+2025-05-01 01:02:40,045 - INFO - answer: A
+2025-05-01 01:02:40,045 - INFO - question 835/1000 answer:A correct_answer:A True
+2025-05-01 01:02:46,589 - INFO - answer: A
+2025-05-01 01:02:46,590 - INFO - question 836/1000 answer:A correct_answer:B False
+2025-05-01 01:02:50,026 - INFO - answer: A
+2025-05-01 01:02:50,026 - INFO - question 837/1000 answer:A correct_answer:A True
+2025-05-01 01:02:58,420 - INFO - answer: A
+2025-05-01 01:02:58,420 - INFO - question 838/1000 answer:A correct_answer:A True
+2025-05-01 01:03:02,219 - INFO - answer: B
+2025-05-01 01:03:02,219 - INFO - question 839/1000 answer:B correct_answer:B True
+2025-05-01 01:03:05,406 - INFO - answer: B
+2025-05-01 01:03:05,407 - INFO - question 840/1000 answer:B correct_answer:B True
+2025-05-01 01:03:09,911 - INFO - answer: A
+2025-05-01 01:03:09,911 - INFO - question 841/1000 answer:A correct_answer:A True
+2025-05-01 01:03:15,931 - INFO - answer: A
+2025-05-01 01:03:15,931 - INFO - question 842/1000 answer:A correct_answer:B False
+2025-05-01 01:03:18,886 - INFO - answer: A
+2025-05-01 01:03:18,886 - INFO - question 843/1000 answer:A correct_answer:A True
+2025-05-01 01:03:25,305 - INFO - answer: o
+2025-05-01 01:03:25,306 - INFO - question 844/1000 answer:o correct_answer:A False
+2025-05-01 01:03:31,438 - INFO - answer: B
+2025-05-01 01:03:31,438 - INFO - question 845/1000 answer:B correct_answer:B True
+2025-05-01 01:03:33,619 - INFO - answer: B
+2025-05-01 01:03:33,619 - INFO - question 846/1000 answer:B correct_answer:B True
+2025-05-01 01:03:37,472 - INFO - answer: A
+2025-05-01 01:03:37,473 - INFO - question 847/1000 answer:A correct_answer:A True
+2025-05-01 01:03:42,043 - INFO - answer: A
+2025-05-01 01:03:42,043 - INFO - question 848/1000 answer:A correct_answer:A True
+2025-05-01 01:03:46,466 - INFO - answer: B
+2025-05-01 01:03:46,466 - INFO - question 849/1000 answer:B correct_answer:B True
+2025-05-01 01:03:53,067 - INFO - answer: A
+2025-05-01 01:03:53,067 - INFO - question 850/1000 answer:A correct_answer:B False
+2025-05-01 01:03:58,419 - INFO - answer: A
+2025-05-01 01:03:58,420 - INFO - question 851/1000 answer:A correct_answer:A True
+2025-05-01 01:04:03,642 - INFO - answer: A
+2025-05-01 01:04:03,642 - INFO - question 852/1000 answer:A correct_answer:A True
+2025-05-01 01:04:07,657 - INFO - answer: A
+2025-05-01 01:04:07,658 - INFO - question 853/1000 answer:A correct_answer:A True
+2025-05-01 01:04:13,030 - INFO - answer: A
+2025-05-01 01:04:13,030 - INFO - question 854/1000 answer:A correct_answer:A True
+2025-05-01 01:04:19,068 - INFO - answer: B
+2025-05-01 01:04:19,068 - INFO - question 855/1000 answer:B correct_answer:B True
+2025-05-01 01:04:21,481 - INFO - answer: B
+2025-05-01 01:04:21,482 - INFO - question 856/1000 answer:B correct_answer:A False
+2025-05-01 01:04:26,665 - INFO - answer: A
+2025-05-01 01:04:26,665 - INFO - question 857/1000 answer:A correct_answer:C False
+2025-05-01 01:04:30,589 - INFO - answer: A
+2025-05-01 01:04:30,590 - INFO - question 858/1000 answer:A correct_answer:A True
+2025-05-01 01:04:34,543 - INFO - answer: B
+2025-05-01 01:04:34,543 - INFO - question 859/1000 answer:B correct_answer:B True
+2025-05-01 01:04:42,032 - INFO - answer: A
+2025-05-01 01:04:42,032 - INFO - question 860/1000 answer:A correct_answer:A True
+2025-05-01 01:04:47,435 - INFO - answer: A
+2025-05-01 01:04:47,435 - INFO - question 861/1000 answer:A correct_answer:A True
+2025-05-01 01:04:50,972 - INFO - answer: A
+2025-05-01 01:04:50,973 - INFO - question 862/1000 answer:A correct_answer:A True
+2025-05-01 01:04:57,226 - INFO - answer: A
+2025-05-01 01:04:57,226 - INFO - question 863/1000 answer:A correct_answer:A True
+2025-05-01 01:05:01,918 - INFO - answer: A
+2025-05-01 01:05:01,919 - INFO - question 864/1000 answer:A correct_answer:A True
+2025-05-01 01:05:06,084 - INFO - answer: B
+2025-05-01 01:05:06,084 - INFO - question 865/1000 answer:B correct_answer:B True
+2025-05-01 01:05:12,184 - INFO - answer: B
+2025-05-01 01:05:12,184 - INFO - question 866/1000 answer:B correct_answer:B True
+2025-05-01 01:05:16,366 - INFO - answer: A
+2025-05-01 01:05:16,366 - INFO - question 867/1000 answer:A correct_answer:A True
+2025-05-01 01:05:22,364 - INFO - answer: B
+2025-05-01 01:05:22,364 - INFO - question 868/1000 answer:B correct_answer:A False
+2025-05-01 01:05:25,359 - INFO - answer: B
+2025-05-01 01:05:25,359 - INFO - question 869/1000 answer:B correct_answer:B True
+2025-05-01 01:05:31,725 - INFO - answer: A
+2025-05-01 01:05:31,725 - INFO - question 870/1000 answer:A correct_answer:A True
+2025-05-01 01:05:34,567 - INFO - answer: A
+2025-05-01 01:05:34,567 - INFO - question 871/1000 answer:A correct_answer:C False
+2025-05-01 01:05:38,354 - INFO - answer: A
+2025-05-01 01:05:38,354 - INFO - question 872/1000 answer:A correct_answer:B False
+2025-05-01 01:05:43,595 - INFO - answer: B
+2025-05-01 01:05:43,596 - INFO - question 873/1000 answer:B correct_answer:B True
+2025-05-01 01:05:46,079 - INFO - answer: B
+2025-05-01 01:05:46,079 - INFO - question 874/1000 answer:B correct_answer:B True
+2025-05-01 01:05:51,291 - INFO - answer: A
+2025-05-01 01:05:51,292 - INFO - question 875/1000 answer:A correct_answer:A True
+2025-05-01 01:05:55,440 - INFO - answer: A
+2025-05-01 01:05:55,440 - INFO - question 876/1000 answer:A correct_answer:A True
+2025-05-01 01:06:02,090 - INFO - answer: A
+2025-05-01 01:06:02,090 - INFO - question 877/1000 answer:A correct_answer:C False
+2025-05-01 01:06:07,162 - INFO - answer: A
+2025-05-01 01:06:07,162 - INFO - question 878/1000 answer:A correct_answer:A True
+2025-05-01 01:06:11,654 - INFO - answer: A
+2025-05-01 01:06:11,654 - INFO - question 879/1000 answer:A correct_answer:A True
+2025-05-01 01:06:16,272 - INFO - answer: B
+2025-05-01 01:06:16,273 - INFO - question 880/1000 answer:B correct_answer:A False
+2025-05-01 01:06:20,226 - INFO - answer: A
+2025-05-01 01:06:20,226 - INFO - question 881/1000 answer:A correct_answer:B False
+2025-05-01 01:06:27,310 - INFO - answer: A
+2025-05-01 01:06:27,311 - INFO - question 882/1000 answer:A correct_answer:A True
+2025-05-01 01:06:30,643 - INFO - answer: A
+2025-05-01 01:06:30,643 - INFO - question 883/1000 answer:A correct_answer:C False
+2025-05-01 01:06:37,900 - INFO - answer: A
+2025-05-01 01:06:37,900 - INFO - question 884/1000 answer:A correct_answer:A True
+2025-05-01 01:06:44,764 - INFO - answer: A
+2025-05-01 01:06:44,764 - INFO - question 885/1000 answer:A correct_answer:C False
+2025-05-01 01:06:53,992 - INFO - answer: A
+2025-05-01 01:06:53,992 - INFO - question 886/1000 answer:A correct_answer:A True
+2025-05-01 01:06:57,334 - INFO - answer: B
+2025-05-01 01:06:57,334 - INFO - question 887/1000 answer:B correct_answer:B True
+2025-05-01 01:07:03,654 - INFO - answer: B
+2025-05-01 01:07:03,654 - INFO - question 888/1000 answer:B correct_answer:A False
+2025-05-01 01:07:06,927 - INFO - answer: A
+2025-05-01 01:07:06,927 - INFO - question 889/1000 answer:A correct_answer:A True
+2025-05-01 01:07:12,962 - INFO - answer: B
+2025-05-01 01:07:12,962 - INFO - question 890/1000 answer:B correct_answer:B True
+2025-05-01 01:07:16,716 - INFO - answer: B
+2025-05-01 01:07:16,716 - INFO - question 891/1000 answer:B correct_answer:B True
+2025-05-01 01:07:23,095 - INFO - answer: A
+2025-05-01 01:07:23,095 - INFO - question 892/1000 answer:A correct_answer:C False
+2025-05-01 01:07:28,864 - INFO - answer: A
+2025-05-01 01:07:28,865 - INFO - question 893/1000 answer:A correct_answer:A True
+2025-05-01 01:07:35,639 - INFO - answer: A
+2025-05-01 01:07:35,640 - INFO - question 894/1000 answer:A correct_answer:A True
+2025-05-01 01:07:39,750 - INFO - answer: A
+2025-05-01 01:07:39,750 - INFO - question 895/1000 answer:A correct_answer:A True
+2025-05-01 01:07:44,283 - INFO - answer: B
+2025-05-01 01:07:44,283 - INFO - question 896/1000 answer:B correct_answer:B True
+2025-05-01 01:07:46,733 - INFO - answer: B
+2025-05-01 01:07:46,734 - INFO - question 897/1000 answer:B correct_answer:B True
+2025-05-01 01:07:51,030 - INFO - answer: A
+2025-05-01 01:07:51,030 - INFO - question 898/1000 answer:A correct_answer:A True
+2025-05-01 01:07:55,348 - INFO - answer: B
+2025-05-01 01:07:55,348 - INFO - question 899/1000 answer:B correct_answer:B True
+2025-05-01 01:07:57,481 - INFO - answer: B
+2025-05-01 01:07:57,481 - INFO - question 900/1000 answer:B correct_answer:B True
+2025-05-01 01:08:02,006 - INFO - answer: A
+2025-05-01 01:08:02,006 - INFO - question 901/1000 answer:A correct_answer:B False
+2025-05-01 01:08:05,346 - INFO - answer: B
+2025-05-01 01:08:05,346 - INFO - question 902/1000 answer:B correct_answer:B True
+2025-05-01 01:08:10,618 - INFO - answer: A
+2025-05-01 01:08:10,618 - INFO - question 903/1000 answer:A correct_answer:A True
+2025-05-01 01:08:15,658 - INFO - answer: A
+2025-05-01 01:08:15,659 - INFO - question 904/1000 answer:A correct_answer:A True
+2025-05-01 01:08:21,779 - INFO - answer: A
+2025-05-01 01:08:21,780 - INFO - question 905/1000 answer:A correct_answer:A True
+2025-05-01 01:08:24,685 - INFO - answer: A
+2025-05-01 01:08:24,685 - INFO - question 906/1000 answer:A correct_answer:A True
+2025-05-01 01:08:28,564 - INFO - answer: B
+2025-05-01 01:08:28,565 - INFO - question 907/1000 answer:B correct_answer:B True
+2025-05-01 01:08:32,360 - INFO - answer: A
+2025-05-01 01:08:32,360 - INFO - question 908/1000 answer:A correct_answer:C False
+2025-05-01 01:08:40,457 - INFO - answer: A
+2025-05-01 01:08:40,457 - INFO - question 909/1000 answer:A correct_answer:C False
+2025-05-01 01:08:42,439 - INFO - answer: A
+2025-05-01 01:08:42,440 - INFO - question 910/1000 answer:A correct_answer:C False
+2025-05-01 01:08:47,268 - INFO - answer: A
+2025-05-01 01:08:47,268 - INFO - question 911/1000 answer:A correct_answer:A True
+2025-05-01 01:08:50,709 - INFO - answer: A
+2025-05-01 01:08:50,709 - INFO - question 912/1000 answer:A correct_answer:A True
+2025-05-01 01:08:57,573 - INFO - answer: A
+2025-05-01 01:08:57,573 - INFO - question 913/1000 answer:A correct_answer:A True
+2025-05-01 01:09:03,613 - INFO - answer: B
+2025-05-01 01:09:03,614 - INFO - question 914/1000 answer:B correct_answer:B True
+2025-05-01 01:09:08,524 - INFO - answer: A
+2025-05-01 01:09:08,525 - INFO - question 915/1000 answer:A correct_answer:A True
+2025-05-01 01:09:15,198 - INFO - answer: A
+2025-05-01 01:09:15,198 - INFO - question 916/1000 answer:A correct_answer:B False
+2025-05-01 01:09:22,336 - INFO - answer: A
+2025-05-01 01:09:22,337 - INFO - question 917/1000 answer:A correct_answer:C False
+2025-05-01 01:09:26,327 - INFO - answer: A
+2025-05-01 01:09:26,327 - INFO - question 918/1000 answer:A correct_answer:A True
+2025-05-01 01:09:29,477 - INFO - answer: A
+2025-05-01 01:09:29,477 - INFO - question 919/1000 answer:A correct_answer:A True
+2025-05-01 01:09:32,885 - INFO - answer: A
+2025-05-01 01:09:32,885 - INFO - question 920/1000 answer:A correct_answer:A True
+2025-05-01 01:09:35,877 - INFO - answer: A
+2025-05-01 01:09:35,878 - INFO - question 921/1000 answer:A correct_answer:A True
+2025-05-01 01:09:41,380 - INFO - answer: A
+2025-05-01 01:09:41,380 - INFO - question 922/1000 answer:A correct_answer:A True
+2025-05-01 01:09:48,976 - INFO - answer: A
+2025-05-01 01:09:48,976 - INFO - question 923/1000 answer:A correct_answer:C False
+2025-05-01 01:09:54,250 - INFO - answer: A
+2025-05-01 01:09:54,250 - INFO - question 924/1000 answer:A correct_answer:A True
+2025-05-01 01:09:58,073 - INFO - answer: A
+2025-05-01 01:09:58,073 - INFO - question 925/1000 answer:A correct_answer:A True
+2025-05-01 01:10:01,933 - INFO - answer: B
+2025-05-01 01:10:01,933 - INFO - question 926/1000 answer:B correct_answer:B True
+2025-05-01 01:10:04,876 - INFO - answer: A
+2025-05-01 01:10:04,877 - INFO - question 927/1000 answer:A correct_answer:C False
+2025-05-01 01:10:09,565 - INFO - answer: A
+2025-05-01 01:10:09,565 - INFO - question 928/1000 answer:A correct_answer:A True
+2025-05-01 01:10:12,827 - INFO - answer: A
+2025-05-01 01:10:12,827 - INFO - question 929/1000 answer:A correct_answer:A True
+2025-05-01 01:10:17,617 - INFO - answer: A
+2025-05-01 01:10:17,617 - INFO - question 930/1000 answer:A correct_answer:A True
+2025-05-01 01:10:22,004 - INFO - answer: A
+2025-05-01 01:10:22,005 - INFO - question 931/1000 answer:A correct_answer:A True
+2025-05-01 01:10:24,539 - INFO - answer: A
+2025-05-01 01:10:24,539 - INFO - question 932/1000 answer:A correct_answer:A True
+2025-05-01 01:10:27,357 - INFO - answer: A
+2025-05-01 01:10:27,358 - INFO - question 933/1000 answer:A correct_answer:A True
+2025-05-01 01:10:32,007 - INFO - answer: B
+2025-05-01 01:10:32,008 - INFO - question 934/1000 answer:B correct_answer:B True
+2025-05-01 01:10:37,214 - INFO - answer: A
+2025-05-01 01:10:37,215 - INFO - question 935/1000 answer:A correct_answer:A True
+2025-05-01 01:10:43,423 - INFO - answer: B
+2025-05-01 01:10:43,423 - INFO - question 936/1000 answer:B correct_answer:B True
+2025-05-01 01:10:48,330 - INFO - answer: B
+2025-05-01 01:10:48,330 - INFO - question 937/1000 answer:B correct_answer:B True
+2025-05-01 01:10:52,882 - INFO - answer: A
+2025-05-01 01:10:52,883 - INFO - question 938/1000 answer:A correct_answer:A True
+2025-05-01 01:10:59,698 - INFO - answer: A
+2025-05-01 01:10:59,698 - INFO - question 939/1000 answer:A correct_answer:A True
+2025-05-01 01:11:03,885 - INFO - answer: B
+2025-05-01 01:11:03,885 - INFO - question 940/1000 answer:B correct_answer:B True
+2025-05-01 01:11:08,507 - INFO - answer: A
+2025-05-01 01:11:08,508 - INFO - question 941/1000 answer:A correct_answer:B False
+2025-05-01 01:11:14,789 - INFO - answer: A
+2025-05-01 01:11:14,789 - INFO - question 942/1000 answer:A correct_answer:A True
+2025-05-01 01:11:19,143 - INFO - answer: B
+2025-05-01 01:11:19,143 - INFO - question 943/1000 answer:B correct_answer:B True
+2025-05-01 01:11:23,501 - INFO - answer: A
+2025-05-01 01:11:23,501 - INFO - question 944/1000 answer:A correct_answer:A True
+2025-05-01 01:11:27,019 - INFO - answer: A
+2025-05-01 01:11:27,019 - INFO - question 945/1000 answer:A correct_answer:A True
+2025-05-01 01:11:32,431 - INFO - answer: B
+2025-05-01 01:11:32,432 - INFO - question 946/1000 answer:B correct_answer:B True
+2025-05-01 01:11:36,731 - INFO - answer: A
+2025-05-01 01:11:36,732 - INFO - question 947/1000 answer:A correct_answer:C False
+2025-05-01 01:11:42,947 - INFO - answer: A
+2025-05-01 01:11:42,947 - INFO - question 948/1000 answer:A correct_answer:A True
+2025-05-01 01:11:47,999 - INFO - answer: B
+2025-05-01 01:11:48,000 - INFO - question 949/1000 answer:B correct_answer:B True
+2025-05-01 01:11:55,160 - INFO - answer: A
+2025-05-01 01:11:55,160 - INFO - question 950/1000 answer:A correct_answer:B False
+2025-05-01 01:11:57,652 - INFO - answer: A
+2025-05-01 01:11:57,653 - INFO - question 951/1000 answer:A correct_answer:A True
+2025-05-01 01:12:00,210 - INFO - answer: B
+2025-05-01 01:12:00,210 - INFO - question 952/1000 answer:B correct_answer:B True
+2025-05-01 01:12:05,730 - INFO - answer: A
+2025-05-01 01:12:05,730 - INFO - question 953/1000 answer:A correct_answer:A True
+2025-05-01 01:12:08,062 - INFO - answer: B
+2025-05-01 01:12:08,062 - INFO - question 954/1000 answer:B correct_answer:B True
+2025-05-01 01:12:14,108 - INFO - answer: A
+2025-05-01 01:12:14,109 - INFO - question 955/1000 answer:A correct_answer:C False
+2025-05-01 01:12:18,490 - INFO - answer: B
+2025-05-01 01:12:18,490 - INFO - question 956/1000 answer:B correct_answer:B True
+2025-05-01 01:12:27,295 - INFO - answer: A
+2025-05-01 01:12:27,295 - INFO - question 957/1000 answer:A correct_answer:B False
+2025-05-01 01:12:32,113 - INFO - answer: A
+2025-05-01 01:12:32,113 - INFO - question 958/1000 answer:A correct_answer:A True
+2025-05-01 01:12:35,848 - INFO - answer: B
+2025-05-01 01:12:35,849 - INFO - question 959/1000 answer:B correct_answer:B True
+2025-05-01 01:12:39,814 - INFO - answer: B
+2025-05-01 01:12:39,814 - INFO - question 960/1000 answer:B correct_answer:A False
+2025-05-01 01:12:44,779 - INFO - answer: A
+2025-05-01 01:12:44,780 - INFO - question 961/1000 answer:A correct_answer:A True
+2025-05-01 01:12:50,177 - INFO - answer: A
+2025-05-01 01:12:50,178 - INFO - question 962/1000 answer:A correct_answer:A True
+2025-05-01 01:12:55,314 - INFO - answer: A
+2025-05-01 01:12:55,315 - INFO - question 963/1000 answer:A correct_answer:A True
+2025-05-01 01:13:02,112 - INFO - answer: A
+2025-05-01 01:13:02,112 - INFO - question 964/1000 answer:A correct_answer:A True
+2025-05-01 01:13:09,160 - INFO - answer: B
+2025-05-01 01:13:09,160 - INFO - question 965/1000 answer:B correct_answer:B True
+2025-05-01 01:13:13,485 - INFO - answer: A
+2025-05-01 01:13:13,485 - INFO - question 966/1000 answer:A correct_answer:C False
+2025-05-01 01:13:18,703 - INFO - answer: B
+2025-05-01 01:13:18,704 - INFO - question 967/1000 answer:B correct_answer:B True
+2025-05-01 01:13:23,329 - INFO - answer: B
+2025-05-01 01:13:23,329 - INFO - question 968/1000 answer:B correct_answer:B True
+2025-05-01 01:13:28,299 - INFO - answer: A
+2025-05-01 01:13:28,299 - INFO - question 969/1000 answer:A correct_answer:B False
+2025-05-01 01:13:31,000 - INFO - answer: B
+2025-05-01 01:13:31,000 - INFO - question 970/1000 answer:B correct_answer:C False
+2025-05-01 01:13:35,372 - INFO - answer: A
+2025-05-01 01:13:35,373 - INFO - question 971/1000 answer:A correct_answer:A True
+2025-05-01 01:13:38,925 - INFO - answer: A
+2025-05-01 01:13:38,925 - INFO - question 972/1000 answer:A correct_answer:A True
+2025-05-01 01:13:42,630 - INFO - answer: B
+2025-05-01 01:13:42,630 - INFO - question 973/1000 answer:B correct_answer:B True
+2025-05-01 01:13:48,433 - INFO - answer: A
+2025-05-01 01:13:48,433 - INFO - question 974/1000 answer:A correct_answer:A True
+2025-05-01 01:13:53,437 - INFO - answer: A
+2025-05-01 01:13:53,437 - INFO - question 975/1000 answer:A correct_answer:A True
+2025-05-01 01:14:00,071 - INFO - answer: B
+2025-05-01 01:14:00,071 - INFO - question 976/1000 answer:B correct_answer:B True
+2025-05-01 01:14:05,486 - INFO - answer: B
+2025-05-01 01:14:05,486 - INFO - question 977/1000 answer:B correct_answer:A False
+2025-05-01 01:14:09,576 - INFO - answer: A
+2025-05-01 01:14:09,576 - INFO - question 978/1000 answer:A correct_answer:C False
+2025-05-01 01:14:12,250 - INFO - answer: A
+2025-05-01 01:14:12,250 - INFO - question 979/1000 answer:A correct_answer:A True
+2025-05-01 01:14:15,275 - INFO - answer: A
+2025-05-01 01:14:15,276 - INFO - question 980/1000 answer:A correct_answer:A True
+2025-05-01 01:14:21,244 - INFO - answer: A
+2025-05-01 01:14:21,245 - INFO - question 981/1000 answer:A correct_answer:A True
+2025-05-01 01:14:25,776 - INFO - answer: A
+2025-05-01 01:14:25,777 - INFO - question 982/1000 answer:A correct_answer:A True
+2025-05-01 01:14:30,716 - INFO - answer: B
+2025-05-01 01:14:30,717 - INFO - question 983/1000 answer:B correct_answer:A False
+2025-05-01 01:14:33,618 - INFO - answer: A
+2025-05-01 01:14:33,619 - INFO - question 984/1000 answer:A correct_answer:A True
+2025-05-01 01:14:38,606 - INFO - answer: B
+2025-05-01 01:14:38,606 - INFO - question 985/1000 answer:B correct_answer:B True
+2025-05-01 01:14:43,647 - INFO - answer: B
+2025-05-01 01:14:43,648 - INFO - question 986/1000 answer:B correct_answer:B True
+2025-05-01 01:14:45,982 - INFO - answer: A
+2025-05-01 01:14:45,982 - INFO - question 987/1000 answer:A correct_answer:A True
+2025-05-01 01:14:49,533 - INFO - answer: A
+2025-05-01 01:14:49,534 - INFO - question 988/1000 answer:A correct_answer:A True
+2025-05-01 01:14:55,181 - INFO - answer: B
+2025-05-01 01:14:55,181 - INFO - question 989/1000 answer:B correct_answer:B True
+2025-05-01 01:14:58,166 - INFO - answer: B
+2025-05-01 01:14:58,167 - INFO - question 990/1000 answer:B correct_answer:B True
+2025-05-01 01:15:01,975 - INFO - answer: B
+2025-05-01 01:15:01,975 - INFO - question 991/1000 answer:B correct_answer:C False
+2025-05-01 01:15:07,097 - INFO - answer: A
+2025-05-01 01:15:07,097 - INFO - question 992/1000 answer:A correct_answer:A True
+2025-05-01 01:15:12,419 - INFO - answer: B
+2025-05-01 01:15:12,419 - INFO - question 993/1000 answer:B correct_answer:B True
+2025-05-01 01:15:15,764 - INFO - answer: B
+2025-05-01 01:15:15,765 - INFO - question 994/1000 answer:B correct_answer:B True
+2025-05-01 01:15:21,975 - INFO - answer: B
+2025-05-01 01:15:21,975 - INFO - question 995/1000 answer:B correct_answer:B True
+2025-05-01 01:15:27,887 - INFO - answer: B
+2025-05-01 01:15:27,887 - INFO - question 996/1000 answer:B correct_answer:B True
+2025-05-01 01:15:34,459 - INFO - answer: A
+2025-05-01 01:15:34,459 - INFO - question 997/1000 answer:A correct_answer:B False
+2025-05-01 01:15:43,543 - INFO - answer: B
+2025-05-01 01:15:43,544 - INFO - question 998/1000 answer:B correct_answer:B True
+2025-05-01 01:15:49,858 - INFO - answer: A
+2025-05-01 01:15:49,859 - INFO - question 999/1000 answer:A correct_answer:A True
+2025-05-01 01:15:52,723 - INFO - answer: B
+2025-05-01 01:15:52,723 - INFO - question 1000/1000 answer:B correct_answer:B True
+2025-05-01 01:15:52,723 - INFO - Total questions: 1000, correct: 776, accuracy: 0.776
+2025-05-01 01:15:52,723 - INFO - elapse_time: 4946.116917133331
+2025-05-01 01:15:52,730 - ERROR - No such comm target registered: jupyter.widget.control
+2025-05-01 01:15:52,731 - WARNING - No such comm: adecb08e-71ad-484f-ba3a-46a488aae680

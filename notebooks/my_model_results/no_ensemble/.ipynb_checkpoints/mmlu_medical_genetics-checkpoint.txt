@@ -1,0 +1,203 @@
+2025-05-01 17:58:08,850 - INFO - model: ../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-05-01 17:58:13,726 - INFO - answer: B
+2025-05-01 17:58:13,726 - INFO - question 1/100 answer:B correct_answer:B True
+2025-05-01 17:58:19,273 - INFO - answer: A
+2025-05-01 17:58:19,273 - INFO - question 2/100 answer:A correct_answer:A True
+2025-05-01 17:58:25,037 - INFO - answer: C
+2025-05-01 17:58:25,038 - INFO - question 3/100 answer:C correct_answer:A False
+2025-05-01 17:58:27,900 - INFO - answer: C
+2025-05-01 17:58:27,900 - INFO - question 4/100 answer:C correct_answer:C True
+2025-05-01 17:58:31,057 - INFO - answer: A
+2025-05-01 17:58:31,057 - INFO - question 5/100 answer:A correct_answer:A True
+2025-05-01 17:58:37,514 - INFO - answer: B
+2025-05-01 17:58:37,515 - INFO - question 6/100 answer:B correct_answer:B True
+2025-05-01 17:58:44,071 - INFO - answer: D
+2025-05-01 17:58:44,072 - INFO - question 7/100 answer:D correct_answer:D True
+2025-05-01 17:58:47,823 - INFO - answer: A
+2025-05-01 17:58:47,824 - INFO - question 8/100 answer:A correct_answer:C False
+2025-05-01 17:58:54,114 - INFO - answer: D
+2025-05-01 17:58:54,114 - INFO - question 9/100 answer:D correct_answer:D True
+2025-05-01 17:59:01,321 - INFO - answer: C
+2025-05-01 17:59:01,321 - INFO - question 10/100 answer:C correct_answer:C True
+2025-05-01 17:59:08,886 - INFO - answer: A
+2025-05-01 17:59:08,886 - INFO - question 11/100 answer:A correct_answer:A True
+2025-05-01 17:59:13,755 - INFO - answer: A
+2025-05-01 17:59:13,756 - INFO - question 12/100 answer:A correct_answer:A True
+2025-05-01 17:59:19,340 - INFO - answer: A
+2025-05-01 17:59:19,340 - INFO - question 13/100 answer:A correct_answer:A True
+2025-05-01 17:59:23,079 - INFO - answer: D
+2025-05-01 17:59:23,079 - INFO - question 14/100 answer:D correct_answer:D True
+2025-05-01 17:59:27,636 - INFO - answer: D
+2025-05-01 17:59:27,636 - INFO - question 15/100 answer:D correct_answer:D True
+2025-05-01 17:59:31,988 - INFO - answer: A
+2025-05-01 17:59:31,988 - INFO - question 16/100 answer:A correct_answer:A True
+2025-05-01 17:59:40,740 - INFO - answer: A
+2025-05-01 17:59:40,740 - INFO - question 17/100 answer:A correct_answer:A True
+2025-05-01 17:59:46,912 - INFO - answer: B
+2025-05-01 17:59:46,912 - INFO - question 18/100 answer:B correct_answer:B True
+2025-05-01 17:59:53,124 - INFO - answer: C
+2025-05-01 17:59:53,124 - INFO - question 19/100 answer:C correct_answer:C True
+2025-05-01 17:59:59,866 - INFO - answer: D
+2025-05-01 17:59:59,866 - INFO - question 20/100 answer:D correct_answer:D True
+2025-05-01 18:00:02,484 - INFO - answer: D
+2025-05-01 18:00:02,484 - INFO - question 21/100 answer:D correct_answer:D True
+2025-05-01 18:00:08,695 - INFO - answer: A
+2025-05-01 18:00:08,695 - INFO - question 22/100 answer:A correct_answer:A True
+2025-05-01 18:00:12,380 - INFO - answer: D
+2025-05-01 18:00:12,380 - INFO - question 23/100 answer:D correct_answer:D True
+2025-05-01 18:00:18,355 - INFO - answer: A
+2025-05-01 18:00:18,355 - INFO - question 24/100 answer:A correct_answer:A True
+2025-05-01 18:00:27,920 - INFO - answer: A
+2025-05-01 18:00:27,920 - INFO - question 25/100 answer:A correct_answer:A True
+2025-05-01 18:00:31,652 - INFO - answer: A
+2025-05-01 18:00:31,653 - INFO - question 26/100 answer:A correct_answer:A True
+2025-05-01 18:00:40,192 - INFO - answer: C
+2025-05-01 18:00:40,193 - INFO - question 27/100 answer:C correct_answer:B False
+2025-05-01 18:00:44,801 - INFO - answer: C
+2025-05-01 18:00:44,801 - INFO - question 28/100 answer:C correct_answer:C True
+2025-05-01 18:00:48,586 - INFO - answer: C
+2025-05-01 18:00:48,586 - INFO - question 29/100 answer:C correct_answer:B False
+2025-05-01 18:00:54,306 - INFO - answer: D
+2025-05-01 18:00:54,306 - INFO - question 30/100 answer:D correct_answer:D True
+2025-05-01 18:00:59,922 - INFO - answer: D
+2025-05-01 18:00:59,922 - INFO - question 31/100 answer:D correct_answer:A False
+2025-05-01 18:01:06,351 - INFO - answer: C
+2025-05-01 18:01:06,351 - INFO - question 32/100 answer:C correct_answer:C True
+2025-05-01 18:01:12,693 - INFO - answer: D
+2025-05-01 18:01:12,694 - INFO - question 33/100 answer:D correct_answer:D True
+2025-05-01 18:01:19,629 - INFO - answer: B
+2025-05-01 18:01:19,630 - INFO - question 34/100 answer:B correct_answer:B True
+2025-05-01 18:01:21,795 - INFO - answer: C
+2025-05-01 18:01:21,795 - INFO - question 35/100 answer:C correct_answer:B False
+2025-05-01 18:01:27,608 - INFO - answer: A
+2025-05-01 18:01:27,609 - INFO - question 36/100 answer:A correct_answer:A True
+2025-05-01 18:01:33,821 - INFO - answer: D
+2025-05-01 18:01:33,822 - INFO - question 37/100 answer:D correct_answer:A False
+2025-05-01 18:01:40,495 - INFO - answer: B
+2025-05-01 18:01:40,495 - INFO - question 38/100 answer:B correct_answer:B True
+2025-05-01 18:01:46,173 - INFO - answer: D
+2025-05-01 18:01:46,173 - INFO - question 39/100 answer:D correct_answer:D True
+2025-05-01 18:01:52,630 - INFO - answer: B
+2025-05-01 18:01:52,630 - INFO - question 40/100 answer:B correct_answer:B True
+2025-05-01 18:02:00,554 - INFO - answer: A
+2025-05-01 18:02:00,554 - INFO - question 41/100 answer:A correct_answer:A True
+2025-05-01 18:02:23,362 - INFO - answer: [invalid]
+2025-05-01 18:02:23,363 - INFO - question 42/100 answer:[invalid] correct_answer:C False
+2025-05-01 18:02:29,298 - INFO - answer: C
+2025-05-01 18:02:29,298 - INFO - question 43/100 answer:C correct_answer:C True
+2025-05-01 18:02:32,017 - INFO - answer: D
+2025-05-01 18:02:32,018 - INFO - question 44/100 answer:D correct_answer:D True
+2025-05-01 18:02:37,376 - INFO - answer: C
+2025-05-01 18:02:37,377 - INFO - question 45/100 answer:C correct_answer:C True
+2025-05-01 18:02:45,429 - INFO - answer: A
+2025-05-01 18:02:45,429 - INFO - question 46/100 answer:A correct_answer:A True
+2025-05-01 18:02:49,032 - INFO - answer: C
+2025-05-01 18:02:49,033 - INFO - question 47/100 answer:C correct_answer:C True
+2025-05-01 18:02:54,587 - INFO - answer: D
+2025-05-01 18:02:54,587 - INFO - question 48/100 answer:D correct_answer:D True
+2025-05-01 18:03:00,313 - INFO - answer: B
+2025-05-01 18:03:00,314 - INFO - question 49/100 answer:B correct_answer:C False
+2025-05-01 18:03:08,289 - INFO - answer: D
+2025-05-01 18:03:08,289 - INFO - question 50/100 answer:D correct_answer:D True
+2025-05-01 18:03:14,795 - INFO - answer: D
+2025-05-01 18:03:14,795 - INFO - question 51/100 answer:D correct_answer:D True
+2025-05-01 18:03:19,274 - INFO - answer: C
+2025-05-01 18:03:19,274 - INFO - question 52/100 answer:C correct_answer:C True
+2025-05-01 18:03:25,110 - INFO - answer: D
+2025-05-01 18:03:25,110 - INFO - question 53/100 answer:D correct_answer:D True
+2025-05-01 18:03:32,468 - INFO - answer: B
+2025-05-01 18:03:32,468 - INFO - question 54/100 answer:B correct_answer:B True
+2025-05-01 18:03:35,509 - INFO - answer: A
+2025-05-01 18:03:35,509 - INFO - question 55/100 answer:A correct_answer:A True
+2025-05-01 18:03:42,945 - INFO - answer: B
+2025-05-01 18:03:42,945 - INFO - question 56/100 answer:B correct_answer:B True
+2025-05-01 18:03:46,422 - INFO - answer: B
+2025-05-01 18:03:46,422 - INFO - question 57/100 answer:B correct_answer:B True
+2025-05-01 18:03:49,386 - INFO - answer: D
+2025-05-01 18:03:49,386 - INFO - question 58/100 answer:D correct_answer:D True
+2025-05-01 18:03:58,186 - INFO - answer: D
+2025-05-01 18:03:58,187 - INFO - question 59/100 answer:D correct_answer:A False
+2025-05-01 18:04:00,321 - INFO - answer: B
+2025-05-01 18:04:00,322 - INFO - question 60/100 answer:B correct_answer:B True
+2025-05-01 18:04:07,762 - INFO - answer: A
+2025-05-01 18:04:07,763 - INFO - question 61/100 answer:A correct_answer:A True
+2025-05-01 18:04:14,176 - INFO - answer: D
+2025-05-01 18:04:14,176 - INFO - question 62/100 answer:D correct_answer:D True
+2025-05-01 18:04:22,164 - INFO - answer: D
+2025-05-01 18:04:22,165 - INFO - question 63/100 answer:D correct_answer:C False
+2025-05-01 18:04:28,302 - INFO - answer: C
+2025-05-01 18:04:28,302 - INFO - question 64/100 answer:C correct_answer:C True
+2025-05-01 18:04:39,553 - INFO - answer: D
+2025-05-01 18:04:39,554 - INFO - question 65/100 answer:D correct_answer:A False
+2025-05-01 18:04:46,746 - INFO - answer: A
+2025-05-01 18:04:46,747 - INFO - question 66/100 answer:A correct_answer:A True
+2025-05-01 18:04:55,225 - INFO - answer: B
+2025-05-01 18:04:55,226 - INFO - question 67/100 answer:B correct_answer:B True
+2025-05-01 18:05:01,941 - INFO - answer: B
+2025-05-01 18:05:01,941 - INFO - question 68/100 answer:B correct_answer:B True
+2025-05-01 18:05:06,723 - INFO - answer: A
+2025-05-01 18:05:06,723 - INFO - question 69/100 answer:A correct_answer:A True
+2025-05-01 18:05:14,982 - INFO - answer: D
+2025-05-01 18:05:14,982 - INFO - question 70/100 answer:D correct_answer:D True
+2025-05-01 18:05:20,487 - INFO - answer: A
+2025-05-01 18:05:20,487 - INFO - question 71/100 answer:A correct_answer:B False
+2025-05-01 18:05:25,785 - INFO - answer: D
+2025-05-01 18:05:25,785 - INFO - question 72/100 answer:D correct_answer:D True
+2025-05-01 18:05:28,675 - INFO - answer: A
+2025-05-01 18:05:28,676 - INFO - question 73/100 answer:A correct_answer:A True
+2025-05-01 18:05:30,825 - INFO - answer: C
+2025-05-01 18:05:30,826 - INFO - question 74/100 answer:C correct_answer:C True
+2025-05-01 18:05:38,043 - INFO - answer: B
+2025-05-01 18:05:38,043 - INFO - question 75/100 answer:B correct_answer:B True
+2025-05-01 18:05:44,550 - INFO - answer: B
+2025-05-01 18:05:44,551 - INFO - question 76/100 answer:B correct_answer:B True
+2025-05-01 18:05:49,283 - INFO - answer: C
+2025-05-01 18:05:49,283 - INFO - question 77/100 answer:C correct_answer:C True
+2025-05-01 18:05:57,582 - INFO - answer: C
+2025-05-01 18:05:57,582 - INFO - question 78/100 answer:C correct_answer:C True
+2025-05-01 18:06:02,998 - INFO - answer: A
+2025-05-01 18:06:02,998 - INFO - question 79/100 answer:A correct_answer:A True
+2025-05-01 18:06:09,952 - INFO - answer: A
+2025-05-01 18:06:09,953 - INFO - question 80/100 answer:A correct_answer:A True
+2025-05-01 18:06:19,694 - INFO - answer: o
+2025-05-01 18:06:19,695 - INFO - question 81/100 answer:o correct_answer:B False
+2025-05-01 18:06:26,970 - INFO - answer: D
+2025-05-01 18:06:26,970 - INFO - question 82/100 answer:D correct_answer:D True
+2025-05-01 18:06:35,825 - INFO - answer: B
+2025-05-01 18:06:35,825 - INFO - question 83/100 answer:B correct_answer:B True
+2025-05-01 18:06:40,268 - INFO - answer: A
+2025-05-01 18:06:40,269 - INFO - question 84/100 answer:A correct_answer:A True
+2025-05-01 18:06:46,421 - INFO - answer: C
+2025-05-01 18:06:46,422 - INFO - question 85/100 answer:C correct_answer:C True
+2025-05-01 18:06:48,998 - INFO - answer: B
+2025-05-01 18:06:48,998 - INFO - question 86/100 answer:B correct_answer:B True
+2025-05-01 18:06:58,117 - INFO - answer: A
+2025-05-01 18:06:58,117 - INFO - question 87/100 answer:A correct_answer:A True
+2025-05-01 18:07:02,980 - INFO - answer: B
+2025-05-01 18:07:02,980 - INFO - question 88/100 answer:B correct_answer:B True
+2025-05-01 18:07:09,217 - INFO - answer: A
+2025-05-01 18:07:09,217 - INFO - question 89/100 answer:A correct_answer:D False
+2025-05-01 18:07:15,346 - INFO - answer: C
+2025-05-01 18:07:15,346 - INFO - question 90/100 answer:C correct_answer:C True
+2025-05-01 18:07:22,234 - INFO - answer: B
+2025-05-01 18:07:22,234 - INFO - question 91/100 answer:B correct_answer:B True
+2025-05-01 18:07:28,233 - INFO - answer: B
+2025-05-01 18:07:28,233 - INFO - question 92/100 answer:B correct_answer:B True
+2025-05-01 18:07:34,951 - INFO - answer: B
+2025-05-01 18:07:34,951 - INFO - question 93/100 answer:B correct_answer:B True
+2025-05-01 18:07:42,868 - INFO - answer: A
+2025-05-01 18:07:42,868 - INFO - question 94/100 answer:A correct_answer:A True
+2025-05-01 18:07:46,392 - INFO - answer: B
+2025-05-01 18:07:46,392 - INFO - question 95/100 answer:B correct_answer:B True
+2025-05-01 18:07:55,716 - INFO - answer: D
+2025-05-01 18:07:55,716 - INFO - question 96/100 answer:D correct_answer:D True
+2025-05-01 18:08:05,053 - INFO - answer: C
+2025-05-01 18:08:05,053 - INFO - question 97/100 answer:C correct_answer:C True
+2025-05-01 18:08:09,465 - INFO - answer: A
+2025-05-01 18:08:09,465 - INFO - question 98/100 answer:A correct_answer:D False
+2025-05-01 18:08:14,589 - INFO - answer: A
+2025-05-01 18:08:14,589 - INFO - question 99/100 answer:A correct_answer:A True
+2025-05-01 18:08:21,353 - INFO - answer: D
+2025-05-01 18:08:21,354 - INFO - question 100/100 answer:D correct_answer:D True
+2025-05-01 18:08:21,354 - INFO - Total questions: 100, correct: 84, accuracy: 0.84
+2025-05-01 18:08:21,354 - INFO - elapse_time: 612.5032353401184
