@@ -249,6 +249,7 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 	std::unordered_map<uint32_t, float> wordIndexToImpactScores; // wordIndex -> impactScore
 	std::unordered_map<uint32_t, uint32_t> wordIndexToPostingsProgress; // wordIndex -> postingsProgress (from 0 to len(posting) - 1)
 	
+	// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 
 	uint32_t wordIndex = 0;
 	for (uint32_t i = 0; i < words.size(); ++i) {
@@ -268,6 +269,9 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 
 		// std::cout << "word:" << word << " postings size: " << postingsAndImpactScore.first.size() << std::endl;
 	}
+
+	// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+	// this->timeCounter += time_end - time_begin;	
 
 	// WAND
 	float minScoreOfHeap = 0.0f;
@@ -310,13 +314,13 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 					if (posting.docId != firstDocId) { // d_p != d_0
 
 						// Advance all lists to d >= d_p
-						// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 						for (uint32_t j = 0; j < i; ++j) {
 							Cursor cursor_j = cursorMinHeap.top();
 							uint32_t wordIndex_j = cursor_j.wordIndex;
 							std::vector<Posting>& postings_j = vecPostingsLists[wordIndex_j];
 
 							cursorMinHeap.pop();
+
 							// Only if the last posting > d_p, progress the cursor. Otherwise, the postings of this word are all done
 							if (postings_j[postings_j.size() - 1].docId >= posting.docId) {
 								// Replaced by Straddle Linear Search
@@ -329,6 +333,8 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 								// 	wordIndexToPostingsProgress[wordIndex_j] += 1;
 								// }
 
+								// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+								
 								// Straddle linear search
 								uint32_t currentIndex = wordIndexToPostingsProgress[wordIndex_j];
 								uint32_t searchDocId = posting.docId;
@@ -372,11 +378,13 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 								}
 								wordIndexToPostingsProgress[wordIndex_j] = newProgress;
 
+								// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+								// this->timeCounter += time_end - time_begin;	
+
 								cursorMinHeap.push(Cursor(wordIndex_j, postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId));
 							}
+
 						}
-						// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-						// this->timeCounter += time_end - time_begin;	
 
 					}
 					else { // d_p == d_0
@@ -429,6 +437,7 @@ void SearchEngine::run() {
 	// std::string query = "junior orthopaedic";
 	std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
 	// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair department chairman attending physician. During case, resident inadvertently cuts flexor tendon. tendon repaired complication. attending tells resident patient fine, need report minor complication harm patient, he want make patient worry unnecessarily. He tells resident leave this complication operative report. Which following correct next action resident take?";
+	// std::string query = "A 67-year-old man with transitional cell carcinoma of the bladder comes to the physician because of a 2-day history of ringing sensation in his ear. He received this first course of neoadjuvant chemotherapy 1 week ago. Pure tone audiometry shows a sensorineural hearing loss of 45 dB. The expected beneficial effect of the drug that caused this patient's symptoms is most likely due to which of the following actions?";
 	// std::string query;
 	// std::getline(std::cin, query);
 
@@ -484,10 +493,10 @@ std::string SearchEngine::search(const std::string& query) {
 // 	std::chrono::steady_clock::time_point time_loadFinished = std::chrono::steady_clock::now();
 // 	std::cout << "Loading time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_loadFinished - time_begin).count() << "ms" << std::endl;
 
-// 	// engine.run();
+// 	engine.run();
 // 	//std::string query = "vitro studies antipeptic activity";
-// 	std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
-// 	std::cout << engine.search(query) << std::endl;
+// 	// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
+// 	// std::cout << engine.search(query) << std::endl;
 
 // 	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
 // 	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
