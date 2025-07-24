@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <tuple>
 #include <cstdint>
+#include <chrono>
 #include "searchEngine.h"
 
 
