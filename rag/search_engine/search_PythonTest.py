@@ -1,8 +1,12 @@
 import requests
 import time
 
+ip = "127.0.0.1" # "localhost"
+port = 8080
+endpoint = "search"
+
 def search(query):
-    response = requests.get("http://localhost:8080/search", params = {"q": query})
+    response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query})
     if response.status_code == 200:
         return response.text
     else:

@@ -2,6 +2,10 @@
 #include "httplib.h"
 #include "searchEngine.h"
 
+std::string ip = "127.0.0.1"; // "localhost"
+int port = 8080;
+std::string endpoint = "search";
+
 // int main() {
 //     std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 
@@ -29,7 +33,7 @@ int main() {
     SearchEngine searchEngine;
     searchEngine.load();
 
-    server.Get("/search", [&searchEngine] (const httplib::Request& req, httplib::Response& res) {
+    server.Get("/" + endpoint, [&searchEngine] (const httplib::Request& req, httplib::Response& res) {
         if (req.has_param("q")) {
             std::string query = req.get_param_value("q");
             std::string result = searchEngine.search(query);
@@ -41,8 +45,8 @@ int main() {
         }
     });
 
-    std::cout << "Running on http://localhost:8080/search?q=<query>\n";
+    std::cout << "Running on http://" << ip << ":" << port << "/search?q=<query>\n";
 
-    server.listen("localhost", 8080);
+    server.listen(ip, port);
 }
 
