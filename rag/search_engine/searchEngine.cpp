@@ -17,17 +17,20 @@
 int SearchEngine::calculateCounter = 0;
 std::chrono::steady_clock::duration SearchEngine::timeCounter;
 
+//std::string indexPath = "./";
+std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
+
 void SearchEngine::load() {
 	this->loadWords(); // load word postings index from disk
 	this->loadDocLengths();
 	this->loadDocOffsetTable();
 
-	wordPostingsFile.open("index_postings.bin");
+	wordPostingsFile.open(indexPath + "index_postings.bin");
 }
 
 void SearchEngine::loadDocLengths() {
 	std::ifstream docLengthsFile;
-	docLengthsFile.open("index_docLengths.bin");
+	docLengthsFile.open(indexPath + "index_docLengths.bin");
 
 	docLengthsFile.seekg(0, std::fstream::end);
 	uint64_t fileSize = docLengthsFile.tellg();
@@ -64,7 +67,7 @@ void SearchEngine::loadDocLengths() {
 
 void SearchEngine::loadWords() {
 	std::ifstream wordsFile;
-	wordsFile.open("index_words.bin");
+	wordsFile.open(indexPath + "index_words.bin");
 
 	// Get how many bytes the words.bin have
 	wordsFile.seekg(0, std::ifstream::end);
@@ -108,7 +111,7 @@ void SearchEngine::loadWords() {
 
 void SearchEngine::loadDocOffsetTable()  {
 	std::ifstream docOffsetTableFile;
-	docOffsetTableFile.open("index_docOffsetTable.bin");
+	docOffsetTableFile.open(indexPath + "index_docOffsetTable.bin");
 
 	// Get how many bytes the "index_docOffsetTable.bin" have
 	docOffsetTableFile.seekg(0, std::ifstream::end);
@@ -146,7 +149,7 @@ std::pair<std::string, std::string> SearchEngine::getDocData(uint32_t docId) {
 	DocumentOffset offsetData = this->docOffsetTable[docId - 1];
 
 	std::ifstream documentsFile;
-	documentsFile.open("index_documents.bin");
+	documentsFile.open(indexPath + "index_documents.bin");
 	documentsFile.seekg(offsetData.offset, std::ifstream::beg);
 
 	char* buffer = new char[offsetData.docNoLength];
