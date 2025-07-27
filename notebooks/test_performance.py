@@ -51,7 +51,6 @@ class TestPerformance():
 
         self.MAX_TOKEN_OUTPUT = 1024
         self.SPLIT = "test"
-        self.DATA_RANGE = None #range(680, 1273) #None #range(0, 100)
 
         regex_pattern=r"[\(\[]([A-Z])[\)\]]"
         self.regex = re.compile(regex_pattern)
@@ -267,7 +266,7 @@ class TestPerformance():
                 match = convert_dict[match]
         return match
             
-    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False):
+    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None):
 
         model_name = self.model.name_or_path.split("/")[-1]
         logging.basicConfig(
@@ -296,8 +295,8 @@ class TestPerformance():
             split = "train" # only train in PubMedQA
         
         data_list = dataset[split]
-        if self.DATA_RANGE != None:
-            data_list = data_list.select(self.DATA_RANGE)
+        if data_range != None:
+            data_list = data_list.select(data_range)
         count = 0
         correct_count = 0
         for data in data_list:
