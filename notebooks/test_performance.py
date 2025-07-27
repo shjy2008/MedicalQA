@@ -3,6 +3,27 @@ import torch
 import re
 import time
 import logging
+import requests
+
+prompt_RAG = '''
+You are a medical question answering assistant.
+
+The following context may or may not be useful. Use it only if it helps answer the question.
+
+Context:
+{context}
+
+Question:
+{question}
+
+{choices}
+'''
+
+prompt_normal = '''
+{question}
+
+{choices}
+'''
 
 class DatasetPath:
     MedQA = "GBaker/MedQA-USMLE-4-options"
@@ -30,7 +51,7 @@ class TestPerformance():
 
         self.MAX_TOKEN_OUTPUT = 1024
         self.SPLIT = "test"
-        self.DATA_RANGE = None #range(0, 100)
+        self.DATA_RANGE = None #range(680, 1273) #None #range(0, 100)
 
         regex_pattern=r"[\(\[]([A-Z])[\)\]]"
         self.regex = re.compile(regex_pattern)
@@ -64,8 +85,18 @@ class TestPerformance():
         
         return (question, choices, answer_key)
 
+    def get_RAG_context(self, query):
+        ip = "localhost"
+        port = 8080
+        endpoint = "search"
+        response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query})
+        if response.status_code == 200:
+            return response.text
+        else:
+            return f"HTTPError: {response.status_code} - {response.text}"
+
     
-    def test_MedQA_response(self):# Test apply_chat_template // https://huggingface.co/docs/transformers/main/en/chat_templating
+    def test_MedQA_response(self, use_RAG = True):# Test apply_chat_template // https://huggingface.co/docs/transformers/main/en/chat_templating
         print(self.model.name_or_path)
 
         def format_choices(choices):
@@ -96,10 +127,11 @@ class TestPerformance():
             text = tokenizer.batch_decode(outputs)[0]
             return text
 
-        prompt = f'''
-        {{question}} \n
-        {{choices}}
-        '''
+        if use_RAG:
+            prompt = prompt_RAG
+        else:
+            prompt = prompt_normal
+            
 
         examples = [
         # Training data index 0 (GBaker/MedQA-USMLE-4-options)
@@ -158,8 +190,12 @@ class TestPerformance():
 
         for example in examples:
             formated_choices = format_choices(example["choices"])
-    
-            model_prompt = prompt.format(question = example["question"], choices = formated_choices)
+
+            if use_RAG:
+                context = self.get_RAG_context(example["question"])
+                model_prompt = prompt.format(context = context, question = example["question"], choices = formated_choices)
+            else:
+                model_prompt = prompt.format(question = example["question"], choices = formated_choices)
     
             # print(model_prompt)
     
@@ -231,10 +267,11 @@ class TestPerformance():
                 match = convert_dict[match]
         return match
             
-    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False):
+    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False):
 
+        model_name = self.model.name_or_path.split("/")[-1]
         logging.basicConfig(
-            filename=f'{dataset_path.split("/")[-1]}{"_" + subset_name if subset_name != None else ""}.txt',      # Log file name
+            filename=f'{model_name} - {dataset_path.split("/")[-1]}{"_" + subset_name if subset_name != None else ""}.txt',      # Log file name
             filemode='a',                    # Append mode
             format='%(asctime)s - %(levelname)s - %(message)s',
             level=logging.INFO               # Log level
@@ -266,11 +303,22 @@ class TestPerformance():
         for data in data_list:
             question, choices, answer_key = self.get_question_info(data, dataset_path)
 
-            prompt = f'''\n{{question}}\n{{choices}}\n'''
+            # prompt = f'''\n{{question}}\n{{choices}}\n'''
+            
+            if use_RAG:
+                prompt = prompt_RAG
+            else:
+                prompt = prompt_normal
 
             formated_choices = self.format_choices(choices)
             
-            content = prompt.format(question = question, choices = formated_choices)
+            # content = prompt.format(question = question, choices = formated_choices)
+            
+            if use_RAG:
+                context = self.get_RAG_context(question)
+                content = prompt.format(context = context, question = question, choices = formated_choices)
+            else:
+                content = prompt.format(question = question, choices = formated_choices)
             
             # print("messages: ", messages)
             # break
