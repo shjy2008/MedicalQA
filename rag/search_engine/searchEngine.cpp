@@ -198,18 +198,21 @@ std::pair<std::vector<Posting>, float> SearchEngine::getWordPostings(const std::
 }
 
 inline SearchResult SearchEngine::calculateDocScore(std::vector<std::vector<Posting> >& vecPostingsLists, 
-						std::unordered_map<uint32_t, uint32_t>& wordIndexToPostingsProgress,
+						std::vector<uint32_t>& vecPostingsProgress,
 						std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor> >& cursorMinHeap) {
+
+	// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+
 	float currentScore = 0.0f;
 	uint32_t currentDocId = 0;
 	SearchResult result = SearchResult(currentDocId, currentScore);
 	uint32_t i = 0;
 	while (cursorMinHeap.size() > 0) {
-		Cursor cursor = cursorMinHeap.top();
+		const Cursor& cursor = cursorMinHeap.top();
 		uint32_t wordIndex = cursor.wordIndex;
 		std::vector<Posting>& postings = vecPostingsLists[wordIndex];
 		
-		Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
+		const Posting& posting = postings[vecPostingsProgress[wordIndex]];
 
 		uint32_t docCountContainWord = postings.size();
 		float idf = Utils::getIDF(docCountContainWord, this->totalDocuments);
@@ -224,12 +227,12 @@ inline SearchResult SearchEngine::calculateDocScore(std::vector<std::vector<Post
 
 			calculateCounter += 1;
 
-			wordIndexToPostingsProgress[wordIndex] += 1; // Advance the progress
+			vecPostingsProgress[wordIndex] += 1; // Advance the progress
 
 			cursorMinHeap.pop();
 
-			if (wordIndexToPostingsProgress[wordIndex] < postings.size()) {
-				cursorMinHeap.push(Cursor(wordIndex, postings[wordIndexToPostingsProgress[wordIndex]].docId));
+			if (vecPostingsProgress[wordIndex] < postings.size()) {
+				cursorMinHeap.push(Cursor(wordIndex, postings[vecPostingsProgress[wordIndex]].docId));
 			}
 		}
 		else {
@@ -240,6 +243,10 @@ inline SearchResult SearchEngine::calculateDocScore(std::vector<std::vector<Post
 	}
 
 	result = SearchResult(currentDocId, currentScore);
+
+	// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+	// this->timeCounter += time_end - time_begin;	
+	
 	return result;
 }
 
@@ -250,8 +257,7 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 
 	// DAAT
 	std::vector<std::vector<Posting> > vecPostingsLists; // [Postings, ...]
-	std::unordered_map<uint32_t, float> wordIndexToImpactScores; // wordIndex -> impactScore
-	std::unordered_map<uint32_t, uint32_t> wordIndexToPostingsProgress; // wordIndex -> postingsProgress (from 0 to len(posting) - 1)
+	std::vector<float> vecImpactScores; // wordIndex -> impactScore
 	
 	// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 
@@ -267,12 +273,12 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 			continue;
 		}
 		vecPostingsLists.push_back(postingsAndImpactScore.first);
-		wordIndexToImpactScores[wordIndex] = postingsAndImpactScore.second;
-		wordIndexToPostingsProgress[wordIndex] = 0;
+		vecImpactScores.push_back(postingsAndImpactScore.second);
 		++wordIndex;
 
 		// std::cout << "word:" << word << " postings size: " << postingsAndImpactScore.first.size() << std::endl;
 	}
+	std::vector<uint32_t> vecPostingsProgress(wordIndex, 0); // wordIndex -> postingsProgress (from 0 to len(posting) - 1)
 
 	// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
 	// this->timeCounter += time_end - time_begin;	
@@ -290,7 +296,7 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 		bool allFinished = false;
 
 		if (resultMinHeap.size() < topK) {
-			SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, cursorMinHeap);
+			SearchResult ret = this->calculateDocScore(vecPostingsLists, vecPostingsProgress, cursorMinHeap);
 			resultMinHeap.push(ret);
 			minScoreOfHeap = resultMinHeap.top().score;
 		}
@@ -301,25 +307,32 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 			uint32_t i = 0;
 			std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor>> cursorMinHeapCopy = cursorMinHeap;
 			while (cursorMinHeapCopy.size() > 0) {
-				Cursor curosr = cursorMinHeapCopy.top();
+				
+				// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+
+				const Cursor& curosr = cursorMinHeapCopy.top();
 				cursorMinHeapCopy.pop();
 				uint32_t wordIndex = curosr.wordIndex;
 				std::vector<Posting>& postings = vecPostingsLists[wordIndex]; // Notice that here need to use & reference, or will copy postings
 
-				Posting posting = postings[wordIndexToPostingsProgress[wordIndex]];
+				const Posting& posting = postings[vecPostingsProgress[wordIndex]];
 				
 				if (i == 0) {
 					firstDocId = posting.docId;
 				}
 
-				float impactScore = wordIndexToImpactScores[wordIndex];
+				float impactScore = vecImpactScores[wordIndex];
 				currentImpactScore += impactScore;
+
+				// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+				// this->timeCounter += time_end - time_begin;	
+				
 				if (currentImpactScore > minScoreOfHeap) {
 					if (posting.docId != firstDocId) { // d_p != d_0
 
 						// Advance all lists to d >= d_p
 						for (uint32_t j = 0; j < i; ++j) {
-							Cursor cursor_j = cursorMinHeap.top();
+							const Cursor& cursor_j = cursorMinHeap.top();
 							uint32_t wordIndex_j = cursor_j.wordIndex;
 							std::vector<Posting>& postings_j = vecPostingsLists[wordIndex_j];
 
@@ -340,7 +353,7 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 								// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 								
 								// Straddle linear search
-								uint32_t currentIndex = wordIndexToPostingsProgress[wordIndex_j];
+								uint32_t currentIndex = vecPostingsProgress[wordIndex_j];
 								uint32_t searchDocId = posting.docId;
 								uint32_t newProgress;
 								if (postings_j[currentIndex].docId >= searchDocId) {
@@ -380,19 +393,19 @@ std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::st
 										}
 									}
 								}
-								wordIndexToPostingsProgress[wordIndex_j] = newProgress;
+								vecPostingsProgress[wordIndex_j] = newProgress;
 
 								// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
 								// this->timeCounter += time_end - time_begin;	
 
-								cursorMinHeap.push(Cursor(wordIndex_j, postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId));
+								cursorMinHeap.push(Cursor(wordIndex_j, postings_j[vecPostingsProgress[wordIndex_j]].docId));
 							}
 
 						}
 
 					}
 					else { // d_p == d_0
-						SearchResult ret = this->calculateDocScore(vecPostingsLists, wordIndexToPostingsProgress, cursorMinHeap);
+						SearchResult ret = this->calculateDocScore(vecPostingsLists, vecPostingsProgress, cursorMinHeap);
 						if (ret.score > minScoreOfHeap) {
 							resultMinHeap.pop();
 							resultMinHeap.push(ret);
@@ -439,9 +452,13 @@ void SearchEngine::run() {
 	// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair";
 	// GBaker/MedQA-USMLE-4-options test index 0
 	// std::string query = "junior orthopaedic";
-	std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
+	// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
 	// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair department chairman attending physician. During case, resident inadvertently cuts flexor tendon. tendon repaired complication. attending tells resident patient fine, need report minor complication harm patient, he want make patient worry unnecessarily. He tells resident leave this complication operative report. Which following correct next action resident take?";
 	// std::string query = "A 67-year-old man with transitional cell carcinoma of the bladder comes to the physician because of a 2-day history of ringing sensation in his ear. He received this first course of neoadjuvant chemotherapy 1 week ago. Pure tone audiometry shows a sensorineural hearing loss of 45 dB. The expected beneficial effect of the drug that caused this patient's symptoms is most likely due to which of the following actions?";
+	// MedQA 30
+	// std::string query = "A 3-week-old male newborn is brought to the physician because of an inward turning of his left forefoot. He was born at 38 weeks' gestation by cesarean section because of breech presentation. The pregnancy was complicated by oligohydramnios. Examination shows concavity of the medial border of the left foot with a skin crease just below the ball of the great toe. The lateral border of the left foot is convex. The heel is in neutral position. Tickling the lateral border of the foot leads to correction of the deformity. The remainder of the examination shows no abnormalities. X-ray of the left foot shows an increased angle between the 1st and 2nd metatarsal bones. Which of the following is the most appropriate next step in the management of this patient?";
+	// MedQA 32
+	std::string query = "A 72-year-old woman is admitted to the intensive care unit for shortness of breath and palpitations. A cardiac catheterization is performed and measurements of the left ventricular volume and pressure at different points in the cardiac cycle are obtained. The patient's pressure-volume loop (gray) is shown with a normal pressure-volume loop (black) for comparison. Which of the following is the most likely underlying cause of this patient's symptoms?";
 	// std::string query;
 	// std::getline(std::cin, query);
 

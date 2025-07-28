@@ -70,7 +70,7 @@ public:
 	std::pair<std::vector<Posting>, float> getWordPostings(const std::string& word);
 
 	inline SearchResult calculateDocScore(std::vector<std::vector<Posting> >& vecPostingsLists, 
-						std::unordered_map<uint32_t, uint32_t>& wordIndexToPostingsProgress,
+						std::vector<uint32_t>& vecPostingsProgress,
 						std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor> >& cursorMinHeap);
 
 	// input: query (multiple words) e.g. italy commercial
