@@ -17,8 +17,8 @@
 int SearchEngine::calculateCounter = 0;
 std::chrono::steady_clock::duration SearchEngine::timeCounter;
 
-//std::string indexPath = "./";
-std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
+std::string indexPath = "./";
+// std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
 
 void SearchEngine::load() {
 	this->loadWords(); // load word postings index from disk
@@ -459,6 +459,8 @@ void SearchEngine::run() {
 	// std::string query = "A 3-week-old male newborn is brought to the physician because of an inward turning of his left forefoot. He was born at 38 weeks' gestation by cesarean section because of breech presentation. The pregnancy was complicated by oligohydramnios. Examination shows concavity of the medial border of the left foot with a skin crease just below the ball of the great toe. The lateral border of the left foot is convex. The heel is in neutral position. Tickling the lateral border of the foot leads to correction of the deformity. The remainder of the examination shows no abnormalities. X-ray of the left foot shows an increased angle between the 1st and 2nd metatarsal bones. Which of the following is the most appropriate next step in the management of this patient?";
 	// MedQA 32
 	std::string query = "A 72-year-old woman is admitted to the intensive care unit for shortness of breath and palpitations. A cardiac catheterization is performed and measurements of the left ventricular volume and pressure at different points in the cardiac cycle are obtained. The patient's pressure-volume loop (gray) is shown with a normal pressure-volume loop (black) for comparison. Which of the following is the most likely underlying cause of this patient's symptoms?";
+	// MedQA 10
+	// std::string query = "A 23-year-old woman comes to the physician because she is embarrassed about the appearance of her nails. She has no history of serious illness and takes no medications. She appears well. A photograph of the nails is shown. Which of the following additional findings is most likely in this patient?";
 	// std::string query;
 	// std::getline(std::cin, query);
 
@@ -487,43 +489,46 @@ void SearchEngine::run() {
 		std::string document = docData.second;
 
 		std::cout << std::endl << docNo << std::endl;
-		std::cout << std::endl << document << std::endl;
+		// std::cout << std::endl << document << std::endl;
 	}
 }
 
 std::string SearchEngine::search(const std::string& query) {
-	size_t topK = 3;
+	size_t topK = 10;
 	std::vector<SearchResult> vecDocIdScore = this->getSortedRelevantDocuments(query, topK);
 
-	std::string ret;
-	for (const auto& result : vecDocIdScore) {
+	std::string ret = "";
+	for (size_t i = 0; i < vecDocIdScore.size(); ++i) {
+		SearchResult result = vecDocIdScore[i];
 		std::pair<std::string, std::string> docData = this->getDocData(result.docId);
 		ret += docData.second;
-		ret += "\n\n";
+		if (i != vecDocIdScore.size() - 1) {
+			ret += "###RAG_DOC###"; // deliminator
+		}
 	}
 	return ret;
 }
 
-// int main() {
+int main() {
 	
-// 	std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+	std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 
-// 	SearchEngine engine;
-// 	engine.load();
+	SearchEngine engine;
+	engine.load();
 
-// 	std::chrono::steady_clock::time_point time_loadFinished = std::chrono::steady_clock::now();
-// 	std::cout << "Loading time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_loadFinished - time_begin).count() << "ms" << std::endl;
+	std::chrono::steady_clock::time_point time_loadFinished = std::chrono::steady_clock::now();
+	std::cout << "Loading time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_loadFinished - time_begin).count() << "ms" << std::endl;
 
-// 	engine.run();
-// 	//std::string query = "vitro studies antipeptic activity";
-// 	// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
-// 	// std::cout << engine.search(query) << std::endl;
+	engine.run();
+	//std::string query = "vitro studies antipeptic activity";
+	// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
+	// std::cout << engine.search(query) << std::endl;
 
-// 	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-// 	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
+	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
 
-// 	std::cout << "calculate counter:" << engine.calculateCounter << std::endl;
-// 	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
+	std::cout << "calculate counter:" << engine.calculateCounter << std::endl;
+	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
 
-// 	return 0;
-// }
+	return 0;
+}
