@@ -45,7 +45,7 @@ class ModelTrainer():
         print(f"---------- start loading model:{model_name} -----------")
         tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code = False)
         print("finish loading tokenizer")
-        model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code = False, 
+        model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code = False,
                                                     #  torch_dtype= torch.float16 # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
                                                      #torch_dtype = torch.bfloat16 if self.is_bf16_supported else torch.float16
                                                      torch_dtype = torch.float32
