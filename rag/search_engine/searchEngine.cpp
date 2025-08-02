@@ -17,8 +17,8 @@
 int SearchEngine::calculateCounter = 0;
 std::chrono::steady_clock::duration SearchEngine::timeCounter;
 
-std::string indexPath = "./";
-// std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
+// std::string indexPath = "./";
+std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
 
 void SearchEngine::load() {
 	this->loadWords(); // load word postings index from disk
@@ -509,26 +509,26 @@ std::string SearchEngine::search(const std::string& query) {
 	return ret;
 }
 
-int main() {
+// int main() {
 	
-	std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+// 	std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 
-	SearchEngine engine;
-	engine.load();
+// 	SearchEngine engine;
+// 	engine.load();
 
-	std::chrono::steady_clock::time_point time_loadFinished = std::chrono::steady_clock::now();
-	std::cout << "Loading time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_loadFinished - time_begin).count() << "ms" << std::endl;
+// 	std::chrono::steady_clock::time_point time_loadFinished = std::chrono::steady_clock::now();
+// 	std::cout << "Loading time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_loadFinished - time_begin).count() << "ms" << std::endl;
 
-	engine.run();
-	//std::string query = "vitro studies antipeptic activity";
-	// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
-	// std::cout << engine.search(query) << std::endl;
+// 	engine.run();
+// 	//std::string query = "vitro studies antipeptic activity";
+// 	// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
+// 	// std::cout << engine.search(query) << std::endl;
 
-	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
+// 	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+// 	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
 
-	std::cout << "calculate counter:" << engine.calculateCounter << std::endl;
-	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
+// 	std::cout << "calculate counter:" << engine.calculateCounter << std::endl;
+// 	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
 
-	return 0;
-}
+// 	return 0;
+// }
