@@ -35,8 +35,21 @@ int main() {
 
     server.Get("/" + endpoint, [&searchEngine] (const httplib::Request& req, httplib::Response& res) {
         if (req.has_param("q")) {
+            std::string result;
             std::string query = req.get_param_value("q");
-            std::string result = searchEngine.search(query);
+            if (req.has_param("k")) {
+                std::string topK_str = req.get_param_value("k");
+                try {
+                    size_t topK = std::stoul(topK_str);
+                    result = searchEngine.search(query, topK);
+                }
+                catch (const std::exception& e) {
+                    std::cerr << "Invalid value for k: " << topK_str << std::endl;
+                }
+            }
+            else {
+                result = searchEngine.search(query);
+            }
             res.set_content(result, "text/plain");
         }
         else {

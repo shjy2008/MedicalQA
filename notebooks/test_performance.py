@@ -4,6 +4,7 @@ import re
 import time
 import logging
 import requests
+from sentence_transformers import CrossEncoder
 
 prompt_RAG = '''
 You are a medical question answering assistant.
@@ -58,6 +59,14 @@ class TestPerformance():
 
         regex_pattern=r"[\(\[]([A-Z])[\)\]]"
         self.regex = re.compile(regex_pattern)
+        
+        self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
+        # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
+        # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-electra-base")
+
+        # RAG
+        self.topK_searchEngine = 10
+        self.topK_monoBERT = 3
 
 
     # input: a row of data in the dataset
@@ -92,12 +101,27 @@ class TestPerformance():
         ip = "localhost"
         port = 8080
         endpoint = "search"
-        response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query})
+        response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query, "k": self.topK_searchEngine})
         if response.status_code == 200:
-            return response.text
+            text = response.text
+            doc_list = text.split("###RAG_DOC###")
+            context = self.RAG_rerank(query, doc_list)
+            return context
         else:
             return f"HTTPError: {response.status_code} - {response.text}"
 
+    def RAG_rerank(self, query, doc_list):
+        context = ""
+        pair_list = [(query, doc) for doc in doc_list]
+        score_list = self.crossEncoder_model.predict(pair_list, show_progress_bar=False)
+        doc_score_list = list(zip(doc_list, score_list))
+        top_k = self.topK_monoBERT
+        top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)[:top_k]
+        for i in range(len(top_doc_score_list)):
+            context += top_doc_score_list[i][0]
+            context += "\n\n"
+        print("reranked top k score:", [doc_score[1] for doc_score in top_doc_score_list])
+        return context
     
     def test_MedQA_response(self, use_RAG = True):# Test apply_chat_template // https://huggingface.co/docs/transformers/main/en/chat_templating
         print(self.model.name_or_path)
@@ -240,8 +264,8 @@ class TestPerformance():
 
         answer = self.extract_answer(text).strip("()")
         
-        print(f"answer: {answer}")
-        logging.info(f"answer: {answer}")
+        # print(f"answer: {answer}")
+        # logging.info(f"answer: {answer}")
         
         return answer
 
@@ -272,8 +296,12 @@ class TestPerformance():
                 match = convert_dict[match]
         return match
             
-    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None):
-
+    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, topK_searchEngine = None, topK_monoBERT = None):
+        if topK_searchEngine != None:
+            self.topK_searchEngine = topK_searchEngine
+        if topK_monoBERT != None:
+            self.topK_monoBERT = topK_monoBERT
+        
         model_name = self.model.name_or_path.split("/")[-1]
         logging.basicConfig(
             filename=f'{model_name} - {dataset_path.split("/")[-1]}{"_" + subset_name if subset_name != None else ""}.txt',      # Log file name
@@ -354,8 +382,12 @@ class TestPerformance():
         
             count += 1
 
-            print(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
-            logging.info(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+            if data_range != None:
+                print(f"question {count}/{len(data_list)} num:{data_range[count - 1] + 1} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+                logging.info(f"question {count}/{len(data_list)} num:{data_range[count - 1] + 1} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+            else:
+                print(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+                logging.info(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
         
         accuracy = correct_count / count
         print(f"Total questions: {count}, correct: {correct_count}, accuracy: {accuracy}")

@@ -493,8 +493,7 @@ void SearchEngine::run() {
 	}
 }
 
-std::string SearchEngine::search(const std::string& query) {
-	size_t topK = 10;
+std::string SearchEngine::search(const std::string& query, size_t topK) {
 	std::vector<SearchResult> vecDocIdScore = this->getSortedRelevantDocuments(query, topK);
 
 	std::string ret = "";
