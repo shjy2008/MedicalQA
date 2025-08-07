@@ -5,6 +5,8 @@ import time
 import logging
 import requests
 from sentence_transformers import CrossEncoder
+from FlagEmbedding import FlagReranker
+from sentence_transformers import SparseEncoder
 
 prompt_RAG = '''
 You are a medical question answering assistant.
@@ -60,12 +62,16 @@ class TestPerformance():
         regex_pattern=r"[\(\[]([A-Z])[\)\]]"
         self.regex = re.compile(regex_pattern)
         
-        self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
+        # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-electra-base")
+        self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
+        # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-gemma')
+        self.splade_model = SparseEncoder("naver/splade-v3")
 
         # RAG
-        self.topK_searchEngine = 10
+        self.topK_searchEngine = 100
+        self.topK_SPLADE = 10
         self.topK_monoBERT = 3
 
 
@@ -97,7 +103,7 @@ class TestPerformance():
         
         return (question, choices, answer_key)
 
-    def get_RAG_context(self, query):
+    def get_RAG_context(self, query, formated_choices):
         ip = "localhost"
         port = 8080
         endpoint = "search"
@@ -105,23 +111,55 @@ class TestPerformance():
         if response.status_code == 200:
             text = response.text
             doc_list = text.split("###RAG_DOC###")
-            context = self.RAG_rerank(query, doc_list)
+            filtered_doc_list = doc_list # self.RAG_SPLADE_filter(query, formated_choices, doc_list)
+            context = self.RAG_MonoBERT_rerank(query, formated_choices, filtered_doc_list)
             return context
         else:
             return f"HTTPError: {response.status_code} - {response.text}"
 
-    def RAG_rerank(self, query, doc_list):
+    def RAG_SPLADE_filter(self, query, formated_choices, doc_list):
+        # SPLADE
+        query_embeddings = self.splade_model.encode_query([query], show_progress_bar=False)
+        document_embeddings = self.splade_model.encode_document(doc_list, show_progress_bar=False)
+        similarities = self.splade_model.similarity(query_embeddings, document_embeddings)
+        score_list = similarities[0].tolist()
+        
+        doc_score_list = list(zip(doc_list, score_list))
+        top_k = self.topK_SPLADE
+        top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)[:top_k]
+        top_doc_list = [doc_score[0] for doc_score in top_doc_score_list]
+        # print("top_doc_list", len(top_doc_list), top_doc_list)
+        return top_doc_list
+
+    def RAG_MonoBERT_rerank(self, query, formated_choices, doc_list):
         context = ""
-        pair_list = [(query, doc) for doc in doc_list]
-        score_list = self.crossEncoder_model.predict(pair_list, show_progress_bar=False)
+        pair_list = [(query + '\n' + formated_choices, doc) for doc in doc_list]
+        # print("RAG_MonoBERT_rerank pair_list", pair_list)
+        
+        # score_list = self.crossEncoder_model.predict(pair_list, show_progress_bar=False)
+        score_list = self.crossEncoder_model.compute_score(pair_list)
+
         doc_score_list = list(zip(doc_list, score_list))
         top_k = self.topK_monoBERT
         top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)[:top_k]
         for i in range(len(top_doc_score_list)):
-            context += top_doc_score_list[i][0]
-            context += "\n\n"
-        print("reranked top k score:", [doc_score[1] for doc_score in top_doc_score_list])
+            doc = top_doc_score_list[i][0]
+            if self.check_RAG_doc_useful(query, formated_choices, doc):
+                context += doc
+                context += "\n\n"
+        # print("reranked top k score:", [doc_score[1] for doc_score in top_doc_score_list])
         return context
+
+    def check_RAG_doc_useful(self, question, formated_choices, doc):
+        return True
+        model_prompt = f"Question: {question} \n Choices: {formated_choices} \n Context: {doc} \n Is the context useful for answering the question? \n [A] Yes \n [B] No"
+        answer = self.run_inference_get_answer_letter(model_prompt, self.temperature, do_sample = False)
+        print("check RAG useful", answer)
+        if answer == "A":
+            return True
+        else:
+            return False
+
     
     def test_MedQA_response(self, use_RAG = True):# Test apply_chat_template // https://huggingface.co/docs/transformers/main/en/chat_templating
         print(self.model.name_or_path)
@@ -134,12 +172,13 @@ class TestPerformance():
             return "\n".join(final_answers)
 
 
-        def run_inference(content, model, tokenizer, max_new_tokens, temperature):
+        def run_inference(content, model, tokenizer, max_new_tokens, temperature, do_sample):
             generate_kwargs = {
                 "max_new_tokens": max_new_tokens, 
-                "do_sample": True, 
-                "temperature": temperature
+                "do_sample": do_sample, 
             }
+            if do_sample == True:
+                generate_kwargs["temperature"] = temperature
 
             if self.is_encoder_decoder:
                 inputs = tokenizer(content, return_tensors="pt").to(self.device)
@@ -219,26 +258,27 @@ class TestPerformance():
             formated_choices = format_choices(example["choices"])
 
             if use_RAG:
-                context = self.get_RAG_context(example["question"])
+                context = self.get_RAG_context(example["question"], formated_choices)
                 model_prompt = prompt.format(context = context, question = example["question"], choices = formated_choices)
             else:
                 model_prompt = prompt.format(question = example["question"], choices = formated_choices)
     
             # print(model_prompt)
     
-            output_text = run_inference(model_prompt, self.model, self.tokenizer, max_new_tokens = 1024, temperature = self.temperature)
+            output_text = run_inference(model_prompt, self.model, self.tokenizer, max_new_tokens = 1024, temperature = self.temperature, do_sample = False)
             # output_text = output_text.split("<|assistant|>")[-1]
             print("model output:", output_text)
             print("\nsource: ", example["source"])
             print("correct: ", example["correct"])
             print("\n\n")
 
-    def run_inference_get_answer_letter(self, content, temperature):
+    def run_inference_get_answer_letter(self, content, temperature, do_sample = False):
         generate_kwargs = {
             "max_new_tokens": self.MAX_TOKEN_OUTPUT,
-            "do_sample": True,
-            "temperature": temperature,
+            "do_sample": do_sample,
         }
+        if do_sample == True:
+            generate_kwargs["temperature"] = temperature
 
         if self.is_encoder_decoder:
             inputs = self.tokenizer(content, return_tensors="pt").to(self.device)
@@ -257,7 +297,7 @@ class TestPerformance():
         # print("inputs", inputs)
         
         text = self.tokenizer.batch_decode(outputs)[0]
-        # print("outputs text:", text)
+        print("outputs text:", text)
         if not self.is_encoder_decoder:
             text = text.split("<|assistant|>")[-1]
         # answer = tokenizer.decode(output[0], skip_special_tokens = True)
@@ -296,15 +336,19 @@ class TestPerformance():
                 match = convert_dict[match]
         return match
             
-    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, topK_searchEngine = None, topK_monoBERT = None):
+    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, 
+                      topK_searchEngine = None, topK_SPLADE = None, topK_monoBERT = None):
         if topK_searchEngine != None:
             self.topK_searchEngine = topK_searchEngine
+        if topK_SPLADE != None:
+            self.topK_SPLADE = topK_SPLADE
         if topK_monoBERT != None:
             self.topK_monoBERT = topK_monoBERT
         
         model_name = self.model.name_or_path.split("/")[-1]
         logging.basicConfig(
             filename=f'{model_name} - {dataset_path.split("/")[-1]}{"_" + subset_name if subset_name != None else ""}.txt',      # Log file name
+            # filename = f'8-2-MedQA-RAG-30-3-filter.txt',
             filemode='a',                    # Append mode
             format='%(asctime)s - %(levelname)s - %(message)s',
             level=logging.INFO               # Log level
@@ -348,7 +392,7 @@ class TestPerformance():
             # content = prompt.format(question = question, choices = formated_choices)
             
             if use_RAG:
-                context = self.get_RAG_context(question)
+                context = self.get_RAG_context(question, formated_choices)
                 content = prompt.format(context = context, question = question, choices = formated_choices)
             else:
                 content = prompt.format(question = question, choices = formated_choices)
@@ -362,14 +406,14 @@ class TestPerformance():
                 answer_dict = {}
                 for i in range(0, 5):
                     # inputs = tokenizer(model_prompt, return_tensors = "pt", padding=False).to(device)
-                    current_answer = self.run_inference_get_answer_letter(content, temperature = 0.7)
+                    current_answer = self.run_inference_get_answer_letter(content, temperature = 0.7, do_sample = True)
                     if current_answer in answer_dict:
                         answer_dict[current_answer] += 1
                     else:
                         answer_dict[current_answer] = 1
                 answer = max(answer_dict, key = answer_dict.get)
             else:
-                answer = self.run_inference_get_answer_letter(content, temperature = self.temperature)
+                answer = self.run_inference_get_answer_letter(content, temperature = self.temperature, do_sample = False)
             
             correct_answer = answer_key
         
