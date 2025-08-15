@@ -8,6 +8,12 @@ from sentence_transformers import CrossEncoder
 from FlagEmbedding import FlagReranker
 from sentence_transformers import SparseEncoder
 
+# RankLLM
+from rank_llm.data import Query, Candidate, Request
+from rank_llm.rerank import Reranker
+from rank_llm.rerank.pairwise.duot5 import DuoT5
+from rank_llm.rerank.pointwise.monot5 import MonoT5
+
 prompt_RAG = '''
 You are a medical question answering assistant.
 
@@ -61,18 +67,30 @@ class TestPerformance():
 
         regex_pattern=r"[\(\[]([A-Z])[\)\]]"
         self.regex = re.compile(regex_pattern)
-        
+
+        # Step 0: BM25 search engine
+
+        # Step 1: SPLADE model (lexical sparse retrieval)
+        self.splade_model = SparseEncoder("naver/splade-v3")
+        # self.splade_model = SparseEncoder("naver/splade-cocondenser-ensembledistil")
+
+        # Step 2: Cross-encoder model (e.g. MonoBERT)
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-electra-base")
-        self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
+        # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
         # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-gemma')
-        self.splade_model = SparseEncoder("naver/splade-v3")
+        self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
+
+
+        # Step 3: More powerful model (DuoBERT, LLM, ...)
+        self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
 
         # RAG
         self.topK_searchEngine = 100
         self.topK_SPLADE = 10
-        self.topK_monoBERT = 3
+        self.topK_crossEncoder = 3
+        self.topK_LLM = 3
 
 
     # input: a row of data in the dataset
@@ -111,13 +129,29 @@ class TestPerformance():
         if response.status_code == 200:
             text = response.text
             doc_list = text.split("###RAG_DOC###")
-            filtered_doc_list = doc_list # self.RAG_SPLADE_filter(query, formated_choices, doc_list)
-            context = self.RAG_MonoBERT_rerank(query, formated_choices, filtered_doc_list)
+            doc_list = self.RAG_SPLADE_filter(query, doc_list)
+            
+            # doc_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_list)
+
+            # for doc in doc_list:
+            #     print(doc, "\n\n")
+
+            doc_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_list)
+
+            # doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
+
+            # doc_list -> context (str)
+            context = ""
+            for doc in doc_list:
+                if self.check_RAG_doc_useful(query, formated_choices, doc):
+                    context += doc
+                    context += "\n\n"
+                
             return context
         else:
             return f"HTTPError: {response.status_code} - {response.text}"
 
-    def RAG_SPLADE_filter(self, query, formated_choices, doc_list):
+    def RAG_SPLADE_filter(self, query, doc_list):
         # SPLADE
         query_embeddings = self.splade_model.encode_query([query], show_progress_bar=False)
         document_embeddings = self.splade_model.encode_document(doc_list, show_progress_bar=False)
@@ -131,24 +165,40 @@ class TestPerformance():
         # print("top_doc_list", len(top_doc_list), top_doc_list)
         return top_doc_list
 
-    def RAG_MonoBERT_rerank(self, query, formated_choices, doc_list):
-        context = ""
-        pair_list = [(query + '\n' + formated_choices, doc) for doc in doc_list]
-        # print("RAG_MonoBERT_rerank pair_list", pair_list)
+    def RAG_CrossEncoder_rerank(self, query, doc_list):
+        pair_list = [(query, doc) for doc in doc_list]
+        # print("RAG_CrossEncoder_rerank pair_list", pair_list)
         
-        # score_list = self.crossEncoder_model.predict(pair_list, show_progress_bar=False)
-        score_list = self.crossEncoder_model.compute_score(pair_list)
+        # score_list = self.crossEncoder_model.predict(pair_list, show_progress_bar=False) # For CrossEncoder
+        score_list = self.crossEncoder_model.compute_score(pair_list) # For FlagReranker
 
         doc_score_list = list(zip(doc_list, score_list))
-        top_k = self.topK_monoBERT
-        top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)[:top_k]
-        for i in range(len(top_doc_score_list)):
-            doc = top_doc_score_list[i][0]
-            if self.check_RAG_doc_useful(query, formated_choices, doc):
-                context += doc
-                context += "\n\n"
+        doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)
+        doc_score_list = doc_score_list[:self.topK_crossEncoder]
         # print("reranked top k score:", [doc_score[1] for doc_score in top_doc_score_list])
-        return context
+
+        doc_list = [doc_score[0] for doc_score in doc_score_list]
+        return doc_list
+
+    def RAG_MonoT5_rerank(self, query, doc_list):
+        candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
+        request = Request(query = Query(text = query, qid = 0), candidates = candidates)
+        rerank_results = self.crossEncoder_model.rerank(request, logging = False)
+        reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
+        #scores = [candidate.score for candidate in rerank_results.candidates]
+        doc_list = reranked_doc_list[:self.topK_LLM]
+
+        return doc_list
+
+    def RAG_LLM_rerank(self, query, doc_list):
+        candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
+        request = Request(query = Query(text = query, qid = 0), candidates = candidates)
+        rerank_results = self.llm_reranker.rerank(request, logging = False)
+        reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
+        #scores = [candidate.score for candidate in rerank_results.candidates]
+        doc_list = reranked_doc_list[:self.topK_LLM]
+        
+        return doc_list
 
     def check_RAG_doc_useful(self, question, formated_choices, doc):
         return True
@@ -297,7 +347,7 @@ class TestPerformance():
         # print("inputs", inputs)
         
         text = self.tokenizer.batch_decode(outputs)[0]
-        print("outputs text:", text)
+        # print("outputs text:", text)
         if not self.is_encoder_decoder:
             text = text.split("<|assistant|>")[-1]
         # answer = tokenizer.decode(output[0], skip_special_tokens = True)
@@ -336,22 +386,32 @@ class TestPerformance():
                 match = convert_dict[match]
         return match
             
-    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, 
-                      topK_searchEngine = None, topK_SPLADE = None, topK_monoBERT = None):
+    def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, file_name = None,
+                      topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None):
         if topK_searchEngine != None:
             self.topK_searchEngine = topK_searchEngine
         if topK_SPLADE != None:
             self.topK_SPLADE = topK_SPLADE
-        if topK_monoBERT != None:
-            self.topK_monoBERT = topK_monoBERT
+        if topK_crossEncoder != None:
+            self.topK_crossEncoder = topK_crossEncoder
+        if topK_LLM != None:
+            self.topK_LLM = topK_LLM
         
+        # Remove all handlers associated with the root logger
+        for handler in logging.root.handlers[:]:
+            logging.root.removeHandler(handler)
+            
         model_name = self.model.name_or_path.split("/")[-1]
+        log_file_name = ""
+        if file_name != None:
+            log_file_name = file_name
+        else:
+            log_file_name = f'{model_name} - {dataset_path.split("/")[-1]}{"_" + subset_name if subset_name != None else ""}.txt'
         logging.basicConfig(
-            filename=f'{model_name} - {dataset_path.split("/")[-1]}{"_" + subset_name if subset_name != None else ""}.txt',      # Log file name
-            # filename = f'8-2-MedQA-RAG-30-3-filter.txt',
-            filemode='a',                    # Append mode
-            format='%(asctime)s - %(levelname)s - %(message)s',
-            level=logging.INFO               # Log level
+            filename = log_file_name,      # Log file name
+            filemode = 'a',                    # Append mode
+            format = '%(asctime)s - %(levelname)s - %(message)s',
+            level = logging.INFO               # Log level
         )
 
         if subset_name == None:
