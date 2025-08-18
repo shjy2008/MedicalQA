@@ -1,3 +1,6 @@
+import os
+os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
+
 from datasets import load_dataset
 import torch
 import re
@@ -13,6 +16,22 @@ from rank_llm.data import Query, Candidate, Request
 from rank_llm.rerank import Reranker
 from rank_llm.rerank.pairwise.duot5 import DuoT5
 from rank_llm.rerank.pointwise.monot5 import MonoT5
+from rank_llm.rerank.listwise import ZephyrReranker
+
+# Ensure deterministic
+torch.use_deterministic_algorithms(True)
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
+import random
+import numpy as np
+seed = 1234
+random.seed(seed)
+np.random.seed(seed)
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+
+
 
 prompt_RAG = '''
 You are a medical question answering assistant.
@@ -84,7 +103,8 @@ class TestPerformance():
 
 
         # Step 3: More powerful model (DuoBERT, LLM, ...)
-        self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
+        # self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
+        # self.llm_reranker = ZephyrReranker()
 
         # RAG
         self.topK_searchEngine = 100
@@ -129,7 +149,9 @@ class TestPerformance():
         if response.status_code == 200:
             text = response.text
             doc_list = text.split("###RAG_DOC###")
+            # print(f"1 len(doc_list): {len(doc_list)}")
             doc_list = self.RAG_SPLADE_filter(query, doc_list)
+            # print(f"2 len(doc_list): {len(doc_list)}")
             
             # doc_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_list)
 
@@ -137,6 +159,7 @@ class TestPerformance():
             #     print(doc, "\n\n")
 
             doc_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_list)
+            # print(f"3 len(doc_list): {len(doc_list)}")
 
             # doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
 
@@ -323,6 +346,8 @@ class TestPerformance():
             print("\n\n")
 
     def run_inference_get_answer_letter(self, content, temperature, do_sample = False):
+        self.model.eval()
+        
         generate_kwargs = {
             "max_new_tokens": self.MAX_TOKEN_OUTPUT,
             "do_sample": do_sample,
@@ -413,6 +438,15 @@ class TestPerformance():
             format = '%(asctime)s - %(levelname)s - %(message)s',
             level = logging.INFO               # Log level
         )
+        
+        print(f"topK_searchEngine: {self.topK_searchEngine}")
+        logging.info(f"topK_searchEngine: {self.topK_searchEngine}")
+        print(f"topK_SPLADE: {self.topK_SPLADE}")
+        logging.info(f"topK_SPLADE: {self.topK_SPLADE}")
+        print(f"topK_crossEncoder: {self.topK_crossEncoder}")
+        logging.info(f"topK_crossEncoder: {self.topK_crossEncoder}")
+        print(f"topK_LLM: {self.topK_LLM}")
+        logging.info(f"topK_LLM: {self.topK_LLM}")
 
         if subset_name == None:
             if dataset_path == DatasetPath.PubMedQA:
