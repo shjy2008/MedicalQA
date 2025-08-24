@@ -209,7 +209,7 @@ class TestPerformance():
         rerank_results = self.crossEncoder_model.rerank(request, logging = False)
         reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
         #scores = [candidate.score for candidate in rerank_results.candidates]
-        doc_list = reranked_doc_list[:self.topK_LLM]
+        doc_list = reranked_doc_list[:self.topK_crossEncoder]
 
         return doc_list
 
