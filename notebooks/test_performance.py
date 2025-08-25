@@ -158,7 +158,7 @@ class TestPerformance():
             # for doc in doc_list:
             #     print(doc, "\n\n")
 
-            doc_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_list)
+            doc_list, score_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_list)
             # print(f"3 len(doc_list): {len(doc_list)}")
 
             # doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
@@ -170,7 +170,7 @@ class TestPerformance():
                     context += doc
                     context += "\n\n"
                 
-            return context
+            return context, score_list
         else:
             return f"HTTPError: {response.status_code} - {response.text}"
 
@@ -211,7 +211,9 @@ class TestPerformance():
         #scores = [candidate.score for candidate in rerank_results.candidates]
         doc_list = reranked_doc_list[:self.topK_crossEncoder]
 
-        return doc_list
+        score_list = [candidate.score for candidate in rerank_results.candidates][:self.topK_crossEncoder]
+
+        return doc_list, score_list
 
     def RAG_LLM_rerank(self, query, doc_list):
         candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
@@ -486,8 +488,15 @@ class TestPerformance():
             # content = prompt.format(question = question, choices = formated_choices)
             
             if use_RAG:
-                context = self.get_RAG_context(question, formated_choices)
+                context, score_list = self.get_RAG_context(question, formated_choices)
                 content = prompt.format(context = context, question = question, choices = formated_choices)
+
+                # The following 4 lines of code is for logging the scores of documents
+                # count += 1
+                # print(f"question {count}/{len(data_list)} score_list: {score_list}")
+                # logging.info(f"question {count}/{len(data_list)} score_list: {score_list}")
+                # continue
+                
             else:
                 content = prompt.format(question = question, choices = formated_choices)
             
