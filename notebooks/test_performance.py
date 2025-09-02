@@ -16,12 +16,15 @@ from rank_llm.data import Query, Candidate, Request
 from rank_llm.rerank import Reranker
 from rank_llm.rerank.pairwise.duot5 import DuoT5
 from rank_llm.rerank.pointwise.monot5 import MonoT5
-from rank_llm.rerank.listwise import ZephyrReranker
+from rank_llm.rerank.listwise import ZephyrReranker, VicunaReranker, RankListwiseOSLLM
 
 # Ensure deterministic
 torch.use_deterministic_algorithms(True)
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
+
+torch.backends.cuda.matmul.allow_tf32 = False
+torch.backends.cudnn.allow_tf32 = False
 
 import random
 import numpy as np
@@ -105,6 +108,13 @@ class TestPerformance():
         # Step 3: More powerful model (DuoBERT, LLM, ...)
         # self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
         # self.llm_reranker = ZephyrReranker()
+        # self.llm_reranker = VicunaReranker()
+
+        model_coordinator = RankListwiseOSLLM(
+            model="Qwen/Qwen2.5-7B-Instruct",
+        )
+        self.llm_reranker = Reranker(model_coordinator)
+        
 
         # RAG
         self.topK_searchEngine = 100
@@ -141,15 +151,19 @@ class TestPerformance():
         
         return (question, choices, answer_key)
 
-    def get_RAG_context(self, query, formated_choices):
+    def get_RAG_context(self, query, formated_choices, score_threshold = None):
         ip = "localhost"
         port = 8080
         endpoint = "search"
         response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query, "k": self.topK_searchEngine})
         if response.status_code == 200:
             text = response.text
+
+            # 1. BM25
             doc_list = text.split("###RAG_DOC###")
             # print(f"1 len(doc_list): {len(doc_list)}")
+
+            # 2. SPLADE
             doc_list = self.RAG_SPLADE_filter(query, doc_list)
             # print(f"2 len(doc_list): {len(doc_list)}")
             
@@ -158,10 +172,25 @@ class TestPerformance():
             # for doc in doc_list:
             #     print(doc, "\n\n")
 
+            # 3. MonoT5
             doc_list, score_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_list)
             # print(f"3 len(doc_list): {len(doc_list)}")
 
-            # doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
+            # TODO: this is for test, only feed the nth retrieved document into the model
+            # doc_list = [doc_list[4]]
+            
+            # Filter by threshold
+            if score_threshold != None:
+                threshold_filtered_count = 0
+                for score in score_list:
+                    if score >= score_threshold:
+                        threshold_filtered_count += 1
+                    else:
+                        break
+                doc_list = doc_list[:threshold_filtered_count]
+
+            # 4. LLM list reranker
+            doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
 
             # doc_list -> context (str)
             context = ""
@@ -219,12 +248,14 @@ class TestPerformance():
         candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
         request = Request(query = Query(text = query, qid = 0), candidates = candidates)
         rerank_results = self.llm_reranker.rerank(request, logging = False)
+        if isinstance(rerank_results, list):
+            rerank_results = rerank_results[0]
         reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
         #scores = [candidate.score for candidate in rerank_results.candidates]
         doc_list = reranked_doc_list[:self.topK_LLM]
         
         return doc_list
-
+    
     def check_RAG_doc_useful(self, question, formated_choices, doc):
         return True
         model_prompt = f"Question: {question} \n Choices: {formated_choices} \n Context: {doc} \n Is the context useful for answering the question? \n [A] Yes \n [B] No"
@@ -414,7 +445,7 @@ class TestPerformance():
         return match
             
     def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, file_name = None,
-                      topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None):
+                      topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None, score_threshold = None):
         if topK_searchEngine != None:
             self.topK_searchEngine = topK_searchEngine
         if topK_SPLADE != None:
@@ -488,7 +519,7 @@ class TestPerformance():
             # content = prompt.format(question = question, choices = formated_choices)
             
             if use_RAG:
-                context, score_list = self.get_RAG_context(question, formated_choices)
+                context, score_list = self.get_RAG_context(question, formated_choices, score_threshold = score_threshold)
                 content = prompt.format(context = context, question = question, choices = formated_choices)
 
                 # The following 4 lines of code is for logging the scores of documents
