@@ -6,9 +6,9 @@ port = 8080
 endpoint = "search"
 
 def search(query):
-    response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query})
+    response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query, "k":3})
     if response.status_code == 200:
-        return response.text
+        return response.json()
     else:
         return f"Error: {response.status_code} - {response.text}"
 

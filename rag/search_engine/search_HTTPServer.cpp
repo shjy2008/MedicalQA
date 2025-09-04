@@ -1,4 +1,5 @@
 #include <string>
+#include <sstream>
 #include "httplib.h"
 #include "searchEngine.h"
 
@@ -27,6 +28,28 @@ std::string endpoint = "search";
 // 	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
 // }
 
+std::string escapeJsonString(const std::string& input) {
+    std::ostringstream ss;
+    for (auto c : input) {
+        switch (c) {
+            case '"': ss << "\\\""; break;
+            case '\\': ss << "\\\\"; break;
+            case '\b': ss << "\\b"; break;
+            case '\f': ss << "\\f"; break;
+            case '\n': ss << "\\n"; break;
+            case '\r': ss << "\\r"; break;
+            case '\t': ss << "\\t"; break;
+            default:
+                if (static_cast<unsigned char>(c) < 0x20) {
+                    ss << "\\u" << std::hex << (int)c;
+                } else {
+                    ss << c;
+                }
+        }
+    }
+    return ss.str();
+}
+
 std::string convertResultsToJson(const std::vector<SearchResult>& results) {
     std::ostringstream oss;
     oss << "[";
@@ -36,8 +59,8 @@ std::string convertResultsToJson(const std::vector<SearchResult>& results) {
         oss << "{"
             << "\"docId\":" << r.docId << ","
             << "\"score\":" << r.score << ","
-            << "\"docNo\":" << r.docNo << ","
-            << "\"content\":\"" << r.content << "\""
+            << "\"docNo\":\"" << escapeJsonString(r.docNo) << "\","
+            << "\"content\":\"" << escapeJsonString(r.content) << "\""
             << "}";
         if (i + 1 < results.size()) oss << ",";
     }
@@ -88,7 +111,7 @@ int main() {
         }
     });
 
-    std::cout << "Running on http://" << ip << ":" << port << "/search?q=<query>\n";
+    std::cout << "Running on http://" << ip << ":" << port << "/search?q=<query>&k=3\n";
 
     server.listen(ip, port);
 }
