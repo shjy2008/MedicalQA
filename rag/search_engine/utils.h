@@ -1,5 +1,6 @@
 
 #include <stdint.h>
+#include <string>
 
 struct Posting {
 	uint32_t docId;
@@ -31,6 +32,9 @@ struct DocumentOffset {
 struct SearchResult {
 	uint32_t docId;
 	float score;
+
+    std::string docNo;
+    std::string content;
 
 	SearchResult(uint32_t docId, float score) : docId(docId), score(score) {}
 
