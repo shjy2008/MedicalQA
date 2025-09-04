@@ -1,3 +1,6 @@
+import os
+os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
+
 from datasets import load_dataset
 import torch
 import re
@@ -13,6 +16,25 @@ from rank_llm.data import Query, Candidate, Request
 from rank_llm.rerank import Reranker
 from rank_llm.rerank.pairwise.duot5 import DuoT5
 from rank_llm.rerank.pointwise.monot5 import MonoT5
+from rank_llm.rerank.listwise import ZephyrReranker, VicunaReranker, RankListwiseOSLLM
+
+# Ensure deterministic
+torch.use_deterministic_algorithms(True)
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
+torch.backends.cuda.matmul.allow_tf32 = False
+torch.backends.cudnn.allow_tf32 = False
+
+import random
+import numpy as np
+seed = 1234
+random.seed(seed)
+np.random.seed(seed)
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+
+
 
 prompt_RAG = '''
 You are a medical question answering assistant.
@@ -84,7 +106,15 @@ class TestPerformance():
 
 
         # Step 3: More powerful model (DuoBERT, LLM, ...)
-        self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
+        # self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
+        # self.llm_reranker = ZephyrReranker()
+        # self.llm_reranker = VicunaReranker()
+
+        model_coordinator = RankListwiseOSLLM(
+            model="Qwen/Qwen2.5-7B-Instruct",
+        )
+        self.llm_reranker = Reranker(model_coordinator)
+        
 
         # RAG
         self.topK_searchEngine = 100
@@ -121,24 +151,46 @@ class TestPerformance():
         
         return (question, choices, answer_key)
 
-    def get_RAG_context(self, query, formated_choices):
+    def get_RAG_context(self, query, formated_choices, score_threshold = None):
         ip = "localhost"
         port = 8080
         endpoint = "search"
         response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query, "k": self.topK_searchEngine})
         if response.status_code == 200:
             text = response.text
+
+            # 1. BM25
             doc_list = text.split("###RAG_DOC###")
+            # print(f"1 len(doc_list): {len(doc_list)}")
+
+            # 2. SPLADE
             doc_list = self.RAG_SPLADE_filter(query, doc_list)
+            # print(f"2 len(doc_list): {len(doc_list)}")
             
             # doc_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_list)
 
             # for doc in doc_list:
             #     print(doc, "\n\n")
 
-            doc_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_list)
+            # 3. MonoT5
+            doc_list, score_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_list)
+            # print(f"3 len(doc_list): {len(doc_list)}")
 
-            # doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
+            # TODO: this is for test, only feed the nth retrieved document into the model
+            # doc_list = [doc_list[4]]
+            
+            # Filter by threshold
+            if score_threshold != None:
+                threshold_filtered_count = 0
+                for score in score_list:
+                    if score >= score_threshold:
+                        threshold_filtered_count += 1
+                    else:
+                        break
+                doc_list = doc_list[:threshold_filtered_count]
+
+            # 4. LLM list reranker
+            doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
 
             # doc_list -> context (str)
             context = ""
@@ -147,7 +199,7 @@ class TestPerformance():
                     context += doc
                     context += "\n\n"
                 
-            return context
+            return context, score_list
         else:
             return f"HTTPError: {response.status_code} - {response.text}"
 
@@ -186,20 +238,24 @@ class TestPerformance():
         rerank_results = self.crossEncoder_model.rerank(request, logging = False)
         reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
         #scores = [candidate.score for candidate in rerank_results.candidates]
-        doc_list = reranked_doc_list[:self.topK_LLM]
+        doc_list = reranked_doc_list[:self.topK_crossEncoder]
 
-        return doc_list
+        score_list = [candidate.score for candidate in rerank_results.candidates][:self.topK_crossEncoder]
+
+        return doc_list, score_list
 
     def RAG_LLM_rerank(self, query, doc_list):
         candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
         request = Request(query = Query(text = query, qid = 0), candidates = candidates)
         rerank_results = self.llm_reranker.rerank(request, logging = False)
+        if isinstance(rerank_results, list):
+            rerank_results = rerank_results[0]
         reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
         #scores = [candidate.score for candidate in rerank_results.candidates]
         doc_list = reranked_doc_list[:self.topK_LLM]
         
         return doc_list
-
+    
     def check_RAG_doc_useful(self, question, formated_choices, doc):
         return True
         model_prompt = f"Question: {question} \n Choices: {formated_choices} \n Context: {doc} \n Is the context useful for answering the question? \n [A] Yes \n [B] No"
@@ -323,6 +379,8 @@ class TestPerformance():
             print("\n\n")
 
     def run_inference_get_answer_letter(self, content, temperature, do_sample = False):
+        self.model.eval()
+        
         generate_kwargs = {
             "max_new_tokens": self.MAX_TOKEN_OUTPUT,
             "do_sample": do_sample,
@@ -387,7 +445,7 @@ class TestPerformance():
         return match
             
     def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, file_name = None,
-                      topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None):
+                      topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None, score_threshold = None):
         if topK_searchEngine != None:
             self.topK_searchEngine = topK_searchEngine
         if topK_SPLADE != None:
@@ -413,6 +471,15 @@ class TestPerformance():
             format = '%(asctime)s - %(levelname)s - %(message)s',
             level = logging.INFO               # Log level
         )
+        
+        print(f"topK_searchEngine: {self.topK_searchEngine}")
+        logging.info(f"topK_searchEngine: {self.topK_searchEngine}")
+        print(f"topK_SPLADE: {self.topK_SPLADE}")
+        logging.info(f"topK_SPLADE: {self.topK_SPLADE}")
+        print(f"topK_crossEncoder: {self.topK_crossEncoder}")
+        logging.info(f"topK_crossEncoder: {self.topK_crossEncoder}")
+        print(f"topK_LLM: {self.topK_LLM}")
+        logging.info(f"topK_LLM: {self.topK_LLM}")
 
         if subset_name == None:
             if dataset_path == DatasetPath.PubMedQA:
@@ -452,8 +519,15 @@ class TestPerformance():
             # content = prompt.format(question = question, choices = formated_choices)
             
             if use_RAG:
-                context = self.get_RAG_context(question, formated_choices)
+                context, score_list = self.get_RAG_context(question, formated_choices, score_threshold = score_threshold)
                 content = prompt.format(context = context, question = question, choices = formated_choices)
+
+                # The following 4 lines of code is for logging the scores of documents
+                # count += 1
+                # print(f"question {count}/{len(data_list)} score_list: {score_list}")
+                # logging.info(f"question {count}/{len(data_list)} score_list: {score_list}")
+                # continue
+                
             else:
                 content = prompt.format(question = question, choices = formated_choices)
             
