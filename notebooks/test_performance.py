@@ -110,10 +110,10 @@ class TestPerformance():
         # self.llm_reranker = ZephyrReranker()
         # self.llm_reranker = VicunaReranker()
 
-        model_coordinator = RankListwiseOSLLM(
-            model="Qwen/Qwen2.5-7B-Instruct",
-        )
-        self.llm_reranker = Reranker(model_coordinator)
+        # model_coordinator = RankListwiseOSLLM(
+        #     model="Qwen/Qwen2.5-7B-Instruct",
+        # )
+        # self.llm_reranker = Reranker(model_coordinator)
         
 
         # RAG
@@ -157,64 +157,74 @@ class TestPerformance():
         endpoint = "search"
         response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query, "k": self.topK_searchEngine})
         if response.status_code == 200:
-            text = response.text
+
 
             # 1. BM25
-            doc_list = text.split("###RAG_DOC###")
+            # text = response.text
+            # doc_list = text.split("###RAG_DOC###")
+            # for result in results:
+            results = response.json() # [{docId, docNo, score, content}, ...]
+            doc_data_list = []
+            for i in range(len(results)):
+                result = results[i]
+                data = {"docId": result["docNo"], "BM25_score": result["score"], "BM25_ranking": i + 1, "content": result["content"]}
+                doc_data_list.append(data)
+            
+            print("aa1", doc_data_list)
             # print(f"1 len(doc_list): {len(doc_list)}")
 
             # 2. SPLADE
-            doc_list = self.RAG_SPLADE_filter(query, doc_list)
+            if self.topK_SPLADE > 0:
+                doc_data_list = self.RAG_SPLADE_filter(query, doc_data_list)
             # print(f"2 len(doc_list): {len(doc_list)}")
             
-            # doc_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_list)
-
-            # for doc in doc_list:
-            #     print(doc, "\n\n")
 
             # 3. MonoT5
-            doc_list, score_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_list)
-            # print(f"3 len(doc_list): {len(doc_list)}")
-
-            # TODO: this is for test, only feed the nth retrieved document into the model
-            # doc_list = [doc_list[4]]
-            
-            # Filter by threshold
-            if score_threshold != None:
-                threshold_filtered_count = 0
-                for score in score_list:
-                    if score >= score_threshold:
-                        threshold_filtered_count += 1
-                    else:
-                        break
-                doc_list = doc_list[:threshold_filtered_count]
+            if self.topK_crossEncoder > 0:
+                # doc_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_list)
+                doc_data_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_data_list, score_threshold)
+                # print(f"3 len(doc_list): {len(doc_list)}")
+    
+                # TODO: this is for test, only feed the nth retrieved document into the model
+                # doc_list = [doc_list[4]]
+                
 
             # 4. LLM list reranker
-            doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
+            if self.topK_LLM > 0:
+                doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
 
             # doc_list -> context (str)
             context = ""
-            for doc in doc_list:
-                if self.check_RAG_doc_useful(query, formated_choices, doc):
-                    context += doc
+            print("aa2", doc_data_list)
+            for doc_data in doc_data_list:
+                if self.check_RAG_doc_useful(query, formated_choices, doc_data):
+                    context += doc_data["content"]
                     context += "\n\n"
                 
-            return context, score_list
+            return context
         else:
             return f"HTTPError: {response.status_code} - {response.text}"
 
-    def RAG_SPLADE_filter(self, query, doc_list):
+    def RAG_SPLADE_filter(self, query, doc_data_list):
         # SPLADE
+        doc_list = [data["content"] for data in doc_data_list]
         query_embeddings = self.splade_model.encode_query([query], show_progress_bar=False)
         document_embeddings = self.splade_model.encode_document(doc_list, show_progress_bar=False)
         similarities = self.splade_model.similarity(query_embeddings, document_embeddings)
         score_list = similarities[0].tolist()
+
+        for i in range(len(doc_data_list)):
+            doc_data_list[i]["SPLADE_score"] = score_list[i]
         
-        doc_score_list = list(zip(doc_list, score_list))
+        doc_score_list = list(zip(doc_data_list, score_list))
         top_k = self.topK_SPLADE
         top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)[:top_k]
         top_doc_list = [doc_score[0] for doc_score in top_doc_score_list]
         # print("top_doc_list", len(top_doc_list), top_doc_list)
+        
+        for i in range(len(top_doc_list)):
+            top_doc_list[i]["SPLADE_ranking"] = i + 1
+
         return top_doc_list
 
     def RAG_CrossEncoder_rerank(self, query, doc_list):
@@ -232,17 +242,44 @@ class TestPerformance():
         doc_list = [doc_score[0] for doc_score in doc_score_list]
         return doc_list
 
-    def RAG_MonoT5_rerank(self, query, doc_list):
+    def RAG_MonoT5_rerank(self, query, doc_data_list, score_threshold = None):
+        doc_list = [data["content"] for data in doc_data_list]
         candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
         request = Request(query = Query(text = query, qid = 0), candidates = candidates)
         rerank_results = self.crossEncoder_model.rerank(request, logging = False)
-        reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
+
+        reranked_doc_data_list = []
+        count = 0
+        for candidate in rerank_results.candidates:
+            i = candidate.docid
+            doc_data_list[i]["MonoT5_score"] = candidate.score
+            reranked_doc_data_list.append(doc_data_list[i])
+
+            count += 1
+            if count >= self.topK_crossEncoder:
+                break
+        
+        # reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
         #scores = [candidate.score for candidate in rerank_results.candidates]
-        doc_list = reranked_doc_list[:self.topK_crossEncoder]
+        # doc_list = reranked_doc_list[:self.topK_crossEncoder]
 
-        score_list = [candidate.score for candidate in rerank_results.candidates][:self.topK_crossEncoder]
+        # score_list = [candidate.score for candidate in rerank_results.candidates][:self.topK_crossEncoder]
+        score_list = [data["MonoT5_score"] for data in reranked_doc_data_list]
 
-        return doc_list, score_list
+        # Filter by threshold
+        if score_threshold != None:
+            threshold_filtered_count = 0
+            for score in score_list:
+                if score >= score_threshold:
+                    threshold_filtered_count += 1
+                else:
+                    break
+            reranked_doc_data_list = reranked_doc_data_list[:threshold_filtered_count]
+            
+        for i in range(len(reranked_doc_data_list)):
+            reranked_doc_data_list[i]["MonoT5_ranking"] = i + 1
+            
+        return reranked_doc_data_list
 
     def RAG_LLM_rerank(self, query, doc_list):
         candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
@@ -256,8 +293,9 @@ class TestPerformance():
         
         return doc_list
     
-    def check_RAG_doc_useful(self, question, formated_choices, doc):
+    def check_RAG_doc_useful(self, question, formated_choices, doc_data):
         return True
+        doc = doc_data["content"]
         model_prompt = f"Question: {question} \n Choices: {formated_choices} \n Context: {doc} \n Is the context useful for answering the question? \n [A] Yes \n [B] No"
         answer = self.run_inference_get_answer_letter(model_prompt, self.temperature, do_sample = False)
         print("check RAG useful", answer)
@@ -405,7 +443,7 @@ class TestPerformance():
         # print("inputs", inputs)
         
         text = self.tokenizer.batch_decode(outputs)[0]
-        # print("outputs text:", text)
+        print("outputs text:", text)
         if not self.is_encoder_decoder:
             text = text.split("<|assistant|>")[-1]
         # answer = tokenizer.decode(output[0], skip_special_tokens = True)
@@ -519,7 +557,7 @@ class TestPerformance():
             # content = prompt.format(question = question, choices = formated_choices)
             
             if use_RAG:
-                context, score_list = self.get_RAG_context(question, formated_choices, score_threshold = score_threshold)
+                context = self.get_RAG_context(question, formated_choices, score_threshold = score_threshold)
                 content = prompt.format(context = context, question = question, choices = formated_choices)
 
                 # The following 4 lines of code is for logging the scores of documents
