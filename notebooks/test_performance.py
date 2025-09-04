@@ -100,9 +100,9 @@ class TestPerformance():
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-electra-base")
-        # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
+        self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
         # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-gemma')
-        self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
+        # self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
 
 
         # Step 3: More powerful model (DuoBERT, LLM, ...)
@@ -181,8 +181,8 @@ class TestPerformance():
 
             # 3. MonoT5
             if self.topK_crossEncoder > 0:
-                # doc_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_list)
-                doc_data_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_data_list, score_threshold)
+                doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list)
+                # doc_data_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_data_list, score_threshold)
                 # print(f"3 len(doc_list): {len(doc_list)}")
     
                 # TODO: this is for test, only feed the nth retrieved document into the model
@@ -227,20 +227,29 @@ class TestPerformance():
 
         return top_doc_list
 
-    def RAG_CrossEncoder_rerank(self, query, doc_list):
+    def RAG_CrossEncoder_rerank(self, query, doc_data_list, score_threshold = None):
+        doc_list = [data["content"] for data in doc_data_list]
         pair_list = [(query, doc) for doc in doc_list]
         # print("RAG_CrossEncoder_rerank pair_list", pair_list)
         
         # score_list = self.crossEncoder_model.predict(pair_list, show_progress_bar=False) # For CrossEncoder
         score_list = self.crossEncoder_model.compute_score(pair_list) # For FlagReranker
 
-        doc_score_list = list(zip(doc_list, score_list))
+        doc_score_list = list(zip(doc_data_list, score_list))
         doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)
         doc_score_list = doc_score_list[:self.topK_crossEncoder]
         # print("reranked top k score:", [doc_score[1] for doc_score in top_doc_score_list])
 
-        doc_list = [doc_score[0] for doc_score in doc_score_list]
-        return doc_list
+        reranked_doc_data_list = []
+        for i in range(len(doc_score_list)):
+            doc_score = doc_score_list[i]
+            if score_threshold == None or doc_score[1] > score_threshold:
+                doc_data = doc_score[0]
+                doc_data["crossEncoder_score"] = doc_score[1]
+                doc_data["crossEncoder_ranking"] = i + 1
+                reranked_doc_data_list.append(doc_data)
+        
+        return reranked_doc_data_list
 
     def RAG_MonoT5_rerank(self, query, doc_data_list, score_threshold = None):
         doc_list = [data["content"] for data in doc_data_list]
