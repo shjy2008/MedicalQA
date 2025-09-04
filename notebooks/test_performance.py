@@ -100,9 +100,9 @@ class TestPerformance():
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
         # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-electra-base")
-        self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
+        # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
         # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-gemma')
-        # self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
+        self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
 
 
         # Step 3: More powerful model (DuoBERT, LLM, ...)
@@ -110,10 +110,10 @@ class TestPerformance():
         # self.llm_reranker = ZephyrReranker()
         # self.llm_reranker = VicunaReranker()
 
-        # model_coordinator = RankListwiseOSLLM(
-        #     model="Qwen/Qwen2.5-7B-Instruct",
-        # )
-        # self.llm_reranker = Reranker(model_coordinator)
+        model_coordinator = RankListwiseOSLLM(
+            model="Qwen/Qwen2.5-7B-Instruct",
+        )
+        self.llm_reranker = Reranker(model_coordinator)
         
 
         # RAG
@@ -170,7 +170,6 @@ class TestPerformance():
                 data = {"docId": result["docNo"], "BM25_score": result["score"], "BM25_ranking": i + 1, "content": result["content"]}
                 doc_data_list.append(data)
             
-            print("aa1", doc_data_list)
             # print(f"1 len(doc_list): {len(doc_list)}")
 
             # 2. SPLADE
@@ -181,8 +180,8 @@ class TestPerformance():
 
             # 3. MonoT5
             if self.topK_crossEncoder > 0:
-                doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list)
-                # doc_data_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_data_list, score_threshold)
+                # doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list)
+                doc_data_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_data_list, score_threshold)
                 # print(f"3 len(doc_list): {len(doc_list)}")
     
                 # TODO: this is for test, only feed the nth retrieved document into the model
@@ -191,11 +190,10 @@ class TestPerformance():
 
             # 4. LLM list reranker
             if self.topK_LLM > 0:
-                doc_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_list)
+                doc_data_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_data_list)
 
             # doc_list -> context (str)
             context = ""
-            print("aa2", doc_data_list)
             for doc_data in doc_data_list:
                 if self.check_RAG_doc_useful(query, formated_choices, doc_data):
                     context += doc_data["content"]
@@ -290,17 +288,31 @@ class TestPerformance():
             
         return reranked_doc_data_list
 
-    def RAG_LLM_rerank(self, query, doc_list):
+    def RAG_LLM_rerank(self, query, doc_data_list):
+        doc_list = [data["content"] for data in doc_data_list]
         candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
         request = Request(query = Query(text = query, qid = 0), candidates = candidates)
         rerank_results = self.llm_reranker.rerank(request, logging = False)
         if isinstance(rerank_results, list):
             rerank_results = rerank_results[0]
-        reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
-        #scores = [candidate.score for candidate in rerank_results.candidates]
-        doc_list = reranked_doc_list[:self.topK_LLM]
+
+        reranked_doc_data_list = []
+        count = 0
+        for candidate in rerank_results.candidates:
+            i = candidate.docid
+            doc_data = doc_data_list[i]
+            doc_data["LLM_ranking"] = count + 1
+            reranked_doc_data_list.append(doc_data)
+
+            count += 1
+            if count >= self.topK_LLM:
+                break
+            
+        # reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
+        # #scores = [candidate.score for candidate in rerank_results.candidates]
+        # reranked_doc_data_list = reranked_doc_list[:self.topK_LLM]
         
-        return doc_list
+        return reranked_doc_data_list
     
     def check_RAG_doc_useful(self, question, formated_choices, doc_data):
         return True
@@ -452,7 +464,7 @@ class TestPerformance():
         # print("inputs", inputs)
         
         text = self.tokenizer.batch_decode(outputs)[0]
-        print("outputs text:", text)
+        # print("outputs text:", text)
         if not self.is_encoder_decoder:
             text = text.split("<|assistant|>")[-1]
         # answer = tokenizer.decode(output[0], skip_special_tokens = True)
