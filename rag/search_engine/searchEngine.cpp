@@ -493,19 +493,22 @@ void SearchEngine::run() {
 	}
 }
 
-std::string SearchEngine::search(const std::string& query, size_t topK) {
+std::vector<SearchResult> SearchEngine::search(const std::string& query, size_t topK) {
 	std::vector<SearchResult> vecDocIdScore = this->getSortedRelevantDocuments(query, topK);
 
-	std::string ret = "";
+	// std::string ret = "";
+	std::vector<SearchResult> results;
 	for (size_t i = 0; i < vecDocIdScore.size(); ++i) {
 		SearchResult result = vecDocIdScore[i];
 		std::pair<std::string, std::string> docData = this->getDocData(result.docId);
-		ret += docData.second;
-		if (i != vecDocIdScore.size() - 1) {
-			ret += "###RAG_DOC###"; // deliminator
-		}
+		result.content = docData.second;
+		results.push_back(result);
+		// ret += docData.second;
+		// if (i != vecDocIdScore.size() - 1) {
+		// 	// ret += "###RAG_DOC###"; // deliminator
+		// }
 	}
-	return ret;
+	return results;
 }
 
 // int main() {

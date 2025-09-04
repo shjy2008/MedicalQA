@@ -79,7 +79,7 @@ public:
 
 	void run();
 
-    std::string search(const std::string& query, size_t topK = 10);
+    std::vector<SearchResult> search(const std::string& query, size_t topK = 10);
 };
 
 

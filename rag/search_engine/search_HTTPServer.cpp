@@ -1,6 +1,7 @@
 #include <string>
 #include "httplib.h"
 #include "searchEngine.h"
+#include <nlohmann/json.hpp>
 
 std::string ip = "127.0.0.1"; // "localhost"
 int port = 8080;
@@ -35,22 +36,32 @@ int main() {
 
     server.Get("/" + endpoint, [&searchEngine] (const httplib::Request& req, httplib::Response& res) {
         if (req.has_param("q")) {
-            std::string result;
+            std::vector<SearchResult> results;
             std::string query = req.get_param_value("q");
             if (req.has_param("k")) {
                 std::string topK_str = req.get_param_value("k");
                 try {
                     size_t topK = std::stoul(topK_str);
-                    result = searchEngine.search(query, topK);
+                    results = searchEngine.search(query, topK);
                 }
                 catch (const std::exception& e) {
                     std::cerr << "Invalid value for k: " << topK_str << std::endl;
                 }
             }
             else {
-                result = searchEngine.search(query);
+                results = searchEngine.search(query);
             }
-            res.set_content(result, "text/plain");
+
+            nlohmann::json result_json;
+            for (const SearchResult& result : results) {
+                result_json.push_back({
+                    {"docId", result.docId},
+                    {"score", result.score},
+                    {"content", result.content}
+                });
+            }
+            // res.set_content(results, "text/plain");
+            res.set_content(result_json.dump(2), "application/json");
         }
         else {
             res.status = 400;
