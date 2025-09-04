@@ -1,7 +1,6 @@
 #include <string>
 #include "httplib.h"
 #include "searchEngine.h"
-#include <nlohmann/json.hpp>
 
 std::string ip = "127.0.0.1"; // "localhost"
 int port = 8080;
@@ -28,6 +27,25 @@ std::string endpoint = "search";
 // 	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
 // }
 
+std::string convertResultsToJson(const std::vector<SearchResult>& results) {
+    std::ostringstream oss;
+    oss << "[";
+
+    for (size_t i = 0; i < results.size(); ++i) {
+        const auto& r = results[i];
+        oss << "{"
+            << "\"docId\":" << r.docId << ","
+            << "\"score\":" << r.score << ","
+            << "\"docNo\":" << r.docNo << ","
+            << "\"content\":\"" << r.content << "\""
+            << "}";
+        if (i + 1 < results.size()) oss << ",";
+    }
+
+    oss << "]";
+    return oss.str();
+}
+
 int main() {
     httplib::Server server;
 
@@ -52,17 +70,17 @@ int main() {
                 results = searchEngine.search(query);
             }
 
-            nlohmann::json result_json;
-            for (const SearchResult& result : results) {
-                result_json.push_back({
-                    {"docId", result.docId},
-                    {"score", result.score},
-                    {"docNo", result.docNo},
-                    {"content", result.content}
-                });
-            }
-            // res.set_content(results, "text/plain");
-            res.set_content(result_json.dump(2), "application/json");
+            // nlohmann::json result_json;
+            // for (const SearchResult& result : results) {
+            //     result_json.push_back({
+            //         {"docId", result.docId},
+            //         {"score", result.score},
+            //         {"docNo", result.docNo},
+            //         {"content", result.content}
+            //     });
+            // }
+            res.set_content(convertResultsToJson(results), "text/plain");
+            // res.set_content(result_json.dump(2), "application/json");
         }
         else {
             res.status = 400;
