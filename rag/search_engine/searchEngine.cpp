@@ -501,6 +501,7 @@ std::vector<SearchResult> SearchEngine::search(const std::string& query, size_t 
 	for (size_t i = 0; i < vecDocIdScore.size(); ++i) {
 		SearchResult result = vecDocIdScore[i];
 		std::pair<std::string, std::string> docData = this->getDocData(result.docId);
+		result.docNo = docData.first;
 		result.content = docData.second;
 		results.push_back(result);
 		// ret += docData.second;

@@ -57,6 +57,7 @@ int main() {
                 result_json.push_back({
                     {"docId", result.docId},
                     {"score", result.score},
+                    {"docNo", result.docNo},
                     {"content", result.content}
                 });
             }
