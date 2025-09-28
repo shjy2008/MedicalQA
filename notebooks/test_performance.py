@@ -10,6 +10,8 @@ import requests
 from sentence_transformers import CrossEncoder
 from FlagEmbedding import FlagReranker
 from sentence_transformers import SparseEncoder
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import torch.nn.functional as F
 
 # RankLLM
 from rank_llm.data import Query, Candidate, Request
@@ -110,10 +112,16 @@ class TestPerformance():
         # self.llm_reranker = ZephyrReranker()
         # self.llm_reranker = VicunaReranker()
 
-        model_coordinator = RankListwiseOSLLM(
-            model="Qwen/Qwen2.5-7B-Instruct",
-        )
-        self.llm_reranker = Reranker(model_coordinator)
+        # model_coordinator = RankListwiseOSLLM(
+        #     model="Qwen/Qwen2.5-7B-Instruct",
+        # )
+        # self.llm_reranker = Reranker(model_coordinator)
+
+        
+        # Step 4: Use a classifier model to determine which context+question can produce correct answer
+        classifier_model_name = "/projects/sciences/computing/sheju347/RAG/classifier/t5-large-epoch-10/checkpoint-94290"
+        self.classifier_tokenizer = AutoTokenizer.from_pretrained(classifier_model_name)
+        self.classifier_model = AutoModelForSeq2SeqLM.from_pretrained(classifier_model_name).to(self.device)
         
 
         # RAG
@@ -151,7 +159,7 @@ class TestPerformance():
         
         return (question, choices, answer_key)
 
-    def get_RAG_context(self, query, formated_choices, score_threshold = None):
+    def get_RAG_context(self, query, formated_choices, score_threshold = None, pick_rag_index = None, use_classifier = False):
         ip = "localhost"
         port = 8080
         endpoint = "search"
@@ -182,16 +190,20 @@ class TestPerformance():
             if self.topK_crossEncoder > 0:
                 # doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list)
                 doc_data_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_data_list, score_threshold)
-                # print(f"3 len(doc_list): {len(doc_list)}")
-    
-                # TODO: this is for test, only feed the nth retrieved document into the model
-                # doc_list = [doc_list[4]]
-                
+                # print(f"3 len(doc_list): {len(doc_list)}")            
 
             # 4. LLM list reranker
             if self.topK_LLM > 0:
                 doc_data_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_data_list)
+            
+            # only feed the nth retrieved document into the model
+            if pick_rag_index != None:
+                doc_data_list = [doc_data_list[pick_rag_index]]
 
+            # Use a classifier model to select which context+query can produce correct answer
+            if use_classifier:
+                doc_data_list = self.RAG_classifier(query + '\n' + formated_choices, doc_data_list)
+                
             # doc_list -> context (str)
             context = ""
             for doc_data in doc_data_list:
@@ -199,6 +211,12 @@ class TestPerformance():
                     context += doc_data["content"]
                     context += "\n\n"
                 
+            # Print RAG scores and rankings
+            for doc_data in doc_data_list:
+                del doc_data["content"]
+            print(f"RAG data: {doc_data_list}")
+            logging.info(f"RAG data: {doc_data_list}")
+            
             return context
         else:
             return f"HTTPError: {response.status_code} - {response.text}"
@@ -313,6 +331,55 @@ class TestPerformance():
         # reranked_doc_data_list = reranked_doc_list[:self.topK_LLM]
         
         return reranked_doc_data_list
+
+    def RAG_classifier(self, query, doc_data_list):
+        tokenizer = self.classifier_tokenizer
+        model = self.classifier_model
+
+        ret_doc_data_list = []
+
+        for doc_data in doc_data_list:
+            doc = doc_data["content"]
+            input_text = f"question: {query} context: {doc}"
+            
+            encoding = tokenizer(
+                input_text,
+                truncation=True,
+                padding="max_length",
+                max_length=1024,
+                return_tensors="pt"
+            )
+            input_ids = encoding["input_ids"].to(self.device)
+            attention_mask = encoding["attention_mask"].to(self.device)
+            
+            decoder_start_token_id = model.config.decoder_start_token_id
+            
+            with torch.no_grad():
+                outputs = model(
+                    input_ids=input_ids,
+                    attention_mask=attention_mask,
+                    decoder_input_ids=torch.tensor([[decoder_start_token_id]], device = self.device)
+                )
+                logits = outputs.logits
+        
+            first_token_logits = logits[0, 0]
+            probs = F.softmax(first_token_logits, dim=-1)
+        
+            yes_id = tokenizer.encode("yes", add_special_tokens=False)[0]
+            print("Confidence yes:", probs[yes_id].item())
+            
+            pred_ids = torch.argmax(logits, dim=-1)  # [batch, seq_len]
+            first_pred_id = pred_ids[0, 0].item()
+            print(f"pred_ids: {first_pred_id} yes_id: {yes_id}")
+
+            is_yes = first_pred_id == yes_id
+
+            if is_yes:
+                ret_doc_data_list.append(doc_data)
+                break
+
+        return ret_doc_data_list
+        
     
     def check_RAG_doc_useful(self, question, formated_choices, doc_data):
         return True
@@ -464,7 +531,7 @@ class TestPerformance():
         # print("inputs", inputs)
         
         text = self.tokenizer.batch_decode(outputs)[0]
-        # print("outputs text:", text)
+        print("outputs text:", text)
         if not self.is_encoder_decoder:
             text = text.split("<|assistant|>")[-1]
         # answer = tokenizer.decode(output[0], skip_special_tokens = True)
@@ -485,10 +552,11 @@ class TestPerformance():
             return f"({match})"
         return "[invalid]"
 
-    def format_choices(self, choices):
-        a = zip(list(choices.keys()), choices.values())
+    def format_choices(self, choices, answer_key, mask_correct_answer):
         final_answers = []
-        for x,y in a:
+        for i, (x, y) in enumerate(choices.items()):
+            if mask_correct_answer and x == answer_key:
+                y = "None of the other answers"
             final_answers.append(f'[{x}] : {y}')
         return "\n".join(final_answers)
 
@@ -504,7 +572,8 @@ class TestPerformance():
         return match
             
     def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, file_name = None,
-                      topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None, score_threshold = None):
+                      topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None, score_threshold = None, 
+                     pick_rag_index = None, mask_correct_answer = False, get_classifier_training_data = False, use_classifier = False):
         if topK_searchEngine != None:
             self.topK_searchEngine = topK_searchEngine
         if topK_SPLADE != None:
@@ -557,6 +626,9 @@ class TestPerformance():
             split = "validation" # because test dataset doesn't have an answer
         elif dataset_path == DatasetPath.PubMedQA:
             split = "train" # only train in PubMedQA
+
+        if get_classifier_training_data:
+            split = "train"
         
         data_list = dataset[split]
         if data_range != None:
@@ -573,12 +645,12 @@ class TestPerformance():
             else:
                 prompt = prompt_normal
 
-            formated_choices = self.format_choices(choices)
+            formated_choices = self.format_choices(choices, answer_key, mask_correct_answer)
             
             # content = prompt.format(question = question, choices = formated_choices)
             
             if use_RAG:
-                context = self.get_RAG_context(question, formated_choices, score_threshold = score_threshold)
+                context = self.get_RAG_context(question, formated_choices, score_threshold = score_threshold, pick_rag_index = pick_rag_index, use_classifier = use_classifier)
                 content = prompt.format(context = context, question = question, choices = formated_choices)
 
                 # The following 4 lines of code is for logging the scores of documents
@@ -612,6 +684,10 @@ class TestPerformance():
         
             is_correct = (answer == correct_answer)
             # print("Correct!!!" if is_correct else "Wrong")
+
+            if get_classifier_training_data:
+                print(f"[input]{content}[output]{is_correct}")
+                logging.info(f"[input]{content}[output]{is_correct}")
         
         
             if is_correct:
