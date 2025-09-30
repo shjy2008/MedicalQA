@@ -338,6 +338,9 @@ class TestPerformance():
 
         ret_doc_data_list = []
 
+        best_doc_data = None
+        largest_confidence = 0
+        
         for doc_data in doc_data_list:
             doc = doc_data["content"]
             input_text = f"question: {query} context: {doc}"
@@ -366,18 +369,26 @@ class TestPerformance():
             probs = F.softmax(first_token_logits, dim=-1)
         
             yes_id = tokenizer.encode("yes", add_special_tokens=False)[0]
-            print("Confidence yes:", probs[yes_id].item())
             
             pred_ids = torch.argmax(logits, dim=-1)  # [batch, seq_len]
             first_pred_id = pred_ids[0, 0].item()
-            print(f"pred_ids: {first_pred_id} yes_id: {yes_id}")
 
             is_yes = first_pred_id == yes_id
+            confidence = probs[yes_id].item()
+            
+            log_str = f"docId: {doc_data['docId']} pred_ids: {first_pred_id} yes_id: {yes_id} Confidence yes: {confidence}, is_yes: {is_yes}"
+            print(log_str)
+            logging.info(log_str)
 
             if is_yes:
-                ret_doc_data_list.append(doc_data)
-                break
+                if confidence > largest_confidence:
+                    largest_confidence = confidence
+                    best_doc_data = doc_data
+                # break
 
+        if best_doc_data != None:
+            ret_doc_data_list.append(best_doc_data)
+                
         return ret_doc_data_list
         
     
@@ -650,6 +661,9 @@ class TestPerformance():
             # content = prompt.format(question = question, choices = formated_choices)
             
             if use_RAG:
+                # print(f"question: {count}")
+                # logging.info(f"question: {count}")
+                
                 context = self.get_RAG_context(question, formated_choices, score_threshold = score_threshold, pick_rag_index = pick_rag_index, use_classifier = use_classifier)
                 content = prompt.format(context = context, question = question, choices = formated_choices)
 
