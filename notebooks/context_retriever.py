@@ -71,67 +71,72 @@ class ContextRetriever:
         self.score_threshold = score_threshold
         self.pick_rag_index = pick_rag_index
         self.use_classifier = use_classifier
-        
-    def get_RAG_context(self, question, formated_choices):
+
+    def get_RAG_data_list(self, question, formated_choices):
         ip = "localhost"
         port = 8080
         endpoint = "search"
         response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": question, "k": self.topK_searchEngine})
-        if response.status_code == 200:
+        if response.status_code != 200:
+            print (f"HTTPError: {response.status_code} - {response.text}")
+            return []
+        
+        # 1. BM25
+        # text = response.text
+        # doc_list = text.split("###RAG_DOC###")
+        # for result in results:
+        results = response.json() # [{docId, docNo, score, content}, ...]
+        doc_data_list = []
+        for i in range(len(results)):
+            result = results[i]
+            data = {"docId": result["docNo"], "BM25_score": result["score"], "BM25_ranking": i + 1, "content": result["content"]}
+            doc_data_list.append(data)
+        
+        # print(f"1 len(doc_list): {len(doc_list)}")
 
-            # 1. BM25
-            # text = response.text
-            # doc_list = text.split("###RAG_DOC###")
-            # for result in results:
-            results = response.json() # [{docId, docNo, score, content}, ...]
-            doc_data_list = []
-            for i in range(len(results)):
-                result = results[i]
-                data = {"docId": result["docNo"], "BM25_score": result["score"], "BM25_ranking": i + 1, "content": result["content"]}
-                doc_data_list.append(data)
+        # 2. SPLADE
+        if self.topK_SPLADE != None and self.topK_SPLADE > 0:
+            doc_data_list = self.RAG_SPLADE_filter(question, doc_data_list)
+        # print(f"2 len(doc_list): {len(doc_list)}")
+        
+
+        # 3. MonoT5
+        if self.topK_crossEncoder != None and self.topK_crossEncoder > 0:
+            # doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list)
+            doc_data_list = self.RAG_MonoT5_rerank(question + '\n' + formated_choices, doc_data_list, self.score_threshold)
+            # print(f"3 len(doc_list): {len(doc_list)}")            
+
+        # 4. LLM list reranker
+        if self.topK_LLM != None and self.topK_LLM > 0:
+            doc_data_list = self.RAG_LLM_rerank(question + '\n' + formated_choices, doc_data_list)
+        
+        # only feed the nth retrieved document into the model
+        if self.pick_rag_index != None:
+            doc_data_list = [doc_data_list[self.pick_rag_index]]
+
+        # Use a classifier model to select which context+query can produce correct answer
+        if self.use_classifier:
+            doc_data_list = self.RAG_classifier(question + '\n' + formated_choices, doc_data_list)
             
-            # print(f"1 len(doc_list): {len(doc_list)}")
-
-            # 2. SPLADE
-            if self.topK_SPLADE != None and self.topK_SPLADE > 0:
-                doc_data_list = self.RAG_SPLADE_filter(question, doc_data_list)
-            # print(f"2 len(doc_list): {len(doc_list)}")
             
-
-            # 3. MonoT5
-            if self.topK_crossEncoder != None and self.topK_crossEncoder > 0:
-                # doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list)
-                doc_data_list = self.RAG_MonoT5_rerank(question + '\n' + formated_choices, doc_data_list, self.score_threshold)
-                # print(f"3 len(doc_list): {len(doc_list)}")            
-
-            # 4. LLM list reranker
-            if self.topK_LLM != None and self.topK_LLM > 0:
-                doc_data_list = self.RAG_LLM_rerank(question + '\n' + formated_choices, doc_data_list)
-            
-            # only feed the nth retrieved document into the model
-            if self.pick_rag_index != None:
-                doc_data_list = [doc_data_list[self.pick_rag_index]]
-
-            # Use a classifier model to select which context+query can produce correct answer
-            if self.use_classifier:
-                doc_data_list = self.RAG_classifier(question + '\n' + formated_choices, doc_data_list)
-                
-            # doc_list -> context (str)
-            context = ""
-            for doc_data in doc_data_list:
-                if self.check_RAG_doc_useful(question, formated_choices, doc_data):
-                    context += doc_data["content"]
-                    context += "\n\n"
-                
-            # Print RAG scores and rankings
-            for doc_data in doc_data_list:
-                del doc_data["content"]
-            print(f"RAG data: {doc_data_list}")
-            logging.info(f"RAG data: {doc_data_list}")
-            
-            return context
-        else:
-            return f"HTTPError: {response.status_code} - {response.text}"
+        # Print RAG scores and rankings
+        for doc_data in doc_data_list:
+            del doc_data["content"]
+        print(f"RAG data: {doc_data_list}")
+        logging.info(f"RAG data: {doc_data_list}")
+        
+        return doc_data_list
+        
+    def get_RAG_context(self, question, formated_choices):
+        doc_data_list = self.get_RAG_data_list(question, formated_choices)
+        
+        # doc_list -> context (str)
+        context = ""
+        for doc_data in doc_data_list:
+            if self.check_RAG_doc_useful(question, formated_choices, doc_data):
+                context += doc_data["content"]
+                context += "\n\n"
+        return context
 
     def RAG_SPLADE_filter(self, query, doc_data_list):
         # SPLADE
