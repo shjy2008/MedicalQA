@@ -18,8 +18,10 @@ from rank_llm.rerank.listwise import ZephyrReranker, VicunaReranker, RankListwis
 
 class ContextRetriever:
 
-    def __init__(self, device):
+    def __init__(self, device = None):
         self.device = device
+        if self.device == None:
+            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         # Step 0: BM25 search engine
 
