@@ -93,19 +93,19 @@ class ContextRetriever:
             # print(f"1 len(doc_list): {len(doc_list)}")
 
             # 2. SPLADE
-            if self.topK_SPLADE > 0:
+            if self.topK_SPLADE != None and self.topK_SPLADE > 0:
                 doc_data_list = self.RAG_SPLADE_filter(question, doc_data_list)
             # print(f"2 len(doc_list): {len(doc_list)}")
             
 
             # 3. MonoT5
-            if self.topK_crossEncoder > 0:
+            if self.topK_crossEncoder != None and self.topK_crossEncoder > 0:
                 # doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list)
                 doc_data_list = self.RAG_MonoT5_rerank(question + '\n' + formated_choices, doc_data_list, self.score_threshold)
                 # print(f"3 len(doc_list): {len(doc_list)}")            
 
             # 4. LLM list reranker
-            if self.topK_LLM > 0:
+            if self.topK_LLM != None and self.topK_LLM > 0:
                 doc_data_list = self.RAG_LLM_rerank(question + '\n' + formated_choices, doc_data_list)
             
             # only feed the nth retrieved document into the model
