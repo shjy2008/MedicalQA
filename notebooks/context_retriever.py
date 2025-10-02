@@ -6,6 +6,7 @@ from sentence_transformers import SparseEncoder
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch.nn.functional as F
 import requests
+import logging
 
 # RankLLM
 from rank_llm.data import Query, Candidate, Request
@@ -17,7 +18,9 @@ from rank_llm.rerank.listwise import ZephyrReranker, VicunaReranker, RankListwis
 
 class ContextRetriever:
 
-    def __init__(self):
+    def __init__(self, device):
+        self.device = device
+
         # Step 0: BM25 search engine
 
         # Step 1: SPLADE model (lexical sparse retrieval)
@@ -54,20 +57,25 @@ class ContextRetriever:
         self.topK_SPLADE = 10
         self.topK_crossEncoder = 3
         self.topK_LLM = 3
+        self.score_threshold = None
+        self.pick_rag_index = None
+        self.use_classifier = False
     
-    def set_params(self, topK_searchEngine, topK_SPLADE, topK_crossEncoder, topK_LLM):
+    def set_params(self, topK_searchEngine, topK_SPLADE, topK_crossEncoder, topK_LLM, score_threshold = None, pick_rag_index = None, use_classifier = False):
         self.topK_searchEngine = topK_searchEngine
         self.topK_SPLADE = topK_SPLADE
         self.topK_crossEncoder = topK_crossEncoder
         self.topK_LLM = topK_LLM
+        self.score_threshold = score_threshold
+        self.pick_rag_index = pick_rag_index
+        self.use_classifier = use_classifier
         
-    def get_RAG_context(self, query, formated_choices, score_threshold = None, pick_rag_index = None, use_classifier = False):
+    def get_RAG_context(self, question, formated_choices):
         ip = "localhost"
         port = 8080
         endpoint = "search"
-        response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": query, "k": self.topK_searchEngine})
+        response = requests.get(f"http://{ip}:{port}/{endpoint}", params = {"q": question, "k": self.topK_searchEngine})
         if response.status_code == 200:
-
 
             # 1. BM25
             # text = response.text
@@ -84,32 +92,32 @@ class ContextRetriever:
 
             # 2. SPLADE
             if self.topK_SPLADE > 0:
-                doc_data_list = self.RAG_SPLADE_filter(query, doc_data_list)
+                doc_data_list = self.RAG_SPLADE_filter(question, doc_data_list)
             # print(f"2 len(doc_list): {len(doc_list)}")
             
 
             # 3. MonoT5
             if self.topK_crossEncoder > 0:
                 # doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list)
-                doc_data_list = self.RAG_MonoT5_rerank(query + '\n' + formated_choices, doc_data_list, score_threshold)
+                doc_data_list = self.RAG_MonoT5_rerank(question + '\n' + formated_choices, doc_data_list, self.score_threshold)
                 # print(f"3 len(doc_list): {len(doc_list)}")            
 
             # 4. LLM list reranker
             if self.topK_LLM > 0:
-                doc_data_list = self.RAG_LLM_rerank(query + '\n' + formated_choices, doc_data_list)
+                doc_data_list = self.RAG_LLM_rerank(question + '\n' + formated_choices, doc_data_list)
             
             # only feed the nth retrieved document into the model
-            if pick_rag_index != None:
-                doc_data_list = [doc_data_list[pick_rag_index]]
+            if self.pick_rag_index != None:
+                doc_data_list = [doc_data_list[self.pick_rag_index]]
 
             # Use a classifier model to select which context+query can produce correct answer
-            if use_classifier:
-                doc_data_list = self.RAG_classifier(query + '\n' + formated_choices, doc_data_list)
+            if self.use_classifier:
+                doc_data_list = self.RAG_classifier(question + '\n' + formated_choices, doc_data_list)
                 
             # doc_list -> context (str)
             context = ""
             for doc_data in doc_data_list:
-                if self.check_RAG_doc_useful(query, formated_choices, doc_data):
+                if self.check_RAG_doc_useful(question, formated_choices, doc_data):
                     context += doc_data["content"]
                     context += "\n\n"
                 

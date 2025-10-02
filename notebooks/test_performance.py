@@ -81,7 +81,7 @@ class TestPerformance():
         regex_pattern=r"[\(\[]([A-Z])[\)\]]"
         self.regex = re.compile(regex_pattern)
 
-        self.context_retriever = ContextRetriever()
+        self.context_retriever = ContextRetriever(device)
 
 
     # input: a row of data in the dataset
@@ -294,7 +294,7 @@ class TestPerformance():
                       topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None, score_threshold = None, 
                      pick_rag_index = None, mask_correct_answer = False, get_classifier_training_data = False, use_classifier = False):
         
-        self.context_retriever.set_params(topK_searchEngine, topK_SPLADE, topK_crossEncoder, topK_LLM)
+        self.context_retriever.set_params(topK_searchEngine, topK_SPLADE, topK_crossEncoder, topK_LLM, score_threshold, pick_rag_index, use_classifier)
         
         # Remove all handlers associated with the root logger
         for handler in logging.root.handlers[:]:
@@ -367,7 +367,7 @@ class TestPerformance():
                 # print(f"question: {count}")
                 # logging.info(f"question: {count}")
                 
-                context = self.context_retriever.get_RAG_context(question, formated_choices, score_threshold = score_threshold, pick_rag_index = pick_rag_index, use_classifier = use_classifier)
+                context = self.context_retriever.get_RAG_context(question, formated_choices)
                 content = prompt.format(context = context, question = question, choices = formated_choices)
 
                 # The following 4 lines of code is for logging the scores of documents
