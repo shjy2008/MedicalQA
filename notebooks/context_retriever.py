@@ -119,12 +119,6 @@ class ContextRetriever:
             doc_data_list = self.RAG_classifier(question + '\n' + formated_choices, doc_data_list)
             
             
-        # Print RAG scores and rankings
-        for doc_data in doc_data_list:
-            del doc_data["content"]
-        print(f"RAG data: {doc_data_list}")
-        logging.info(f"RAG data: {doc_data_list}")
-        
         return doc_data_list
         
     def get_RAG_context(self, question, formated_choices):
@@ -136,6 +130,13 @@ class ContextRetriever:
             if self.check_RAG_doc_useful(question, formated_choices, doc_data):
                 context += doc_data["content"]
                 context += "\n\n"
+
+        # Print RAG scores and rankings
+        for doc_data in doc_data_list:
+            del doc_data["content"]
+        print(f"RAG data: {doc_data_list}")
+        logging.info(f"RAG data: {doc_data_list}")
+        
         return context
 
     def RAG_SPLADE_filter(self, query, doc_data_list):
