@@ -26,16 +26,9 @@ import logging
 
 from context_retriever import ContextRetriever
 
+system_prompt = "You are a medical question answering assistant."
 
 prompt_RAG = '''
-You are a medical question answering assistant.
-
-The following context may or may not be useful. Use it only if it helps answer the question.
-INSTRUCTIONS:
-- If the context directly helps answer the question, use it and cite appropriately
-- If the context is topically related but not diagnostically relevant, acknowledge it but rely on your medical knowledge
-- If the context might mislead you toward a less likely diagnosis, explicitly state why you're not following it
-
 Context:
 {context}
 
@@ -44,6 +37,24 @@ Question:
 
 {choices}
 '''
+
+# prompt_RAG = '''
+# You are a medical question answering assistant.
+
+# The following context may or may not be useful. Use it only if it helps answer the question.
+# INSTRUCTIONS:
+# - If the context directly helps answer the question, use it and cite appropriately
+# - If the context is topically related but not diagnostically relevant, acknowledge it but rely on your medical knowledge
+# - If the context might mislead you toward a less likely diagnosis, explicitly state why you're not following it
+
+# Context:
+# {context}
+
+# Question:
+# {question}
+
+# {choices}
+# '''
 
 prompt_normal = '''
 {question}
@@ -238,7 +249,10 @@ class TestPerformance():
             with torch.no_grad():
                 outputs = self.model.generate(**inputs, **generate_kwargs)
         else:
-            messages = [{"role": "user", "content": f"{content}"}]
+            messages = []
+            if system_prompt != None:
+                messages.append({"role": "system", "content": system_prompt})
+            messages.append({"role": "user", "content": f"{content}"})
             inputs = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt").to(self.device)
             # print("inputs:", inputs, inputs.shape)
             with torch.no_grad():
