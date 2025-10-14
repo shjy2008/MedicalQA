@@ -25,8 +25,10 @@ import time
 import logging
 
 from context_retriever import ContextRetriever
+from nltk.tokenize import sent_tokenize
 
-system_prompt = "You are a medical question answering assistant."
+# system_prompt = "You are a medical question answering assistant."
+system_prompt = None
 
 prompt_RAG = '''
 Context:
@@ -306,7 +308,7 @@ class TestPerformance():
             
     def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, file_name = None,
                       topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None, score_threshold = None, 
-                     pick_rag_index = None, mask_correct_answer = False, get_classifier_training_data = False, use_classifier = False):
+                     pick_rag_index = None, mask_correct_answer = False, get_classifier_training_data = False, use_classifier = False, sentence_level_RAG = False):
         
         self.context_retriever.set_params(topK_searchEngine, topK_SPLADE, topK_crossEncoder, topK_LLM, score_threshold, pick_rag_index, use_classifier)
         
@@ -376,13 +378,24 @@ class TestPerformance():
             formated_choices = self.format_choices(choices, answer_key, mask_correct_answer)
             
             # content = prompt.format(question = question, choices = formated_choices)
-            
+
+            content_list = []
             if use_RAG:
                 # print(f"question: {count}")
                 # logging.info(f"question: {count}")
                 
                 context = self.context_retriever.get_RAG_context(question, formated_choices)
-                content = prompt.format(context = context, question = question, choices = formated_choices)
+                if sentence_level_RAG:
+                    sentences = sent_tokenize(context)
+                    for sent in sentences:
+                        content = prompt.format(context = sent, question = question, choices = formated_choices)
+                        content_list.append(content)
+                else:
+                    if context == None or context == "":
+                        prompt = prompt_normal
+                    content = prompt.format(context = context, question = question, choices = formated_choices)
+                    content_list.append(content)
+                    
 
                 # The following 4 lines of code is for logging the scores of documents
                 # count += 1
@@ -392,46 +405,48 @@ class TestPerformance():
                 
             else:
                 content = prompt.format(question = question, choices = formated_choices)
+                content_list.append(content)
             
             # print("messages: ", messages)
             # break
             
             # print("correct answer: ", answer_idx)
 
-            if is_ensemble:
-                answer_dict = {}
-                for i in range(0, 5):
-                    # inputs = tokenizer(model_prompt, return_tensors = "pt", padding=False).to(device)
-                    current_answer = self.run_inference_get_answer_letter(content, temperature = 0.7, do_sample = True)
-                    if current_answer in answer_dict:
-                        answer_dict[current_answer] += 1
-                    else:
-                        answer_dict[current_answer] = 1
-                answer = max(answer_dict, key = answer_dict.get)
-            else:
-                answer = self.run_inference_get_answer_letter(content, temperature = self.temperature, do_sample = False)
-            
-            correct_answer = answer_key
-        
-            is_correct = (answer == correct_answer)
-            # print("Correct!!!" if is_correct else "Wrong")
-
-            if get_classifier_training_data:
-                print(f"[input]{content}[output]{is_correct}")
-                logging.info(f"[input]{content}[output]{is_correct}")
-        
-        
-            if is_correct:
-                correct_count += 1
-        
             count += 1
-
-            if data_range != None:
-                print(f"question {count}/{len(data_list)} num:{data_range[count - 1] + 1} answer:{answer} correct_answer:{correct_answer} {is_correct}")
-                logging.info(f"question {count}/{len(data_list)} num:{data_range[count - 1] + 1} answer:{answer} correct_answer:{correct_answer} {is_correct}")
-            else:
-                print(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
-                logging.info(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+            
+            for content in content_list:
+                if is_ensemble:
+                    answer_dict = {}
+                    for i in range(0, 5):
+                        # inputs = tokenizer(model_prompt, return_tensors = "pt", padding=False).to(device)
+                        current_answer = self.run_inference_get_answer_letter(content, temperature = 0.7, do_sample = True)
+                        if current_answer in answer_dict:
+                            answer_dict[current_answer] += 1
+                        else:
+                            answer_dict[current_answer] = 1
+                    answer = max(answer_dict, key = answer_dict.get)
+                else:
+                    answer = self.run_inference_get_answer_letter(content, temperature = self.temperature, do_sample = False)
+                
+                correct_answer = answer_key
+            
+                is_correct = (answer == correct_answer)
+                # print("Correct!!!" if is_correct else "Wrong")
+    
+                if get_classifier_training_data:
+                    print(f"[input]{content}[output]{is_correct}")
+                    logging.info(f"[input]{content}[output]{is_correct}")
+            
+            
+                if is_correct:
+                    correct_count += 1
+    
+                if data_range != None:
+                    print(f"question {count}/{len(data_list)} num:{data_range[count - 1] + 1} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+                    logging.info(f"question {count}/{len(data_list)} num:{data_range[count - 1] + 1} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+                else:
+                    print(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
+                    logging.info(f"question {count}/{len(data_list)} answer:{answer} correct_answer:{correct_answer} {is_correct}")
         
         accuracy = correct_count / count
         print(f"Total questions: {count}, correct: {correct_count}, accuracy: {accuracy}")
