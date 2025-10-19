@@ -3,6 +3,7 @@ import torch
 from sentence_transformers import CrossEncoder
 from FlagEmbedding import FlagReranker
 from sentence_transformers import SparseEncoder
+from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch.nn.functional as F
 import requests
@@ -23,44 +24,6 @@ class ContextRetriever:
         if self.device == None:
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        # Step 0: BM25 search engine
-
-        # Step 1: SPLADE model (lexical sparse retrieval)
-        self.splade_model = SparseEncoder("naver/splade-v3")
-        # self.splade_model = SparseEncoder("naver/splade-cocondenser-ensembledistil")
-
-        # Step 2: Cross-encoder model (e.g. MonoBERT)
-        # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
-        # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
-        # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-electra-base")
-        # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
-        # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-gemma')
-        self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
-
-
-        # Step 3: More powerful model (DuoBERT, LLM, ...)
-        # self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
-        # self.llm_reranker = ZephyrReranker()
-        # self.llm_reranker = VicunaReranker()
-        
-        # model_coordinator = RankListwiseOSLLM(
-        #     model="castorini/first_mistral",
-        #     use_logits=True,
-        #     use_alpha=True,
-        # )
-        # self.llm_reranker = Reranker(model_coordinator)
-
-        # model_coordinator = RankListwiseOSLLM(
-        #     model="Qwen/Qwen2.5-7B-Instruct",
-        # )
-        # self.llm_reranker = Reranker(model_coordinator)
-
-        
-        # Step 4: Use a classifier model to determine which context+question can produce correct answer
-        # classifier_model_name = "/projects/sciences/computing/sheju347/RAG/classifier/t5-large-epoch-10/checkpoint-94290"
-        # self.classifier_tokenizer = AutoTokenizer.from_pretrained(classifier_model_name)
-        # self.classifier_model = AutoModelForSeq2SeqLM.from_pretrained(classifier_model_name).to(self.device)
-
         # RAG
         self.topK_searchEngine = 100
         self.topK_SPLADE = 10
@@ -69,15 +32,68 @@ class ContextRetriever:
         self.score_threshold = None
         self.pick_rag_index = None
         self.use_classifier = False
+        self.RRF_models = [] # Reciprocal Rank Fusion model list ["SPLADE", "MonoT5", "
     
-    def set_params(self, topK_searchEngine, topK_SPLADE, topK_crossEncoder, topK_LLM, score_threshold = None, pick_rag_index = None, use_classifier = False):
+    def set_params(self, topK_searchEngine, topK_SPLADE, topK_denseEmbedding, topK_crossEncoder, topK_LLM, score_threshold = None, pick_rag_index = None, use_classifier = False):
         self.topK_searchEngine = topK_searchEngine
         self.topK_SPLADE = topK_SPLADE
+        self.topK_denseEmbedding = topK_denseEmbedding
         self.topK_crossEncoder = topK_crossEncoder
         self.topK_LLM = topK_LLM
         self.score_threshold = score_threshold
         self.pick_rag_index = pick_rag_index
         self.use_classifier = use_classifier
+
+        # Step 0: BM25 search engine
+
+        # Step 1: SPLADE model (lexical sparse retrieval)
+        if self.topK_SPLADE != None and self.topK_SPLADE > 0:
+            if self.splade_model == None:
+                self.splade_model = SparseEncoder("naver/splade-v3")
+                # self.splade_model = SparseEncoder("naver/splade-cocondenser-ensembledistil")
+
+        # Step 2: Dense Embedding Model
+        if self.topK_denseEmbedding != None and self.topK_denseEmbedding > 0:
+            if self.denseEmbedding_model == None:
+                self.denseEmbedding_model = SentenceTransformer("sentence-transformers/embeddinggemma-300m-medical")
+
+        # Step 2: Cross-encoder model (e.g. MonoBERT)
+        if self.topK_crossEncoder != None and self.topK_crossEncoder > 0:
+            if self.crossEncoder_model == None:
+                # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
+                # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
+                # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-electra-base")
+                # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
+                # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-gemma')
+                self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
+
+
+        # Step 3: More powerful model (DuoBERT, LLM, ...)
+        if self.topK_LLM != None and self.topK_LLM > 0:
+            if self.llm_reranker == None:
+                # self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
+                # self.llm_reranker = ZephyrReranker()
+                self.llm_reranker = VicunaReranker()
+                
+                # model_coordinator = RankListwiseOSLLM(
+                #     model="castorini/first_mistral",
+                #     use_logits=True,
+                #     use_alpha=True,
+                # )
+                # self.llm_reranker = Reranker(model_coordinator)
+        
+                # model_coordinator = RankListwiseOSLLM(
+                #     model="Qwen/Qwen2.5-7B-Instruct",
+                # )
+                # self.llm_reranker = Reranker(model_coordinator)
+
+        
+        # Step 4: Use a classifier model to determine which context+question can produce correct answer
+        if use_classifier:
+            pass
+            # classifier_model_name = "/projects/sciences/computing/sheju347/RAG/classifier/t5-large-epoch-10/checkpoint-94290"
+            # self.classifier_tokenizer = AutoTokenizer.from_pretrained(classifier_model_name)
+            # self.classifier_model = AutoModelForSeq2SeqLM.from_pretrained(classifier_model_name).to(self.device)
 
     def get_RAG_data_list(self, question, formated_choices):
         ip = "localhost"
@@ -88,7 +104,7 @@ class ContextRetriever:
             print (f"HTTPError: {response.status_code} - {response.text}")
             return []
         
-        # 1. BM25
+        # 0. BM25
         # text = response.text
         # doc_list = text.split("###RAG_DOC###")
         # for result in results:
@@ -101,11 +117,14 @@ class ContextRetriever:
         
         # print(f"1 len(doc_list): {len(doc_list)}")
 
-        # 2. SPLADE
+        # 1. SPLADE
         if self.topK_SPLADE != None and self.topK_SPLADE > 0:
             doc_data_list = self.RAG_SPLADE_filter(question, doc_data_list)
         # print(f"2 len(doc_list): {len(doc_list)}")
-        
+
+        # 2. Dense Embedding
+        if self.topK_denseEmbedding != None and self.topK_denseEmbedding > 0:
+            doc_data_list = self.RAG_Dense_Embedding(question, doc_data_list)
 
         # 3. MonoT5
         if self.topK_crossEncoder != None and self.topK_crossEncoder > 0:
@@ -165,6 +184,27 @@ class ContextRetriever:
         
         for i in range(len(top_doc_list)):
             top_doc_list[i]["SPLADE_ranking"] = i + 1
+
+        return top_doc_list
+
+    def RAG_Dense_Embedding(self, query, doc_data_list):
+        doc_list = [data["content"] for data in doc_data_list]
+        query_embeddings = self.denseEmbedding_model.encode_query([query], show_progress_bar=False)
+        document_embeddings = self.denseEmbedding_model.encode_document(doc_list, show_progress_bar=False)
+        similarities = self.denseEmbedding_model.similarity(query_embeddings, document_embeddings)
+        score_list = similarities[0].tolist()
+
+        for i in range(len(doc_data_list)):
+            doc_data_list[i]["denseEmbedding_score"] = score_list[i]
+        
+        doc_score_list = list(zip(doc_data_list, score_list))
+        top_k = self.topK_denseEmbedding
+        top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)[:top_k]
+        top_doc_list = [doc_score[0] for doc_score in top_doc_score_list]
+        # print("top_doc_list", len(top_doc_list), top_doc_list)
+        
+        for i in range(len(top_doc_list)):
+            top_doc_list[i]["denseEmbedding_ranking"] = i + 1
 
         return top_doc_list
 
