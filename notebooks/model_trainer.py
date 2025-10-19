@@ -6,6 +6,7 @@ from trl import SFTTrainer, SFTConfig
 from datetime import datetime
 import shutil
 from test_performance import TestPerformance, DatasetPath, MMLU_Subset
+from peft import PeftModel, PeftConfig
 
 class ModelTrainer():
     def __init__(self):
@@ -41,15 +42,21 @@ class ModelTrainer():
         print(f"---------- finish checking GPU -----------")
 
     # Load model
-    def load_model(self, model_name):
+    def load_model(self, model_name, lora_adapter_path = None):
         print(f"---------- start loading model:{model_name} -----------")
         tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code = False)
         print("finish loading tokenizer")
         model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code = False,
                                                     #  torch_dtype= torch.float16 # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
-                                                     #torch_dtype = torch.bfloat16 if self.is_bf16_supported else torch.float16
-                                                     torch_dtype = torch.float32
+                                                     torch_dtype = torch.bfloat16 if self.is_bf16_supported else torch.float16
+                                                     # torch_dtype = torch.float32
                                                      )
+
+        if lora_adapter_path != None:
+            print(f"applying LoRA adapter from: {lora_adapter_path}")
+            model = PeftModel.from_pretrained(model, lora_adapter_path)
+            print("LoRA adapter applied")
+
         print("finish loading model")
         print("torch_dtype:", model.config.torch_dtype)
 
