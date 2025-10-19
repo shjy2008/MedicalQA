@@ -42,6 +42,13 @@ class ContextRetriever:
         # self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
         # self.llm_reranker = ZephyrReranker()
         # self.llm_reranker = VicunaReranker()
+        
+        # model_coordinator = RankListwiseOSLLM(
+        #     model="castorini/first_mistral",
+        #     use_logits=True,
+        #     use_alpha=True,
+        # )
+        # self.llm_reranker = Reranker(model_coordinator)
 
         # model_coordinator = RankListwiseOSLLM(
         #     model="Qwen/Qwen2.5-7B-Instruct",
@@ -50,9 +57,9 @@ class ContextRetriever:
 
         
         # Step 4: Use a classifier model to determine which context+question can produce correct answer
-        classifier_model_name = "/projects/sciences/computing/sheju347/RAG/classifier/t5-large-epoch-10/checkpoint-94290"
-        self.classifier_tokenizer = AutoTokenizer.from_pretrained(classifier_model_name)
-        self.classifier_model = AutoModelForSeq2SeqLM.from_pretrained(classifier_model_name).to(self.device)
+        # classifier_model_name = "/projects/sciences/computing/sheju347/RAG/classifier/t5-large-epoch-10/checkpoint-94290"
+        # self.classifier_tokenizer = AutoTokenizer.from_pretrained(classifier_model_name)
+        # self.classifier_model = AutoModelForSeq2SeqLM.from_pretrained(classifier_model_name).to(self.device)
 
         # RAG
         self.topK_searchEngine = 100
@@ -238,6 +245,7 @@ class ContextRetriever:
             i = candidate.docid
             doc_data = doc_data_list[i]
             doc_data["LLM_ranking"] = count + 1
+            doc_data["LLM_score"] = candidate.score
             reranked_doc_data_list.append(doc_data)
 
             count += 1
