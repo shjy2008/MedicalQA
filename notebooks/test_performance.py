@@ -383,18 +383,35 @@ class TestPerformance():
             if use_RAG:
                 # print(f"question: {count}")
                 # logging.info(f"question: {count}")
-                
-                context = self.context_retriever.get_RAG_context(question, formated_choices)
-                if sentence_level_RAG:
-                    sentences = sent_tokenize(context)
-                    for sent in sentences:
-                        content = prompt.format(context = sent, question = question, choices = formated_choices)
+
+                if False:
+                    doc_data_list = self.context_retriever.get_RAG_data_list(question, formated_choices)
+                    to_try_index_list = [[], [0], [1], [2], [3], [4], [0, 1], [0, 1, 2]]
+                    for doc_index_list in to_try_index_list:
+                        context = ""
+                        for doc_index in doc_index_list:
+                            context += doc_data_list[doc_index]["content"]
+                            context += "\n\n"
+                        content = prompt.format(context = context, question = question, choices = formated_choices)
                         content_list.append(content)
+                    
+                    for doc_data in doc_data_list:
+                        del doc_data["content"]
+                        
+                    print(f"RAG data: {doc_data_list}")
+                    logging.info(f"RAG data: {doc_data_list}")
                 else:
-                    if context == None or context == "":
-                        prompt = prompt_normal
-                    content = prompt.format(context = context, question = question, choices = formated_choices)
-                    content_list.append(content)
+                    context = self.context_retriever.get_RAG_context(question, formated_choices)
+                    if sentence_level_RAG:
+                        sentences = sent_tokenize(context)
+                        for sent in sentences:
+                            content = prompt.format(context = sent, question = question, choices = formated_choices)
+                            content_list.append(content)
+                    else:
+                        if context == None or context == "":
+                            prompt = prompt_normal
+                        content = prompt.format(context = context, question = question, choices = formated_choices)
+                        content_list.append(content)
                     
 
                 # The following 4 lines of code is for logging the scores of documents
