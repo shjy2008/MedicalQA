@@ -27,14 +27,23 @@ class ContextRetriever:
         # RAG
         self.topK_searchEngine = 100
         self.topK_SPLADE = 10
+        self.topK_denseEmbedding = 0
         self.topK_crossEncoder = 3
         self.topK_LLM = 3
         self.score_threshold = None
         self.pick_rag_index = None
         self.use_classifier = False
-        self.RRF_models = [] # Reciprocal Rank Fusion model list ["SPLADE", "MonoT5", "
+        self.RRF_models = [] # Reciprocal Rank Fusion model list ["SPLADE", "DenseEmbedding", "MonoT5", "Zephyr", "Vicuna", "Qwen", "FirstMistral"]
+
+        # models
+        self.splade_model = None
+        self.denseEmbedding_model = None
+        self.crossEncoder_model = None
+        self.llm_reranker = None
+        self.zephyr_reranker = None
+        self.vicuna_reranker = None
     
-    def set_params(self, topK_searchEngine, topK_SPLADE, topK_denseEmbedding, topK_crossEncoder, topK_LLM, score_threshold = None, pick_rag_index = None, use_classifier = False):
+    def set_params(self, topK_searchEngine, topK_SPLADE, topK_denseEmbedding, topK_crossEncoder, topK_LLM, score_threshold = None, pick_rag_index = None, use_classifier = False, RRF_models = None):
         self.topK_searchEngine = topK_searchEngine
         self.topK_SPLADE = topK_SPLADE
         self.topK_denseEmbedding = topK_denseEmbedding
@@ -43,22 +52,27 @@ class ContextRetriever:
         self.score_threshold = score_threshold
         self.pick_rag_index = pick_rag_index
         self.use_classifier = use_classifier
+        self.RRF_models = RRF_models
 
         # Step 0: BM25 search engine
 
+        # -------- Initialize the models --------
+
+        RRF_model_names = [] if self.RRF_models == None else [RRF_model[0] for RRF_model in self.RRF_models]
+        
         # Step 1: SPLADE model (lexical sparse retrieval)
-        if self.topK_SPLADE != None and self.topK_SPLADE > 0:
+        if (self.topK_SPLADE != None and self.topK_SPLADE > 0) or ("SPLADE" in RRF_model_names):
             if self.splade_model == None:
                 self.splade_model = SparseEncoder("naver/splade-v3")
                 # self.splade_model = SparseEncoder("naver/splade-cocondenser-ensembledistil")
 
         # Step 2: Dense Embedding Model
-        if self.topK_denseEmbedding != None and self.topK_denseEmbedding > 0:
+        if (self.topK_denseEmbedding != None and self.topK_denseEmbedding > 0) or ("DenseEmbedding" in RRF_model_names):
             if self.denseEmbedding_model == None:
                 self.denseEmbedding_model = SentenceTransformer("sentence-transformers/embeddinggemma-300m-medical")
 
-        # Step 2: Cross-encoder model (e.g. MonoBERT)
-        if self.topK_crossEncoder != None and self.topK_crossEncoder > 0:
+        # Step 3: Cross-encoder model (e.g. MonoBERT)
+        if (self.topK_crossEncoder != None and self.topK_crossEncoder > 0) or ("MonoT5" in RRF_model_names):
             if self.crossEncoder_model == None:
                 # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
                 # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
@@ -68,7 +82,7 @@ class ContextRetriever:
                 self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
 
 
-        # Step 3: More powerful model (DuoBERT, LLM, ...)
+        # Step 4: More powerful model (DuoBERT, LLM, ...)
         if self.topK_LLM != None and self.topK_LLM > 0:
             if self.llm_reranker == None:
                 # self.llm_reranker = Reranker(DuoT5(model = "castorini/duot5-3b-med-msmarco"))
@@ -87,6 +101,13 @@ class ContextRetriever:
                 # )
                 # self.llm_reranker = Reranker(model_coordinator)
 
+        if "Zephyr" in RRF_model_names:
+            if self.zephyr_reranker == None:
+                self.zephyr_reranker = ZephyrReranker()
+            
+        if "Vicuna" in RRF_model_names:
+            if self.vicuna_reranker == None:
+                self.vicuna_reranker = VicunaReranker()
         
         # Step 4: Use a classifier model to determine which context+question can produce correct answer
         if use_classifier:
@@ -117,24 +138,31 @@ class ContextRetriever:
         
         # print(f"1 len(doc_list): {len(doc_list)}")
 
+        question_and_choices = question + '\n' + formated_choices
+
         # 1. SPLADE
         if self.topK_SPLADE != None and self.topK_SPLADE > 0:
-            doc_data_list = self.RAG_SPLADE_filter(question, doc_data_list)
+            doc_data_list = self.RAG_SPLADE_filter(question, doc_data_list, self.topK_SPLADE)
         # print(f"2 len(doc_list): {len(doc_list)}")
 
         # 2. Dense Embedding
         if self.topK_denseEmbedding != None and self.topK_denseEmbedding > 0:
-            doc_data_list = self.RAG_Dense_Embedding(question, doc_data_list)
+            doc_data_list = self.RAG_Dense_Embedding(question, doc_data_list, self.topK_denseEmbedding)
 
         # 3. MonoT5
         if self.topK_crossEncoder != None and self.topK_crossEncoder > 0:
-            # doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list)
-            doc_data_list = self.RAG_MonoT5_rerank(question + '\n' + formated_choices, doc_data_list, self.score_threshold)
+            # doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list, self.topK_crossEncoder)
+            doc_data_list = self.RAG_MonoT5_rerank(question_and_choices, doc_data_list, self.score_threshold, self.topK_crossEncoder)
             # print(f"3 len(doc_list): {len(doc_list)}")            
 
         # 4. LLM list reranker
         if self.topK_LLM != None and self.topK_LLM > 0:
-            doc_data_list = self.RAG_LLM_rerank(question + '\n' + formated_choices, doc_data_list)
+            doc_data_list = self.RAG_LLM_rerank(self.llm_reranker, question_and_choices, doc_data_list, self.topK_LLM)
+
+        # 5. RRF (Resiprocal Rank Fusion)
+        if self.RRF_models != None and len(self.RRF_models) > 0:
+            doc_data_list = self.RAG_run_RRF(question, formated_choices, doc_data_list)
+            doc_data_list = [doc_data_list[0]] # TODO: for now pick the first one only
         
         # only feed the nth retrieved document into the model
         if self.pick_rag_index != None:
@@ -142,7 +170,7 @@ class ContextRetriever:
 
         # Use a classifier model to select which context+query can produce correct answer
         if self.use_classifier:
-            doc_data_list = self.RAG_classifier(question + '\n' + formated_choices, doc_data_list)
+            doc_data_list = self.RAG_classifier(question_and_choices, doc_data_list)
             
             
         return doc_data_list
@@ -165,7 +193,52 @@ class ContextRetriever:
         
         return context
 
-    def RAG_SPLADE_filter(self, query, doc_data_list):
+    def RAG_run_RRF(self, question, formated_choices, doc_data_list):
+        # print("doc_data_list:", len(doc_data_list), doc_data_list)
+        question_and_choices = question + '\n' + formated_choices
+        all_ranked_data_lists = []
+        for RRF_model in self.RRF_models:
+            model_name = RRF_model[0]
+            ranked_data_list = None
+            if model_name == "SPLADE":
+                ranked_data_list = self.RAG_SPLADE_filter(question, doc_data_list)
+            elif model_name == "DenseEmbedding":
+                ranked_data_list = self.RAG_Dense_Embedding(question, doc_data_list)
+            elif model_name == "MonoT5":
+                ranked_data_list = self.RAG_MonoT5_rerank(question_and_choices, doc_data_list)
+            elif model_name == "Zephyr":
+                ranked_data_list = self.RAG_LLM_rerank(self.zephyr_reranker, question_and_choices, doc_data_list)
+            elif model_name == "Vicuna":
+                ranked_data_list = self.RAG_LLM_rerank(self.vicuna_reranker, question_and_choices, doc_data_list)
+            # elif model_name == "Qwen":
+            # elif model_name == "FirstMistral"
+
+            if ranked_data_list:
+                all_ranked_data_lists.append(ranked_data_list)
+
+        # print("all_ranked_data_lists:", len(all_ranked_data_lists), all_ranked_data_lists)
+        
+        weights = [RRF_model[1] for RRF_model in self.RRF_models]
+        
+        docId_to_fused_scores = {}
+
+        k = 60
+        for weight, ranked_data_list in zip(weights, all_ranked_data_lists):
+            for rank, doc_data in enumerate(ranked_data_list, start=1):
+                docId = doc_data["docId"]
+                if docId not in docId_to_fused_scores:
+                    docId_to_fused_scores[docId] = 0
+                docId_to_fused_scores[docId] += weight * (1 / (k + rank))
+
+        # print("docId_to_fused_scores:", docId_to_fused_scores)
+        
+        # Sort by fused score (descending)
+        sorted_docId_and_score = sorted(docId_to_fused_scores.items(), key=lambda x: x[1], reverse=True)
+        docId_to_doc_data = {d["docId"]: d for d in doc_data_list}
+        return [docId_to_doc_data[docId] for (docId, fused_score) in sorted_docId_and_score]
+                
+
+    def RAG_SPLADE_filter(self, query, doc_data_list, top_k = None):
         # SPLADE
         doc_list = [data["content"] for data in doc_data_list]
         query_embeddings = self.splade_model.encode_query([query], show_progress_bar=False)
@@ -177,8 +250,9 @@ class ContextRetriever:
             doc_data_list[i]["SPLADE_score"] = score_list[i]
         
         doc_score_list = list(zip(doc_data_list, score_list))
-        top_k = self.topK_SPLADE
-        top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)[:top_k]
+        top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)
+        if top_k != None:
+            top_doc_score_list = top_doc_score_list[:top_k]
         top_doc_list = [doc_score[0] for doc_score in top_doc_score_list]
         # print("top_doc_list", len(top_doc_list), top_doc_list)
         
@@ -187,7 +261,7 @@ class ContextRetriever:
 
         return top_doc_list
 
-    def RAG_Dense_Embedding(self, query, doc_data_list):
+    def RAG_Dense_Embedding(self, query, doc_data_list, top_k = None):
         doc_list = [data["content"] for data in doc_data_list]
         query_embeddings = self.denseEmbedding_model.encode_query([query], show_progress_bar=False)
         document_embeddings = self.denseEmbedding_model.encode_document(doc_list, show_progress_bar=False)
@@ -198,8 +272,9 @@ class ContextRetriever:
             doc_data_list[i]["denseEmbedding_score"] = score_list[i]
         
         doc_score_list = list(zip(doc_data_list, score_list))
-        top_k = self.topK_denseEmbedding
-        top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)[:top_k]
+        top_doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)
+        if top_k != None:
+            top_doc_score_list = top_doc_score_list[:top_k]
         top_doc_list = [doc_score[0] for doc_score in top_doc_score_list]
         # print("top_doc_list", len(top_doc_list), top_doc_list)
         
@@ -208,7 +283,7 @@ class ContextRetriever:
 
         return top_doc_list
 
-    def RAG_CrossEncoder_rerank(self, query, doc_data_list, score_threshold = None):
+    def RAG_CrossEncoder_rerank(self, query, doc_data_list, score_threshold = None, top_k = None):
         doc_list = [data["content"] for data in doc_data_list]
         pair_list = [(query, doc) for doc in doc_list]
         # print("RAG_CrossEncoder_rerank pair_list", pair_list)
@@ -218,7 +293,8 @@ class ContextRetriever:
 
         doc_score_list = list(zip(doc_data_list, score_list))
         doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)
-        doc_score_list = doc_score_list[:self.topK_crossEncoder]
+        if top_k != None:
+            doc_score_list = doc_score_list[:top_k]
         # print("reranked top k score:", [doc_score[1] for doc_score in top_doc_score_list])
 
         reranked_doc_data_list = []
@@ -232,7 +308,7 @@ class ContextRetriever:
         
         return reranked_doc_data_list
 
-    def RAG_MonoT5_rerank(self, query, doc_data_list, score_threshold = None):
+    def RAG_MonoT5_rerank(self, query, doc_data_list, score_threshold = None, top_k = None):
         doc_list = [data["content"] for data in doc_data_list]
         candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
         request = Request(query = Query(text = query, qid = 0), candidates = candidates)
@@ -246,7 +322,7 @@ class ContextRetriever:
             reranked_doc_data_list.append(doc_data_list[i])
 
             count += 1
-            if count >= self.topK_crossEncoder:
+            if top_k != None and count >= top_k:
                 break
         
         # reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
@@ -271,11 +347,11 @@ class ContextRetriever:
             
         return reranked_doc_data_list
 
-    def RAG_LLM_rerank(self, query, doc_data_list):
+    def RAG_LLM_rerank(self, llm_model, query, doc_data_list, top_k = None):
         doc_list = [data["content"] for data in doc_data_list]
         candidates = [Candidate(docid = i, score = 0, doc = {"segment": doc_list[i]}) for i in range(len(doc_list))]
         request = Request(query = Query(text = query, qid = 0), candidates = candidates)
-        rerank_results = self.llm_reranker.rerank(request, logging = False)
+        rerank_results = llm_model.rerank(request, logging = False)
         if isinstance(rerank_results, list):
             rerank_results = rerank_results[0]
 
@@ -289,12 +365,13 @@ class ContextRetriever:
             reranked_doc_data_list.append(doc_data)
 
             count += 1
-            if count >= self.topK_LLM:
+            if top_k != None and count >= top_k:
                 break
             
         # reranked_doc_list = [candidate.doc["segment"] for candidate in rerank_results.candidates]
         # #scores = [candidate.score for candidate in rerank_results.candidates]
-        # reranked_doc_data_list = reranked_doc_list[:self.topK_LLM]
+        # if top_k != None:
+        # reranked_doc_data_list = reranked_doc_list[:top_k]
         
         return reranked_doc_data_list
 

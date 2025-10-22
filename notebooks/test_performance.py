@@ -307,10 +307,10 @@ class TestPerformance():
         return match
             
     def test_accuracy(self, dataset_path, subset_name = None, is_ensemble = False, use_RAG = False, data_range = None, file_name = None,
-                      topK_searchEngine = None, topK_SPLADE = None, topK_crossEncoder = None, topK_LLM = None, score_threshold = None, 
-                     pick_rag_index = None, mask_correct_answer = False, get_classifier_training_data = False, use_classifier = False, sentence_level_RAG = False):
+                      topK_searchEngine = None, topK_SPLADE = None, topK_denseEmbedding = None, topK_crossEncoder = None, topK_LLM = None, score_threshold = None, 
+                     pick_rag_index = None, mask_correct_answer = False, get_classifier_training_data = False, use_classifier = False, sentence_level_RAG = False, RRF_models = None):
         
-        self.context_retriever.set_params(topK_searchEngine, topK_SPLADE, topK_crossEncoder, topK_LLM, score_threshold, pick_rag_index, use_classifier)
+        self.context_retriever.set_params(topK_searchEngine = topK_searchEngine, topK_SPLADE = topK_SPLADE, topK_denseEmbedding = topK_denseEmbedding, topK_crossEncoder = topK_crossEncoder, topK_LLM = topK_LLM, score_threshold = score_threshold, pick_rag_index = pick_rag_index, use_classifier = use_classifier, RRF_models = RRF_models)
         
         # Remove all handlers associated with the root logger
         for handler in logging.root.handlers[:]:
@@ -334,10 +334,18 @@ class TestPerformance():
         logging.info(f"topK_searchEngine: {topK_searchEngine}")
         print(f"topK_SPLADE: {topK_SPLADE}")
         logging.info(f"topK_SPLADE: {topK_SPLADE}")
+        print(f"topK_denseEmbedding: {topK_denseEmbedding}")
+        logging.info(f"topK_denseEmbedding: {topK_denseEmbedding}")
         print(f"topK_crossEncoder: {topK_crossEncoder}")
         logging.info(f"topK_crossEncoder: {topK_crossEncoder}")
         print(f"topK_LLM: {topK_LLM}")
         logging.info(f"topK_LLM: {topK_LLM}")
+        print(f"score_threshold: {score_threshold}")
+        logging.info(f"score_threshold: {score_threshold}")
+        print(f"RRF_models: {RRF_models}")
+        logging.info(f"RRF_models: {RRF_models}")
+        
+        
 
         if subset_name == None:
             if dataset_path == DatasetPath.PubMedQA:
