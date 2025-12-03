@@ -18,3 +18,7 @@
 #SBATCH --time=00:00:30
 #
 echo "hello world"
+
+./../rag/search_engine/search_HTTPServer 
+
+echo "finished"

@@ -8,16 +8,19 @@ import shutil
 from test_performance import TestPerformance, DatasetPath, MMLU_Subset
 
 class ModelTrainer():
-    def __init__(self):
+    def __init__(self, output_dir = None):
 
-        self.training_data_count = None #30000 # None # set to None if train on the entire dataset
+        self.training_data_count = None #10 # None #30000 # None # set to None if train on the entire dataset
         self.max_length = 1024
         # 1: inputs: <|user|>xxx<|end|><|assistant|>xxx<|end|>    labels: -100, -100, ..., -100, xxx<|end|>  labels mask the question, inputs contain answer
         # 2: only pass plain text <|user|>xxx<|end|><|assistant|>xxx<|end|> as training data
         # 3: only pass plain text user\n xxx assistant\n xxx as training data
         # 4: reproduce 1
         # 5: inputs: <|user|>xxx<|end|><|assistant|>   labels: -100, -100, ..., -100, xxx<|end|>  labels mask the question, inputs don't contain answer
-        self.output_dir = "./fine_tuned_model"
+        # self.output_dir = "./fine_tuned_model"
+        # self.output_dir = "/projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base/10-18-UltraMedical-batchsize8-1e-4-epoch3-5e-5-epoch2"
+
+        self.output_dir = output_dir
 
         self.model = None
         self.tokenizer = None
@@ -41,14 +44,23 @@ class ModelTrainer():
         print(f"---------- finish checking GPU -----------")
 
     # Load model
-    def load_model(self, model_name):
-        print(f"---------- start loading model:{model_name} -----------")
-        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code = False)
+    def load_model(self, model_name, lora_adapter_path = None, tokenizer_path = None):
+        print(f"---------- start loading model:{model_name, tokenizer_path} -----------")
+        if tokenizer_path == None:
+            tokenizer_path = model_name
+        tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, trust_remote_code = False)
         print("finish loading tokenizer")
-        model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code = False, 
+        model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code = False,
                                                     #  torch_dtype= torch.float16 # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
                                                      torch_dtype = torch.bfloat16 if self.is_bf16_supported else torch.float16
+                                                     # torch_dtype = torch.float32
                                                      )
+
+        if lora_adapter_path != None:
+            print(f"applying LoRA adapter from: {lora_adapter_path}")
+            model = PeftModel.from_pretrained(model, lora_adapter_path)
+            print("LoRA adapter applied")
+
         print("finish loading model")
         print("torch_dtype:", model.config.torch_dtype)
 
@@ -201,7 +213,7 @@ class ModelTrainer():
         return {"conversations": new_convos}
 
     # Train model
-    def train_model(self):
+    def train_model(self, resume_from_checkpoint=False, batch_size = 4, num_train_epochs = 3):
         print(f"----------- start training model:{self.model.name_or_path} ------------")
 
         # The same as the Phi-3 tutorial https://www.datacamp.com/tutorial/phi-3-tutorial
@@ -233,14 +245,14 @@ class ModelTrainer():
 
         training_args = TrainingArguments(
             output_dir = self.output_dir,
-            save_strategy = "steps", #"steps", # save checkpoints # "epoch", "steps", "no"
-            save_steps = 50000, # total_steps = dataset_size / batch_size
+            save_strategy = "epoch", #"steps", # save checkpoints # "epoch", "steps", "no"
+            # save_steps = 50000, # total_steps = dataset_size / batch_size
             # save_total_limit = 5, # keep only the last N checkpoint
-            per_device_train_batch_size = 4, # As specified in the paper: batch_size: 32
-            num_train_epochs = 3, # As specified in the paper: 3 epochs
+            per_device_train_batch_size = batch_size, # As specified in the paper: batch_size: 32
+            num_train_epochs = num_train_epochs, # As specified in the paper: 3 epochs
             learning_rate = 1e-4, # As specified in the paper: 1e-4
             fp16 = torch.cuda.is_available() and not self.is_bf16_supported,
-            bf16 = self.bf16_supported, # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
+            bf16 = self.is_bf16_supported, # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
             logging_steps = 100,
             logging_dir = "./logs",  # Directory for logs
             # report_to = ["tensorboard"],  # Enable logging to TensorBoard
@@ -252,7 +264,7 @@ class ModelTrainer():
             train_dataset = self.training_data
         )
 
-        trainer.train()
+        trainer.train(resume_from_checkpoint = resume_from_checkpoint)
 
         print(f"----------- finish training model:{self.model.name_or_path} ------------")
     
@@ -298,27 +310,39 @@ class ModelTrainer():
 if __name__ == "__main__":
     print("time:", datetime.now())
 
-    trainer = ModelTrainer()
+    output_dir = "/projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base_phi4/11-20-phi4-mini-base-UltraMedical"
+    
+    trainer = ModelTrainer(output_dir = output_dir)
 
-    model_name = "microsoft/Phi-3-mini-4k-instruct"
+    # model_name = "microsoft/Phi-3-mini-4k-instruct"
+    # model_name = "microsoft/Phi-4-mini-instruct"
+    
+    # model_name = "/projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base/10-15-UltraMedical-batchsize8-bf16"
+    # model_name = "google/flan-t5-xl"
+    # model_name = "Qwen/Qwen3-4B-Instruct-2507"
     # model_name = "Qwen/Qwen2.5-0.5B"
     # model_name = "Qwen/Qwen2.5-0.5B-instruct"
     # model_name = "KrithikV/MedMobile"
     # model_name = "./saved_models/fine_tuned_model_entire_UltraMedical_batch_4"
+    # model_name = "/projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base_qwen/11-11-Qwen3-4B-base-UltraMedical/checkpoint-307197"
+    # tokenizer_path = "/projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base_qwen/11-11-Qwen3-4B-base-UltraMedical"
+    # trainer.load_model(model_name, tokenizer_path = tokenizer_path)
+    
     trainer.load_model(model_name)
     # trainer.load_fine_tuned_model()
 
     # # For training
-    # trainer.load_dataset()
+    trainer.load_dataset()
     # # trainer.convert_to_tokenized_training_data(trainer.dataset[0])
-    # trainer.preprocess_training_data()
-    # trainer.train_model()
-    # trainer.save_trained_model()
+    trainer.preprocess_training_data()
+    trainer.train_model(resume_from_checkpoint = model_name)
+    # trainer.train_model_t5()
+    trainer.save_trained_model()
 
     # # # For Testing
     # trainer.load_fine_tuned_model()
     # trainer.test_model_MedQA_response()
-    trainer.test_model_accuracy(DatasetPath.MedMCQA, is_ensemble = False)
+    # trainer.test_model_accuracy(DatasetPath.MedMCQA, is_ensemble = False)
 
     print("All done.")
 

@@ -74,12 +74,12 @@ class ContextRetriever:
         # Step 3: Cross-encoder model (e.g. MonoBERT)
         if (self.topK_crossEncoder != None and self.topK_crossEncoder > 0) or ("MonoT5" in RRF_model_names):
             if self.crossEncoder_model == None:
-                # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
+                self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
                 # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
                 # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-electra-base")
                 # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
                 # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-gemma')
-                self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
+                # self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
 
 
         # Step 4: More powerful model (DuoBERT, LLM, ...)
@@ -135,6 +135,9 @@ class ContextRetriever:
             result = results[i]
             data = {"docId": result["docNo"], "BM25_score": result["score"], "BM25_ranking": i + 1, "content": result["content"]}
             doc_data_list.append(data)
+
+        if len(doc_data_list) == 0:
+            return doc_data_list
         
         # print(f"1 len(doc_list): {len(doc_list)}")
 
@@ -151,8 +154,10 @@ class ContextRetriever:
 
         # 3. MonoT5
         if self.topK_crossEncoder != None and self.topK_crossEncoder > 0:
-            # doc_data_list = self.RAG_CrossEncoder_rerank(query + '\n' + formated_choices, doc_data_list, self.topK_crossEncoder)
-            doc_data_list = self.RAG_MonoT5_rerank(question_and_choices, doc_data_list, self.score_threshold, self.topK_crossEncoder)
+            if isinstance(self.crossEncoder_model, Reranker):
+                doc_data_list = self.RAG_MonoT5_rerank(question_and_choices, doc_data_list, self.score_threshold, self.topK_crossEncoder)
+            else:
+                doc_data_list = self.RAG_CrossEncoder_rerank(question_and_choices, doc_data_list, self.score_threshold, self.topK_crossEncoder)
             # print(f"3 len(doc_list): {len(doc_list)}")            
 
         # 4. LLM list reranker
@@ -287,9 +292,11 @@ class ContextRetriever:
         doc_list = [data["content"] for data in doc_data_list]
         pair_list = [(query, doc) for doc in doc_list]
         # print("RAG_CrossEncoder_rerank pair_list", pair_list)
-        
-        # score_list = self.crossEncoder_model.predict(pair_list, show_progress_bar=False) # For CrossEncoder
-        score_list = self.crossEncoder_model.compute_score(pair_list) # For FlagReranker
+
+        if isinstance(self.crossEncoder_model, CrossEncoder):
+            score_list = self.crossEncoder_model.predict(pair_list, show_progress_bar=False) # For CrossEncoder
+        else:
+            score_list = self.crossEncoder_model.compute_score(pair_list) # For FlagReranker
 
         doc_score_list = list(zip(doc_data_list, score_list))
         doc_score_list = sorted(doc_score_list, key = lambda x: x[1], reverse = True)

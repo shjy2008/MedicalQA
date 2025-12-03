@@ -1,4 +1,5 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM, T5Tokenizer, T5ForConditionalGeneration
+from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModelForSeq2SeqLM
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 import torch
 from datasets import load_dataset
 from transformers import Trainer, TrainingArguments
@@ -42,9 +43,11 @@ class ModelTrainer():
         print(f"---------- finish checking GPU -----------")
 
     # Load model
-    def load_model(self, model_name, lora_adapter_path = None):
+    def load_model(self, model_name, lora_adapter_path = None, tokenizer_path = None):
         print(f"---------- start loading model:{model_name} -----------")
-        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code = False)
+        if tokenizer_path == None:
+            tokenizer_path = model_name
+        tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, trust_remote_code = False)
         print("finish loading tokenizer")
         model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code = False,
                                                     #  torch_dtype= torch.float16 # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
@@ -78,6 +81,29 @@ class ModelTrainer():
         tokenizer = T5Tokenizer.from_pretrained(model_name, trust_remote_code = False)
         print("finish loading tokenizer")
         model = T5ForConditionalGeneration.from_pretrained(model_name, trust_remote_code = False, 
+                                                    #  torch_dtype= torch.float16 # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
+                                                     torch_dtype = torch.bfloat16 if self.is_bf16_supported else torch.float16
+                                                     )
+        print("finish loading model")
+        print("torch_dtype:", model.config.torch_dtype)
+
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        model.to(device)
+
+        print("cuda available:", torch.cuda.is_available())
+        print("device:", device)
+
+        self.model = model
+        self.tokenizer = tokenizer
+        self.device = device
+
+        print(f"---------- finish loading model:{self.model.name_or_path} -----------")
+
+    def load_model_seq_to_seq(self, model_name):
+        print(f"---------- start loading model:{model_name} -----------")
+        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code = False)
+        print("finish loading tokenizer")
+        model = AutoModelForSeq2SeqLM.from_pretrained(model_name, trust_remote_code = False, 
                                                     #  torch_dtype= torch.float16 # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
                                                      torch_dtype = torch.bfloat16 if self.is_bf16_supported else torch.float16
                                                      )
