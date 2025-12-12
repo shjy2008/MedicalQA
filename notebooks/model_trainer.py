@@ -43,13 +43,16 @@ class ModelTrainer():
         print(f"---------- finish checking GPU -----------")
 
     # Load model
-    def load_model(self, model_name, lora_adapter_path = None, tokenizer_path = None):
+    def load_model(self, model_name, lora_adapter_path = None, tokenizer_path = None, tokenizer = None, trust_remote_code = False):
         print(f"---------- start loading model:{model_name} -----------")
-        if tokenizer_path == None:
-            tokenizer_path = model_name
-        tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, trust_remote_code = False)
+        if tokenizer != None:
+            tokenizer = tokenizer
+        else:
+            if tokenizer_path == None:
+                tokenizer_path = model_name
+            tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, trust_remote_code = trust_remote_code)
         print("finish loading tokenizer")
-        model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code = False,
+        model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code = trust_remote_code,
                                                     #  torch_dtype= torch.float16 # Sometimes RuntimeError: "_amp_foreach_non_finite_check_and_unscale_cuda" not implemented for 'BFloat16'
                                                      torch_dtype = torch.bfloat16 if self.is_bf16_supported else torch.float16
                                                      # torch_dtype = torch.float32

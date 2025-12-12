@@ -267,6 +267,7 @@ class TestPerformance():
         
         text = self.tokenizer.batch_decode(outputs)[0]
         print("outputs text:", text)
+        logging.info(f"outputs text: {text}")
         if not self.is_encoder_decoder:
             text = text.split("<|assistant|>")[-1]
         # answer = tokenizer.decode(output[0], skip_special_tokens = True)
@@ -308,6 +309,28 @@ class TestPerformance():
             return f"({m3.group(1)})"
     
         return "[invalid]"
+
+    # def extract_answer(self, response):
+    #     """
+    #     Extract the final answer choice (A-D) from a model response.
+    #     Looks for patterns like [A], (B), **[C]**, etc.
+    #     Returns the last mention of 'Answer' or 'Correct answer' if present,
+    #     otherwise the first bracketed choice anywhere.
+    #     """
+    #     # Pattern to match [A-D] or (A-D), optionally surrounded by spaces or **
+    #     bracket_pattern = r'[\*\s]*[\[\(]\s*([A-D])\s*[\]\)][\*\s]*'
+    
+    #     # 1. Match all "Answer: [A]" or "Correct answer: (B)"
+    #     matches = re.findall(r'(?:Answer|Correct answer)[:\s]*' + bracket_pattern, response, re.IGNORECASE)
+    #     if matches:
+    #         return f"({matches[-1]})"  # return the last one
+    
+    #     # 2. If no explicit "Answer" found, match the first bracketed choice anywhere
+    #     m = re.search(bracket_pattern, response)
+    #     if m:
+    #         return f"({m.group(1)})"
+    
+    #     return "[invalid]"
         
     def format_choices(self, choices, answer_key, mask_correct_answer):
         final_answers = []

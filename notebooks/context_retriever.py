@@ -1,4 +1,3 @@
-
 import torch
 from sentence_transformers import CrossEncoder
 from FlagEmbedding import FlagReranker
