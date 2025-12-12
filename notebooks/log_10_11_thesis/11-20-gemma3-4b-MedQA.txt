@@ -1,0 +1,71 @@
+2025-11-20 15:44:51,952 - INFO - use_RAG: False
+2025-11-20 15:44:51,952 - INFO - topK_searchEngine: 150
+2025-11-20 15:44:51,952 - INFO - topK_SPLADE: 0
+2025-11-20 15:44:51,952 - INFO - topK_denseEmbedding: 0
+2025-11-20 15:44:51,952 - INFO - topK_crossEncoder: 0
+2025-11-20 15:44:51,952 - INFO - topK_LLM: 0
+2025-11-20 15:44:51,952 - INFO - score_threshold: None
+2025-11-20 15:44:51,952 - INFO - RRF_models: None
+2025-11-20 15:44:51,952 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-20 15:44:55,824 - INFO - model: google/gemma-3-4b-it
+2025-11-20 15:45:39,575 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-11-20 15:45:49,131 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-11-20 15:46:26,270 - INFO - question 3/1273 answer:D correct_answer:B False
+2025-11-20 15:46:56,546 - INFO - question 4/1273 answer:A correct_answer:D False
+2025-11-20 15:47:06,948 - INFO - question 5/1273 answer:D correct_answer:B False
+2025-11-20 15:47:26,129 - INFO - question 6/1273 answer:D correct_answer:D True
+2025-11-20 15:47:32,904 - INFO - question 7/1273 answer:D correct_answer:C False
+2025-11-20 15:47:41,701 - INFO - question 8/1273 answer:D correct_answer:C False
+2025-11-20 15:47:50,676 - INFO - question 9/1273 answer:D correct_answer:B False
+2025-11-20 15:47:59,103 - INFO - question 10/1273 answer:D correct_answer:A False
+2025-11-20 15:48:08,013 - INFO - question 11/1273 answer:C correct_answer:D False
+2025-11-20 15:48:24,079 - INFO - question 12/1273 answer:D correct_answer:D True
+2025-11-20 15:48:35,115 - INFO - question 13/1273 answer:D correct_answer:B False
+2025-11-20 15:48:45,227 - INFO - question 14/1273 answer:C correct_answer:D False
+2025-11-20 15:48:52,555 - INFO - question 15/1273 answer:C correct_answer:C True
+2025-11-20 15:49:02,400 - INFO - question 16/1273 answer:D correct_answer:B False
+2025-11-20 15:49:09,520 - INFO - question 17/1273 answer:D correct_answer:D True
+2025-11-20 15:49:17,055 - INFO - question 18/1273 answer:C correct_answer:D False
+2025-11-20 15:49:37,574 - INFO - question 19/1273 answer:B correct_answer:B True
+2025-11-20 15:49:47,220 - INFO - question 20/1273 answer:D correct_answer:D True
+2025-11-20 15:49:55,071 - INFO - question 21/1273 answer:C correct_answer:C True
+2025-11-20 15:50:07,433 - INFO - question 22/1273 answer:D correct_answer:A False
+2025-11-20 15:50:20,993 - INFO - question 23/1273 answer:D correct_answer:C False
+2025-11-20 15:50:32,710 - INFO - question 24/1273 answer:D correct_answer:D True
+2025-11-20 15:50:49,018 - INFO - question 25/1273 answer:D correct_answer:A False
+2025-11-20 15:50:57,728 - INFO - question 26/1273 answer:C correct_answer:D False
+2025-11-20 15:51:07,375 - INFO - question 27/1273 answer:D correct_answer:D True
+2025-11-20 15:51:17,337 - INFO - question 28/1273 answer:D correct_answer:A False
+2025-11-20 15:51:29,877 - INFO - question 29/1273 answer:D correct_answer:D True
+2025-11-20 15:51:42,137 - INFO - question 30/1273 answer:D correct_answer:C False
+2025-11-20 15:51:55,111 - INFO - question 31/1273 answer:B correct_answer:D False
+2025-11-20 15:52:08,012 - INFO - question 32/1273 answer:D correct_answer:C False
+2025-11-20 15:52:23,124 - INFO - question 33/1273 answer:C correct_answer:D False
+2025-11-20 15:52:34,922 - INFO - question 34/1273 answer:C correct_answer:B False
+2025-11-20 15:53:07,760 - INFO - question 35/1273 answer:D correct_answer:A False
+2025-11-20 15:53:18,949 - INFO - question 36/1273 answer:A correct_answer:A True
+2025-11-20 15:53:29,779 - INFO - question 37/1273 answer:D correct_answer:D True
+2025-11-20 15:53:40,063 - INFO - question 38/1273 answer:D correct_answer:A False
+2025-11-20 15:53:50,948 - INFO - question 39/1273 answer:D correct_answer:D True
+2025-11-20 15:54:01,695 - INFO - question 40/1273 answer:D correct_answer:A False
+2025-11-20 15:54:14,056 - INFO - question 41/1273 answer:D correct_answer:C False
+2025-11-20 15:54:45,601 - INFO - question 42/1273 answer:D correct_answer:C False
+2025-11-20 15:55:01,324 - INFO - question 43/1273 answer:A correct_answer:A True
+2025-11-20 15:55:08,851 - INFO - question 44/1273 answer:A correct_answer:B False
+2025-11-20 15:55:23,222 - INFO - question 45/1273 answer:A correct_answer:A True
+2025-11-20 15:55:41,000 - INFO - question 46/1273 answer:D correct_answer:D True
+2025-11-20 15:55:48,005 - INFO - question 47/1273 answer:B correct_answer:C False
+2025-11-20 15:56:00,294 - INFO - question 48/1273 answer:D correct_answer:A False
+2025-11-20 15:56:13,123 - INFO - question 49/1273 answer:D correct_answer:B False
+2025-11-20 15:56:23,560 - INFO - question 50/1273 answer:D correct_answer:C False
+2025-11-20 15:56:33,420 - INFO - question 51/1273 answer:C correct_answer:D False
+2025-11-20 15:56:48,807 - INFO - question 52/1273 answer:D correct_answer:A False
+2025-11-20 15:57:00,101 - INFO - question 53/1273 answer:D correct_answer:D True
+2025-11-20 15:57:10,699 - INFO - question 54/1273 answer:B correct_answer:C False
+2025-11-20 15:57:19,463 - INFO - question 55/1273 answer:D correct_answer:A False
+2025-11-20 15:57:29,677 - INFO - question 56/1273 answer:D correct_answer:A False
+2025-11-20 15:57:35,681 - INFO - question 57/1273 answer:D correct_answer:C False
+2025-11-20 15:57:55,220 - INFO - question 58/1273 answer:D correct_answer:B False
+2025-11-20 15:58:13,667 - INFO - question 59/1273 answer:B correct_answer:C False

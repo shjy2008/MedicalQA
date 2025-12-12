@@ -1,0 +1,116 @@
+2025-11-18 17:48:32,181 - INFO - use_RAG: False
+2025-11-18 17:48:32,181 - INFO - topK_searchEngine: 150
+2025-11-18 17:48:32,181 - INFO - topK_SPLADE: 0
+2025-11-18 17:48:32,181 - INFO - topK_denseEmbedding: 0
+2025-11-18 17:48:32,181 - INFO - topK_crossEncoder: 0
+2025-11-18 17:48:32,181 - INFO - topK_LLM: 0
+2025-11-18 17:48:32,181 - INFO - score_threshold: None
+2025-11-18 17:48:32,181 - INFO - RRF_models: None
+2025-11-18 17:48:32,181 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'cais/mmlu' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-18 17:48:34,436 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base/10-15-UltraMedical-batchsize8-bf16
+2025-11-18 17:48:52,194 - INFO - question 1/100 answer:B correct_answer:B True
+2025-11-18 17:49:11,299 - INFO - question 2/100 answer:A correct_answer:A True
+2025-11-18 17:49:36,942 - INFO - question 3/100 answer:A correct_answer:A True
+2025-11-18 17:49:49,526 - INFO - question 4/100 answer:C correct_answer:C True
+2025-11-18 17:50:03,817 - INFO - question 5/100 answer:A correct_answer:A True
+2025-11-18 17:50:34,903 - INFO - question 6/100 answer:B correct_answer:B True
+2025-11-18 17:50:59,974 - INFO - question 7/100 answer:D correct_answer:D True
+2025-11-18 17:51:15,968 - INFO - question 8/100 answer:C correct_answer:C True
+2025-11-18 17:51:49,911 - INFO - question 9/100 answer:D correct_answer:D True
+2025-11-18 17:52:13,101 - INFO - question 10/100 answer:C correct_answer:C True
+2025-11-18 17:52:40,436 - INFO - question 11/100 answer:A correct_answer:A True
+2025-11-18 17:53:02,803 - INFO - question 12/100 answer:A correct_answer:A True
+2025-11-18 17:53:34,741 - INFO - question 13/100 answer:A correct_answer:A True
+2025-11-18 17:53:53,654 - INFO - question 14/100 answer:D correct_answer:D True
+2025-11-18 17:54:19,764 - INFO - question 15/100 answer:D correct_answer:D True
+2025-11-18 17:54:44,681 - INFO - question 16/100 answer:A correct_answer:A True
+2025-11-18 17:55:17,961 - INFO - question 17/100 answer:A correct_answer:A True
+2025-11-18 17:55:33,458 - INFO - question 18/100 answer:B correct_answer:B True
+2025-11-18 17:55:56,586 - INFO - question 19/100 answer:C correct_answer:C True
+2025-11-18 17:56:27,137 - INFO - question 20/100 answer:D correct_answer:D True
+2025-11-18 17:56:43,306 - INFO - question 21/100 answer:D correct_answer:D True
+2025-11-18 17:57:09,191 - INFO - question 22/100 answer:A correct_answer:A True
+2025-11-18 17:57:30,069 - INFO - question 23/100 answer:D correct_answer:D True
+2025-11-18 17:57:55,924 - INFO - question 24/100 answer:A correct_answer:A True
+2025-11-18 17:58:39,617 - INFO - question 25/100 answer:A correct_answer:A True
+2025-11-18 17:58:59,129 - INFO - question 26/100 answer:A correct_answer:A True
+2025-11-18 17:59:40,266 - INFO - question 27/100 answer:D correct_answer:B False
+2025-11-18 18:00:01,923 - INFO - question 28/100 answer:C correct_answer:C True
+2025-11-18 18:00:20,483 - INFO - question 29/100 answer:C correct_answer:B False
+2025-11-18 18:00:43,874 - INFO - question 30/100 answer:D correct_answer:D True
+2025-11-18 18:01:11,725 - INFO - question 31/100 answer:D correct_answer:A False
+2025-11-18 18:01:28,681 - INFO - question 32/100 answer:C correct_answer:C True
+2025-11-18 18:01:50,156 - INFO - question 33/100 answer:D correct_answer:D True
+2025-11-18 18:02:22,604 - INFO - question 34/100 answer:B correct_answer:B True
+2025-11-18 18:02:42,191 - INFO - question 35/100 answer:B correct_answer:B True
+2025-11-18 18:03:05,337 - INFO - question 36/100 answer:A correct_answer:A True
+2025-11-18 18:03:35,238 - INFO - question 37/100 answer:D correct_answer:A False
+2025-11-18 18:03:59,634 - INFO - question 38/100 answer:B correct_answer:B True
+2025-11-18 18:04:27,408 - INFO - question 39/100 answer:D correct_answer:D True
+2025-11-18 18:04:52,013 - INFO - question 40/100 answer:B correct_answer:B True
+2025-11-18 18:05:28,676 - INFO - question 41/100 answer:A correct_answer:A True
+2025-11-18 18:05:59,877 - INFO - question 42/100 answer:C correct_answer:C True
+2025-11-18 18:06:23,967 - INFO - question 43/100 answer:C correct_answer:C True
+2025-11-18 18:06:38,586 - INFO - question 44/100 answer:D correct_answer:D True
+2025-11-18 18:07:03,442 - INFO - question 45/100 answer:C correct_answer:C True
+2025-11-18 18:07:35,527 - INFO - question 46/100 answer:A correct_answer:A True
+2025-11-18 18:07:52,818 - INFO - question 47/100 answer:C correct_answer:C True
+2025-11-18 18:08:11,816 - INFO - question 48/100 answer:D correct_answer:D True
+2025-11-18 18:08:38,328 - INFO - question 49/100 answer:B correct_answer:C False
+2025-11-18 18:09:11,162 - INFO - question 50/100 answer:D correct_answer:D True
+2025-11-18 18:09:40,953 - INFO - question 51/100 answer:C correct_answer:D False
+2025-11-18 18:10:17,155 - INFO - question 52/100 answer:C correct_answer:C True
+2025-11-18 18:10:39,652 - INFO - question 53/100 answer:D correct_answer:D True
+2025-11-18 18:11:12,916 - INFO - question 54/100 answer:B correct_answer:B True
+2025-11-18 18:11:40,656 - INFO - question 55/100 answer:A correct_answer:A True
+2025-11-18 18:12:07,763 - INFO - question 56/100 answer:B correct_answer:B True
+2025-11-18 18:12:20,446 - INFO - question 57/100 answer:B correct_answer:B True
+2025-11-18 18:12:40,166 - INFO - question 58/100 answer:D correct_answer:D True
+2025-11-18 18:13:11,894 - INFO - question 59/100 answer:C correct_answer:A False
+2025-11-18 18:13:20,707 - INFO - question 60/100 answer:B correct_answer:B True
+2025-11-18 18:13:52,035 - INFO - question 61/100 answer:A correct_answer:A True
+2025-11-18 18:14:21,729 - INFO - question 62/100 answer:D correct_answer:D True
+2025-11-18 18:14:55,597 - INFO - question 63/100 answer:D correct_answer:C False
+2025-11-18 18:15:21,606 - INFO - question 64/100 answer:C correct_answer:C True
+2025-11-18 18:16:04,256 - INFO - question 65/100 answer:D correct_answer:A False
+2025-11-18 18:16:32,367 - INFO - question 66/100 answer:A correct_answer:A True
+2025-11-18 18:17:12,915 - INFO - question 67/100 answer:B correct_answer:B True
+2025-11-18 18:17:35,044 - INFO - question 68/100 answer:B correct_answer:B True
+2025-11-18 18:17:56,811 - INFO - question 69/100 answer:A correct_answer:A True
+2025-11-18 18:18:39,725 - INFO - question 70/100 answer:D correct_answer:D True
+2025-11-18 18:18:59,254 - INFO - question 71/100 answer:A correct_answer:B False
+2025-11-18 18:19:24,884 - INFO - question 72/100 answer:D correct_answer:D True
+2025-11-18 18:19:41,270 - INFO - question 73/100 answer:A correct_answer:A True
+2025-11-18 18:19:51,919 - INFO - question 74/100 answer:C correct_answer:C True
+2025-11-18 18:20:18,412 - INFO - question 75/100 answer:B correct_answer:B True
+2025-11-18 18:20:42,864 - INFO - question 76/100 answer:B correct_answer:B True
+2025-11-18 18:21:02,549 - INFO - question 77/100 answer:C correct_answer:C True
+2025-11-18 18:21:36,632 - INFO - question 78/100 answer:C correct_answer:C True
+2025-11-18 18:21:58,843 - INFO - question 79/100 answer:A correct_answer:A True
+2025-11-18 18:22:28,741 - INFO - question 80/100 answer:A correct_answer:A True
+2025-11-18 18:23:06,845 - INFO - question 81/100 answer:C correct_answer:B False
+2025-11-18 18:23:38,262 - INFO - question 82/100 answer:D correct_answer:D True
+2025-11-18 18:24:14,847 - INFO - question 83/100 answer:B correct_answer:B True
+2025-11-18 18:24:34,765 - INFO - question 84/100 answer:A correct_answer:A True
+2025-11-18 18:24:58,638 - INFO - question 85/100 answer:C correct_answer:C True
+2025-11-18 18:25:09,455 - INFO - question 86/100 answer:B correct_answer:B True
+2025-11-18 18:25:48,393 - INFO - question 87/100 answer:A correct_answer:A True
+2025-11-18 18:26:16,388 - INFO - question 88/100 answer:B correct_answer:B True
+2025-11-18 18:26:38,605 - INFO - question 89/100 answer:D correct_answer:D True
+2025-11-18 18:26:58,812 - INFO - question 90/100 answer:D correct_answer:C False
+2025-11-18 18:27:18,398 - INFO - question 91/100 answer:B correct_answer:B True
+2025-11-18 18:27:50,757 - INFO - question 92/100 answer:B correct_answer:B True
+2025-11-18 18:28:15,591 - INFO - question 93/100 answer:B correct_answer:B True
+2025-11-18 18:28:42,662 - INFO - question 94/100 answer:A correct_answer:A True
+2025-11-18 18:29:00,705 - INFO - question 95/100 answer:B correct_answer:B True
+2025-11-18 18:29:38,858 - INFO - question 96/100 answer:D correct_answer:D True
+2025-11-18 18:30:13,466 - INFO - question 97/100 answer:C correct_answer:C True
+2025-11-18 18:30:34,270 - INFO - question 98/100 answer:D correct_answer:D True
+2025-11-18 18:31:07,824 - INFO - question 99/100 answer:A correct_answer:A True
+2025-11-18 18:31:36,535 - INFO - question 100/100 answer:D correct_answer:D True
+2025-11-18 18:31:36,535 - INFO - Total questions: 100, correct: 88, accuracy: 0.88
+2025-11-18 18:31:36,535 - INFO - elapse_time: 2582.0991609096527
+2025-11-18 20:53:41,364 - ERROR - No such comm target registered: jupyter.widget.control
+2025-11-18 20:53:41,364 - WARNING - No such comm: a3d9d7b0-360d-4f88-b051-53ac2131a756

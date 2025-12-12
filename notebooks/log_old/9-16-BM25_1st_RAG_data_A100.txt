@@ -1,0 +1,27 @@
+2025-09-16 11:44:34,378 - INFO - topK_searchEngine: 1
+2025-09-16 11:44:34,378 - INFO - topK_SPLADE: 0
+2025-09-16 11:44:34,378 - INFO - topK_crossEncoder: 0
+2025-09-16 11:44:34,378 - INFO - topK_LLM: 0
+2025-09-16 11:44:34,378 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-09-16 11:44:38,621 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-09-16 11:46:29,864 - INFO - topK_searchEngine: 1
+2025-09-16 11:46:29,864 - INFO - topK_SPLADE: 0
+2025-09-16 11:46:29,864 - INFO - topK_crossEncoder: 0
+2025-09-16 11:46:29,864 - INFO - topK_LLM: 0
+2025-09-16 11:46:29,864 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-09-16 11:46:32,437 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-09-16 11:46:33,536 - INFO - RAG data: [{'docId': 'pubmed23n0888_14226', 'BM25_score': 122.789, 'BM25_ranking': 1}]
+2025-09-16 11:46:42,513 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-09-16 11:46:44,959 - INFO - RAG data: [{'docId': 'pubmed23n0565_16699', 'BM25_score': 90.7504, 'BM25_ranking': 1}]
+2025-09-16 11:46:58,810 - INFO - question 2/1273 answer:B correct_answer:D False
+2025-09-16 11:47:05,303 - INFO - RAG data: [{'docId': 'pubmed23n0502_736', 'BM25_score': 178.203, 'BM25_ranking': 1}]
+2025-09-16 11:47:19,878 - INFO - question 3/1273 answer:C correct_answer:B False
+2025-09-16 11:47:26,000 - INFO - RAG data: [{'docId': 'pubmed23n0910_317', 'BM25_score': 131.877, 'BM25_ranking': 1}]
+2025-09-16 11:47:42,379 - INFO - question 4/1273 answer:A correct_answer:D False
+2025-09-16 11:47:45,963 - INFO - RAG data: [{'docId': 'pubmed23n0912_10475', 'BM25_score': 113.585, 'BM25_ranking': 1}]
+2025-09-16 11:47:57,452 - INFO - question 5/1273 answer:B correct_answer:B True
+2025-09-16 11:47:59,627 - INFO - RAG data: [{'docId': 'pubmed23n0354_18600', 'BM25_score': 90.3418, 'BM25_ranking': 1}]

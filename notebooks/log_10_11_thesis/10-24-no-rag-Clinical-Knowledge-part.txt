@@ -1,0 +1,82 @@
+2025-10-24 18:58:53,538 - INFO - use_RAG: False
+2025-10-24 18:58:53,538 - INFO - topK_searchEngine: 150
+2025-10-24 18:58:53,538 - INFO - topK_SPLADE: 30
+2025-10-24 18:58:53,538 - INFO - topK_denseEmbedding: 0
+2025-10-24 18:58:53,538 - INFO - topK_crossEncoder: 0
+2025-10-24 18:58:53,538 - INFO - topK_LLM: 0
+2025-10-24 18:58:53,538 - INFO - score_threshold: None
+2025-10-24 18:58:53,538 - INFO - RRF_models: None
+2025-10-24 18:58:53,538 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'cais/mmlu' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-10-24 18:58:56,216 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base/10-15-UltraMedical-batchsize8-bf16
+2025-10-24 18:59:02,695 - INFO - question 1/68 num:5 answer:A correct_answer:B False
+2025-10-24 18:59:10,378 - INFO - question 2/68 num:6 answer:A correct_answer:D False
+2025-10-24 18:59:19,258 - INFO - question 3/68 num:7 answer:C correct_answer:B False
+2025-10-24 18:59:26,650 - INFO - question 4/68 num:11 answer:A correct_answer:C False
+2025-10-24 18:59:33,178 - INFO - question 5/68 num:23 answer:C correct_answer:A False
+2025-10-24 18:59:36,056 - INFO - question 6/68 num:27 answer:D correct_answer:D True
+2025-10-24 18:59:43,519 - INFO - question 7/68 num:28 answer:B correct_answer:A False
+2025-10-24 18:59:49,536 - INFO - question 8/68 num:29 answer:C correct_answer:B False
+2025-10-24 18:59:55,899 - INFO - question 9/68 num:30 answer:D correct_answer:C False
+2025-10-24 19:00:04,113 - INFO - question 10/68 num:33 answer:A correct_answer:A True
+2025-10-24 19:00:12,869 - INFO - question 11/68 num:34 answer:D correct_answer:B False
+2025-10-24 19:00:15,816 - INFO - question 12/68 num:36 answer:A correct_answer:D False
+2025-10-24 19:00:23,441 - INFO - question 13/68 num:37 answer:B correct_answer:C False
+2025-10-24 19:00:33,634 - INFO - question 14/68 num:38 answer:D correct_answer:B False
+2025-10-24 19:00:38,060 - INFO - question 15/68 num:40 answer:D correct_answer:D True
+2025-10-24 19:00:44,530 - INFO - question 16/68 num:42 answer:B correct_answer:D False
+2025-10-24 19:00:52,211 - INFO - question 17/68 num:43 answer:A correct_answer:C False
+2025-10-24 19:01:01,865 - INFO - question 18/68 num:49 answer:B correct_answer:D False
+2025-10-24 19:01:08,533 - INFO - question 19/68 num:50 answer:D correct_answer:D True
+2025-10-24 19:01:14,274 - INFO - question 20/68 num:51 answer:C correct_answer:C True
+2025-10-24 19:01:17,903 - INFO - question 21/68 num:53 answer:D correct_answer:C False
+2025-10-24 19:01:24,941 - INFO - question 22/68 num:57 answer:C correct_answer:B False
+2025-10-24 19:01:34,199 - INFO - question 23/68 num:65 answer:D correct_answer:A False
+2025-10-24 19:01:39,003 - INFO - question 24/68 num:66 answer:A correct_answer:D False
+2025-10-24 19:01:42,576 - INFO - question 25/68 num:74 answer:B correct_answer:D False
+2025-10-24 19:01:52,132 - INFO - question 26/68 num:82 answer:C correct_answer:D False
+2025-10-24 19:01:59,219 - INFO - question 27/68 num:87 answer:B correct_answer:A False
+2025-10-24 19:02:06,255 - INFO - question 28/68 num:90 answer:A correct_answer:D False
+2025-10-24 19:02:14,959 - INFO - question 29/68 num:98 answer:A correct_answer:A True
+2025-10-24 19:02:17,164 - INFO - question 30/68 num:99 answer:B correct_answer:B True
+2025-10-24 19:02:24,301 - INFO - question 31/68 num:103 answer:C correct_answer:B False
+2025-10-24 19:02:30,733 - INFO - question 32/68 num:124 answer:B correct_answer:D False
+2025-10-24 19:02:38,399 - INFO - question 33/68 num:125 answer:C correct_answer:A False
+2025-10-24 19:02:45,538 - INFO - question 34/68 num:126 answer:D correct_answer:D True
+2025-10-24 19:02:51,163 - INFO - question 35/68 num:128 answer:D correct_answer:C False
+2025-10-24 19:03:04,509 - INFO - question 36/68 num:130 answer:D correct_answer:B False
+2025-10-24 19:03:12,543 - INFO - question 37/68 num:133 answer:C correct_answer:D False
+2025-10-24 19:03:17,630 - INFO - question 38/68 num:135 answer:C correct_answer:C True
+2025-10-24 19:03:24,921 - INFO - question 39/68 num:138 answer:B correct_answer:C False
+2025-10-24 19:03:32,300 - INFO - question 40/68 num:141 answer:h correct_answer:D False
+2025-10-24 19:03:40,464 - INFO - question 41/68 num:148 answer:B correct_answer:B True
+2025-10-24 19:03:49,808 - INFO - question 42/68 num:154 answer:D correct_answer:D True
+2025-10-24 19:03:53,533 - INFO - question 43/68 num:156 answer:D correct_answer:B False
+2025-10-24 19:04:03,357 - INFO - question 44/68 num:157 answer:B correct_answer:D False
+2025-10-24 19:04:06,099 - INFO - question 45/68 num:165 answer:B correct_answer:B True
+2025-10-24 19:04:15,311 - INFO - question 46/68 num:169 answer:A correct_answer:C False
+2025-10-24 19:04:20,691 - INFO - question 47/68 num:171 answer:C correct_answer:B False
+2025-10-24 19:04:28,131 - INFO - question 48/68 num:177 answer:A correct_answer:C False
+2025-10-24 19:04:35,813 - INFO - question 49/68 num:180 answer:C correct_answer:D False
+2025-10-24 19:04:42,178 - INFO - question 50/68 num:184 answer:C correct_answer:D False
+2025-10-24 19:04:49,673 - INFO - question 51/68 num:187 answer:B correct_answer:C False
+2025-10-24 19:04:57,457 - INFO - question 52/68 num:191 answer:A correct_answer:C False
+2025-10-24 19:05:03,864 - INFO - question 53/68 num:200 answer:C correct_answer:C True
+2025-10-24 19:05:12,364 - INFO - question 54/68 num:201 answer:A correct_answer:D False
+2025-10-24 19:05:20,400 - INFO - question 55/68 num:212 answer:A correct_answer:A True
+2025-10-24 19:05:25,308 - INFO - question 56/68 num:214 answer:C correct_answer:A False
+2025-10-24 19:05:31,411 - INFO - question 57/68 num:221 answer:B correct_answer:D False
+2025-10-24 19:05:37,319 - INFO - question 58/68 num:222 answer:B correct_answer:B True
+2025-10-24 19:05:43,092 - INFO - question 59/68 num:225 answer:A correct_answer:B False
+2025-10-24 19:05:49,558 - INFO - question 60/68 num:226 answer:C correct_answer:A False
+2025-10-24 19:05:55,254 - INFO - question 61/68 num:235 answer:D correct_answer:B False
+2025-10-24 19:06:01,053 - INFO - question 62/68 num:236 answer:B correct_answer:A False
+2025-10-24 19:06:08,198 - INFO - question 63/68 num:238 answer:B correct_answer:C False
+2025-10-24 19:06:14,534 - INFO - question 64/68 num:239 answer:C correct_answer:D False
+2025-10-24 19:06:20,854 - INFO - question 65/68 num:240 answer:D correct_answer:C False
+2025-10-24 19:06:28,002 - INFO - question 66/68 num:244 answer:D correct_answer:C False
+2025-10-24 19:06:33,541 - INFO - question 67/68 num:254 answer:C correct_answer:B False
+2025-10-24 19:06:38,721 - INFO - question 68/68 num:263 answer:A correct_answer:D False
+2025-10-24 19:06:38,721 - INFO - Total questions: 68, correct: 15, accuracy: 0.22058823529411764
+2025-10-24 19:06:38,721 - INFO - elapse_time: 462.5046966075897

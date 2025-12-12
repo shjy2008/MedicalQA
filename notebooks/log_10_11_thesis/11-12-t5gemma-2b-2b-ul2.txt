@@ -1,0 +1,63 @@
+2025-11-12 16:02:19,384 - INFO - use_RAG: False
+2025-11-12 16:02:19,384 - INFO - topK_searchEngine: 150
+2025-11-12 16:02:19,384 - INFO - topK_SPLADE: 0
+2025-11-12 16:02:19,384 - INFO - topK_denseEmbedding: 0
+2025-11-12 16:02:19,384 - INFO - topK_crossEncoder: 0
+2025-11-12 16:02:19,384 - INFO - topK_LLM: 0
+2025-11-12 16:02:19,384 - INFO - score_threshold: None
+2025-11-12 16:02:19,384 - INFO - RRF_models: None
+2025-11-12 16:02:19,384 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-12 16:02:23,233 - INFO - model: google/t5gemma-2b-2b-ul2
+2025-11-12 16:10:34,145 - INFO - use_RAG: False
+2025-11-12 16:10:34,145 - INFO - topK_searchEngine: 150
+2025-11-12 16:10:34,145 - INFO - topK_SPLADE: 0
+2025-11-12 16:10:34,145 - INFO - topK_denseEmbedding: 0
+2025-11-12 16:10:34,145 - INFO - topK_crossEncoder: 0
+2025-11-12 16:10:34,145 - INFO - topK_LLM: 0
+2025-11-12 16:10:34,145 - INFO - score_threshold: None
+2025-11-12 16:10:34,145 - INFO - RRF_models: None
+2025-11-12 16:10:34,145 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-12 16:10:37,278 - INFO - model: google/t5gemma-2b-2b-ul2
+2025-11-12 16:12:17,429 - INFO - use_RAG: False
+2025-11-12 16:12:17,429 - INFO - topK_searchEngine: 150
+2025-11-12 16:12:17,429 - INFO - topK_SPLADE: 0
+2025-11-12 16:12:17,429 - INFO - topK_denseEmbedding: 0
+2025-11-12 16:12:17,429 - INFO - topK_crossEncoder: 0
+2025-11-12 16:12:17,429 - INFO - topK_LLM: 0
+2025-11-12 16:12:17,429 - INFO - score_threshold: None
+2025-11-12 16:12:17,429 - INFO - RRF_models: None
+2025-11-12 16:12:17,429 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-12 16:12:19,864 - INFO - model: google/t5gemma-2b-2b-ul2
+2025-11-12 16:12:56,216 - INFO - question 1/1273 answer:B correct_answer:B True
+2025-11-12 16:13:32,315 - INFO - question 2/1273 answer:C correct_answer:D False
+2025-11-12 16:14:08,674 - INFO - question 3/1273 answer:Z correct_answer:B False
+2025-11-12 16:14:44,080 - INFO - question 4/1273 answer:Z correct_answer:D False
+2025-11-12 16:14:44,379 - INFO - question 5/1273 answer:E correct_answer:B False
+2025-11-12 16:15:30,912 - INFO - use_RAG: False
+2025-11-12 16:15:30,912 - INFO - topK_searchEngine: 150
+2025-11-12 16:15:30,912 - INFO - topK_SPLADE: 0
+2025-11-12 16:15:30,912 - INFO - topK_denseEmbedding: 0
+2025-11-12 16:15:30,912 - INFO - topK_crossEncoder: 0
+2025-11-12 16:15:30,912 - INFO - topK_LLM: 0
+2025-11-12 16:15:30,912 - INFO - score_threshold: None
+2025-11-12 16:15:30,912 - INFO - RRF_models: None
+2025-11-12 16:15:30,912 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-12 16:15:33,685 - INFO - model: google/flan-t5-xl
+2025-11-12 16:15:33,913 - INFO - question 1/1273 answer:B correct_answer:B True
+2025-11-12 16:15:34,060 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-11-12 16:15:34,198 - INFO - question 3/1273 answer:C correct_answer:B False
+2025-11-12 16:15:34,334 - INFO - question 4/1273 answer:D correct_answer:D True
+2025-11-12 16:15:34,468 - INFO - question 5/1273 answer:C correct_answer:B False
+2025-11-12 16:15:34,604 - INFO - question 6/1273 answer:D correct_answer:D True
+2025-11-12 16:15:34,734 - INFO - question 7/1273 answer:A correct_answer:C False
+2025-11-12 16:15:34,865 - INFO - question 8/1273 answer:C correct_answer:C True
+2025-11-12 16:15:34,996 - INFO - question 9/1273 answer:B correct_answer:B True
+2025-11-12 16:15:35,129 - INFO - question 10/1273 answer:A correct_answer:A True

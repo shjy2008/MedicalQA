@@ -1,0 +1,70 @@
+2025-11-25 20:22:40,559 - INFO - use_RAG: False
+2025-11-25 20:22:40,559 - INFO - topK_searchEngine: 150
+2025-11-25 20:22:40,559 - INFO - topK_SPLADE: 0
+2025-11-25 20:22:40,559 - INFO - topK_denseEmbedding: 0
+2025-11-25 20:22:40,559 - INFO - topK_crossEncoder: 0
+2025-11-25 20:22:40,559 - INFO - topK_LLM: 0
+2025-11-25 20:22:40,559 - INFO - score_threshold: None
+2025-11-25 20:22:40,559 - INFO - RRF_models: None
+2025-11-25 20:22:40,559 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-25 20:22:44,352 - INFO - model: google/medgemma-4b-it
+2025-11-25 20:23:44,183 - INFO - use_RAG: False
+2025-11-25 20:23:44,184 - INFO - topK_searchEngine: 150
+2025-11-25 20:23:44,184 - INFO - topK_SPLADE: 0
+2025-11-25 20:23:44,184 - INFO - topK_denseEmbedding: 0
+2025-11-25 20:23:44,184 - INFO - topK_crossEncoder: 0
+2025-11-25 20:23:44,184 - INFO - topK_LLM: 0
+2025-11-25 20:23:44,184 - INFO - score_threshold: None
+2025-11-25 20:23:44,184 - INFO - RRF_models: None
+2025-11-25 20:23:44,184 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-25 20:23:48,023 - INFO - model: google/medgemma-4b-it
+2025-11-25 20:24:01,961 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-11-25 20:24:14,161 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-11-25 20:24:35,301 - INFO - question 3/1273 answer:B correct_answer:B True
+2025-11-25 20:24:51,867 - INFO - question 4/1273 answer:B correct_answer:D False
+2025-11-25 20:25:01,438 - INFO - question 5/1273 answer:A correct_answer:B False
+2025-11-25 20:26:16,067 - INFO - use_RAG: False
+2025-11-25 20:26:16,067 - INFO - topK_searchEngine: 150
+2025-11-25 20:26:16,067 - INFO - topK_SPLADE: 0
+2025-11-25 20:26:16,067 - INFO - topK_denseEmbedding: 0
+2025-11-25 20:26:16,067 - INFO - topK_crossEncoder: 0
+2025-11-25 20:26:16,067 - INFO - topK_LLM: 0
+2025-11-25 20:26:16,067 - INFO - score_threshold: None
+2025-11-25 20:26:16,067 - INFO - RRF_models: None
+2025-11-25 20:26:16,067 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-25 20:26:19,683 - INFO - model: google/medgemma-4b-it
+2025-11-25 20:26:33,532 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-11-25 20:26:45,665 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-11-25 20:27:06,707 - INFO - question 3/1273 answer:B correct_answer:B True
+2025-11-25 20:27:23,184 - INFO - question 4/1273 answer:B correct_answer:D False
+2025-11-25 20:27:32,690 - INFO - question 5/1273 answer:B correct_answer:B True
+2025-11-25 20:27:49,615 - INFO - question 6/1273 answer:B correct_answer:D False
+2025-11-25 20:28:00,066 - INFO - question 7/1273 answer:A correct_answer:C False
+2025-11-25 20:28:16,145 - INFO - question 8/1273 answer:C correct_answer:C True
+2025-11-25 20:28:23,984 - INFO - question 9/1273 answer:B correct_answer:B True
+2025-11-25 20:28:31,570 - INFO - question 10/1273 answer:A correct_answer:A True
+2025-11-25 20:28:39,431 - INFO - question 11/1273 answer:D correct_answer:D True
+2025-11-25 20:28:53,634 - INFO - question 12/1273 answer:D correct_answer:D True
+2025-11-25 20:28:59,614 - INFO - question 13/1273 answer:A correct_answer:B False
+2025-11-25 20:29:13,886 - INFO - question 14/1273 answer:B correct_answer:D False
+2025-11-25 20:29:23,168 - INFO - question 15/1273 answer:D correct_answer:C False
+2025-11-25 20:29:32,989 - INFO - question 16/1273 answer:B correct_answer:B True
+2025-11-25 20:29:43,428 - INFO - question 17/1273 answer:D correct_answer:D True
+2025-11-25 20:29:54,382 - INFO - question 18/1273 answer:B correct_answer:D False
+2025-11-25 20:30:08,850 - INFO - question 19/1273 answer:D correct_answer:B False
+2025-11-25 20:30:25,494 - INFO - question 20/1273 answer:B correct_answer:D False
+2025-11-25 20:30:34,735 - INFO - question 21/1273 answer:D correct_answer:C False
+2025-11-25 20:30:49,672 - INFO - question 22/1273 answer:A correct_answer:A True
+2025-11-25 20:31:11,730 - INFO - question 23/1273 answer:C correct_answer:C True
+2025-11-25 20:31:23,214 - INFO - question 24/1273 answer:A correct_answer:D False
+2025-11-25 20:31:37,276 - INFO - question 25/1273 answer:A correct_answer:A True
+2025-11-25 20:31:46,701 - INFO - question 26/1273 answer:D correct_answer:D True
+2025-11-25 20:31:53,610 - INFO - question 27/1273 answer:D correct_answer:D True
+2025-11-25 20:32:07,526 - INFO - question 28/1273 answer:A correct_answer:A True
+2025-11-25 20:32:19,811 - INFO - question 29/1273 answer:D correct_answer:D True

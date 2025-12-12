@@ -1,0 +1,1321 @@
+2025-08-21 12:33:42,466 - INFO - topK_searchEngine: 1
+2025-08-21 12:33:42,467 - INFO - topK_SPLADE: 1
+2025-08-21 12:33:42,468 - INFO - topK_crossEncoder: 1
+2025-08-21 12:33:42,468 - INFO - topK_LLM: 3
+2025-08-21 12:33:42,468 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-08-21 12:33:45,192 - INFO - model: /../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-08-21 12:38:53,282 - INFO - topK_searchEngine: 1
+2025-08-21 12:38:53,282 - INFO - topK_SPLADE: 1
+2025-08-21 12:38:53,282 - INFO - topK_crossEncoder: 1
+2025-08-21 12:38:53,282 - INFO - topK_LLM: 3
+2025-08-21 12:38:53,282 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-08-21 12:38:57,216 - INFO - model: /../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-08-21 12:39:08,670 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-08-21 12:39:34,558 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-08-21 12:39:54,645 - INFO - question 3/1273 answer:A correct_answer:B False
+2025-08-21 12:40:24,097 - INFO - question 4/1273 answer:D correct_answer:D True
+2025-08-21 12:40:41,293 - INFO - question 5/1273 answer:B correct_answer:B True
+2025-08-21 12:40:54,012 - INFO - question 6/1273 answer:B correct_answer:D False
+2025-08-21 12:41:09,496 - INFO - question 7/1273 answer:C correct_answer:C True
+2025-08-21 12:41:28,674 - INFO - question 8/1273 answer:C correct_answer:C True
+2025-08-21 12:41:45,670 - INFO - question 9/1273 answer:B correct_answer:B True
+2025-08-21 12:41:57,799 - INFO - question 10/1273 answer:A correct_answer:A True
+2025-08-21 12:42:09,717 - INFO - question 11/1273 answer:D correct_answer:D True
+2025-08-21 12:42:32,675 - INFO - question 12/1273 answer:D correct_answer:D True
+2025-08-21 12:42:46,942 - INFO - question 13/1273 answer:B correct_answer:B True
+2025-08-21 12:43:03,526 - INFO - question 14/1273 answer:D correct_answer:D True
+2025-08-21 12:43:19,801 - INFO - question 15/1273 answer:B correct_answer:C False
+2025-08-21 12:43:32,844 - INFO - question 16/1273 answer:B correct_answer:B True
+2025-08-21 12:43:49,929 - INFO - question 17/1273 answer:D correct_answer:D True
+2025-08-21 12:44:05,509 - INFO - question 18/1273 answer:D correct_answer:D True
+2025-08-21 12:44:22,917 - INFO - question 19/1273 answer:B correct_answer:B True
+2025-08-21 12:44:38,884 - INFO - question 20/1273 answer:B correct_answer:D False
+2025-08-21 12:44:49,772 - INFO - question 21/1273 answer:C correct_answer:C True
+2025-08-21 12:45:09,199 - INFO - question 22/1273 answer:A correct_answer:A True
+2025-08-21 12:45:30,706 - INFO - question 23/1273 answer:C correct_answer:C True
+2025-08-21 12:45:47,494 - INFO - question 24/1273 answer:A correct_answer:D False
+2025-08-21 12:46:02,950 - INFO - question 25/1273 answer:A correct_answer:A True
+2025-08-21 12:46:16,263 - INFO - question 26/1273 answer:D correct_answer:D True
+2025-08-21 12:46:31,113 - INFO - question 27/1273 answer:D correct_answer:D True
+2025-08-21 12:46:40,965 - INFO - question 28/1273 answer:A correct_answer:A True
+2025-08-21 12:47:05,179 - INFO - question 29/1273 answer:D correct_answer:D True
+2025-08-21 12:47:18,865 - INFO - question 30/1273 answer:A correct_answer:C False
+2025-08-21 12:47:43,065 - INFO - question 31/1273 answer:D correct_answer:D True
+2025-08-21 12:48:00,658 - INFO - question 32/1273 answer:D correct_answer:C False
+2025-08-21 12:48:21,839 - INFO - question 33/1273 answer:D correct_answer:D True
+2025-08-21 12:48:40,793 - INFO - question 34/1273 answer:D correct_answer:B False
+2025-08-21 12:49:01,251 - INFO - question 35/1273 answer:A correct_answer:A True
+2025-08-21 12:49:21,373 - INFO - question 36/1273 answer:A correct_answer:A True
+2025-08-21 12:49:33,716 - INFO - question 37/1273 answer:D correct_answer:D True
+2025-08-21 12:49:49,439 - INFO - question 38/1273 answer:A correct_answer:A True
+2025-08-21 12:50:19,874 - INFO - question 39/1273 answer:C correct_answer:D False
+2025-08-21 12:50:31,866 - INFO - question 40/1273 answer:A correct_answer:A True
+2025-08-21 12:50:57,230 - INFO - question 41/1273 answer:C correct_answer:C True
+2025-08-21 12:51:23,681 - INFO - question 42/1273 answer:C correct_answer:C True
+2025-08-21 12:51:44,918 - INFO - question 43/1273 answer:A correct_answer:A True
+2025-08-21 12:51:59,480 - INFO - question 44/1273 answer:B correct_answer:B True
+2025-08-21 12:52:18,795 - INFO - question 45/1273 answer:A correct_answer:A True
+2025-08-21 12:52:38,230 - INFO - question 46/1273 answer:D correct_answer:D True
+2025-08-21 12:52:56,629 - INFO - question 47/1273 answer:C correct_answer:C True
+2025-08-21 12:53:14,801 - INFO - question 48/1273 answer:A correct_answer:A True
+2025-08-21 12:53:32,426 - INFO - question 49/1273 answer:B correct_answer:B True
+2025-08-21 12:53:48,195 - INFO - question 50/1273 answer:C correct_answer:C True
+2025-08-21 12:54:01,081 - INFO - question 51/1273 answer:D correct_answer:D True
+2025-08-21 12:54:18,660 - INFO - question 52/1273 answer:A correct_answer:A True
+2025-08-21 12:54:31,585 - INFO - question 53/1273 answer:D correct_answer:D True
+2025-08-21 12:54:47,194 - INFO - question 54/1273 answer:C correct_answer:C True
+2025-08-21 12:54:58,011 - INFO - question 55/1273 answer:A correct_answer:A True
+2025-08-21 12:55:15,262 - INFO - question 56/1273 answer:A correct_answer:A True
+2025-08-21 12:55:26,362 - INFO - question 57/1273 answer:C correct_answer:C True
+2025-08-21 12:55:43,730 - INFO - question 58/1273 answer:B correct_answer:B True
+2025-08-21 12:56:19,581 - INFO - question 59/1273 answer:B correct_answer:C False
+2025-08-21 12:56:35,539 - INFO - question 60/1273 answer:C correct_answer:A False
+2025-08-21 12:56:51,530 - INFO - question 61/1273 answer:C correct_answer:C True
+2025-08-21 12:56:59,912 - INFO - question 62/1273 answer:A correct_answer:A True
+2025-08-21 12:57:22,138 - INFO - question 63/1273 answer:A correct_answer:D False
+2025-08-21 12:57:41,693 - INFO - question 64/1273 answer:A correct_answer:A True
+2025-08-21 12:58:03,406 - INFO - question 65/1273 answer:C correct_answer:A False
+2025-08-21 12:58:16,757 - INFO - question 66/1273 answer:B correct_answer:B True
+2025-08-21 12:58:26,633 - INFO - question 67/1273 answer:C correct_answer:C True
+2025-08-21 12:58:47,906 - INFO - question 68/1273 answer:B correct_answer:B True
+2025-08-21 12:59:07,009 - INFO - question 69/1273 answer:D correct_answer:D True
+2025-08-21 12:59:29,745 - INFO - question 70/1273 answer:A correct_answer:A True
+2025-08-21 12:59:52,714 - INFO - question 71/1273 answer:A correct_answer:A True
+2025-08-21 13:00:09,655 - INFO - question 72/1273 answer:C correct_answer:A False
+2025-08-21 13:00:40,704 - INFO - question 73/1273 answer:D correct_answer:C False
+2025-08-21 13:00:56,434 - INFO - question 74/1273 answer:B correct_answer:B True
+2025-08-21 13:01:15,510 - INFO - question 75/1273 answer:A correct_answer:C False
+2025-08-21 13:01:31,931 - INFO - question 76/1273 answer:D correct_answer:A False
+2025-08-21 13:01:48,145 - INFO - question 77/1273 answer:B correct_answer:B True
+2025-08-21 13:02:04,479 - INFO - question 78/1273 answer:C correct_answer:B False
+2025-08-21 13:02:25,618 - INFO - question 79/1273 answer:C correct_answer:C True
+2025-08-21 13:02:41,595 - INFO - question 80/1273 answer:C correct_answer:C True
+2025-08-21 13:02:55,330 - INFO - question 81/1273 answer:B correct_answer:B True
+2025-08-21 13:03:07,949 - INFO - question 82/1273 answer:D correct_answer:A False
+2025-08-21 13:03:21,710 - INFO - question 83/1273 answer:C correct_answer:C True
+2025-08-21 13:03:40,735 - INFO - question 84/1273 answer:A correct_answer:A True
+2025-08-21 13:04:03,101 - INFO - question 85/1273 answer:C correct_answer:C True
+2025-08-21 13:04:19,140 - INFO - question 86/1273 answer:B correct_answer:B True
+2025-08-21 13:04:40,264 - INFO - question 87/1273 answer:C correct_answer:C True
+2025-08-21 13:05:03,445 - INFO - question 88/1273 answer:C correct_answer:C True
+2025-08-21 13:05:20,803 - INFO - question 89/1273 answer:D correct_answer:C False
+2025-08-21 13:05:42,984 - INFO - question 90/1273 answer:B correct_answer:B True
+2025-08-21 13:06:12,014 - INFO - question 91/1273 answer:C correct_answer:D False
+2025-08-21 13:06:28,533 - INFO - question 92/1273 answer:B correct_answer:B True
+2025-08-21 13:06:47,366 - INFO - question 93/1273 answer:C correct_answer:C True
+2025-08-21 13:07:05,450 - INFO - question 94/1273 answer:C correct_answer:D False
+2025-08-21 13:07:26,873 - INFO - question 95/1273 answer:C correct_answer:C True
+2025-08-21 13:07:43,830 - INFO - question 96/1273 answer:D correct_answer:D True
+2025-08-21 13:08:00,754 - INFO - question 97/1273 answer:D correct_answer:A False
+2025-08-21 13:08:12,689 - INFO - question 98/1273 answer:B correct_answer:B True
+2025-08-21 13:08:24,073 - INFO - question 99/1273 answer:B correct_answer:B True
+2025-08-21 13:08:35,009 - INFO - question 100/1273 answer:B correct_answer:B True
+2025-08-21 13:08:57,036 - INFO - question 101/1273 answer:B correct_answer:D False
+2025-08-21 13:09:12,080 - INFO - question 102/1273 answer:C correct_answer:A False
+2025-08-21 13:09:25,712 - INFO - question 103/1273 answer:A correct_answer:A True
+2025-08-21 13:09:44,146 - INFO - question 104/1273 answer:A correct_answer:A True
+2025-08-21 13:10:00,311 - INFO - question 105/1273 answer:B correct_answer:B True
+2025-08-21 13:10:16,009 - INFO - question 106/1273 answer:B correct_answer:B True
+2025-08-21 13:10:34,619 - INFO - question 107/1273 answer:A correct_answer:B False
+2025-08-21 13:10:53,937 - INFO - question 108/1273 answer:B correct_answer:A False
+2025-08-21 13:11:07,706 - INFO - question 109/1273 answer:B correct_answer:D False
+2025-08-21 13:11:26,385 - INFO - question 110/1273 answer:C correct_answer:B False
+2025-08-21 13:11:52,324 - INFO - question 111/1273 answer:B correct_answer:C False
+2025-08-21 13:12:08,823 - INFO - question 112/1273 answer:D correct_answer:B False
+2025-08-21 13:12:23,852 - INFO - question 113/1273 answer:A correct_answer:B False
+2025-08-21 13:12:40,648 - INFO - question 114/1273 answer:C correct_answer:C True
+2025-08-21 13:13:00,751 - INFO - question 115/1273 answer:B correct_answer:C False
+2025-08-21 13:13:11,229 - INFO - question 116/1273 answer:D correct_answer:D True
+2025-08-21 13:13:23,069 - INFO - question 117/1273 answer:B correct_answer:C False
+2025-08-21 13:13:41,668 - INFO - question 118/1273 answer:C correct_answer:C True
+2025-08-21 13:14:01,045 - INFO - question 119/1273 answer:D correct_answer:D True
+2025-08-21 13:14:15,534 - INFO - question 120/1273 answer:C correct_answer:C True
+2025-08-21 13:14:30,905 - INFO - question 121/1273 answer:D correct_answer:D True
+2025-08-21 13:14:47,967 - INFO - question 122/1273 answer:A correct_answer:A True
+2025-08-21 13:15:03,518 - INFO - question 123/1273 answer:D correct_answer:D True
+2025-08-21 13:15:30,358 - INFO - question 124/1273 answer:A correct_answer:A True
+2025-08-21 13:15:42,630 - INFO - question 125/1273 answer:B correct_answer:B True
+2025-08-21 13:15:57,612 - INFO - question 126/1273 answer:A correct_answer:A True
+2025-08-21 13:16:20,038 - INFO - question 127/1273 answer:C correct_answer:A False
+2025-08-21 13:16:32,484 - INFO - question 128/1273 answer:C correct_answer:C True
+2025-08-21 13:16:55,300 - INFO - question 129/1273 answer:B correct_answer:A False
+2025-08-21 13:17:12,354 - INFO - question 130/1273 answer:A correct_answer:A True
+2025-08-21 13:17:34,325 - INFO - question 131/1273 answer:A correct_answer:B False
+2025-08-21 13:17:47,583 - INFO - question 132/1273 answer:C correct_answer:B False
+2025-08-21 13:18:09,633 - INFO - question 133/1273 answer:A correct_answer:A True
+2025-08-21 13:18:26,160 - INFO - question 134/1273 answer:C correct_answer:B False
+2025-08-21 13:18:38,501 - INFO - question 135/1273 answer:A correct_answer:A True
+2025-08-21 13:18:52,851 - INFO - question 136/1273 answer:C correct_answer:C True
+2025-08-21 13:19:08,801 - INFO - question 137/1273 answer:C correct_answer:C True
+2025-08-21 13:19:27,038 - INFO - question 138/1273 answer:D correct_answer:D True
+2025-08-21 13:19:42,686 - INFO - question 139/1273 answer:B correct_answer:B True
+2025-08-21 13:20:02,826 - INFO - question 140/1273 answer:B correct_answer:D False
+2025-08-21 13:20:19,967 - INFO - question 141/1273 answer:C correct_answer:C True
+2025-08-21 13:20:49,935 - INFO - question 142/1273 answer:D correct_answer:A False
+2025-08-21 13:21:05,438 - INFO - question 143/1273 answer:A correct_answer:A True
+2025-08-21 13:21:17,384 - INFO - question 144/1273 answer:B correct_answer:B True
+2025-08-21 13:21:31,281 - INFO - question 145/1273 answer:C correct_answer:C True
+2025-08-21 13:21:50,218 - INFO - question 146/1273 answer:D correct_answer:D True
+2025-08-21 13:22:04,079 - INFO - question 147/1273 answer:C correct_answer:C True
+2025-08-21 13:22:24,989 - INFO - question 148/1273 answer:D correct_answer:D True
+2025-08-21 13:22:41,570 - INFO - question 149/1273 answer:B correct_answer:B True
+2025-08-21 13:23:00,683 - INFO - question 150/1273 answer:D correct_answer:D True
+2025-08-21 13:23:22,089 - INFO - question 151/1273 answer:D correct_answer:A False
+2025-08-21 13:23:32,167 - INFO - question 152/1273 answer:D correct_answer:D True
+2025-08-21 13:23:50,167 - INFO - question 153/1273 answer:A correct_answer:A True
+2025-08-21 13:24:03,302 - INFO - question 154/1273 answer:A correct_answer:A True
+2025-08-21 13:24:21,897 - INFO - question 155/1273 answer:C correct_answer:C True
+2025-08-21 13:24:39,516 - INFO - question 156/1273 answer:C correct_answer:D False
+2025-08-21 13:24:55,456 - INFO - question 157/1273 answer:A correct_answer:B False
+2025-08-21 13:25:08,755 - INFO - question 158/1273 answer:A correct_answer:A True
+2025-08-21 13:25:33,488 - INFO - question 159/1273 answer:C correct_answer:C True
+2025-08-21 13:25:56,911 - INFO - question 160/1273 answer:D correct_answer:B False
+2025-08-21 13:26:13,922 - INFO - question 161/1273 answer:C correct_answer:C True
+2025-08-21 13:26:28,602 - INFO - question 162/1273 answer:B correct_answer:B True
+2025-08-21 13:26:43,105 - INFO - question 163/1273 answer:D correct_answer:C False
+2025-08-21 13:27:01,690 - INFO - question 164/1273 answer:D correct_answer:A False
+2025-08-21 13:27:18,686 - INFO - question 165/1273 answer:A correct_answer:A True
+2025-08-21 13:27:40,573 - INFO - question 166/1273 answer:A correct_answer:B False
+2025-08-21 13:27:53,694 - INFO - question 167/1273 answer:A correct_answer:B False
+2025-08-21 13:28:10,649 - INFO - question 168/1273 answer:D correct_answer:C False
+2025-08-21 13:28:24,177 - INFO - question 169/1273 answer:B correct_answer:B True
+2025-08-21 13:28:37,867 - INFO - question 170/1273 answer:C correct_answer:C True
+2025-08-21 13:28:53,620 - INFO - question 171/1273 answer:A correct_answer:C False
+2025-08-21 13:29:10,295 - INFO - question 172/1273 answer:D correct_answer:D True
+2025-08-21 13:29:26,854 - INFO - question 173/1273 answer:C correct_answer:C True
+2025-08-21 13:29:42,077 - INFO - question 174/1273 answer:C correct_answer:A False
+2025-08-21 13:29:54,600 - INFO - question 175/1273 answer:D correct_answer:D True
+2025-08-21 13:30:14,931 - INFO - question 176/1273 answer:D correct_answer:D True
+2025-08-21 13:30:26,008 - INFO - question 177/1273 answer:D correct_answer:D True
+2025-08-21 13:30:39,884 - INFO - question 178/1273 answer:C correct_answer:C True
+2025-08-21 13:30:55,643 - INFO - question 179/1273 answer:A correct_answer:D False
+2025-08-21 13:31:14,407 - INFO - question 180/1273 answer:C correct_answer:C True
+2025-08-21 13:31:45,713 - INFO - question 181/1273 answer:B correct_answer:B True
+2025-08-21 13:32:02,531 - INFO - question 182/1273 answer:C correct_answer:D False
+2025-08-21 13:32:18,727 - INFO - question 183/1273 answer:B correct_answer:B True
+2025-08-21 13:32:34,517 - INFO - question 184/1273 answer:D correct_answer:D True
+2025-08-21 13:32:52,051 - INFO - question 185/1273 answer:A correct_answer:A True
+2025-08-21 13:33:10,336 - INFO - question 186/1273 answer:D correct_answer:D True
+2025-08-21 13:33:28,187 - INFO - question 187/1273 answer:B correct_answer:B True
+2025-08-21 13:33:39,131 - INFO - question 188/1273 answer:B correct_answer:B True
+2025-08-21 13:33:57,050 - INFO - question 189/1273 answer:B correct_answer:D False
+2025-08-21 13:34:07,610 - INFO - question 190/1273 answer:B correct_answer:C False
+2025-08-21 13:34:23,274 - INFO - question 191/1273 answer:A correct_answer:A True
+2025-08-21 13:34:45,505 - INFO - question 192/1273 answer:A correct_answer:C False
+2025-08-21 13:35:00,824 - INFO - question 193/1273 answer:D correct_answer:D True
+2025-08-21 13:35:16,023 - INFO - question 194/1273 answer:C correct_answer:C True
+2025-08-21 13:35:29,553 - INFO - question 195/1273 answer:C correct_answer:C True
+2025-08-21 13:35:44,546 - INFO - question 196/1273 answer:C correct_answer:C True
+2025-08-21 13:36:02,868 - INFO - question 197/1273 answer:D correct_answer:A False
+2025-08-21 13:36:19,181 - INFO - question 198/1273 answer:B correct_answer:B True
+2025-08-21 13:36:35,198 - INFO - question 199/1273 answer:C correct_answer:D False
+2025-08-21 13:36:50,147 - INFO - question 200/1273 answer:C correct_answer:C True
+2025-08-21 13:37:05,021 - INFO - question 201/1273 answer:C correct_answer:A False
+2025-08-21 13:37:14,866 - INFO - question 202/1273 answer:B correct_answer:B True
+2025-08-21 13:37:26,142 - INFO - question 203/1273 answer:B correct_answer:C False
+2025-08-21 13:37:43,750 - INFO - question 204/1273 answer:C correct_answer:A False
+2025-08-21 13:37:53,710 - INFO - question 205/1273 answer:A correct_answer:B False
+2025-08-21 13:38:09,465 - INFO - question 206/1273 answer:D correct_answer:B False
+2025-08-21 13:38:17,065 - INFO - question 207/1273 answer:C correct_answer:C True
+2025-08-21 13:38:34,574 - INFO - question 208/1273 answer:A correct_answer:A True
+2025-08-21 13:38:49,852 - INFO - question 209/1273 answer:B correct_answer:B True
+2025-08-21 13:38:59,849 - INFO - question 210/1273 answer:A correct_answer:A True
+2025-08-21 13:39:12,887 - INFO - question 211/1273 answer:C correct_answer:C True
+2025-08-21 13:39:41,440 - INFO - question 212/1273 answer:D correct_answer:B False
+2025-08-21 13:40:01,907 - INFO - question 213/1273 answer:B correct_answer:D False
+2025-08-21 13:40:13,629 - INFO - question 214/1273 answer:A correct_answer:A True
+2025-08-21 13:40:31,087 - INFO - question 215/1273 answer:B correct_answer:B True
+2025-08-21 13:40:45,251 - INFO - question 216/1273 answer:C correct_answer:C True
+2025-08-21 13:41:05,048 - INFO - question 217/1273 answer:D correct_answer:D True
+2025-08-21 13:41:22,809 - INFO - question 218/1273 answer:C correct_answer:C True
+2025-08-21 13:41:33,535 - INFO - question 219/1273 answer:D correct_answer:D True
+2025-08-21 13:41:55,561 - INFO - question 220/1273 answer:A correct_answer:A True
+2025-08-21 13:42:14,396 - INFO - question 221/1273 answer:C correct_answer:C True
+2025-08-21 13:42:28,629 - INFO - question 222/1273 answer:B correct_answer:A False
+2025-08-21 13:42:49,894 - INFO - question 223/1273 answer:D correct_answer:C False
+2025-08-21 13:43:06,893 - INFO - question 224/1273 answer:A correct_answer:A True
+2025-08-21 13:43:28,332 - INFO - question 225/1273 answer:D correct_answer:B False
+2025-08-21 13:43:39,955 - INFO - question 226/1273 answer:C correct_answer:C True
+2025-08-21 13:44:02,505 - INFO - question 227/1273 answer:C correct_answer:C True
+2025-08-21 13:44:21,299 - INFO - question 228/1273 answer:C correct_answer:C True
+2025-08-21 13:44:48,006 - INFO - question 229/1273 answer:A correct_answer:A True
+2025-08-21 13:45:11,559 - INFO - question 230/1273 answer:D correct_answer:D True
+2025-08-21 13:45:29,010 - INFO - question 231/1273 answer:B correct_answer:B True
+2025-08-21 13:45:42,535 - INFO - question 232/1273 answer:A correct_answer:A True
+2025-08-21 13:45:58,571 - INFO - question 233/1273 answer:D correct_answer:C False
+2025-08-21 13:46:11,754 - INFO - question 234/1273 answer:A correct_answer:A True
+2025-08-21 13:46:33,141 - INFO - question 235/1273 answer:D correct_answer:C False
+2025-08-21 13:46:47,520 - INFO - question 236/1273 answer:A correct_answer:A True
+2025-08-21 13:47:04,417 - INFO - question 237/1273 answer:A correct_answer:A True
+2025-08-21 13:47:28,947 - INFO - question 238/1273 answer:C correct_answer:B False
+2025-08-21 13:47:47,498 - INFO - question 239/1273 answer:B correct_answer:A False
+2025-08-21 13:48:02,436 - INFO - question 240/1273 answer:A correct_answer:A True
+2025-08-21 13:48:17,529 - INFO - question 241/1273 answer:D correct_answer:D True
+2025-08-21 13:48:41,481 - INFO - question 242/1273 answer:A correct_answer:B False
+2025-08-21 13:49:05,101 - INFO - question 243/1273 answer:D correct_answer:A False
+2025-08-21 13:49:23,048 - INFO - question 244/1273 answer:D correct_answer:A False
+2025-08-21 13:49:34,421 - INFO - question 245/1273 answer:B correct_answer:D False
+2025-08-21 13:50:00,069 - INFO - question 246/1273 answer:A correct_answer:C False
+2025-08-21 13:50:14,456 - INFO - question 247/1273 answer:B correct_answer:A False
+2025-08-21 13:50:30,714 - INFO - question 248/1273 answer:D correct_answer:D True
+2025-08-21 13:50:42,313 - INFO - question 249/1273 answer:B correct_answer:B True
+2025-08-21 13:50:56,234 - INFO - question 250/1273 answer:B correct_answer:B True
+2025-08-21 13:51:06,826 - INFO - question 251/1273 answer:D correct_answer:A False
+2025-08-21 13:51:20,306 - INFO - question 252/1273 answer:B correct_answer:B True
+2025-08-21 13:51:40,501 - INFO - question 253/1273 answer:D correct_answer:A False
+2025-08-21 13:51:58,526 - INFO - question 254/1273 answer:A correct_answer:D False
+2025-08-21 13:52:18,648 - INFO - question 255/1273 answer:A correct_answer:A True
+2025-08-21 13:52:30,635 - INFO - question 256/1273 answer:C correct_answer:C True
+2025-08-21 13:52:46,016 - INFO - question 257/1273 answer:C correct_answer:C True
+2025-08-21 13:53:00,364 - INFO - question 258/1273 answer:D correct_answer:D True
+2025-08-21 13:53:26,521 - INFO - question 259/1273 answer:A correct_answer:D False
+2025-08-21 13:53:41,414 - INFO - question 260/1273 answer:D correct_answer:D True
+2025-08-21 13:54:01,358 - INFO - question 261/1273 answer:D correct_answer:C False
+2025-08-21 13:54:17,246 - INFO - question 262/1273 answer:C correct_answer:C True
+2025-08-21 13:54:32,148 - INFO - question 263/1273 answer:D correct_answer:D True
+2025-08-21 13:54:49,822 - INFO - question 264/1273 answer:D correct_answer:C False
+2025-08-21 13:55:16,780 - INFO - question 265/1273 answer:C correct_answer:A False
+2025-08-21 13:55:33,274 - INFO - question 266/1273 answer:B correct_answer:D False
+2025-08-21 13:55:49,151 - INFO - question 267/1273 answer:C correct_answer:A False
+2025-08-21 13:56:05,190 - INFO - question 268/1273 answer:A correct_answer:D False
+2025-08-21 13:56:17,342 - INFO - question 269/1273 answer:D correct_answer:D True
+2025-08-21 13:56:30,550 - INFO - question 270/1273 answer:C correct_answer:C True
+2025-08-21 13:56:44,454 - INFO - question 271/1273 answer:C correct_answer:C True
+2025-08-21 13:57:11,623 - INFO - question 272/1273 answer:D correct_answer:B False
+2025-08-21 13:57:24,562 - INFO - question 273/1273 answer:C correct_answer:C True
+2025-08-21 13:57:45,564 - INFO - question 274/1273 answer:D correct_answer:A False
+2025-08-21 13:57:59,528 - INFO - question 275/1273 answer:A correct_answer:A True
+2025-08-21 13:58:12,471 - INFO - question 276/1273 answer:A correct_answer:A True
+2025-08-21 13:58:37,115 - INFO - question 277/1273 answer:D correct_answer:C False
+2025-08-21 13:58:50,226 - INFO - question 278/1273 answer:D correct_answer:D True
+2025-08-21 13:59:06,084 - INFO - question 279/1273 answer:A correct_answer:A True
+2025-08-21 13:59:31,435 - INFO - question 280/1273 answer:D correct_answer:B False
+2025-08-21 13:59:52,103 - INFO - question 281/1273 answer:B correct_answer:B True
+2025-08-21 14:00:04,024 - INFO - question 282/1273 answer:C correct_answer:C True
+2025-08-21 14:00:19,775 - INFO - question 283/1273 answer:A correct_answer:A True
+2025-08-21 14:00:39,894 - INFO - question 284/1273 answer:A correct_answer:A True
+2025-08-21 14:00:59,476 - INFO - question 285/1273 answer:D correct_answer:A False
+2025-08-21 14:01:16,055 - INFO - question 286/1273 answer:D correct_answer:C False
+2025-08-21 14:01:29,431 - INFO - question 287/1273 answer:C correct_answer:C True
+2025-08-21 14:01:47,366 - INFO - question 288/1273 answer:B correct_answer:A False
+2025-08-21 14:02:04,777 - INFO - question 289/1273 answer:B correct_answer:B True
+2025-08-21 14:02:20,681 - INFO - question 290/1273 answer:C correct_answer:C True
+2025-08-21 14:02:34,579 - INFO - question 291/1273 answer:D correct_answer:B False
+2025-08-21 14:02:51,909 - INFO - question 292/1273 answer:A correct_answer:A True
+2025-08-21 14:03:06,986 - INFO - question 293/1273 answer:D correct_answer:C False
+2025-08-21 14:03:22,170 - INFO - question 294/1273 answer:A correct_answer:A True
+2025-08-21 14:03:32,870 - INFO - question 295/1273 answer:A correct_answer:A True
+2025-08-21 14:03:45,337 - INFO - question 296/1273 answer:A correct_answer:A True
+2025-08-21 14:03:59,154 - INFO - question 297/1273 answer:C correct_answer:A False
+2025-08-21 14:04:22,376 - INFO - question 298/1273 answer:D correct_answer:D True
+2025-08-21 14:04:35,290 - INFO - question 299/1273 answer:D correct_answer:D True
+2025-08-21 14:04:47,452 - INFO - question 300/1273 answer:B correct_answer:B True
+2025-08-21 14:05:03,628 - INFO - question 301/1273 answer:B correct_answer:D False
+2025-08-21 14:05:17,044 - INFO - question 302/1273 answer:C correct_answer:C True
+2025-08-21 14:05:37,698 - INFO - question 303/1273 answer:A correct_answer:A True
+2025-08-21 14:06:05,278 - INFO - question 304/1273 answer:D correct_answer:C False
+2025-08-21 14:06:30,492 - INFO - question 305/1273 answer:B correct_answer:A False
+2025-08-21 14:06:42,967 - INFO - question 306/1273 answer:A correct_answer:B False
+2025-08-21 14:07:05,290 - INFO - question 307/1273 answer:B correct_answer:C False
+2025-08-21 14:07:25,452 - INFO - question 308/1273 answer:B correct_answer:C False
+2025-08-21 14:07:42,625 - INFO - question 309/1273 answer:C correct_answer:C True
+2025-08-21 14:07:52,266 - INFO - question 310/1273 answer:D correct_answer:D True
+2025-08-21 14:08:03,655 - INFO - question 311/1273 answer:B correct_answer:B True
+2025-08-21 14:08:26,802 - INFO - question 312/1273 answer:C correct_answer:C True
+2025-08-21 14:08:47,786 - INFO - question 313/1273 answer:D correct_answer:B False
+2025-08-21 14:09:00,517 - INFO - question 314/1273 answer:B correct_answer:B True
+2025-08-21 14:09:16,547 - INFO - question 315/1273 answer:B correct_answer:A False
+2025-08-21 14:09:31,463 - INFO - question 316/1273 answer:A correct_answer:A True
+2025-08-21 14:09:48,786 - INFO - question 317/1273 answer:C correct_answer:A False
+2025-08-21 14:10:03,108 - INFO - question 318/1273 answer:D correct_answer:A False
+2025-08-21 14:10:19,045 - INFO - question 319/1273 answer:D correct_answer:C False
+2025-08-21 14:10:44,524 - INFO - question 320/1273 answer:A correct_answer:A True
+2025-08-21 14:11:01,232 - INFO - question 321/1273 answer:A correct_answer:C False
+2025-08-21 14:11:19,615 - INFO - question 322/1273 answer:C correct_answer:A False
+2025-08-21 14:11:39,248 - INFO - question 323/1273 answer:C correct_answer:C True
+2025-08-21 14:11:55,467 - INFO - question 324/1273 answer:C correct_answer:C True
+2025-08-21 14:12:21,432 - INFO - question 325/1273 answer:A correct_answer:A True
+2025-08-21 14:12:37,244 - INFO - question 326/1273 answer:B correct_answer:B True
+2025-08-21 14:12:53,190 - INFO - question 327/1273 answer:A correct_answer:A True
+2025-08-21 14:13:04,526 - INFO - question 328/1273 answer:C correct_answer:A False
+2025-08-21 14:13:23,014 - INFO - question 329/1273 answer:A correct_answer:A True
+2025-08-21 14:13:40,166 - INFO - question 330/1273 answer:A correct_answer:B False
+2025-08-21 14:13:54,924 - INFO - question 331/1273 answer:C correct_answer:B False
+2025-08-21 14:14:08,783 - INFO - question 332/1273 answer:B correct_answer:B True
+2025-08-21 14:14:29,179 - INFO - question 333/1273 answer:D correct_answer:D True
+2025-08-21 14:14:47,517 - INFO - question 334/1273 answer:D correct_answer:D True
+2025-08-21 14:14:59,454 - INFO - question 335/1273 answer:B correct_answer:B True
+2025-08-21 14:15:17,195 - INFO - question 336/1273 answer:A correct_answer:A True
+2025-08-21 14:15:32,826 - INFO - question 337/1273 answer:A correct_answer:A True
+2025-08-21 14:15:56,080 - INFO - question 338/1273 answer:C correct_answer:B False
+2025-08-21 14:31:33,734 - INFO - topK_searchEngine: 1
+2025-08-21 14:31:33,735 - INFO - topK_SPLADE: 1
+2025-08-21 14:31:33,735 - INFO - topK_crossEncoder: 1
+2025-08-21 14:31:33,735 - INFO - topK_LLM: 3
+2025-08-21 14:31:33,735 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-08-21 14:31:37,654 - INFO - model: /../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-08-21 14:32:44,457 - INFO - Use pytorch device_name: cuda:0
+2025-08-21 14:32:44,458 - INFO - Load pretrained SparseEncoder: naver/splade-v3
+2025-08-21 14:32:58,769 - INFO - topK_searchEngine: 1
+2025-08-21 14:32:58,769 - INFO - topK_SPLADE: 1
+2025-08-21 14:32:58,769 - INFO - topK_crossEncoder: 1
+2025-08-21 14:32:58,769 - INFO - topK_LLM: 3
+2025-08-21 14:32:58,769 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-08-21 14:33:01,742 - INFO - model: /../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-08-21 14:33:28,009 - INFO - question 1/935 num:339 answer:C correct_answer:A False
+2025-08-21 14:33:43,643 - INFO - question 2/935 num:340 answer:A correct_answer:A True
+2025-08-21 14:34:04,157 - INFO - question 3/935 num:341 answer:D correct_answer:D True
+2025-08-21 14:34:18,604 - INFO - question 4/935 num:342 answer:B correct_answer:B True
+2025-08-21 14:34:33,265 - INFO - question 5/935 num:343 answer:C correct_answer:C True
+2025-08-21 14:34:46,446 - INFO - question 6/935 num:344 answer:A correct_answer:A True
+2025-08-21 14:35:05,980 - INFO - question 7/935 num:345 answer:B correct_answer:A False
+2025-08-21 14:35:18,948 - INFO - question 8/935 num:346 answer:B correct_answer:B True
+2025-08-21 14:35:30,087 - INFO - question 9/935 num:347 answer:B correct_answer:B True
+2025-08-21 14:35:47,541 - INFO - question 10/935 num:348 answer:A correct_answer:A True
+2025-08-21 14:36:03,806 - INFO - question 11/935 num:349 answer:C correct_answer:C True
+2025-08-21 14:36:23,812 - INFO - question 12/935 num:350 answer:B correct_answer:B True
+2025-08-21 14:36:46,205 - INFO - question 13/935 num:351 answer:B correct_answer:B True
+2025-08-21 14:37:10,597 - INFO - question 14/935 num:352 answer:A correct_answer:A True
+2025-08-21 14:37:34,622 - INFO - question 15/935 num:353 answer:D correct_answer:A False
+2025-08-21 14:37:57,991 - INFO - question 16/935 num:354 answer:B correct_answer:B True
+2025-08-21 14:38:13,118 - INFO - question 17/935 num:355 answer:C correct_answer:C True
+2025-08-21 14:38:28,800 - INFO - question 18/935 num:356 answer:D correct_answer:A False
+2025-08-21 14:38:46,426 - INFO - question 19/935 num:357 answer:A correct_answer:A True
+2025-08-21 14:39:03,044 - INFO - question 20/935 num:358 answer:D correct_answer:D True
+2025-08-21 14:39:13,623 - INFO - question 21/935 num:359 answer:C correct_answer:B False
+2025-08-21 14:39:28,564 - INFO - question 22/935 num:360 answer:C correct_answer:C True
+2025-08-21 14:39:44,042 - INFO - question 23/935 num:361 answer:B correct_answer:A False
+2025-08-21 14:40:03,091 - INFO - question 24/935 num:362 answer:A correct_answer:A True
+2025-08-21 14:40:20,405 - INFO - question 25/935 num:363 answer:B correct_answer:D False
+2025-08-21 14:40:36,515 - INFO - question 26/935 num:364 answer:C correct_answer:C True
+2025-08-21 14:40:51,161 - INFO - question 27/935 num:365 answer:D correct_answer:A False
+2025-08-21 14:41:12,103 - INFO - question 28/935 num:366 answer:C correct_answer:C True
+2025-08-21 14:41:31,054 - INFO - question 29/935 num:367 answer:A correct_answer:A True
+2025-08-21 14:41:50,685 - INFO - question 30/935 num:368 answer:A correct_answer:D False
+2025-08-21 14:42:08,196 - INFO - question 31/935 num:369 answer:C correct_answer:C True
+2025-08-21 14:42:19,719 - INFO - question 32/935 num:370 answer:A correct_answer:D False
+2025-08-21 14:42:39,157 - INFO - question 33/935 num:371 answer:D correct_answer:D True
+2025-08-21 14:43:02,268 - INFO - question 34/935 num:372 answer:C correct_answer:A False
+2025-08-21 14:43:20,616 - INFO - question 35/935 num:373 answer:C correct_answer:D False
+2025-08-21 14:43:35,895 - INFO - question 36/935 num:374 answer:D correct_answer:D True
+2025-08-21 14:44:04,952 - INFO - question 37/935 num:375 answer:C correct_answer:D False
+2025-08-21 14:44:21,067 - INFO - question 38/935 num:376 answer:A correct_answer:B False
+2025-08-21 14:44:39,932 - INFO - question 39/935 num:377 answer:B correct_answer:D False
+2025-08-21 14:44:58,195 - INFO - question 40/935 num:378 answer:D correct_answer:D True
+2025-08-21 14:45:23,291 - INFO - question 41/935 num:379 answer:A correct_answer:A True
+2025-08-21 14:45:38,111 - INFO - question 42/935 num:380 answer:C correct_answer:C True
+2025-08-21 14:46:08,793 - INFO - question 43/935 num:381 answer:A correct_answer:B False
+2025-08-21 14:46:32,181 - INFO - question 44/935 num:382 answer:D correct_answer:C False
+2025-08-21 14:46:49,949 - INFO - question 45/935 num:383 answer:D correct_answer:C False
+2025-08-21 14:47:04,947 - INFO - question 46/935 num:384 answer:A correct_answer:A True
+2025-08-21 14:47:32,490 - INFO - question 47/935 num:385 answer:D correct_answer:D True
+2025-08-21 14:47:49,553 - INFO - question 48/935 num:386 answer:D correct_answer:D True
+2025-08-21 14:48:10,393 - INFO - question 49/935 num:387 answer:A correct_answer:C False
+2025-08-21 14:48:25,637 - INFO - question 50/935 num:388 answer:B correct_answer:B True
+2025-08-21 14:48:43,516 - INFO - question 51/935 num:389 answer:C correct_answer:C True
+2025-08-21 14:48:56,177 - INFO - question 52/935 num:390 answer:D correct_answer:D True
+2025-08-21 14:49:14,606 - INFO - question 53/935 num:391 answer:A correct_answer:A True
+2025-08-21 14:49:25,552 - INFO - question 54/935 num:392 answer:A correct_answer:A True
+2025-08-21 14:49:44,789 - INFO - question 55/935 num:393 answer:C correct_answer:C True
+2025-08-21 14:50:00,915 - INFO - question 56/935 num:394 answer:A correct_answer:A True
+2025-08-21 14:50:24,309 - INFO - question 57/935 num:395 answer:C correct_answer:C True
+2025-08-21 14:50:44,668 - INFO - question 58/935 num:396 answer:B correct_answer:B True
+2025-08-21 14:51:02,336 - INFO - question 59/935 num:397 answer:C correct_answer:D False
+2025-08-21 14:51:17,102 - INFO - question 60/935 num:398 answer:A correct_answer:A True
+2025-08-21 14:51:33,998 - INFO - question 61/935 num:399 answer:B correct_answer:D False
+2025-08-21 14:51:58,109 - INFO - question 62/935 num:400 answer:A correct_answer:B False
+2025-08-21 14:52:14,873 - INFO - question 63/935 num:401 answer:B correct_answer:B True
+2025-08-21 14:52:28,426 - INFO - question 64/935 num:402 answer:A correct_answer:C False
+2025-08-21 14:52:46,712 - INFO - question 65/935 num:403 answer:C correct_answer:A False
+2025-08-21 14:52:58,416 - INFO - question 66/935 num:404 answer:D correct_answer:D True
+2025-08-21 14:53:15,825 - INFO - question 67/935 num:405 answer:B correct_answer:A False
+2025-08-21 14:53:29,595 - INFO - question 68/935 num:406 answer:A correct_answer:A True
+2025-08-21 14:53:44,963 - INFO - question 69/935 num:407 answer:A correct_answer:B False
+2025-08-21 14:53:54,839 - INFO - question 70/935 num:408 answer:B correct_answer:B True
+2025-08-21 14:54:17,834 - INFO - question 71/935 num:409 answer:A correct_answer:A True
+2025-08-21 14:54:36,370 - INFO - question 72/935 num:410 answer:C correct_answer:C True
+2025-08-21 14:54:53,790 - INFO - question 73/935 num:411 answer:C correct_answer:C True
+2025-08-21 14:55:07,038 - INFO - question 74/935 num:412 answer:B correct_answer:B True
+2025-08-21 14:55:38,592 - INFO - question 75/935 num:413 answer:C correct_answer:A False
+2025-08-21 14:55:55,344 - INFO - question 76/935 num:414 answer:C correct_answer:A False
+2025-08-21 14:56:11,062 - INFO - question 77/935 num:415 answer:A correct_answer:D False
+2025-08-21 14:56:30,322 - INFO - question 78/935 num:416 answer:D correct_answer:D True
+2025-08-21 14:56:45,608 - INFO - question 79/935 num:417 answer:C correct_answer:C True
+2025-08-21 14:57:03,325 - INFO - question 80/935 num:418 answer:A correct_answer:A True
+2025-08-21 14:57:19,396 - INFO - question 81/935 num:419 answer:C correct_answer:C True
+2025-08-21 14:57:34,329 - INFO - question 82/935 num:420 answer:C correct_answer:B False
+2025-08-21 14:57:46,999 - INFO - question 83/935 num:421 answer:B correct_answer:B True
+2025-08-21 14:58:03,867 - INFO - question 84/935 num:422 answer:D correct_answer:C False
+2025-08-21 14:58:31,286 - INFO - question 85/935 num:423 answer:A correct_answer:A True
+2025-08-21 14:58:58,386 - INFO - question 86/935 num:424 answer:D correct_answer:D True
+2025-08-21 14:59:13,020 - INFO - question 87/935 num:425 answer:C correct_answer:C True
+2025-08-21 14:59:23,920 - INFO - question 88/935 num:426 answer:C correct_answer:C True
+2025-08-21 14:59:35,159 - INFO - question 89/935 num:427 answer:B correct_answer:B True
+2025-08-21 14:59:46,790 - INFO - question 90/935 num:428 answer:B correct_answer:B True
+2025-08-21 15:00:05,116 - INFO - question 91/935 num:429 answer:A correct_answer:A True
+2025-08-21 15:00:20,278 - INFO - question 92/935 num:430 answer:D correct_answer:D True
+2025-08-21 15:00:37,347 - INFO - question 93/935 num:431 answer:A correct_answer:A True
+2025-08-21 15:00:58,400 - INFO - question 94/935 num:432 answer:A correct_answer:B False
+2025-08-21 15:01:15,943 - INFO - question 95/935 num:433 answer:A correct_answer:A True
+2025-08-21 15:01:29,988 - INFO - question 96/935 num:434 answer:C correct_answer:C True
+2025-08-21 15:01:41,562 - INFO - question 97/935 num:435 answer:B correct_answer:B True
+2025-08-21 15:01:55,424 - INFO - question 98/935 num:436 answer:C correct_answer:C True
+2025-08-21 15:02:13,643 - INFO - question 99/935 num:437 answer:C correct_answer:C True
+2025-08-21 15:02:27,061 - INFO - question 100/935 num:438 answer:A correct_answer:A True
+2025-08-21 15:02:42,269 - INFO - question 101/935 num:439 answer:C correct_answer:C True
+2025-08-21 15:03:00,035 - INFO - question 102/935 num:440 answer:A correct_answer:A True
+2025-08-21 15:03:15,908 - INFO - question 103/935 num:441 answer:B correct_answer:D False
+2025-08-21 15:03:28,464 - INFO - question 104/935 num:442 answer:C correct_answer:C True
+2025-08-21 15:03:34,121 - INFO - question 105/935 num:443 answer:C correct_answer:C True
+2025-08-21 15:03:53,836 - INFO - question 106/935 num:444 answer:B correct_answer:B True
+2025-08-21 15:04:08,341 - INFO - question 107/935 num:445 answer:C correct_answer:C True
+2025-08-21 15:04:21,885 - INFO - question 108/935 num:446 answer:A correct_answer:B False
+2025-08-21 15:04:42,155 - INFO - question 109/935 num:447 answer:A correct_answer:A True
+2025-08-21 15:04:55,567 - INFO - question 110/935 num:448 answer:A correct_answer:C False
+2025-08-21 15:05:25,195 - INFO - question 111/935 num:449 answer:B correct_answer:D False
+2025-08-21 15:05:39,812 - INFO - question 112/935 num:450 answer:B correct_answer:B True
+2025-08-21 15:05:58,276 - INFO - question 113/935 num:451 answer:B correct_answer:B True
+2025-08-21 15:06:03,355 - INFO - question 114/935 num:452 answer:D correct_answer:D True
+2025-08-21 15:06:18,976 - INFO - question 115/935 num:453 answer:C correct_answer:B False
+2025-08-21 15:06:36,456 - INFO - question 116/935 num:454 answer:B correct_answer:B True
+2025-08-21 15:06:51,322 - INFO - question 117/935 num:455 answer:D correct_answer:D True
+2025-08-21 15:07:05,721 - INFO - question 118/935 num:456 answer:C correct_answer:C True
+2025-08-21 15:07:24,740 - INFO - question 119/935 num:457 answer:B correct_answer:B True
+2025-08-21 15:07:42,717 - INFO - question 120/935 num:458 answer:B correct_answer:B True
+2025-08-21 15:07:54,854 - INFO - question 121/935 num:459 answer:C correct_answer:C True
+2025-08-21 15:08:19,504 - INFO - question 122/935 num:460 answer:D correct_answer:D True
+2025-08-21 15:08:43,005 - INFO - question 123/935 num:461 answer:A correct_answer:A True
+2025-08-21 15:09:02,307 - INFO - question 124/935 num:462 answer:D correct_answer:C False
+2025-08-21 15:09:16,589 - INFO - question 125/935 num:463 answer:A correct_answer:B False
+2025-08-21 15:09:35,875 - INFO - question 126/935 num:464 answer:A correct_answer:A True
+2025-08-21 15:09:54,517 - INFO - question 127/935 num:465 answer:B correct_answer:B True
+2025-08-21 15:10:10,761 - INFO - question 128/935 num:466 answer:D correct_answer:C False
+2025-08-21 15:10:27,871 - INFO - question 129/935 num:467 answer:B correct_answer:B True
+2025-08-21 15:10:41,674 - INFO - question 130/935 num:468 answer:C correct_answer:D False
+2025-08-21 15:10:56,866 - INFO - question 131/935 num:469 answer:A correct_answer:A True
+2025-08-21 15:11:14,958 - INFO - question 132/935 num:470 answer:D correct_answer:A False
+2025-08-21 15:11:32,551 - INFO - question 133/935 num:471 answer:A correct_answer:A True
+2025-08-21 15:11:55,109 - INFO - question 134/935 num:472 answer:D correct_answer:C False
+2025-08-21 15:12:13,892 - INFO - question 135/935 num:473 answer:B correct_answer:C False
+2025-08-21 15:12:27,965 - INFO - question 136/935 num:474 answer:C correct_answer:C True
+2025-08-21 15:12:37,201 - INFO - question 137/935 num:475 answer:B correct_answer:B True
+2025-08-21 15:12:57,429 - INFO - question 138/935 num:476 answer:B correct_answer:D False
+2025-08-21 15:13:10,313 - INFO - question 139/935 num:477 answer:C correct_answer:C True
+2025-08-21 15:13:30,726 - INFO - question 140/935 num:478 answer:A correct_answer:A True
+2025-08-21 15:13:45,928 - INFO - question 141/935 num:479 answer:C correct_answer:C True
+2025-08-21 15:13:58,346 - INFO - question 142/935 num:480 answer:C correct_answer:C True
+2025-08-21 15:14:20,002 - INFO - question 143/935 num:481 answer:A correct_answer:B False
+2025-08-21 15:14:33,803 - INFO - question 144/935 num:482 answer:A correct_answer:A True
+2025-08-21 15:14:47,053 - INFO - question 145/935 num:483 answer:B correct_answer:B True
+2025-08-21 15:15:04,290 - INFO - question 146/935 num:484 answer:C correct_answer:C True
+2025-08-21 15:15:18,972 - INFO - question 147/935 num:485 answer:C correct_answer:C True
+2025-08-21 15:15:35,610 - INFO - question 148/935 num:486 answer:A correct_answer:D False
+2025-08-21 15:15:49,764 - INFO - question 149/935 num:487 answer:C correct_answer:B False
+2025-08-21 15:16:07,031 - INFO - question 150/935 num:488 answer:C correct_answer:C True
+2025-08-21 15:16:19,275 - INFO - question 151/935 num:489 answer:A correct_answer:A True
+2025-08-21 15:16:35,814 - INFO - question 152/935 num:490 answer:C correct_answer:C True
+2025-08-21 15:16:52,918 - INFO - question 153/935 num:491 answer:C correct_answer:C True
+2025-08-21 15:17:05,353 - INFO - question 154/935 num:492 answer:A correct_answer:A True
+2025-08-21 15:17:25,639 - INFO - question 155/935 num:493 answer:C correct_answer:C True
+2025-08-21 15:17:38,745 - INFO - question 156/935 num:494 answer:A correct_answer:C False
+2025-08-21 15:17:58,905 - INFO - question 157/935 num:495 answer:A correct_answer:A True
+2025-08-21 15:18:15,942 - INFO - question 158/935 num:496 answer:C correct_answer:A False
+2025-08-21 15:18:39,155 - INFO - question 159/935 num:497 answer:C correct_answer:C True
+2025-08-21 15:18:56,704 - INFO - question 160/935 num:498 answer:D correct_answer:D True
+2025-08-21 15:19:16,441 - INFO - question 161/935 num:499 answer:A correct_answer:A True
+2025-08-21 15:19:33,923 - INFO - question 162/935 num:500 answer:D correct_answer:C False
+2025-08-21 15:19:56,076 - INFO - question 163/935 num:501 answer:D correct_answer:B False
+2025-08-21 15:20:13,301 - INFO - question 164/935 num:502 answer:B correct_answer:D False
+2025-08-21 15:20:21,287 - INFO - question 165/935 num:503 answer:B correct_answer:B True
+2025-08-21 15:20:36,875 - INFO - question 166/935 num:504 answer:A correct_answer:B False
+2025-08-21 15:20:53,517 - INFO - question 167/935 num:505 answer:B correct_answer:B True
+2025-08-21 15:21:13,246 - INFO - question 168/935 num:506 answer:B correct_answer:B True
+2025-08-21 15:21:28,989 - INFO - question 169/935 num:507 answer:D correct_answer:A False
+2025-08-21 15:21:55,660 - INFO - question 170/935 num:508 answer:D correct_answer:D True
+2025-08-21 15:22:19,883 - INFO - question 171/935 num:509 answer:C correct_answer:B False
+2025-08-21 15:22:45,557 - INFO - question 172/935 num:510 answer:D correct_answer:D True
+2025-08-21 15:23:02,814 - INFO - question 173/935 num:511 answer:A correct_answer:A True
+2025-08-21 15:23:23,084 - INFO - question 174/935 num:512 answer:A correct_answer:A True
+2025-08-21 15:23:38,858 - INFO - question 175/935 num:513 answer:A correct_answer:B False
+2025-08-21 15:23:57,338 - INFO - question 176/935 num:514 answer:D correct_answer:D True
+2025-08-21 15:24:12,653 - INFO - question 177/935 num:515 answer:C correct_answer:A False
+2025-08-21 15:24:31,871 - INFO - question 178/935 num:516 answer:B correct_answer:D False
+2025-08-21 15:24:48,662 - INFO - question 179/935 num:517 answer:D correct_answer:D True
+2025-08-21 15:25:07,105 - INFO - question 180/935 num:518 answer:A correct_answer:A True
+2025-08-21 15:25:35,787 - INFO - question 181/935 num:519 answer:B correct_answer:B True
+2025-08-21 15:26:00,364 - INFO - question 182/935 num:520 answer:A correct_answer:C False
+2025-08-21 15:26:09,423 - INFO - question 183/935 num:521 answer:B correct_answer:B True
+2025-08-21 15:26:31,457 - INFO - question 184/935 num:522 answer:A correct_answer:A True
+2025-08-21 15:26:56,342 - INFO - question 185/935 num:523 answer:C correct_answer:C True
+2025-08-21 15:27:11,597 - INFO - question 186/935 num:524 answer:D correct_answer:D True
+2025-08-21 15:27:25,611 - INFO - question 187/935 num:525 answer:D correct_answer:B False
+2025-08-21 15:27:47,216 - INFO - question 188/935 num:526 answer:D correct_answer:D True
+2025-08-21 15:28:06,855 - INFO - question 189/935 num:527 answer:C correct_answer:C True
+2025-08-21 15:28:26,325 - INFO - question 190/935 num:528 answer:A correct_answer:A True
+2025-08-21 15:28:46,872 - INFO - question 191/935 num:529 answer:A correct_answer:C False
+2025-08-21 15:29:03,386 - INFO - question 192/935 num:530 answer:B correct_answer:B True
+2025-08-21 15:29:26,952 - INFO - question 193/935 num:531 answer:B correct_answer:A False
+2025-08-21 15:29:51,589 - INFO - question 194/935 num:532 answer:C correct_answer:D False
+2025-08-21 15:30:11,130 - INFO - question 195/935 num:533 answer:B correct_answer:B True
+2025-08-21 15:30:29,870 - INFO - question 196/935 num:534 answer:A correct_answer:A True
+2025-08-21 15:30:46,790 - INFO - question 197/935 num:535 answer:B correct_answer:B True
+2025-08-21 15:31:49,495 - INFO - question 198/935 num:536 answer:C correct_answer:C True
+2025-08-21 15:32:10,330 - INFO - question 199/935 num:537 answer:D correct_answer:D True
+2025-08-21 15:32:28,111 - INFO - question 200/935 num:538 answer:A correct_answer:A True
+2025-08-21 15:32:49,058 - INFO - question 201/935 num:539 answer:A correct_answer:A True
+2025-08-21 15:32:57,107 - INFO - question 202/935 num:540 answer:D correct_answer:D True
+2025-08-21 15:33:08,084 - INFO - question 203/935 num:541 answer:D correct_answer:D True
+2025-08-21 15:33:24,598 - INFO - question 204/935 num:542 answer:D correct_answer:A False
+2025-08-21 15:33:40,080 - INFO - question 205/935 num:543 answer:B correct_answer:B True
+2025-08-21 15:33:57,560 - INFO - question 206/935 num:544 answer:C correct_answer:C True
+2025-08-21 15:34:11,242 - INFO - question 207/935 num:545 answer:B correct_answer:B True
+2025-08-21 15:34:29,636 - INFO - question 208/935 num:546 answer:C correct_answer:C True
+2025-08-21 15:34:51,714 - INFO - question 209/935 num:547 answer:C correct_answer:D False
+2025-08-21 15:35:06,410 - INFO - question 210/935 num:548 answer:A correct_answer:D False
+2025-08-21 15:35:25,536 - INFO - question 211/935 num:549 answer:D correct_answer:D True
+2025-08-21 15:35:41,137 - INFO - question 212/935 num:550 answer:A correct_answer:B False
+2025-08-21 15:35:49,776 - INFO - question 213/935 num:551 answer:C correct_answer:A False
+2025-08-21 15:36:13,378 - INFO - question 214/935 num:552 answer:A correct_answer:A True
+2025-08-21 15:36:37,958 - INFO - question 215/935 num:553 answer:A correct_answer:A True
+2025-08-21 15:36:56,293 - INFO - question 216/935 num:554 answer:B correct_answer:B True
+2025-08-21 15:37:13,367 - INFO - question 217/935 num:555 answer:B correct_answer:A False
+2025-08-21 15:37:26,813 - INFO - question 218/935 num:556 answer:B correct_answer:B True
+2025-08-21 15:37:47,252 - INFO - question 219/935 num:557 answer:A correct_answer:A True
+2025-08-21 15:38:11,823 - INFO - question 220/935 num:558 answer:C correct_answer:C True
+2025-08-21 15:38:28,157 - INFO - question 221/935 num:559 answer:B correct_answer:B True
+2025-08-21 15:38:36,341 - INFO - question 222/935 num:560 answer:B correct_answer:B True
+2025-08-21 15:39:03,673 - INFO - question 223/935 num:561 answer:D correct_answer:A False
+2025-08-21 15:39:25,805 - INFO - question 224/935 num:562 answer:C correct_answer:C True
+2025-08-21 15:39:39,094 - INFO - question 225/935 num:563 answer:B correct_answer:B True
+2025-08-21 15:40:01,480 - INFO - question 226/935 num:564 answer:A correct_answer:A True
+2025-08-21 15:40:18,168 - INFO - question 227/935 num:565 answer:A correct_answer:A True
+2025-08-21 15:40:40,908 - INFO - question 228/935 num:566 answer:B correct_answer:B True
+2025-08-21 15:40:55,079 - INFO - question 229/935 num:567 answer:B correct_answer:B True
+2025-08-21 15:41:10,647 - INFO - question 230/935 num:568 answer:A correct_answer:D False
+2025-08-21 15:41:30,699 - INFO - question 231/935 num:569 answer:A correct_answer:A True
+2025-08-21 15:41:52,115 - INFO - question 232/935 num:570 answer:B correct_answer:B True
+2025-08-21 15:42:07,356 - INFO - question 233/935 num:571 answer:A correct_answer:A True
+2025-08-21 15:42:24,206 - INFO - question 234/935 num:572 answer:C correct_answer:C True
+2025-08-21 15:42:40,425 - INFO - question 235/935 num:573 answer:D correct_answer:C False
+2025-08-21 15:42:55,505 - INFO - question 236/935 num:574 answer:D correct_answer:C False
+2025-08-21 15:43:15,253 - INFO - question 237/935 num:575 answer:B correct_answer:B True
+2025-08-21 15:43:28,417 - INFO - question 238/935 num:576 answer:A correct_answer:B False
+2025-08-21 15:43:48,815 - INFO - question 239/935 num:577 answer:D correct_answer:D True
+2025-08-21 15:44:15,171 - INFO - question 240/935 num:578 answer:B correct_answer:B True
+2025-08-21 15:44:35,338 - INFO - question 241/935 num:579 answer:A correct_answer:A True
+2025-08-21 15:44:54,248 - INFO - question 242/935 num:580 answer:D correct_answer:D True
+2025-08-21 15:45:13,287 - INFO - question 243/935 num:581 answer:A correct_answer:A True
+2025-08-21 15:45:35,522 - INFO - question 244/935 num:582 answer:B correct_answer:C False
+2025-08-21 15:45:54,469 - INFO - question 245/935 num:583 answer:D correct_answer:D True
+2025-08-21 15:46:10,104 - INFO - question 246/935 num:584 answer:C correct_answer:D False
+2025-08-21 15:46:24,624 - INFO - question 247/935 num:585 answer:D correct_answer:D True
+2025-08-21 15:46:41,101 - INFO - question 248/935 num:586 answer:D correct_answer:D True
+2025-08-21 15:46:55,352 - INFO - question 249/935 num:587 answer:B correct_answer:B True
+2025-08-21 15:47:08,621 - INFO - question 250/935 num:588 answer:B correct_answer:D False
+2025-08-21 15:47:27,214 - INFO - question 251/935 num:589 answer:A correct_answer:A True
+2025-08-21 15:47:43,341 - INFO - question 252/935 num:590 answer:D correct_answer:D True
+2025-08-21 15:47:58,998 - INFO - question 253/935 num:591 answer:C correct_answer:C True
+2025-08-21 15:48:13,603 - INFO - question 254/935 num:592 answer:C correct_answer:C True
+2025-08-21 15:48:33,214 - INFO - question 255/935 num:593 answer:A correct_answer:A True
+2025-08-21 15:48:49,595 - INFO - question 256/935 num:594 answer:C correct_answer:C True
+2025-08-21 15:49:03,609 - INFO - question 257/935 num:595 answer:C correct_answer:C True
+2025-08-21 15:49:15,404 - INFO - question 258/935 num:596 answer:B correct_answer:B True
+2025-08-21 15:49:37,379 - INFO - question 259/935 num:597 answer:C correct_answer:C True
+2025-08-21 15:49:53,842 - INFO - question 260/935 num:598 answer:B correct_answer:B True
+2025-08-21 15:50:10,544 - INFO - question 261/935 num:599 answer:B correct_answer:B True
+2025-08-21 15:50:24,478 - INFO - question 262/935 num:600 answer:C correct_answer:C True
+2025-08-21 15:50:34,066 - INFO - question 263/935 num:601 answer:A correct_answer:D False
+2025-08-21 15:50:54,407 - INFO - question 264/935 num:602 answer:A correct_answer:D False
+2025-08-21 15:51:08,001 - INFO - question 265/935 num:603 answer:B correct_answer:A False
+2025-08-21 15:51:19,877 - INFO - question 266/935 num:604 answer:A correct_answer:A True
+2025-08-21 15:51:30,967 - INFO - question 267/935 num:605 answer:A correct_answer:A True
+2025-08-21 15:51:47,576 - INFO - question 268/935 num:606 answer:D correct_answer:B False
+2025-08-21 15:51:58,276 - INFO - question 269/935 num:607 answer:D correct_answer:D True
+2025-08-21 15:52:14,031 - INFO - question 270/935 num:608 answer:C correct_answer:C True
+2025-08-21 15:52:35,509 - INFO - question 271/935 num:609 answer:C correct_answer:C True
+2025-08-21 15:52:51,299 - INFO - question 272/935 num:610 answer:A correct_answer:D False
+2025-08-21 15:53:10,059 - INFO - question 273/935 num:611 answer:A correct_answer:A True
+2025-08-21 15:53:26,924 - INFO - question 274/935 num:612 answer:C correct_answer:C True
+2025-08-21 15:53:47,380 - INFO - question 275/935 num:613 answer:D correct_answer:A False
+2025-08-21 15:54:03,772 - INFO - question 276/935 num:614 answer:C correct_answer:C True
+2025-08-21 15:54:28,688 - INFO - question 277/935 num:615 answer:C correct_answer:C True
+2025-08-21 15:54:44,606 - INFO - question 278/935 num:616 answer:C correct_answer:A False
+2025-08-21 15:55:03,744 - INFO - question 279/935 num:617 answer:B correct_answer:D False
+2025-08-21 15:55:14,976 - INFO - question 280/935 num:618 answer:B correct_answer:B True
+2025-08-21 15:55:36,841 - INFO - question 281/935 num:619 answer:D correct_answer:C False
+2025-08-21 15:55:51,544 - INFO - question 282/935 num:620 answer:D correct_answer:D True
+2025-08-21 15:56:01,470 - INFO - question 283/935 num:621 answer:C correct_answer:C True
+2025-08-21 15:56:14,072 - INFO - question 284/935 num:622 answer:D correct_answer:D True
+2025-08-21 15:56:39,462 - INFO - question 285/935 num:623 answer:D correct_answer:C False
+2025-08-21 15:56:52,869 - INFO - question 286/935 num:624 answer:A correct_answer:A True
+2025-08-21 15:57:04,816 - INFO - question 287/935 num:625 answer:D correct_answer:D True
+2025-08-21 15:57:18,414 - INFO - question 288/935 num:626 answer:B correct_answer:B True
+2025-08-21 15:57:35,455 - INFO - question 289/935 num:627 answer:D correct_answer:D True
+2025-08-21 15:57:52,188 - INFO - question 290/935 num:628 answer:C correct_answer:C True
+2025-08-21 15:58:23,327 - INFO - question 291/935 num:629 answer:C correct_answer:C True
+2025-08-21 15:58:35,654 - INFO - question 292/935 num:630 answer:C correct_answer:D False
+2025-08-21 15:58:47,761 - INFO - question 293/935 num:631 answer:D correct_answer:D True
+2025-08-21 15:59:04,671 - INFO - question 294/935 num:632 answer:B correct_answer:B True
+2025-08-21 15:59:22,540 - INFO - question 295/935 num:633 answer:D correct_answer:D True
+2025-08-21 15:59:45,224 - INFO - question 296/935 num:634 answer:C correct_answer:B False
+2025-08-21 16:00:05,160 - INFO - question 297/935 num:635 answer:B correct_answer:A False
+2025-08-21 16:00:22,014 - INFO - question 298/935 num:636 answer:B correct_answer:B True
+2025-08-21 16:00:33,712 - INFO - question 299/935 num:637 answer:A correct_answer:A True
+2025-08-21 16:00:47,923 - INFO - question 300/935 num:638 answer:A correct_answer:A True
+2025-08-21 16:01:01,245 - INFO - question 301/935 num:639 answer:A correct_answer:A True
+2025-08-21 16:01:28,198 - INFO - question 302/935 num:640 answer:D correct_answer:A False
+2025-08-21 16:01:49,430 - INFO - question 303/935 num:641 answer:D correct_answer:D True
+2025-08-21 16:02:07,391 - INFO - question 304/935 num:642 answer:A correct_answer:A True
+2025-08-21 16:02:24,975 - INFO - question 305/935 num:643 answer:B correct_answer:A False
+2025-08-21 16:02:38,016 - INFO - question 306/935 num:644 answer:C correct_answer:D False
+2025-08-21 16:02:53,437 - INFO - question 307/935 num:645 answer:A correct_answer:B False
+2025-08-21 16:03:09,657 - INFO - question 308/935 num:646 answer:D correct_answer:B False
+2025-08-21 16:03:18,521 - INFO - question 309/935 num:647 answer:B correct_answer:B True
+2025-08-21 16:03:38,745 - INFO - question 310/935 num:648 answer:B correct_answer:B True
+2025-08-21 16:03:50,181 - INFO - question 311/935 num:649 answer:A correct_answer:A True
+2025-08-21 16:04:03,573 - INFO - question 312/935 num:650 answer:A correct_answer:A True
+2025-08-21 16:04:20,612 - INFO - question 313/935 num:651 answer:C correct_answer:C True
+2025-08-21 16:04:37,736 - INFO - question 314/935 num:652 answer:B correct_answer:C False
+2025-08-21 16:05:00,741 - INFO - question 315/935 num:653 answer:B correct_answer:C False
+2025-08-21 16:05:19,588 - INFO - question 316/935 num:654 answer:A correct_answer:A True
+2025-08-21 16:05:44,661 - INFO - question 317/935 num:655 answer:D correct_answer:A False
+2025-08-21 16:05:55,493 - INFO - question 318/935 num:656 answer:B correct_answer:B True
+2025-08-21 16:06:09,850 - INFO - question 319/935 num:657 answer:D correct_answer:D True
+2025-08-21 16:06:37,351 - INFO - question 320/935 num:658 answer:D correct_answer:D True
+2025-08-21 16:06:51,404 - INFO - question 321/935 num:659 answer:C correct_answer:C True
+2025-08-21 16:07:06,650 - INFO - question 322/935 num:660 answer:D correct_answer:C False
+2025-08-21 16:07:26,726 - INFO - question 323/935 num:661 answer:A correct_answer:A True
+2025-08-21 16:07:43,516 - INFO - question 324/935 num:662 answer:A correct_answer:A True
+2025-08-21 16:07:59,736 - INFO - question 325/935 num:663 answer:D correct_answer:D True
+2025-08-21 16:08:18,877 - INFO - question 326/935 num:664 answer:D correct_answer:D True
+2025-08-21 16:08:36,470 - INFO - question 327/935 num:665 answer:D correct_answer:C False
+2025-08-21 16:08:48,195 - INFO - question 328/935 num:666 answer:D correct_answer:B False
+2025-08-21 16:09:04,517 - INFO - question 329/935 num:667 answer:A correct_answer:A True
+2025-08-21 16:09:18,230 - INFO - question 330/935 num:668 answer:A correct_answer:A True
+2025-08-21 16:09:32,351 - INFO - question 331/935 num:669 answer:B correct_answer:B True
+2025-08-21 16:09:48,011 - INFO - question 332/935 num:670 answer:A correct_answer:B False
+2025-08-21 16:10:01,491 - INFO - question 333/935 num:671 answer:C correct_answer:D False
+2025-08-21 16:10:13,775 - INFO - question 334/935 num:672 answer:A correct_answer:B False
+2025-08-21 16:10:27,301 - INFO - question 335/935 num:673 answer:A correct_answer:B False
+2025-08-21 16:10:49,085 - INFO - question 336/935 num:674 answer:C correct_answer:D False
+2025-08-21 16:17:21,590 - INFO - topK_searchEngine: 1
+2025-08-21 16:17:21,590 - INFO - topK_SPLADE: 1
+2025-08-21 16:17:21,590 - INFO - topK_crossEncoder: 1
+2025-08-21 16:17:21,590 - INFO - topK_LLM: 3
+2025-08-21 16:17:21,591 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-08-21 16:17:25,485 - INFO - model: /../../../projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-08-21 16:17:40,858 - INFO - question 1/599 num:675 answer:A correct_answer:A True
+2025-08-21 16:18:01,189 - INFO - question 2/599 num:676 answer:C correct_answer:C True
+2025-08-21 16:18:26,237 - INFO - question 3/599 num:677 answer:B correct_answer:A False
+2025-08-21 16:18:35,322 - INFO - question 4/599 num:678 answer:B correct_answer:A False
+2025-08-21 16:18:52,364 - INFO - question 5/599 num:679 answer:C correct_answer:B False
+2025-08-21 16:19:05,641 - INFO - question 6/599 num:680 answer:A correct_answer:B False
+2025-08-21 16:19:23,653 - INFO - question 7/599 num:681 answer:D correct_answer:D True
+2025-08-21 16:19:43,791 - INFO - question 8/599 num:682 answer:B correct_answer:B True
+2025-08-21 16:20:01,476 - INFO - question 9/599 num:683 answer:D correct_answer:D True
+2025-08-21 16:20:22,016 - INFO - question 10/599 num:684 answer:C correct_answer:C True
+2025-08-21 16:20:42,579 - INFO - question 11/599 num:685 answer:D correct_answer:B False
+2025-08-21 16:21:03,985 - INFO - question 12/599 num:686 answer:A correct_answer:C False
+2025-08-21 16:21:21,355 - INFO - question 13/599 num:687 answer:A correct_answer:A True
+2025-08-21 16:21:43,018 - INFO - question 14/599 num:688 answer:A correct_answer:A True
+2025-08-21 16:22:05,184 - INFO - question 15/599 num:689 answer:B correct_answer:A False
+2025-08-21 16:22:18,835 - INFO - question 16/599 num:690 answer:D correct_answer:C False
+2025-08-21 16:22:34,477 - INFO - question 17/599 num:691 answer:C correct_answer:A False
+2025-08-21 16:22:59,310 - INFO - question 18/599 num:692 answer:B correct_answer:B True
+2025-08-21 16:23:15,047 - INFO - question 19/599 num:693 answer:C correct_answer:C True
+2025-08-21 16:23:38,349 - INFO - question 20/599 num:694 answer:A correct_answer:B False
+2025-08-21 16:23:52,850 - INFO - question 21/599 num:695 answer:A correct_answer:A True
+2025-08-21 16:24:20,987 - INFO - question 22/599 num:696 answer:B correct_answer:B True
+2025-08-21 16:24:40,189 - INFO - question 23/599 num:697 answer:D correct_answer:D True
+2025-08-21 16:24:56,524 - INFO - question 24/599 num:698 answer:D correct_answer:D True
+2025-08-21 16:25:12,329 - INFO - question 25/599 num:699 answer:A correct_answer:A True
+2025-08-21 16:25:33,581 - INFO - question 26/599 num:700 answer:A correct_answer:A True
+2025-08-21 16:25:48,492 - INFO - question 27/599 num:701 answer:B correct_answer:B True
+2025-08-21 16:26:00,443 - INFO - question 28/599 num:702 answer:C correct_answer:C True
+2025-08-21 16:26:17,496 - INFO - question 29/599 num:703 answer:D correct_answer:C False
+2025-08-21 16:26:35,523 - INFO - question 30/599 num:704 answer:D correct_answer:D True
+2025-08-21 16:26:50,255 - INFO - question 31/599 num:705 answer:D correct_answer:D True
+2025-08-21 16:27:07,967 - INFO - question 32/599 num:706 answer:C correct_answer:C True
+2025-08-21 16:27:26,585 - INFO - question 33/599 num:707 answer:B correct_answer:B True
+2025-08-21 16:27:39,154 - INFO - question 34/599 num:708 answer:C correct_answer:C True
+2025-08-21 16:28:04,394 - INFO - question 35/599 num:709 answer:A correct_answer:A True
+2025-08-21 16:28:21,301 - INFO - question 36/599 num:710 answer:D correct_answer:A False
+2025-08-21 16:28:38,340 - INFO - question 37/599 num:711 answer:C correct_answer:C True
+2025-08-21 16:28:50,439 - INFO - question 38/599 num:712 answer:C correct_answer:C True
+2025-08-21 16:29:07,545 - INFO - question 39/599 num:713 answer:D correct_answer:C False
+2025-08-21 16:29:25,425 - INFO - question 40/599 num:714 answer:A correct_answer:A True
+2025-08-21 16:29:43,090 - INFO - question 41/599 num:715 answer:B correct_answer:B True
+2025-08-21 16:29:56,662 - INFO - question 42/599 num:716 answer:B correct_answer:B True
+2025-08-21 16:30:11,357 - INFO - question 43/599 num:717 answer:C correct_answer:C True
+2025-08-21 16:30:38,327 - INFO - question 44/599 num:718 answer:B correct_answer:B True
+2025-08-21 16:30:51,141 - INFO - question 45/599 num:719 answer:D correct_answer:D True
+2025-08-21 16:31:10,156 - INFO - question 46/599 num:720 answer:B correct_answer:A False
+2025-08-21 16:31:21,788 - INFO - question 47/599 num:721 answer:B correct_answer:B True
+2025-08-21 16:31:34,566 - INFO - question 48/599 num:722 answer:B correct_answer:B True
+2025-08-21 16:31:51,913 - INFO - question 49/599 num:723 answer:D correct_answer:D True
+2025-08-21 16:32:06,303 - INFO - question 50/599 num:724 answer:B correct_answer:C False
+2025-08-21 16:32:26,967 - INFO - question 51/599 num:725 answer:C correct_answer:D False
+2025-08-21 16:32:40,272 - INFO - question 52/599 num:726 answer:C correct_answer:C True
+2025-08-21 16:32:58,395 - INFO - question 53/599 num:727 answer:D correct_answer:D True
+2025-08-21 16:33:16,269 - INFO - question 54/599 num:728 answer:A correct_answer:A True
+2025-08-21 16:33:25,810 - INFO - question 55/599 num:729 answer:C correct_answer:C True
+2025-08-21 16:33:46,138 - INFO - question 56/599 num:730 answer:C correct_answer:C True
+2025-08-21 16:34:01,533 - INFO - question 57/599 num:731 answer:B correct_answer:D False
+2025-08-21 16:34:17,470 - INFO - question 58/599 num:732 answer:B correct_answer:B True
+2025-08-21 16:34:43,030 - INFO - question 59/599 num:733 answer:A correct_answer:B False
+2025-08-21 16:34:57,241 - INFO - question 60/599 num:734 answer:A correct_answer:B False
+2025-08-21 16:35:13,643 - INFO - question 61/599 num:735 answer:C correct_answer:C True
+2025-08-21 16:35:30,582 - INFO - question 62/599 num:736 answer:A correct_answer:A True
+2025-08-21 16:35:45,067 - INFO - question 63/599 num:737 answer:A correct_answer:A True
+2025-08-21 16:36:00,113 - INFO - question 64/599 num:738 answer:D correct_answer:C False
+2025-08-21 16:36:09,662 - INFO - question 65/599 num:739 answer:A correct_answer:A True
+2025-08-21 16:36:29,083 - INFO - question 66/599 num:740 answer:D correct_answer:A False
+2025-08-21 16:36:38,661 - INFO - question 67/599 num:741 answer:D correct_answer:D True
+2025-08-21 16:36:48,860 - INFO - question 68/599 num:742 answer:A correct_answer:A True
+2025-08-21 16:37:03,658 - INFO - question 69/599 num:743 answer:C correct_answer:B False
+2025-08-21 16:37:21,277 - INFO - question 70/599 num:744 answer:A correct_answer:B False
+2025-08-21 16:37:37,600 - INFO - question 71/599 num:745 answer:C correct_answer:C True
+2025-08-21 16:37:52,952 - INFO - question 72/599 num:746 answer:B correct_answer:A False
+2025-08-21 16:38:17,713 - INFO - question 73/599 num:747 answer:C correct_answer:B False
+2025-08-21 16:38:35,057 - INFO - question 74/599 num:748 answer:C correct_answer:C True
+2025-08-21 16:38:50,291 - INFO - question 75/599 num:749 answer:A correct_answer:A True
+2025-08-21 16:39:03,936 - INFO - question 76/599 num:750 answer:A correct_answer:C False
+2025-08-21 16:39:11,354 - INFO - question 77/599 num:751 answer:B correct_answer:B True
+2025-08-21 16:39:23,476 - INFO - question 78/599 num:752 answer:C correct_answer:B False
+2025-08-21 16:39:44,253 - INFO - question 79/599 num:753 answer:C correct_answer:C True
+2025-08-21 16:40:00,020 - INFO - question 80/599 num:754 answer:C correct_answer:C True
+2025-08-21 16:40:25,095 - INFO - question 81/599 num:755 answer:B correct_answer:B True
+2025-08-21 16:40:42,948 - INFO - question 82/599 num:756 answer:D correct_answer:C False
+2025-08-21 16:40:57,715 - INFO - question 83/599 num:757 answer:C correct_answer:B False
+2025-08-21 16:41:18,015 - INFO - question 84/599 num:758 answer:C correct_answer:D False
+2025-08-21 16:41:42,277 - INFO - question 85/599 num:759 answer:B correct_answer:D False
+2025-08-21 16:42:03,382 - INFO - question 86/599 num:760 answer:C correct_answer:C True
+2025-08-21 16:42:25,621 - INFO - question 87/599 num:761 answer:C correct_answer:B False
+2025-08-21 16:42:46,079 - INFO - question 88/599 num:762 answer:D correct_answer:D True
+2025-08-21 16:42:58,205 - INFO - question 89/599 num:763 answer:C correct_answer:C True
+2025-08-21 16:43:11,353 - INFO - question 90/599 num:764 answer:A correct_answer:A True
+2025-08-21 16:43:25,457 - INFO - question 91/599 num:765 answer:C correct_answer:C True
+2025-08-21 16:43:37,612 - INFO - question 92/599 num:766 answer:C correct_answer:C True
+2025-08-21 16:43:58,533 - INFO - question 93/599 num:767 answer:C correct_answer:D False
+2025-08-21 16:44:18,366 - INFO - question 94/599 num:768 answer:A correct_answer:A True
+2025-08-21 16:44:39,165 - INFO - question 95/599 num:769 answer:B correct_answer:B True
+2025-08-21 16:44:54,790 - INFO - question 96/599 num:770 answer:C correct_answer:C True
+2025-08-21 16:45:10,588 - INFO - question 97/599 num:771 answer:D correct_answer:B False
+2025-08-21 16:45:29,691 - INFO - question 98/599 num:772 answer:C correct_answer:C True
+2025-08-21 16:45:45,232 - INFO - question 99/599 num:773 answer:D correct_answer:D True
+2025-08-21 16:45:59,548 - INFO - question 100/599 num:774 answer:C correct_answer:A False
+2025-08-21 16:46:13,419 - INFO - question 101/599 num:775 answer:D correct_answer:D True
+2025-08-21 16:46:26,027 - INFO - question 102/599 num:776 answer:A correct_answer:A True
+2025-08-21 16:46:49,107 - INFO - question 103/599 num:777 answer:C correct_answer:B False
+2025-08-21 16:47:09,357 - INFO - question 104/599 num:778 answer:A correct_answer:C False
+2025-08-21 16:47:22,333 - INFO - question 105/599 num:779 answer:C correct_answer:C True
+2025-08-21 16:47:36,784 - INFO - question 106/599 num:780 answer:D correct_answer:D True
+2025-08-21 16:47:56,421 - INFO - question 107/599 num:781 answer:D correct_answer:C False
+2025-08-21 16:48:14,091 - INFO - question 108/599 num:782 answer:D correct_answer:D True
+2025-08-21 16:48:31,548 - INFO - question 109/599 num:783 answer:D correct_answer:D True
+2025-08-21 16:48:42,582 - INFO - question 110/599 num:784 answer:B correct_answer:B True
+2025-08-21 16:48:59,865 - INFO - question 111/599 num:785 answer:B correct_answer:B True
+2025-08-21 16:49:20,099 - INFO - question 112/599 num:786 answer:C correct_answer:D False
+2025-08-21 16:49:33,382 - INFO - question 113/599 num:787 answer:B correct_answer:D False
+2025-08-21 16:49:47,110 - INFO - question 114/599 num:788 answer:B correct_answer:C False
+2025-08-21 16:49:56,781 - INFO - question 115/599 num:789 answer:C correct_answer:C True
+2025-08-21 16:50:13,008 - INFO - question 116/599 num:790 answer:C correct_answer:C True
+2025-08-21 16:50:31,350 - INFO - question 117/599 num:791 answer:C correct_answer:B False
+2025-08-21 16:50:44,016 - INFO - question 118/599 num:792 answer:A correct_answer:A True
+2025-08-21 16:50:57,129 - INFO - question 119/599 num:793 answer:A correct_answer:B False
+2025-08-21 16:51:07,131 - INFO - question 120/599 num:794 answer:B correct_answer:B True
+2025-08-21 16:51:25,848 - INFO - question 121/599 num:795 answer:D correct_answer:D True
+2025-08-21 16:51:40,251 - INFO - question 122/599 num:796 answer:C correct_answer:C True
+2025-08-21 16:51:52,840 - INFO - question 123/599 num:797 answer:C correct_answer:C True
+2025-08-21 16:52:10,592 - INFO - question 124/599 num:798 answer:D correct_answer:D True
+2025-08-21 16:52:28,395 - INFO - question 125/599 num:799 answer:C correct_answer:C True
+2025-08-21 16:52:48,725 - INFO - question 126/599 num:800 answer:B correct_answer:B True
+2025-08-21 16:52:59,411 - INFO - question 127/599 num:801 answer:B correct_answer:B True
+2025-08-21 16:53:15,787 - INFO - question 128/599 num:802 answer:B correct_answer:B True
+2025-08-21 16:53:32,069 - INFO - question 129/599 num:803 answer:A correct_answer:D False
+2025-08-21 16:53:49,638 - INFO - question 130/599 num:804 answer:C correct_answer:A False
+2025-08-21 16:54:06,158 - INFO - question 131/599 num:805 answer:A correct_answer:A True
+2025-08-21 16:54:21,257 - INFO - question 132/599 num:806 answer:B correct_answer:B True
+2025-08-21 16:54:38,876 - INFO - question 133/599 num:807 answer:A correct_answer:A True
+2025-08-21 16:54:59,818 - INFO - question 134/599 num:808 answer:B correct_answer:A False
+2025-08-21 16:55:20,350 - INFO - question 135/599 num:809 answer:C correct_answer:C True
+2025-08-21 16:55:42,403 - INFO - question 136/599 num:810 answer:B correct_answer:B True
+2025-08-21 16:56:00,771 - INFO - question 137/599 num:811 answer:A correct_answer:A True
+2025-08-21 16:56:14,053 - INFO - question 138/599 num:812 answer:D correct_answer:D True
+2025-08-21 16:56:33,915 - INFO - question 139/599 num:813 answer:C correct_answer:D False
+2025-08-21 16:56:49,349 - INFO - question 140/599 num:814 answer:D correct_answer:C False
+2025-08-21 16:57:01,544 - INFO - question 141/599 num:815 answer:D correct_answer:D True
+2025-08-21 16:57:20,877 - INFO - question 142/599 num:816 answer:A correct_answer:A True
+2025-08-21 16:57:32,656 - INFO - question 143/599 num:817 answer:A correct_answer:A True
+2025-08-21 16:57:45,988 - INFO - question 144/599 num:818 answer:A correct_answer:C False
+2025-08-21 16:57:59,548 - INFO - question 145/599 num:819 answer:A correct_answer:A True
+2025-08-21 16:58:19,828 - INFO - question 146/599 num:820 answer:D correct_answer:D True
+2025-08-21 16:58:41,582 - INFO - question 147/599 num:821 answer:C correct_answer:C True
+2025-08-21 16:58:58,067 - INFO - question 148/599 num:822 answer:B correct_answer:C False
+2025-08-21 16:59:25,516 - INFO - question 149/599 num:823 answer:B correct_answer:C False
+2025-08-21 16:59:39,334 - INFO - question 150/599 num:824 answer:C correct_answer:C True
+2025-08-21 16:59:53,834 - INFO - question 151/599 num:825 answer:A correct_answer:A True
+2025-08-21 17:00:10,251 - INFO - question 152/599 num:826 answer:C correct_answer:C True
+2025-08-21 17:00:25,541 - INFO - question 153/599 num:827 answer:B correct_answer:B True
+2025-08-21 17:00:44,191 - INFO - question 154/599 num:828 answer:A correct_answer:A True
+2025-08-21 17:00:58,297 - INFO - question 155/599 num:829 answer:D correct_answer:B False
+2025-08-21 17:01:13,311 - INFO - question 156/599 num:830 answer:C correct_answer:D False
+2025-08-21 17:01:27,223 - INFO - question 157/599 num:831 answer:B correct_answer:B True
+2025-08-21 17:01:51,628 - INFO - question 158/599 num:832 answer:D correct_answer:A False
+2025-08-21 17:02:13,267 - INFO - question 159/599 num:833 answer:D correct_answer:B False
+2025-08-21 17:02:35,553 - INFO - question 160/599 num:834 answer:D correct_answer:D True
+2025-08-21 17:02:56,100 - INFO - question 161/599 num:835 answer:C correct_answer:C True
+2025-08-21 17:03:10,687 - INFO - question 162/599 num:836 answer:C correct_answer:C True
+2025-08-21 17:03:19,480 - INFO - question 163/599 num:837 answer:A correct_answer:A True
+2025-08-21 17:03:39,427 - INFO - question 164/599 num:838 answer:D correct_answer:D True
+2025-08-21 17:03:55,931 - INFO - question 165/599 num:839 answer:D correct_answer:A False
+2025-08-21 17:04:11,324 - INFO - question 166/599 num:840 answer:B correct_answer:B True
+2025-08-21 17:04:24,074 - INFO - question 167/599 num:841 answer:D correct_answer:D True
+2025-08-21 17:04:36,482 - INFO - question 168/599 num:842 answer:B correct_answer:B True
+2025-08-21 17:04:51,940 - INFO - question 169/599 num:843 answer:C correct_answer:C True
+2025-08-21 17:05:10,080 - INFO - question 170/599 num:844 answer:C correct_answer:C True
+2025-08-21 17:05:30,511 - INFO - question 171/599 num:845 answer:A correct_answer:A True
+2025-08-21 17:05:45,867 - INFO - question 172/599 num:846 answer:A correct_answer:A True
+2025-08-21 17:06:03,154 - INFO - question 173/599 num:847 answer:C correct_answer:C True
+2025-08-21 17:06:14,882 - INFO - question 174/599 num:848 answer:C correct_answer:C True
+2025-08-21 17:06:30,399 - INFO - question 175/599 num:849 answer:B correct_answer:B True
+2025-08-21 17:06:47,704 - INFO - question 176/599 num:850 answer:D correct_answer:D True
+2025-08-21 17:07:04,683 - INFO - question 177/599 num:851 answer:A correct_answer:B False
+2025-08-21 17:07:25,547 - INFO - question 178/599 num:852 answer:C correct_answer:C True
+2025-08-21 17:07:51,668 - INFO - question 179/599 num:853 answer:C correct_answer:C True
+2025-08-21 17:08:07,358 - INFO - question 180/599 num:854 answer:B correct_answer:C False
+2025-08-21 17:08:23,286 - INFO - question 181/599 num:855 answer:B correct_answer:B True
+2025-08-21 17:08:39,747 - INFO - question 182/599 num:856 answer:B correct_answer:B True
+2025-08-21 17:09:00,257 - INFO - question 183/599 num:857 answer:B correct_answer:C False
+2025-08-21 17:09:11,004 - INFO - question 184/599 num:858 answer:C correct_answer:C True
+2025-08-21 17:09:23,867 - INFO - question 185/599 num:859 answer:A correct_answer:A True
+2025-08-21 17:09:43,874 - INFO - question 186/599 num:860 answer:D correct_answer:D True
+2025-08-21 17:09:58,467 - INFO - question 187/599 num:861 answer:C correct_answer:C True
+2025-08-21 17:10:20,979 - INFO - question 188/599 num:862 answer:D correct_answer:B False
+2025-08-21 17:10:39,556 - INFO - question 189/599 num:863 answer:C correct_answer:B False
+2025-08-21 17:11:05,970 - INFO - question 190/599 num:864 answer:C correct_answer:A False
+2025-08-21 17:11:20,973 - INFO - question 191/599 num:865 answer:D correct_answer:D True
+2025-08-21 17:11:45,650 - INFO - question 192/599 num:866 answer:D correct_answer:C False
+2025-08-21 17:12:09,410 - INFO - question 193/599 num:867 answer:C correct_answer:A False
+2025-08-21 17:12:41,670 - INFO - question 194/599 num:868 answer:D correct_answer:A False
+2025-08-21 17:13:00,090 - INFO - question 195/599 num:869 answer:C correct_answer:C True
+2025-08-21 17:13:20,513 - INFO - question 196/599 num:870 answer:C correct_answer:A False
+2025-08-21 17:13:38,204 - INFO - question 197/599 num:871 answer:A correct_answer:A True
+2025-08-21 17:14:00,568 - INFO - question 198/599 num:872 answer:D correct_answer:B False
+2025-08-21 17:14:11,585 - INFO - question 199/599 num:873 answer:D correct_answer:C False
+2025-08-21 17:14:30,257 - INFO - question 200/599 num:874 answer:C correct_answer:C True
+2025-08-21 17:14:46,832 - INFO - question 201/599 num:875 answer:A correct_answer:D False
+2025-08-21 17:15:00,535 - INFO - question 202/599 num:876 answer:D correct_answer:D True
+2025-08-21 17:15:12,909 - INFO - question 203/599 num:877 answer:D correct_answer:D True
+2025-08-21 17:15:21,889 - INFO - question 204/599 num:878 answer:B correct_answer:B True
+2025-08-21 17:15:33,938 - INFO - question 205/599 num:879 answer:C correct_answer:C True
+2025-08-21 17:15:56,761 - INFO - question 206/599 num:880 answer:D correct_answer:D True
+2025-08-21 17:16:16,913 - INFO - question 207/599 num:881 answer:A correct_answer:C False
+2025-08-21 17:16:30,093 - INFO - question 208/599 num:882 answer:A correct_answer:A True
+2025-08-21 17:16:53,808 - INFO - question 209/599 num:883 answer:B correct_answer:D False
+2025-08-21 17:17:09,682 - INFO - question 210/599 num:884 answer:B correct_answer:B True
+2025-08-21 17:17:24,801 - INFO - question 211/599 num:885 answer:A correct_answer:A True
+2025-08-21 17:17:39,703 - INFO - question 212/599 num:886 answer:B correct_answer:C False
+2025-08-21 17:17:57,382 - INFO - question 213/599 num:887 answer:A correct_answer:A True
+2025-08-21 17:18:16,948 - INFO - question 214/599 num:888 answer:C correct_answer:A False
+2025-08-21 17:18:35,932 - INFO - question 215/599 num:889 answer:B correct_answer:A False
+2025-08-21 17:18:51,598 - INFO - question 216/599 num:890 answer:A correct_answer:A True
+2025-08-21 17:19:07,290 - INFO - question 217/599 num:891 answer:A correct_answer:A True
+2025-08-21 17:19:27,529 - INFO - question 218/599 num:892 answer:C correct_answer:A False
+2025-08-21 17:19:43,279 - INFO - question 219/599 num:893 answer:D correct_answer:D True
+2025-08-21 17:19:59,782 - INFO - question 220/599 num:894 answer:B correct_answer:B True
+2025-08-21 17:20:14,896 - INFO - question 221/599 num:895 answer:A correct_answer:A True
+2025-08-21 17:20:30,376 - INFO - question 222/599 num:896 answer:D correct_answer:D True
+2025-08-21 17:20:50,061 - INFO - question 223/599 num:897 answer:D correct_answer:D True
+2025-08-21 17:21:11,118 - INFO - question 224/599 num:898 answer:B correct_answer:B True
+2025-08-21 17:21:29,921 - INFO - question 225/599 num:899 answer:B correct_answer:B True
+2025-08-21 17:21:51,324 - INFO - question 226/599 num:900 answer:C correct_answer:C True
+2025-08-21 17:22:17,724 - INFO - question 227/599 num:901 answer:A correct_answer:B False
+2025-08-21 17:22:38,343 - INFO - question 228/599 num:902 answer:D correct_answer:D True
+2025-08-21 17:22:56,107 - INFO - question 229/599 num:903 answer:B correct_answer:C False
+2025-08-21 17:23:14,397 - INFO - question 230/599 num:904 answer:B correct_answer:B True
+2025-08-21 17:23:32,967 - INFO - question 231/599 num:905 answer:C correct_answer:B False
+2025-08-21 17:24:00,059 - INFO - question 232/599 num:906 answer:C correct_answer:A False
+2025-08-21 17:24:18,180 - INFO - question 233/599 num:907 answer:A correct_answer:D False
+2025-08-21 17:24:40,719 - INFO - question 234/599 num:908 answer:A correct_answer:A True
+2025-08-21 17:24:58,806 - INFO - question 235/599 num:909 answer:D correct_answer:C False
+2025-08-21 17:25:06,273 - INFO - question 236/599 num:910 answer:A correct_answer:B False
+2025-08-21 17:25:21,392 - INFO - question 237/599 num:911 answer:B correct_answer:B True
+2025-08-21 17:25:37,444 - INFO - question 238/599 num:912 answer:C correct_answer:C True
+2025-08-21 17:25:48,485 - INFO - question 239/599 num:913 answer:B correct_answer:B True
+2025-08-21 17:26:08,020 - INFO - question 240/599 num:914 answer:C correct_answer:D False
+2025-08-21 17:26:23,070 - INFO - question 241/599 num:915 answer:C correct_answer:C True
+2025-08-21 17:26:37,826 - INFO - question 242/599 num:916 answer:A correct_answer:A True
+2025-08-21 17:26:55,815 - INFO - question 243/599 num:917 answer:C correct_answer:A False
+2025-08-21 17:27:20,709 - INFO - question 244/599 num:918 answer:D correct_answer:D True
+2025-08-21 17:27:42,877 - INFO - question 245/599 num:919 answer:B correct_answer:B True
+2025-08-21 17:27:57,924 - INFO - question 246/599 num:920 answer:B correct_answer:B True
+2025-08-21 17:28:13,197 - INFO - question 247/599 num:921 answer:A correct_answer:A True
+2025-08-21 17:28:29,291 - INFO - question 248/599 num:922 answer:A correct_answer:A True
+2025-08-21 17:28:48,606 - INFO - question 249/599 num:923 answer:C correct_answer:A False
+2025-08-21 17:28:58,691 - INFO - question 250/599 num:924 answer:C correct_answer:C True
+2025-08-21 17:29:21,861 - INFO - question 251/599 num:925 answer:A correct_answer:A True
+2025-08-21 17:29:41,383 - INFO - question 252/599 num:926 answer:C correct_answer:C True
+2025-08-21 17:30:01,801 - INFO - question 253/599 num:927 answer:B correct_answer:B True
+2025-08-21 17:30:20,335 - INFO - question 254/599 num:928 answer:C correct_answer:C True
+2025-08-21 17:30:38,293 - INFO - question 255/599 num:929 answer:D correct_answer:B False
+2025-08-21 17:30:54,097 - INFO - question 256/599 num:930 answer:C correct_answer:C True
+2025-08-21 17:31:10,019 - INFO - question 257/599 num:931 answer:C correct_answer:A False
+2025-08-21 17:31:33,128 - INFO - question 258/599 num:932 answer:D correct_answer:A False
+2025-08-21 17:31:49,314 - INFO - question 259/599 num:933 answer:D correct_answer:D True
+2025-08-21 17:32:14,685 - INFO - question 260/599 num:934 answer:D correct_answer:A False
+2025-08-21 17:32:25,917 - INFO - question 261/599 num:935 answer:D correct_answer:B False
+2025-08-21 17:32:43,462 - INFO - question 262/599 num:936 answer:D correct_answer:A False
+2025-08-21 17:32:56,764 - INFO - question 263/599 num:937 answer:C correct_answer:B False
+2025-08-21 17:33:18,190 - INFO - question 264/599 num:938 answer:D correct_answer:C False
+2025-08-21 17:33:36,344 - INFO - question 265/599 num:939 answer:C correct_answer:C True
+2025-08-21 17:33:54,897 - INFO - question 266/599 num:940 answer:D correct_answer:A False
+2025-08-21 17:34:05,822 - INFO - question 267/599 num:941 answer:A correct_answer:A True
+2025-08-21 17:34:16,955 - INFO - question 268/599 num:942 answer:A correct_answer:A True
+2025-08-21 17:34:39,888 - INFO - question 269/599 num:943 answer:A correct_answer:A True
+2025-08-21 17:34:50,176 - INFO - question 270/599 num:944 answer:D correct_answer:D True
+2025-08-21 17:35:18,805 - INFO - question 271/599 num:945 answer:B correct_answer:D False
+2025-08-21 17:35:32,906 - INFO - question 272/599 num:946 answer:C correct_answer:B False
+2025-08-21 17:35:55,102 - INFO - question 273/599 num:947 answer:D correct_answer:C False
+2025-08-21 17:36:09,369 - INFO - question 274/599 num:948 answer:B correct_answer:B True
+2025-08-21 17:36:25,700 - INFO - question 275/599 num:949 answer:B correct_answer:C False
+2025-08-21 17:36:46,516 - INFO - question 276/599 num:950 answer:A correct_answer:A True
+2025-08-21 17:36:54,437 - INFO - question 277/599 num:951 answer:C correct_answer:A False
+2025-08-21 17:37:16,292 - INFO - question 278/599 num:952 answer:D correct_answer:C False
+2025-08-21 17:37:32,952 - INFO - question 279/599 num:953 answer:B correct_answer:A False
+2025-08-21 17:37:58,653 - INFO - question 280/599 num:954 answer:C correct_answer:C True
+2025-08-21 17:38:27,291 - INFO - question 281/599 num:955 answer:B correct_answer:B True
+2025-08-21 17:38:38,232 - INFO - question 282/599 num:956 answer:C correct_answer:C True
+2025-08-21 17:38:55,933 - INFO - question 283/599 num:957 answer:A correct_answer:A True
+2025-08-21 17:39:05,213 - INFO - question 284/599 num:958 answer:B correct_answer:B True
+2025-08-21 17:39:34,736 - INFO - question 285/599 num:959 answer:B correct_answer:B True
+2025-08-21 17:39:49,292 - INFO - question 286/599 num:960 answer:B correct_answer:B True
+2025-08-21 17:40:05,903 - INFO - question 287/599 num:961 answer:B correct_answer:D False
+2025-08-21 17:40:26,597 - INFO - question 288/599 num:962 answer:B correct_answer:A False
+2025-08-21 17:40:49,200 - INFO - question 289/599 num:963 answer:B correct_answer:B True
+2025-08-21 17:41:24,643 - INFO - question 290/599 num:964 answer:[invalid] correct_answer:D False
+2025-08-21 17:41:54,966 - INFO - question 291/599 num:965 answer:C correct_answer:C True
+2025-08-21 17:42:15,536 - INFO - question 292/599 num:966 answer:D correct_answer:D True
+2025-08-21 17:42:29,143 - INFO - question 293/599 num:967 answer:D correct_answer:B False
+2025-08-21 17:42:48,609 - INFO - question 294/599 num:968 answer:B correct_answer:B True
+2025-08-21 17:43:07,977 - INFO - question 295/599 num:969 answer:D correct_answer:A False
+2025-08-21 17:43:23,967 - INFO - question 296/599 num:970 answer:C correct_answer:C True
+2025-08-21 17:43:40,433 - INFO - question 297/599 num:971 answer:C correct_answer:C True
+2025-08-21 17:43:57,693 - INFO - question 298/599 num:972 answer:D correct_answer:D True
+2025-08-21 17:44:12,989 - INFO - question 299/599 num:973 answer:C correct_answer:C True
+2025-08-21 17:44:30,183 - INFO - question 300/599 num:974 answer:B correct_answer:B True
+2025-08-21 17:44:46,303 - INFO - question 301/599 num:975 answer:D correct_answer:D True
+2025-08-21 17:44:55,022 - INFO - question 302/599 num:976 answer:C correct_answer:C True
+2025-08-21 17:45:11,657 - INFO - question 303/599 num:977 answer:D correct_answer:D True
+2025-08-21 17:45:23,128 - INFO - question 304/599 num:978 answer:B correct_answer:B True
+2025-08-21 17:45:38,822 - INFO - question 305/599 num:979 answer:C correct_answer:C True
+2025-08-21 17:45:55,908 - INFO - question 306/599 num:980 answer:C correct_answer:C True
+2025-08-21 17:46:13,242 - INFO - question 307/599 num:981 answer:A correct_answer:B False
+2025-08-21 17:46:26,811 - INFO - question 308/599 num:982 answer:C correct_answer:C True
+2025-08-21 17:46:39,195 - INFO - question 309/599 num:983 answer:B correct_answer:B True
+2025-08-21 17:46:51,990 - INFO - question 310/599 num:984 answer:C correct_answer:C True
+2025-08-21 17:47:09,206 - INFO - question 311/599 num:985 answer:D correct_answer:C False
+2025-08-21 17:47:30,400 - INFO - question 312/599 num:986 answer:A correct_answer:A True
+2025-08-21 17:47:45,322 - INFO - question 313/599 num:987 answer:B correct_answer:C False
+2025-08-21 17:47:54,701 - INFO - question 314/599 num:988 answer:A correct_answer:B False
+2025-08-21 17:48:12,746 - INFO - question 315/599 num:989 answer:D correct_answer:B False
+2025-08-21 17:48:34,837 - INFO - question 316/599 num:990 answer:A correct_answer:B False
+2025-08-21 17:48:56,570 - INFO - question 317/599 num:991 answer:D correct_answer:D True
+2025-08-21 17:49:12,351 - INFO - question 318/599 num:992 answer:C correct_answer:C True
+2025-08-21 17:49:25,003 - INFO - question 319/599 num:993 answer:B correct_answer:D False
+2025-08-21 17:49:42,416 - INFO - question 320/599 num:994 answer:D correct_answer:A False
+2025-08-21 17:49:57,188 - INFO - question 321/599 num:995 answer:B correct_answer:B True
+2025-08-21 17:50:10,642 - INFO - question 322/599 num:996 answer:C correct_answer:C True
+2025-08-21 17:50:20,752 - INFO - question 323/599 num:997 answer:D correct_answer:C False
+2025-08-21 17:50:39,326 - INFO - question 324/599 num:998 answer:D correct_answer:D True
+2025-08-21 17:50:51,082 - INFO - question 325/599 num:999 answer:B correct_answer:B True
+2025-08-21 17:51:08,077 - INFO - question 326/599 num:1000 answer:D correct_answer:D True
+2025-08-21 17:51:30,395 - INFO - question 327/599 num:1001 answer:C correct_answer:C True
+2025-08-21 17:51:46,943 - INFO - question 328/599 num:1002 answer:C correct_answer:C True
+2025-08-21 17:52:04,365 - INFO - question 329/599 num:1003 answer:D correct_answer:A False
+2025-08-21 17:52:23,451 - INFO - question 330/599 num:1004 answer:C correct_answer:D False
+2025-08-21 17:52:47,919 - INFO - question 331/599 num:1005 answer:C correct_answer:C True
+2025-08-21 17:53:13,464 - INFO - question 332/599 num:1006 answer:D correct_answer:D True
+2025-08-21 17:53:27,855 - INFO - question 333/599 num:1007 answer:C correct_answer:C True
+2025-08-21 17:53:44,949 - INFO - question 334/599 num:1008 answer:D correct_answer:A False
+2025-08-21 17:54:07,385 - INFO - question 335/599 num:1009 answer:A correct_answer:D False
+2025-08-21 17:54:29,772 - INFO - question 336/599 num:1010 answer:C correct_answer:C True
+2025-08-21 17:54:50,684 - INFO - question 337/599 num:1011 answer:C correct_answer:B False
+2025-08-21 17:55:04,364 - INFO - question 338/599 num:1012 answer:D correct_answer:D True
+2025-08-21 17:55:18,284 - INFO - question 339/599 num:1013 answer:A correct_answer:A True
+2025-08-21 17:55:36,871 - INFO - question 340/599 num:1014 answer:C correct_answer:C True
+2025-08-21 17:55:50,768 - INFO - question 341/599 num:1015 answer:B correct_answer:B True
+2025-08-21 17:56:10,533 - INFO - question 342/599 num:1016 answer:A correct_answer:A True
+2025-08-21 17:56:33,059 - INFO - question 343/599 num:1017 answer:C correct_answer:C True
+2025-08-21 17:56:46,845 - INFO - question 344/599 num:1018 answer:D correct_answer:D True
+2025-08-21 17:56:58,412 - INFO - question 345/599 num:1019 answer:B correct_answer:B True
+2025-08-21 17:57:14,467 - INFO - question 346/599 num:1020 answer:A correct_answer:A True
+2025-08-21 17:57:35,306 - INFO - question 347/599 num:1021 answer:B correct_answer:C False
+2025-08-21 17:57:53,871 - INFO - question 348/599 num:1022 answer:C correct_answer:D False
+2025-08-21 17:58:16,489 - INFO - question 349/599 num:1023 answer:A correct_answer:A True
+2025-08-21 17:58:39,358 - INFO - question 350/599 num:1024 answer:B correct_answer:C False
+2025-08-21 17:58:50,808 - INFO - question 351/599 num:1025 answer:C correct_answer:C True
+2025-08-21 17:59:03,021 - INFO - question 352/599 num:1026 answer:D correct_answer:D True
+2025-08-21 17:59:22,921 - INFO - question 353/599 num:1027 answer:A correct_answer:A True
+2025-08-21 17:59:31,888 - INFO - question 354/599 num:1028 answer:B correct_answer:B True
+2025-08-21 17:59:45,677 - INFO - question 355/599 num:1029 answer:D correct_answer:D True
+2025-08-21 18:00:07,618 - INFO - question 356/599 num:1030 answer:A correct_answer:A True
+2025-08-21 18:00:26,934 - INFO - question 357/599 num:1031 answer:C correct_answer:A False
+2025-08-21 18:00:41,066 - INFO - question 358/599 num:1032 answer:D correct_answer:D True
+2025-08-21 18:01:01,281 - INFO - question 359/599 num:1033 answer:B correct_answer:B True
+2025-08-21 18:01:18,023 - INFO - question 360/599 num:1034 answer:B correct_answer:B True
+2025-08-21 18:01:32,845 - INFO - question 361/599 num:1035 answer:C correct_answer:B False
+2025-08-21 18:01:48,335 - INFO - question 362/599 num:1036 answer:B correct_answer:B True
+2025-08-21 18:02:03,896 - INFO - question 363/599 num:1037 answer:B correct_answer:B True
+2025-08-21 18:02:25,493 - INFO - question 364/599 num:1038 answer:C correct_answer:A False
+2025-08-21 18:02:42,700 - INFO - question 365/599 num:1039 answer:A correct_answer:A True
+2025-08-21 18:03:01,899 - INFO - question 366/599 num:1040 answer:B correct_answer:B True
+2025-08-21 18:03:19,158 - INFO - question 367/599 num:1041 answer:B correct_answer:B True
+2025-08-21 18:03:30,949 - INFO - question 368/599 num:1042 answer:D correct_answer:C False
+2025-08-21 18:03:47,482 - INFO - question 369/599 num:1043 answer:B correct_answer:D False
+2025-08-21 18:04:01,193 - INFO - question 370/599 num:1044 answer:B correct_answer:D False
+2025-08-21 18:04:10,528 - INFO - question 371/599 num:1045 answer:B correct_answer:B True
+2025-08-21 18:04:25,157 - INFO - question 372/599 num:1046 answer:A correct_answer:A True
+2025-08-21 18:04:37,698 - INFO - question 373/599 num:1047 answer:B correct_answer:B True
+2025-08-21 18:05:04,073 - INFO - question 374/599 num:1048 answer:D correct_answer:B False
+2025-08-21 18:05:28,051 - INFO - question 375/599 num:1049 answer:D correct_answer:B False
+2025-08-21 18:05:41,263 - INFO - question 376/599 num:1050 answer:C correct_answer:C True
+2025-08-21 18:05:55,013 - INFO - question 377/599 num:1051 answer:B correct_answer:C False
+2025-08-21 18:06:12,906 - INFO - question 378/599 num:1052 answer:C correct_answer:C True
+2025-08-21 18:06:30,174 - INFO - question 379/599 num:1053 answer:A correct_answer:B False
+2025-08-21 18:06:52,022 - INFO - question 380/599 num:1054 answer:B correct_answer:B True
+2025-08-21 18:07:07,605 - INFO - question 381/599 num:1055 answer:A correct_answer:A True
+2025-08-21 18:07:24,436 - INFO - question 382/599 num:1056 answer:D correct_answer:C False
+2025-08-21 18:07:38,543 - INFO - question 383/599 num:1057 answer:D correct_answer:D True
+2025-08-21 18:07:57,769 - INFO - question 384/599 num:1058 answer:A correct_answer:A True
+2025-08-21 18:08:19,165 - INFO - question 385/599 num:1059 answer:C correct_answer:C True
+2025-08-21 18:08:26,530 - INFO - question 386/599 num:1060 answer:A correct_answer:A True
+2025-08-21 18:08:42,850 - INFO - question 387/599 num:1061 answer:B correct_answer:C False
+2025-08-21 18:09:01,228 - INFO - question 388/599 num:1062 answer:D correct_answer:D True
+2025-08-21 18:09:33,848 - INFO - question 389/599 num:1063 answer:A correct_answer:A True
+2025-08-21 18:09:47,417 - INFO - question 390/599 num:1064 answer:D correct_answer:D True
+2025-08-21 18:10:03,589 - INFO - question 391/599 num:1065 answer:D correct_answer:D True
+2025-08-21 18:10:18,271 - INFO - question 392/599 num:1066 answer:A correct_answer:A True
+2025-08-21 18:10:34,211 - INFO - question 393/599 num:1067 answer:A correct_answer:A True
+2025-08-21 18:10:47,089 - INFO - question 394/599 num:1068 answer:C correct_answer:C True
+2025-08-21 18:11:03,945 - INFO - question 395/599 num:1069 answer:B correct_answer:B True
+2025-08-21 18:11:21,233 - INFO - question 396/599 num:1070 answer:D correct_answer:A False
+2025-08-21 18:11:35,605 - INFO - question 397/599 num:1071 answer:D correct_answer:D True
+2025-08-21 18:11:53,173 - INFO - question 398/599 num:1072 answer:A correct_answer:A True
+2025-08-21 18:12:01,295 - INFO - question 399/599 num:1073 answer:D correct_answer:D True
+2025-08-21 18:12:16,013 - INFO - question 400/599 num:1074 answer:D correct_answer:D True
+2025-08-21 18:12:36,576 - INFO - question 401/599 num:1075 answer:A correct_answer:C False
+2025-08-21 18:12:55,356 - INFO - question 402/599 num:1076 answer:D correct_answer:D True
+2025-08-21 18:13:10,651 - INFO - question 403/599 num:1077 answer:D correct_answer:B False
+2025-08-21 18:13:31,630 - INFO - question 404/599 num:1078 answer:B correct_answer:A False
+2025-08-21 18:13:47,885 - INFO - question 405/599 num:1079 answer:A correct_answer:A True
+2025-08-21 18:14:11,067 - INFO - question 406/599 num:1080 answer:A correct_answer:D False
+2025-08-21 18:14:25,575 - INFO - question 407/599 num:1081 answer:D correct_answer:C False
+2025-08-21 18:14:40,102 - INFO - question 408/599 num:1082 answer:D correct_answer:D True
+2025-08-21 18:14:56,584 - INFO - question 409/599 num:1083 answer:B correct_answer:B True
+2025-08-21 18:15:10,490 - INFO - question 410/599 num:1084 answer:A correct_answer:A True
+2025-08-21 18:15:30,232 - INFO - question 411/599 num:1085 answer:A correct_answer:D False
+2025-08-21 18:15:48,981 - INFO - question 412/599 num:1086 answer:C correct_answer:A False
+2025-08-21 18:16:02,752 - INFO - question 413/599 num:1087 answer:C correct_answer:B False
+2025-08-21 18:16:18,664 - INFO - question 414/599 num:1088 answer:C correct_answer:C True
+2025-08-21 18:16:36,623 - INFO - question 415/599 num:1089 answer:C correct_answer:B False
+2025-08-21 18:16:53,026 - INFO - question 416/599 num:1090 answer:B correct_answer:B True
+2025-08-21 18:17:03,583 - INFO - question 417/599 num:1091 answer:C correct_answer:C True
+2025-08-21 18:17:26,039 - INFO - question 418/599 num:1092 answer:C correct_answer:C True
+2025-08-21 18:17:43,869 - INFO - question 419/599 num:1093 answer:B correct_answer:B True
+2025-08-21 18:18:06,183 - INFO - question 420/599 num:1094 answer:D correct_answer:B False
+2025-08-21 18:18:23,543 - INFO - question 421/599 num:1095 answer:D correct_answer:C False
+2025-08-21 18:18:37,319 - INFO - question 422/599 num:1096 answer:B correct_answer:C False
+2025-08-21 18:18:48,963 - INFO - question 423/599 num:1097 answer:C correct_answer:C True
+2025-08-21 18:19:02,319 - INFO - question 424/599 num:1098 answer:C correct_answer:C True
+2025-08-21 18:19:17,584 - INFO - question 425/599 num:1099 answer:D correct_answer:D True
+2025-08-21 18:19:27,773 - INFO - question 426/599 num:1100 answer:A correct_answer:A True
+2025-08-21 18:19:45,334 - INFO - question 427/599 num:1101 answer:D correct_answer:A False
+2025-08-21 18:19:57,247 - INFO - question 428/599 num:1102 answer:A correct_answer:A True
+2025-08-21 18:20:20,433 - INFO - question 429/599 num:1103 answer:C correct_answer:C True
+2025-08-21 18:20:36,145 - INFO - question 430/599 num:1104 answer:C correct_answer:C True
+2025-08-21 18:20:53,133 - INFO - question 431/599 num:1105 answer:B correct_answer:B True
+2025-08-21 18:21:11,790 - INFO - question 432/599 num:1106 answer:A correct_answer:A True
+2025-08-21 18:21:31,065 - INFO - question 433/599 num:1107 answer:A correct_answer:B False
+2025-08-21 18:21:48,596 - INFO - question 434/599 num:1108 answer:C correct_answer:A False
+2025-08-21 18:22:08,605 - INFO - question 435/599 num:1109 answer:A correct_answer:C False
+2025-08-21 18:22:38,234 - INFO - question 436/599 num:1110 answer:A correct_answer:B False
+2025-08-21 18:22:54,415 - INFO - question 437/599 num:1111 answer:A correct_answer:C False
+2025-08-21 18:23:15,375 - INFO - question 438/599 num:1112 answer:C correct_answer:C True
+2025-08-21 18:23:29,074 - INFO - question 439/599 num:1113 answer:C correct_answer:C True
+2025-08-21 18:23:43,019 - INFO - question 440/599 num:1114 answer:D correct_answer:D True
+2025-08-21 18:24:01,447 - INFO - question 441/599 num:1115 answer:C correct_answer:C True
+2025-08-21 18:24:21,570 - INFO - question 442/599 num:1116 answer:D correct_answer:D True
+2025-08-21 18:24:43,109 - INFO - question 443/599 num:1117 answer:D correct_answer:C False
+2025-08-21 18:25:02,732 - INFO - question 444/599 num:1118 answer:D correct_answer:C False
+2025-08-21 18:25:13,835 - INFO - question 445/599 num:1119 answer:C correct_answer:C True
+2025-08-21 18:25:27,864 - INFO - question 446/599 num:1120 answer:D correct_answer:D True
+2025-08-21 18:25:36,684 - INFO - question 447/599 num:1121 answer:C correct_answer:C True
+2025-08-21 18:25:57,647 - INFO - question 448/599 num:1122 answer:A correct_answer:A True
+2025-08-21 18:26:23,778 - INFO - question 449/599 num:1123 answer:A correct_answer:A True
+2025-08-21 18:26:39,838 - INFO - question 450/599 num:1124 answer:D correct_answer:D True
+2025-08-21 18:26:56,825 - INFO - question 451/599 num:1125 answer:B correct_answer:D False
+2025-08-21 18:27:16,868 - INFO - question 452/599 num:1126 answer:A correct_answer:C False
+2025-08-21 18:27:37,867 - INFO - question 453/599 num:1127 answer:D correct_answer:D True
+2025-08-21 18:27:53,450 - INFO - question 454/599 num:1128 answer:C correct_answer:C True
+2025-08-21 18:28:18,772 - INFO - question 455/599 num:1129 answer:A correct_answer:A True
+2025-08-21 18:29:25,293 - INFO - question 456/599 num:1130 answer:C correct_answer:C True
+2025-08-21 18:29:38,155 - INFO - question 457/599 num:1131 answer:A correct_answer:A True
+2025-08-21 18:29:50,279 - INFO - question 458/599 num:1132 answer:A correct_answer:A True
+2025-08-21 18:30:14,305 - INFO - question 459/599 num:1133 answer:A correct_answer:D False
+2025-08-21 18:30:29,283 - INFO - question 460/599 num:1134 answer:D correct_answer:B False
+2025-08-21 18:30:42,924 - INFO - question 461/599 num:1135 answer:D correct_answer:A False
+2025-08-21 18:31:01,861 - INFO - question 462/599 num:1136 answer:D correct_answer:D True
+2025-08-21 18:31:11,660 - INFO - question 463/599 num:1137 answer:A correct_answer:D False
+2025-08-21 18:31:27,061 - INFO - question 464/599 num:1138 answer:C correct_answer:C True
+2025-08-21 18:31:40,344 - INFO - question 465/599 num:1139 answer:B correct_answer:D False
+2025-08-21 18:31:59,042 - INFO - question 466/599 num:1140 answer:A correct_answer:A True
+2025-08-21 18:32:18,921 - INFO - question 467/599 num:1141 answer:D correct_answer:B False
+2025-08-21 18:32:35,972 - INFO - question 468/599 num:1142 answer:B correct_answer:B True
+2025-08-21 18:32:56,445 - INFO - question 469/599 num:1143 answer:A correct_answer:A True
+2025-08-21 18:33:10,397 - INFO - question 470/599 num:1144 answer:C correct_answer:C True
+2025-08-21 18:33:22,761 - INFO - question 471/599 num:1145 answer:C correct_answer:C True
+2025-08-21 18:33:33,515 - INFO - question 472/599 num:1146 answer:A correct_answer:A True
+2025-08-21 18:33:48,522 - INFO - question 473/599 num:1147 answer:C correct_answer:C True
+2025-08-21 18:34:03,315 - INFO - question 474/599 num:1148 answer:A correct_answer:A True
+2025-08-21 18:34:12,219 - INFO - question 475/599 num:1149 answer:A correct_answer:A True
+2025-08-21 18:34:27,983 - INFO - question 476/599 num:1150 answer:C correct_answer:B False
+2025-08-21 18:34:42,928 - INFO - question 477/599 num:1151 answer:A correct_answer:A True
+2025-08-21 18:35:01,462 - INFO - question 478/599 num:1152 answer:D correct_answer:A False
+2025-08-21 18:35:20,972 - INFO - question 479/599 num:1153 answer:B correct_answer:B True
+2025-08-21 18:35:44,470 - INFO - question 480/599 num:1154 answer:D correct_answer:A False
+2025-08-21 18:35:54,937 - INFO - question 481/599 num:1155 answer:D correct_answer:D True
+2025-08-21 18:36:10,071 - INFO - question 482/599 num:1156 answer:D correct_answer:D True
+2025-08-21 18:36:30,624 - INFO - question 483/599 num:1157 answer:C correct_answer:C True
+2025-08-21 18:36:47,230 - INFO - question 484/599 num:1158 answer:D correct_answer:D True
+2025-08-21 18:37:07,501 - INFO - question 485/599 num:1159 answer:C correct_answer:D False
+2025-08-21 18:37:21,977 - INFO - question 486/599 num:1160 answer:A correct_answer:A True
+2025-08-21 18:37:35,374 - INFO - question 487/599 num:1161 answer:C correct_answer:C True
+2025-08-21 18:37:54,038 - INFO - question 488/599 num:1162 answer:A correct_answer:B False
+2025-08-21 18:38:07,640 - INFO - question 489/599 num:1163 answer:B correct_answer:D False
+2025-08-21 18:38:18,877 - INFO - question 490/599 num:1164 answer:D correct_answer:B False
+2025-08-21 18:38:41,417 - INFO - question 491/599 num:1165 answer:C correct_answer:A False
+2025-08-21 18:39:08,713 - INFO - question 492/599 num:1166 answer:B correct_answer:B True
+2025-08-21 18:39:26,770 - INFO - question 493/599 num:1167 answer:C correct_answer:C True
+2025-08-21 18:39:44,871 - INFO - question 494/599 num:1168 answer:A correct_answer:A True
+2025-08-21 18:39:58,878 - INFO - question 495/599 num:1169 answer:A correct_answer:A True
+2025-08-21 18:40:18,374 - INFO - question 496/599 num:1170 answer:C correct_answer:C True
+2025-08-21 18:40:39,865 - INFO - question 497/599 num:1171 answer:C correct_answer:A False
+2025-08-21 18:41:22,458 - INFO - question 498/599 num:1172 answer:A correct_answer:C False
+2025-08-21 18:41:35,412 - INFO - question 499/599 num:1173 answer:D correct_answer:D True
+2025-08-21 18:41:53,443 - INFO - question 500/599 num:1174 answer:A correct_answer:A True
+2025-08-21 18:42:15,558 - INFO - question 501/599 num:1175 answer:A correct_answer:C False
+2025-08-21 18:42:32,375 - INFO - question 502/599 num:1176 answer:B correct_answer:B True
+2025-08-21 18:42:57,380 - INFO - question 503/599 num:1177 answer:C correct_answer:D False
+2025-08-21 18:43:11,514 - INFO - question 504/599 num:1178 answer:B correct_answer:B True
+2025-08-21 18:43:24,173 - INFO - question 505/599 num:1179 answer:B correct_answer:B True
+2025-08-21 18:43:44,300 - INFO - question 506/599 num:1180 answer:C correct_answer:C True
+2025-08-21 18:43:55,566 - INFO - question 507/599 num:1181 answer:A correct_answer:A True
+2025-08-21 18:44:21,726 - INFO - question 508/599 num:1182 answer:D correct_answer:D True
+2025-08-21 18:44:43,755 - INFO - question 509/599 num:1183 answer:A correct_answer:A True
+2025-08-21 18:45:02,832 - INFO - question 510/599 num:1184 answer:A correct_answer:B False
+2025-08-21 18:45:13,638 - INFO - question 511/599 num:1185 answer:A correct_answer:D False
+2025-08-21 18:45:33,032 - INFO - question 512/599 num:1186 answer:C correct_answer:C True
+2025-08-21 18:45:53,890 - INFO - question 513/599 num:1187 answer:B correct_answer:B True
+2025-08-21 18:46:09,443 - INFO - question 514/599 num:1188 answer:A correct_answer:A True
+2025-08-21 18:46:18,302 - INFO - question 515/599 num:1189 answer:B correct_answer:B True
+2025-08-21 18:46:34,716 - INFO - question 516/599 num:1190 answer:A correct_answer:C False
+2025-08-21 18:46:45,798 - INFO - question 517/599 num:1191 answer:D correct_answer:D True
+2025-08-21 18:47:00,892 - INFO - question 518/599 num:1192 answer:D correct_answer:C False
+2025-08-21 18:47:16,658 - INFO - question 519/599 num:1193 answer:A correct_answer:A True
+2025-08-21 18:47:36,738 - INFO - question 520/599 num:1194 answer:D correct_answer:C False
+2025-08-21 18:47:56,567 - INFO - question 521/599 num:1195 answer:D correct_answer:D True
+2025-08-21 18:48:09,358 - INFO - question 522/599 num:1196 answer:A correct_answer:A True
+2025-08-21 18:48:26,713 - INFO - question 523/599 num:1197 answer:C correct_answer:C True
+2025-08-21 18:48:43,985 - INFO - question 524/599 num:1198 answer:D correct_answer:C False
+2025-08-21 18:48:59,320 - INFO - question 525/599 num:1199 answer:C correct_answer:B False
+2025-08-21 18:49:18,446 - INFO - question 526/599 num:1200 answer:A correct_answer:A True
+2025-08-21 18:49:46,867 - INFO - question 527/599 num:1201 answer:B correct_answer:B True
+2025-08-21 18:50:01,453 - INFO - question 528/599 num:1202 answer:C correct_answer:C True
+2025-08-21 18:50:14,254 - INFO - question 529/599 num:1203 answer:A correct_answer:A True
+2025-08-21 18:50:30,880 - INFO - question 530/599 num:1204 answer:C correct_answer:C True
+2025-08-21 18:50:46,826 - INFO - question 531/599 num:1205 answer:A correct_answer:A True
+2025-08-21 18:51:05,964 - INFO - question 532/599 num:1206 answer:A correct_answer:D False
+2025-08-21 18:51:21,361 - INFO - question 533/599 num:1207 answer:C correct_answer:A False
+2025-08-21 18:51:29,581 - INFO - question 534/599 num:1208 answer:B correct_answer:B True
+2025-08-21 18:51:47,392 - INFO - question 535/599 num:1209 answer:D correct_answer:D True
+2025-08-21 18:52:03,693 - INFO - question 536/599 num:1210 answer:A correct_answer:A True
+2025-08-21 18:52:26,014 - INFO - question 537/599 num:1211 answer:C correct_answer:C True
+2025-08-21 18:52:41,963 - INFO - question 538/599 num:1212 answer:C correct_answer:C True
+2025-08-21 18:52:55,857 - INFO - question 539/599 num:1213 answer:B correct_answer:B True
+2025-08-21 18:53:12,994 - INFO - question 540/599 num:1214 answer:C correct_answer:D False
+2025-08-21 18:53:35,068 - INFO - question 541/599 num:1215 answer:A correct_answer:A True
+2025-08-21 18:53:48,918 - INFO - question 542/599 num:1216 answer:A correct_answer:A True
+2025-08-21 18:54:08,456 - INFO - question 543/599 num:1217 answer:A correct_answer:A True
+2025-08-21 18:54:20,354 - INFO - question 544/599 num:1218 answer:B correct_answer:D False
+2025-08-21 18:54:37,518 - INFO - question 545/599 num:1219 answer:A correct_answer:B False
+2025-08-21 18:54:53,202 - INFO - question 546/599 num:1220 answer:C correct_answer:C True
+2025-08-21 18:55:02,581 - INFO - question 547/599 num:1221 answer:B correct_answer:A False
+2025-08-21 18:55:15,133 - INFO - question 548/599 num:1222 answer:A correct_answer:A True
+2025-08-21 18:55:30,341 - INFO - question 549/599 num:1223 answer:B correct_answer:C False
+2025-08-21 18:55:47,837 - INFO - question 550/599 num:1224 answer:D correct_answer:A False
+2025-08-21 18:56:07,479 - INFO - question 551/599 num:1225 answer:B correct_answer:D False
+2025-08-21 18:56:24,478 - INFO - question 552/599 num:1226 answer:B correct_answer:B True
+2025-08-21 18:56:40,161 - INFO - question 553/599 num:1227 answer:D correct_answer:D True
+2025-08-21 18:56:52,513 - INFO - question 554/599 num:1228 answer:D correct_answer:C False
+2025-08-21 18:57:27,905 - INFO - question 555/599 num:1229 answer:A correct_answer:B False
+2025-08-21 18:57:45,721 - INFO - question 556/599 num:1230 answer:D correct_answer:C False
+2025-08-21 18:58:03,649 - INFO - question 557/599 num:1231 answer:D correct_answer:D True
+2025-08-21 18:58:17,951 - INFO - question 558/599 num:1232 answer:C correct_answer:A False
+2025-08-21 18:58:39,609 - INFO - question 559/599 num:1233 answer:A correct_answer:A True
+2025-08-21 18:58:58,640 - INFO - question 560/599 num:1234 answer:A correct_answer:A True
+2025-08-21 18:59:10,237 - INFO - question 561/599 num:1235 answer:B correct_answer:B True
+2025-08-21 18:59:30,837 - INFO - question 562/599 num:1236 answer:B correct_answer:A False
+2025-08-21 18:59:55,915 - INFO - question 563/599 num:1237 answer:B correct_answer:B True
+2025-08-21 19:00:12,387 - INFO - question 564/599 num:1238 answer:A correct_answer:A True
+2025-08-21 19:00:35,022 - INFO - question 565/599 num:1239 answer:A correct_answer:C False
+2025-08-21 19:00:58,422 - INFO - question 566/599 num:1240 answer:A correct_answer:C False
+2025-08-21 19:01:07,301 - INFO - question 567/599 num:1241 answer:A correct_answer:A True
+2025-08-21 19:01:29,351 - INFO - question 568/599 num:1242 answer:A correct_answer:D False
+2025-08-21 19:01:44,980 - INFO - question 569/599 num:1243 answer:B correct_answer:B True
+2025-08-21 19:02:02,908 - INFO - question 570/599 num:1244 answer:D correct_answer:D True
+2025-08-21 19:02:20,282 - INFO - question 571/599 num:1245 answer:A correct_answer:A True
+2025-08-21 19:02:47,554 - INFO - question 572/599 num:1246 answer:A correct_answer:B False
+2025-08-21 19:03:09,594 - INFO - question 573/599 num:1247 answer:C correct_answer:C True
+2025-08-21 19:03:44,955 - INFO - question 574/599 num:1248 answer:o correct_answer:A False
+2025-08-21 19:04:00,316 - INFO - question 575/599 num:1249 answer:C correct_answer:D False
+2025-08-21 19:04:20,220 - INFO - question 576/599 num:1250 answer:C correct_answer:D False
+2025-08-21 19:04:38,708 - INFO - question 577/599 num:1251 answer:C correct_answer:A False
+2025-08-21 19:04:50,298 - INFO - question 578/599 num:1252 answer:A correct_answer:A True
+2025-08-21 19:05:00,146 - INFO - question 579/599 num:1253 answer:B correct_answer:B True
+2025-08-21 19:05:17,514 - INFO - question 580/599 num:1254 answer:B correct_answer:B True
+2025-08-21 19:05:30,739 - INFO - question 581/599 num:1255 answer:B correct_answer:B True
+2025-08-21 19:05:42,488 - INFO - question 582/599 num:1256 answer:B correct_answer:A False
+2025-08-21 19:05:57,639 - INFO - question 583/599 num:1257 answer:A correct_answer:A True
+2025-08-21 19:06:18,193 - INFO - question 584/599 num:1258 answer:D correct_answer:D True
+2025-08-21 19:06:31,936 - INFO - question 585/599 num:1259 answer:A correct_answer:A True
+2025-08-21 19:06:49,634 - INFO - question 586/599 num:1260 answer:C correct_answer:B False
+2025-08-21 19:07:07,593 - INFO - question 587/599 num:1261 answer:A correct_answer:B False
+2025-08-21 19:07:31,471 - INFO - question 588/599 num:1262 answer:B correct_answer:C False
+2025-08-21 19:07:57,353 - INFO - question 589/599 num:1263 answer:D correct_answer:B False
+2025-08-21 19:08:14,097 - INFO - question 590/599 num:1264 answer:A correct_answer:A True
+2025-08-21 19:08:34,190 - INFO - question 591/599 num:1265 answer:D correct_answer:B False
+2025-08-21 19:09:04,741 - INFO - question 592/599 num:1266 answer:B correct_answer:B True
+2025-08-21 19:09:20,834 - INFO - question 593/599 num:1267 answer:B correct_answer:C False
+2025-08-21 19:09:37,342 - INFO - question 594/599 num:1268 answer:B correct_answer:B True
+2025-08-21 19:09:54,625 - INFO - question 595/599 num:1269 answer:D correct_answer:D True
+2025-08-21 19:10:17,482 - INFO - question 596/599 num:1270 answer:C correct_answer:D False
+2025-08-21 19:10:42,080 - INFO - question 597/599 num:1271 answer:B correct_answer:B True
+2025-08-21 19:10:59,678 - INFO - question 598/599 num:1272 answer:C correct_answer:C True
+2025-08-21 19:11:15,700 - INFO - question 599/599 num:1273 answer:C correct_answer:C True
+2025-08-21 19:11:15,701 - INFO - Total questions: 599, correct: 386, accuracy: 0.6444073455759599
+2025-08-21 19:11:15,701 - INFO - elapse_time: 10430.215250015259
+2025-08-21 22:19:16,715 - ERROR - No such comm target registered: jupyter.widget.control
+2025-08-21 22:19:16,716 - WARNING - No such comm: cc388975-dba0-4b23-a49e-4790a00ed71f
+2025-08-21 22:54:43,094 - INFO - Use pytorch device_name: cuda:0
+2025-08-21 22:54:43,094 - INFO - Load pretrained SparseEncoder: naver/splade-v3
