@@ -73,12 +73,12 @@ class ContextRetriever:
         # Step 3: Cross-encoder model (e.g. MonoBERT)
         if (self.topK_crossEncoder != None and self.topK_crossEncoder > 0) or ("MonoT5" in RRF_model_names):
             if self.crossEncoder_model == None:
-                self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
+                # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
                 # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L12-v2")
                 # self.crossEncoder_model = CrossEncoder("cross-encoder/ms-marco-electra-base")
                 # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-m3')
                 # self.crossEncoder_model = FlagReranker('BAAI/bge-reranker-v2-gemma')
-                # self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
+                self.crossEncoder_model = Reranker(MonoT5("castorini/monot5-3b-med-msmarco", context_size = 4096, batch_size = 16))
 
 
         # Step 4: More powerful model (DuoBERT, LLM, ...)
