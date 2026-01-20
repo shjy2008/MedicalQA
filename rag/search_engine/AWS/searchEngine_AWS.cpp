@@ -11,13 +11,13 @@
 #include <tuple>
 #include <cstdint>
 #include <chrono>
-#include "searchEngine.h"
+#include "../searchEngine.h"
 
 
 int SearchEngine::calculateCounter = 0;
 std::chrono::steady_clock::duration SearchEngine::timeCounter;
 
-std::string indexPath = "./";
+std::string indexPath = "../";
 // std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
 
 void SearchEngine::load() {
