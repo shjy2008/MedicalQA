@@ -1,7 +1,7 @@
 #include <string>
 #include <sstream>
 #include "../httplib.h"
-#include "../searchEngine.h"
+#include "searchEngine_AWS.h"
 
 // std::string ip = "127.0.0.1"; // "localhost"
 std::string ip = "0.0.0.0"; // "localhost"
@@ -29,53 +29,35 @@ std::string endpoint = "search";
 // 	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
 // }
 
-std::string escapeJsonString(const std::string& input) {
-    std::ostringstream ss;
-    for (auto c : input) {
-        switch (c) {
-            case '"': ss << "\\\""; break;
-            case '\\': ss << "\\\\"; break;
-            case '\b': ss << "\\b"; break;
-            case '\f': ss << "\\f"; break;
-            case '\n': ss << "\\n"; break;
-            case '\r': ss << "\\r"; break;
-            case '\t': ss << "\\t"; break;
-            default:
-                if (static_cast<unsigned char>(c) < 0x20) {
-                    ss << "\\u" << std::hex << (int)c;
-                } else {
-                    ss << c;
-                }
-        }
-    }
-    return ss.str();
-}
-
-std::string convertResultsToJson(const std::vector<SearchResult>& results) {
-    std::ostringstream oss;
-    oss << "[";
-
-    for (size_t i = 0; i < results.size(); ++i) {
-        const auto& r = results[i];
-        oss << "{"
-            << "\"docId\":" << r.docId << ","
-            << "\"score\":" << r.score << ","
-            << "\"docNo\":\"" << escapeJsonString(r.docNo) << "\","
-            << "\"content\":\"" << escapeJsonString(r.content) << "\""
-            << "}";
-        if (i + 1 < results.size()) oss << ",";
-    }
-
-    oss << "]";
-    return oss.str();
-}
 
 int main() {
+    Aws::SDKOptions options;
+    Aws::InitAPI(options);
+
     httplib::Server server;
 
-    SearchEngine searchEngine;
+    SearchEngine_AWS searchEngine;
+
+    Aws::S3::S3Client s3_client;
+    searchEngine.setS3Client(s3_client);
+
     searchEngine.load();
 
+    // For test
+    // std::string testTerm = "hello";
+    // // std::pair<std::vector<Posting>, float> postings = searchEngine.getWordPostings(testTerm);
+    // // std::cout << "term " << testTerm << " impact score: " << postings.second << std::endl;
+    // // for (const auto& p : postings.first) {
+    // //     std::cout << p.docId << ": " << p.tf << std::endl;
+    // // }
+    // std::vector<SearchResult> results = searchEngine.search(testTerm, 2);
+    // std::string retJsonStr = Utils::convertResultsToJson(results);
+
+    // std::cout << "result:" << retJsonStr << std::endl;
+
+    // return 0;
+
+    
     server.Get("/" + endpoint, [&searchEngine] (const httplib::Request& req, httplib::Response& res) {
         if (req.has_param("q")) {
             std::vector<SearchResult> results;
@@ -103,7 +85,7 @@ int main() {
             //         {"content", result.content}
             //     });
             // }
-            res.set_content(convertResultsToJson(results), "text/plain");
+            res.set_content(Utils::convertResultsToJson(results), "text/plain");
             // res.set_content(result_json.dump(2), "application/json");
         }
         else {

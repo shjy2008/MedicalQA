@@ -11,161 +11,70 @@
 #include <tuple>
 #include <cstdint>
 #include <chrono>
-#include "../searchEngine.h"
+#include "searchEngine_AWS.h"
 
+#include <aws/core/Aws.h>
+#include <aws/s3/S3Client.h>
+#include <aws/s3/model/GetObjectRequest.h>
 
-int SearchEngine::calculateCounter = 0;
-std::chrono::steady_clock::duration SearchEngine::timeCounter;
+const std::string aws_s3_bucketName = "search-engine-pubmed-abstract";
 
-std::string indexPath = "../";
-// std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
-
-void SearchEngine::load() {
-	this->loadWords(); // load word postings index from disk
-	this->loadDocLengths();
-	this->loadDocOffsetTable();
-
-	wordPostingsFile.open(indexPath + "index_postings.bin");
+SearchEngine_AWS::SearchEngine_AWS() {
+	indexPath = "../";
+	// indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
 }
 
-void SearchEngine::loadDocLengths() {
-	std::ifstream docLengthsFile;
-	docLengthsFile.open(indexPath + "index_docLengths.bin");
-
-	docLengthsFile.seekg(0, std::fstream::end);
-	uint64_t fileSize = docLengthsFile.tellg();
-	docLengthsFile.seekg(0, std::fstream::beg);
-
-	char* buffer = new char[fileSize];
-	docLengthsFile.read(buffer, fileSize);
-
-	docLengthsFile.close();
-
-	char* pointer = buffer;
-
-	uint32_t length = 0;
-	uint32_t docId = 0;
-	uint64_t totalLength = 0;
-	while (pointer < buffer + fileSize)
-	{
-		length = *reinterpret_cast<uint32_t*>(pointer);
-		pointer += 4;
-
-		++docId;
-
-		this->docLengthTable.push_back(length);
-		totalLength += length;
-	}
-	
-	delete[] buffer;
-
-	this->totalDocuments = docId;
-	this->averageDocumentLength = totalLength / (float)this->totalDocuments;
-
-	std::cout << "Finish loading document lengths" << std::endl;
-}
-
-void SearchEngine::loadWords() {
-	std::ifstream wordsFile;
-	wordsFile.open(indexPath + "index_words.bin");
-
-	// Get how many bytes the words.bin have
-	wordsFile.seekg(0, std::ifstream::end);
-	uint64_t fileSize = wordsFile.tellg();
-	wordsFile.seekg(0, std::ifstream::beg);
-
-	// Batch reading is faster than reading byte by byte
-	char* buffer = new char[fileSize];
-	wordsFile.read(buffer, fileSize);
-	
-	wordsFile.close();
-
-	char* pointer = buffer;
-
-	uint32_t wordCount = *reinterpret_cast<uint32_t*>(pointer);
-	pointer += 4;
-
-	for (uint32_t i = 0; i < wordCount; ++i) {
-		uint8_t wordLength = *pointer; //*reinterpret_cast<uint8_t*>(pointer);
-		++pointer;
-
-		std::string word(pointer, wordLength);
-		pointer += wordLength;
-
-		uint32_t pos = *reinterpret_cast<uint32_t*>(pointer);
-		pointer += 4;
-
-		uint32_t docCount = *reinterpret_cast<uint32_t*>(pointer);
-		pointer += 4;
-
-		float impactScore = *reinterpret_cast<float*>(pointer);
-		pointer += 4;
-
-		this->wordToWordData[word] = WordData(pos, docCount, impactScore);
-	}
-
-	delete[] buffer;
-
-	std::cout << "Finish loading words: " << wordCount << std::endl;
-}
-
-void SearchEngine::loadDocOffsetTable()  {
-	std::ifstream docOffsetTableFile;
-	docOffsetTableFile.open(indexPath + "index_docOffsetTable.bin");
-
-	// Get how many bytes the "index_docOffsetTable.bin" have
-	docOffsetTableFile.seekg(0, std::ifstream::end);
-	uint64_t fileSize = docOffsetTableFile.tellg();
-	docOffsetTableFile.seekg(0, std::ifstream::beg);
-
-	// Batch reading is faster than reading byte-by-byte
-	char* buffer = new char[fileSize];
-	docOffsetTableFile.read(buffer, fileSize);
-
-	docOffsetTableFile.close();
-
-	char* pointer = buffer;
-	uint32_t docId = 0;
-	while (pointer < buffer + fileSize) {
-		uint64_t offset = *reinterpret_cast<uint64_t*>(pointer);
-		pointer += sizeof(offset);
-
-		uint8_t docNoLength = *reinterpret_cast<uint8_t*>(pointer);
-		pointer += sizeof(docNoLength);
-
-		uint16_t documentLength = *reinterpret_cast<uint16_t*>(pointer);
-		pointer += sizeof(documentLength);
-
-		++docId;
-		this->docOffsetTable.push_back(DocumentOffset(offset, docNoLength, documentLength));
-	}
-
-	delete[] buffer;
-
-	std::cout << "Finish loading document offset table: " << docId << std::endl;
-}
-
-std::pair<std::string, std::string> SearchEngine::getDocData(uint32_t docId) {
+std::pair<std::string, std::string> SearchEngine_AWS::getDocData(uint32_t docId) {
 	DocumentOffset offsetData = this->docOffsetTable[docId - 1];
 
-	std::ifstream documentsFile;
-	documentsFile.open(indexPath + "index_documents.bin");
-	documentsFile.seekg(offsetData.offset, std::ifstream::beg);
+	// AWS read index file stored in S3
+	Aws::S3::Model::GetObjectRequest object_request;
+	object_request.SetBucket(aws_s3_bucketName.c_str());
+	object_request.SetKey("index_documents.bin");
 
-	char* buffer = new char[offsetData.docNoLength];
-	documentsFile.read(buffer, offsetData.docNoLength);
-	std::string docNo(buffer, offsetData.docNoLength);
-	delete[] buffer;
+	std::streamoff start = offsetData.offset;
+	std::streamoff end = offsetData.offset + offsetData.docNoLength + offsetData.documentLength;
+	object_request.SetRange("bytes=" + std::to_string(start) + "-" + std::to_string(end));
 
-	buffer = new char[offsetData.documentLength];
-	documentsFile.read(buffer, offsetData.documentLength);
-	std::string document(buffer, offsetData.documentLength);
-	delete[] buffer;
+	auto get_object_outcome = s3_client.GetObject(object_request);
+	if (!get_object_outcome.IsSuccess()) {
+            std::cerr << "Failed to read S3 object: "
+                      << get_object_outcome.GetError().GetMessage() << std::endl;
+			return std::pair<std::string, std::string>("", "");
+    }
+
+	Aws::IOStream& s3_stream = get_object_outcome.GetResultWithOwnership().GetBody();
+
+	// Read docNo
+	std::string docNo(offsetData.docNoLength, '\0');
+	s3_stream.read(&docNo[0], offsetData.docNoLength);
+
+	// Read document
+	std::string document(offsetData.documentLength, '\0');
+	s3_stream.read(&document[0], offsetData.documentLength);
+
+	// ---- Below is for direct access local index file ---
+	// std::ifstream documentsFile;
+	// documentsFile.open(indexPath + "index_documents.bin");
+	// documentsFile.seekg(offsetData.offset, std::ifstream::beg);
+
+	// // Read docNo
+	// char* buffer = new char[offsetData.docNoLength];
+	// documentsFile.read(buffer, offsetData.docNoLength);
+	// std::string docNo(buffer, offsetData.docNoLength);
+	// delete[] buffer;
+
+	// // Read document
+	// buffer = new char[offsetData.documentLength];
+	// documentsFile.read(buffer, offsetData.documentLength);
+	// std::string document(buffer, offsetData.documentLength);
+	// delete[] buffer;
 
 	return std::pair<std::string, std::string>(docNo, document);
 }
 
-std::pair<std::vector<Posting>, float> SearchEngine::getWordPostings(const std::string& word) {
+std::pair<std::vector<Posting>, float> SearchEngine_AWS::getWordPostings(const std::string& word) {
+
 	std::vector<Posting> postings;
 
 	std::unordered_map<std::string, WordData>::iterator wordDataItr = this->wordToWordData.find(word);
@@ -178,12 +87,35 @@ std::pair<std::vector<Posting>, float> SearchEngine::getWordPostings(const std::
 	uint32_t docCount = wordData.postingsDocCount;
 	float impactScore = wordData.impactScore;
 
-	// Seek and read wordPostings.bin to find the postings(docId and tf) of this word
-	wordPostingsFile.seekg(sizeof(uint32_t) * pos * 2, std::ifstream::beg); // * 2 because every doc has docId and term frequency
+	// AWS read index file stored in S3
+	std::streamoff offset = sizeof(uint32_t) * pos * 2;
+	std::streamoff bytesToRead = docCount * sizeof(Posting);
 
-	// Optimization: batch reading instead of reading docId and tf one by one
+	Aws::S3::Model::GetObjectRequest object_request;
+	object_request.SetBucket(aws_s3_bucketName.c_str());
+	object_request.SetKey("index_postings.bin");
+	object_request.SetRange("bytes=" + std::to_string(offset) + "-" + std::to_string(offset + bytesToRead - 1));
+
+	auto get_object_outcome = s3_client.GetObject(object_request);
+
+    if (!get_object_outcome.IsSuccess()) {
+        std::cerr << "Failed to read S3 object: "
+                  << get_object_outcome.GetError().GetMessage() << std::endl;
+        return std::pair<std::vector<Posting>, float>(postings, 0); // failed to read S3, return empty vector
+    }
+
+	Aws::IOStream& s3_stream = get_object_outcome.GetResultWithOwnership().GetBody();
+
 	postings.resize(docCount);
-	wordPostingsFile.read(reinterpret_cast<char*>(postings.data()), docCount * sizeof(Posting));
+	s3_stream.read(reinterpret_cast<char*>(postings.data()), bytesToRead);
+
+	// ---- Below is for direct access local index file ---
+	// // Seek and read wordPostings.bin to find the postings(docId and tf) of this word
+	// wordPostingsFile.seekg(sizeof(uint32_t) * pos * 2, std::ifstream::beg); // * 2 because every doc has docId and term frequency
+
+	// // Optimization: batch reading instead of reading docId and tf one by one
+	// postings.resize(docCount);
+	// wordPostingsFile.read(reinterpret_cast<char*>(postings.data()), docCount * sizeof(Posting));
 
 	// for (uint32_t i = 0; i < docCount; ++i) {
 	// 	uint32_t docId = 0;
@@ -196,342 +128,3 @@ std::pair<std::vector<Posting>, float> SearchEngine::getWordPostings(const std::
 
 	return std::pair<std::vector<Posting>, float>(postings, impactScore);
 }
-
-inline SearchResult SearchEngine::calculateDocScore(std::vector<std::vector<Posting> >& vecPostingsLists, 
-						std::vector<uint32_t>& vecPostingsProgress,
-						std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor> >& cursorMinHeap) {
-
-	// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
-
-	float currentScore = 0.0f;
-	uint32_t currentDocId = 0;
-	SearchResult result = SearchResult(currentDocId, currentScore);
-	uint32_t i = 0;
-	while (cursorMinHeap.size() > 0) {
-		const Cursor& cursor = cursorMinHeap.top();
-		uint32_t wordIndex = cursor.wordIndex;
-		std::vector<Posting>& postings = vecPostingsLists[wordIndex];
-		
-		const Posting& posting = postings[vecPostingsProgress[wordIndex]];
-
-		uint32_t docCountContainWord = postings.size();
-		float idf = Utils::getIDF(docCountContainWord, this->totalDocuments);
-
-		if (i == 0 || posting.docId == currentDocId) {
-			if (i == 0) {
-				currentDocId = posting.docId;
-			}
-			uint32_t docLength = this->docLengthTable[currentDocId - 1];
-			float score = Utils::getRankingScore(posting.tf, docLength, idf, this->averageDocumentLength);
-			currentScore += score;
-
-			calculateCounter += 1;
-
-			vecPostingsProgress[wordIndex] += 1; // Advance the progress
-
-			cursorMinHeap.pop();
-
-			if (vecPostingsProgress[wordIndex] < postings.size()) {
-				cursorMinHeap.push(Cursor(wordIndex, postings[vecPostingsProgress[wordIndex]].docId));
-			}
-		}
-		else {
-			break;
-		}
-
-		++i;
-	}
-
-	result = SearchResult(currentDocId, currentScore);
-
-	// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-	// this->timeCounter += time_end - time_begin;	
-	
-	return result;
-}
-
-std::vector<SearchResult> SearchEngine::getSortedRelevantDocuments(const std::string& query, size_t topK) {
-	std::vector<std::string> words = Utils::extractWords(query);
-
-	std::priority_queue<SearchResult, std::vector<SearchResult>, std::greater<SearchResult> > resultMinHeap;
-
-	// DAAT
-	std::vector<std::vector<Posting> > vecPostingsLists; // [Postings, ...]
-	std::vector<float> vecImpactScores; // wordIndex -> impactScore
-	
-	// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
-
-	uint32_t wordIndex = 0;
-	for (uint32_t i = 0; i < words.size(); ++i) {
-		std::string word = words[i];
-		// Stop words
-		if (std::find(stopWords.begin(), stopWords.end(), word) != stopWords.end()) {
-			continue;
-		}
-		std::pair<std::vector<Posting>, float> postingsAndImpactScore = this->getWordPostings(word);
-		if (postingsAndImpactScore.first.size() == 0 || postingsAndImpactScore.second == 0) {
-			continue;
-		}
-		vecPostingsLists.push_back(postingsAndImpactScore.first);
-		vecImpactScores.push_back(postingsAndImpactScore.second);
-		++wordIndex;
-
-		// std::cout << "word:" << word << " postings size: " << postingsAndImpactScore.first.size() << std::endl;
-	}
-	std::vector<uint32_t> vecPostingsProgress(wordIndex, 0); // wordIndex -> postingsProgress (from 0 to len(posting) - 1)
-
-	// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-	// this->timeCounter += time_end - time_begin;	
-
-	// WAND
-	float minScoreOfHeap = 0.0f;
-
-	// Use a min-heap to store the cursor of each word's postings
-	std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor> > cursorMinHeap; 
-	for (uint32_t i = 0; i < vecPostingsLists.size(); ++i) {
-		cursorMinHeap.push(Cursor(i, vecPostingsLists[i][0].docId));
-	}
-
-	while (cursorMinHeap.size() > 0) {
-		bool allFinished = false;
-
-		if (resultMinHeap.size() < topK) {
-			SearchResult ret = this->calculateDocScore(vecPostingsLists, vecPostingsProgress, cursorMinHeap);
-			resultMinHeap.push(ret);
-			minScoreOfHeap = resultMinHeap.top().score;
-		}
-		else {
-			float currentImpactScore = 0.0f;
-			
-			uint32_t firstDocId = 0;
-			uint32_t i = 0;
-			std::priority_queue<Cursor, std::vector<Cursor>, std::greater<Cursor>> cursorMinHeapCopy = cursorMinHeap;
-			while (cursorMinHeapCopy.size() > 0) {
-				
-				// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
-
-				const Cursor& curosr = cursorMinHeapCopy.top();
-				cursorMinHeapCopy.pop();
-				uint32_t wordIndex = curosr.wordIndex;
-				std::vector<Posting>& postings = vecPostingsLists[wordIndex]; // Notice that here need to use & reference, or will copy postings
-
-				const Posting& posting = postings[vecPostingsProgress[wordIndex]];
-				
-				if (i == 0) {
-					firstDocId = posting.docId;
-				}
-
-				float impactScore = vecImpactScores[wordIndex];
-				currentImpactScore += impactScore;
-
-				// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-				// this->timeCounter += time_end - time_begin;	
-				
-				if (currentImpactScore > minScoreOfHeap) {
-					if (posting.docId != firstDocId) { // d_p != d_0
-
-						// Advance all lists to d >= d_p
-						for (uint32_t j = 0; j < i; ++j) {
-							const Cursor& cursor_j = cursorMinHeap.top();
-							uint32_t wordIndex_j = cursor_j.wordIndex;
-							std::vector<Posting>& postings_j = vecPostingsLists[wordIndex_j];
-
-							cursorMinHeap.pop();
-
-							// Only if the last posting > d_p, progress the cursor. Otherwise, the postings of this word are all done
-							if (postings_j[postings_j.size() - 1].docId >= posting.docId) {
-								// Replaced by Straddle Linear Search
-								// while (true) {
-								// 	if (postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId >= posting.docId) {
-								// 		// std::cout << wordIndex << " " << postings.size() << " " << wordIndexToPostingsProgress[wordIndex] << " " << postings_j[wordIndexToPostingsProgress[wordIndex_j]].docId << ">=" << posting.docId << std::endl;
-								// 		break;
-								// 	}
-
-								// 	wordIndexToPostingsProgress[wordIndex_j] += 1;
-								// }
-
-								// std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
-								
-								// Straddle linear search
-								uint32_t currentIndex = vecPostingsProgress[wordIndex_j];
-								uint32_t searchDocId = posting.docId;
-								uint32_t newProgress;
-								if (postings_j[currentIndex].docId >= searchDocId) {
-									newProgress = currentIndex;
-								}
-								else {
-									// Straddle linear search
-									uint32_t left = currentIndex;
-									uint32_t right = 0;
-									uint32_t jump = 2;
-									while (true) {
-										right = left + jump;
-										if (right > postings_j.size() - 1) {
-											right = postings_j.size() - 1;
-										}
-										if (postings_j[right].docId >= searchDocId) {
-											break;
-										}
-
-										jump <<= 1; //jump *= 2;
-										left = right;
-									}
-
-									// binary search
-									while (true) {
-										uint32_t gap = right - left;
-										uint32_t middle = left + gap / 2;
-										if (postings_j[middle].docId < searchDocId) {
-											left = middle;
-										}
-										else {
-											right = middle;
-										}
-										if (left == right - 1) {
-											newProgress = right;
-											break;
-										}
-									}
-								}
-								vecPostingsProgress[wordIndex_j] = newProgress;
-
-								// std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-								// this->timeCounter += time_end - time_begin;	
-
-								cursorMinHeap.push(Cursor(wordIndex_j, postings_j[vecPostingsProgress[wordIndex_j]].docId));
-							}
-
-						}
-
-					}
-					else { // d_p == d_0
-						SearchResult ret = this->calculateDocScore(vecPostingsLists, vecPostingsProgress, cursorMinHeap);
-						if (ret.score > minScoreOfHeap) {
-							resultMinHeap.pop();
-							resultMinHeap.push(ret);
-							minScoreOfHeap = resultMinHeap.top().score;
-						}
-					}
-					break;
-				}
-				else {
-					if (i >= cursorMinHeap.size() - 1) {
-						allFinished = true;
-						break;
-					}
-				}
-
-				++i;
-			}
-		}
-
-		if (allFinished) {
-			break;
-		}
-	}
-
-	std::vector<SearchResult> vecDocIdScore; // docId and score: [(docId1, score1), (docId2, score2), ...]
-	while (!resultMinHeap.empty()) {
-		vecDocIdScore.push_back(resultMinHeap.top());
-		resultMinHeap.pop();
-	}
-
-	// Sort by score
-	std::reverse(vecDocIdScore.begin(), vecDocIdScore.end());
-
-	return vecDocIdScore;
-}
-
-void SearchEngine::run() {
-	// std::string query = "rosenfield wall street unilateral representation";
-	// std::string query = "in antipeptic activity";
-	// std::string query = "the";
-	// std::string query = "in";
-	// std::string query = "In vitro studies about the antipeptic activity";
-	// std::string query = "vitro studies antipeptic activity";
-	// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair";
-	// GBaker/MedQA-USMLE-4-options test index 0
-	// std::string query = "junior orthopaedic";
-	// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
-	// std::string query = "junior orthopaedic surgery resident completing carpal tunnel repair department chairman attending physician. During case, resident inadvertently cuts flexor tendon. tendon repaired complication. attending tells resident patient fine, need report minor complication harm patient, he want make patient worry unnecessarily. He tells resident leave this complication operative report. Which following correct next action resident take?";
-	// std::string query = "A 67-year-old man with transitional cell carcinoma of the bladder comes to the physician because of a 2-day history of ringing sensation in his ear. He received this first course of neoadjuvant chemotherapy 1 week ago. Pure tone audiometry shows a sensorineural hearing loss of 45 dB. The expected beneficial effect of the drug that caused this patient's symptoms is most likely due to which of the following actions?";
-	// MedQA 30
-	// std::string query = "A 3-week-old male newborn is brought to the physician because of an inward turning of his left forefoot. He was born at 38 weeks' gestation by cesarean section because of breech presentation. The pregnancy was complicated by oligohydramnios. Examination shows concavity of the medial border of the left foot with a skin crease just below the ball of the great toe. The lateral border of the left foot is convex. The heel is in neutral position. Tickling the lateral border of the foot leads to correction of the deformity. The remainder of the examination shows no abnormalities. X-ray of the left foot shows an increased angle between the 1st and 2nd metatarsal bones. Which of the following is the most appropriate next step in the management of this patient?";
-	// MedQA 32
-	std::string query = "A 72-year-old woman is admitted to the intensive care unit for shortness of breath and palpitations. A cardiac catheterization is performed and measurements of the left ventricular volume and pressure at different points in the cardiac cycle are obtained. The patient's pressure-volume loop (gray) is shown with a normal pressure-volume loop (black) for comparison. Which of the following is the most likely underlying cause of this patient's symptoms?";
-	// MedQA 10
-	// std::string query = "A 23-year-old woman comes to the physician because she is embarrassed about the appearance of her nails. She has no history of serious illness and takes no medications. She appears well. A photograph of the nails is shown. Which of the following additional findings is most likely in this patient?";
-	// std::string query;
-	// std::getline(std::cin, query);
-
-	std::vector<SearchResult> vecDocIdScore = this->getSortedRelevantDocuments(query);
-
-	std::vector<uint32_t> bestDocIdList;
-
-	// Print the sorted list of docNo and score
-	for (size_t i = 0; i < vecDocIdScore.size(); ++i) {
-		uint32_t docId = vecDocIdScore[i].docId;
-		float score = vecDocIdScore[i].score;
-
-		std::cout << docId << "  " << score << std::endl;
-
-		if (i < 10) {
-			bestDocIdList.push_back(docId);
-		}
-	}
-
-	this->wordPostingsFile.close();
-
-	// Print the first two docId and document content
-	for (size_t i = 0; i < bestDocIdList.size(); ++i) {
-		std::pair<std::string, std::string> docData = this->getDocData(bestDocIdList[i]);
-		std::string docNo = docData.first;
-		std::string document = docData.second;
-
-		std::cout << std::endl << docNo << std::endl;
-		// std::cout << std::endl << document << std::endl;
-	}
-}
-
-std::vector<SearchResult> SearchEngine::search(const std::string& query, size_t topK) {
-	std::vector<SearchResult> vecDocIdScore = this->getSortedRelevantDocuments(query, topK);
-
-	// std::string ret = "";
-	std::vector<SearchResult> results;
-	for (size_t i = 0; i < vecDocIdScore.size(); ++i) {
-		SearchResult result = vecDocIdScore[i];
-		std::pair<std::string, std::string> docData = this->getDocData(result.docId);
-		result.docNo = docData.first;
-		result.content = docData.second;
-		results.push_back(result);
-		// ret += docData.second;
-		// if (i != vecDocIdScore.size() - 1) {
-		// 	// ret += "###RAG_DOC###"; // deliminator
-		// }
-	}
-	return results;
-}
-
-// int main() {
-	
-// 	std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
-
-// 	SearchEngine engine;
-// 	engine.load();
-
-// 	std::chrono::steady_clock::time_point time_loadFinished = std::chrono::steady_clock::now();
-// 	std::cout << "Loading time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_loadFinished - time_begin).count() << "ms" << std::endl;
-
-// 	engine.run();
-// 	//std::string query = "vitro studies antipeptic activity";
-// 	// std::string query = "A junior orthopaedic surgery resident is completing a carpal tunnel repair with the department chairman as the attending physician. During the case, the resident inadvertently cuts a flexor tendon. The tendon is repaired without complication. The attending tells the resident that the patient will do fine, and there is no need to report this minor complication that will not harm the patient, as he does not want to make the patient worry unnecessarily. He tells the resident to leave this complication out of the operative report. Which of the following is the correct next action for the resident to take?";
-// 	// std::cout << engine.search(query) << std::endl;
-
-// 	std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
-// 	std::cout << "Search time used: " << std::chrono::duration_cast<std::chrono::milliseconds>(time_end - time_loadFinished).count() << "ms" << std::endl;
-
-// 	std::cout << "calculate counter:" << engine.calculateCounter << std::endl;
-// 	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
-
-// 	return 0;
-// }

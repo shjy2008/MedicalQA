@@ -13,12 +13,10 @@
 #include <chrono>
 #include "searchEngine.h"
 
-
-int SearchEngine::calculateCounter = 0;
-std::chrono::steady_clock::duration SearchEngine::timeCounter;
-
-std::string indexPath = "./";
-// std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
+SearchEngine::SearchEngine() {
+	indexPath = "./";
+	// indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
+}
 
 void SearchEngine::load() {
 	this->loadWords(); // load word postings index from disk
@@ -184,6 +182,7 @@ std::pair<std::vector<Posting>, float> SearchEngine::getWordPostings(const std::
 	// Optimization: batch reading instead of reading docId and tf one by one
 	postings.resize(docCount);
 	wordPostingsFile.read(reinterpret_cast<char*>(postings.data()), docCount * sizeof(Posting));
+
 
 	// for (uint32_t i = 0; i < docCount; ++i) {
 	// 	uint32_t docId = 0;

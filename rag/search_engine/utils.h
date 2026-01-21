@@ -1,3 +1,5 @@
+#ifndef __UTIL_H__
+#define __UTIL_H__
 
 #include <stdint.h>
 #include <string>
@@ -145,5 +147,48 @@ class Utils {
         }
         return text.substr(start, end - start + 1);
     }
-    
+
+    static std::string convertResultsToJson(const std::vector<SearchResult>& results) {
+        std::ostringstream oss;
+        oss << "[";
+
+        for (size_t i = 0; i < results.size(); ++i) {
+            const auto& r = results[i];
+            oss << "{"
+                << "\"docId\":" << r.docId << ","
+                << "\"score\":" << r.score << ","
+                << "\"docNo\":\"" << escapeJsonString(r.docNo) << "\","
+                << "\"content\":\"" << escapeJsonString(r.content) << "\""
+                << "}";
+            if (i + 1 < results.size()) oss << ",";
+        }
+
+        oss << "]";
+        return oss.str();
+    }
+
+    static std::string escapeJsonString(const std::string& input) {
+        std::ostringstream ss;
+        for (auto c : input) {
+            switch (c) {
+                case '"': ss << "\\\""; break;
+                case '\\': ss << "\\\\"; break;
+                case '\b': ss << "\\b"; break;
+                case '\f': ss << "\\f"; break;
+                case '\n': ss << "\\n"; break;
+                case '\r': ss << "\\r"; break;
+                case '\t': ss << "\\t"; break;
+                default:
+                    if (static_cast<unsigned char>(c) < 0x20) {
+                        ss << "\\u" << std::hex << (int)c;
+                    } else {
+                        ss << c;
+                    }
+            }
+        }
+        return ss.str();
+    }
+
 };
+
+#endif // __UTIL_H__

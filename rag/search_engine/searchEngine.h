@@ -27,7 +27,9 @@ struct Cursor {
 
 class SearchEngine {
 
-private:
+protected:
+	std::string indexPath;
+
 	std::ifstream wordPostingsFile; // Word postings file
 
 	uint32_t totalDocuments; // number of documents in total, initialize after loading index_docLengths.bin
@@ -45,11 +47,12 @@ private:
 
 public:
 	// For performance debugging
-	static int calculateCounter;
-	static std::chrono::steady_clock::duration timeCounter;
+	int calculateCounter;
+	std::chrono::steady_clock::duration timeCounter;
 
-	SearchEngine() {
-	}
+	SearchEngine();
+
+	void getIndexPath();
 
 	void load();
 
@@ -63,11 +66,11 @@ public:
 	void loadDocOffsetTable();
 
 	// Read this->docOffsetTable and get <docNo and document> with docId
-	std::pair<std::string, std::string> getDocData(uint32_t docId);
+	virtual std::pair<std::string, std::string> getDocData(uint32_t docId);
 
 	// Get word postings. input: word
 	// return: [(docId1, tf1), (docId2, tf2), ...], e.g. [(2, 3), (3, 6), ...]
-	std::pair<std::vector<Posting>, float> getWordPostings(const std::string& word);
+	virtual std::pair<std::vector<Posting>, float> getWordPostings(const std::string& word);
 
 	inline SearchResult calculateDocScore(std::vector<std::vector<Posting> >& vecPostingsLists, 
 						std::vector<uint32_t>& vecPostingsProgress,
