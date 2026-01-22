@@ -31,6 +31,14 @@ std::string endpoint = "search";
 
 
 int main() {
+    // Initialize log file
+    std::ofstream logFile("log.txt", std::ios::app);
+    if (!logFile.is_open()) {
+        std::cerr << "Init: Failed to open log file." << std::endl;
+        return 0;
+    }
+
+    // Initialize AWS SDK
     Aws::SDKOptions options;
     Aws::InitAPI(options);
 
@@ -60,10 +68,26 @@ int main() {
     
     server.Get("/" + endpoint, [&searchEngine] (const httplib::Request& req, httplib::Response& res) {
         if (req.has_param("q")) {
+
+            std::ofstream logFile_request("log.txt", std::ios::app);
+            if (!logFile_request.is_open()) {
+                std::cerr << "Failed to open log file." << std::endl;
+                return;
+            }
+
             std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
 
             std::vector<SearchResult> results;
             std::string query = req.get_param_value("q");
+
+            // Log the timestamp of time_begin
+            auto now_time_t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+            std::tm now_tm = *std::localtime(&now_time_t);
+            std::ostringstream timeStream;
+            timeStream << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S");  // Format: YYYY-MM-DD HH:MM:SS
+
+            logFile_request << "[" << timeStream.str() << "] Received request for query: " << query << std::endl;  // Log request query
+
             if (req.has_param("k")) {
                 std::string topK_str = req.get_param_value("k");
                 try {
@@ -81,7 +105,7 @@ int main() {
             std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
 	        std::chrono::steady_clock::duration timeCounter = time_end - time_begin;
 
-            std::cout << "Search time:" << std::chrono::duration_cast<std::chrono::milliseconds>(timeCounter).count() << "ms" << std::endl;
+            logFile_request << "Search time: " << std::chrono::duration_cast<std::chrono::milliseconds>(timeCounter).count() << "ms" << std::endl; // Log search time
 
             // nlohmann::json result_json;
             // for (const SearchResult& result : results) {
@@ -102,6 +126,10 @@ int main() {
     });
 
     std::cout << "Running on http://" << ip << ":" << port << "/search?q=<query>&k=3\n";
+    logFile << "Server started at http://" << ip << ":" << port << "/search?q=<query>&k=3\n"; // Log server start
+
+    // Close log file
+    logFile.close();
 
     server.listen(ip, port);
 }
