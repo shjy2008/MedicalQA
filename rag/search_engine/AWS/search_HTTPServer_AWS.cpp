@@ -60,6 +60,8 @@ int main() {
     
     server.Get("/" + endpoint, [&searchEngine] (const httplib::Request& req, httplib::Response& res) {
         if (req.has_param("q")) {
+            std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+
             std::vector<SearchResult> results;
             std::string query = req.get_param_value("q");
             if (req.has_param("k")) {
@@ -75,6 +77,11 @@ int main() {
             else {
                 results = searchEngine.search(query);
             }
+
+            std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+	        std::chrono::steady_clock::duration timeCounter = time_end - time_begin;
+
+            std::cout << "Search time:" << std::chrono::duration_cast<std::chrono::milliseconds>(timeCounter).count() << "ms" << std::endl;
 
             // nlohmann::json result_json;
             // for (const SearchResult& result : results) {

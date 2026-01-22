@@ -14,8 +14,8 @@ public:
 
     void setS3Client(Aws::S3::S3Client client) { s3_client = client; }
     
-    std::pair<std::string, std::string> getDocData(uint32_t docId) override;
-    std::pair<std::vector<Posting>, float> getWordPostings(const std::string& word) override;
+    // std::pair<std::string, std::string> getDocData(uint32_t docId) override;
+    // std::pair<std::vector<Posting>, float> getWordPostings(const std::string& word) override;
 };
 
 #endif // __SEARCH_ENGINE_AWS__

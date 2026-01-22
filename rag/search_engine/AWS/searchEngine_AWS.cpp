@@ -20,10 +20,11 @@
 const std::string aws_s3_bucketName = "search-engine-pubmed-abstract";
 
 SearchEngine_AWS::SearchEngine_AWS() {
-	indexPath = "../";
+	// indexPath = "../";
+	indexPath = "/data/";
 	// indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
 }
-
+/*
 std::pair<std::string, std::string> SearchEngine_AWS::getDocData(uint32_t docId) {
 	DocumentOffset offsetData = this->docOffsetTable[docId - 1];
 
@@ -128,3 +129,4 @@ std::pair<std::vector<Posting>, float> SearchEngine_AWS::getWordPostings(const s
 
 	return std::pair<std::vector<Posting>, float>(postings, impactScore);
 }
+*/
