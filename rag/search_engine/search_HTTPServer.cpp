@@ -75,15 +75,34 @@ int main() {
     SearchEngine searchEngine;
     searchEngine.load();
 
+    // For test
+    // std::string testTerm = "hello";
+    // // std::pair<std::vector<Posting>, float> postings = searchEngine.getWordPostings(testTerm);
+    // // std::cout << "term " << testTerm << " impact score: " << postings.second << std::endl;
+    // // for (const auto& p : postings.first) {
+    // //     std::cout << p.docId << ": " << p.tf << std::endl;
+    // // }
+    // std::vector<SearchResult> results = searchEngine.search(testTerm, 2);
+    // std::string retJsonStr = convertResultsToJson(results);
+
+    // std::cout << "result:" << retJsonStr << std::endl;
+
+    // return 0;
+
     server.Get("/" + endpoint, [&searchEngine] (const httplib::Request& req, httplib::Response& res) {
         if (req.has_param("q")) {
+            std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
+
             std::vector<SearchResult> results;
             std::string query = req.get_param_value("q");
+            std::cout << "query: " << query << std::endl;
             if (req.has_param("k")) {
                 std::string topK_str = req.get_param_value("k");
                 try {
                     size_t topK = std::stoul(topK_str);
+                    std::cout << "searchEngine.search top " << topK << std::endl;
                     results = searchEngine.search(query, topK);
+                    std::cout << "results count: " << results.size() << std::endl;
                 }
                 catch (const std::exception& e) {
                     std::cerr << "Invalid value for k: " << topK_str << std::endl;
@@ -92,6 +111,11 @@ int main() {
             else {
                 results = searchEngine.search(query);
             }
+
+            std::chrono::steady_clock::time_point time_end = std::chrono::steady_clock::now();
+	        std::chrono::steady_clock::duration timeCounter = time_end - time_begin;
+
+            std::cout << "Search time:" << std::chrono::duration_cast<std::chrono::milliseconds>(timeCounter).count() << "ms" << std::endl;
 
             // nlohmann::json result_json;
             // for (const SearchResult& result : results) {
@@ -102,6 +126,12 @@ int main() {
             //         {"content", result.content}
             //     });
             // }
+
+            // Solve CORS issue
+            res.set_header("Access-Control-Allow-Origin", "*");
+            res.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            res.set_header("Access-Control-Allow-Headers", "Content-Type");
+
             res.set_content(convertResultsToJson(results), "text/plain");
             // res.set_content(result_json.dump(2), "application/json");
         }

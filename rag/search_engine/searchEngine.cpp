@@ -17,8 +17,8 @@
 int SearchEngine::calculateCounter = 0;
 std::chrono::steady_clock::duration SearchEngine::timeCounter;
 
-// std::string indexPath = "./";
-std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
+std::string indexPath = "./";
+// std::string indexPath = "/projects/sciences/computing/sheju347/MedicalQA/rag/search_engine/";
 
 void SearchEngine::load() {
 	this->loadWords(); // load word postings index from disk
