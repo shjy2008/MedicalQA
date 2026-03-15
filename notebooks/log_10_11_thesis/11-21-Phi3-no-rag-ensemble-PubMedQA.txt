@@ -1,0 +1,1030 @@
+2025-11-21 18:13:36,045 - INFO - use_RAG: False
+2025-11-21 18:13:36,045 - INFO - topK_searchEngine: 150
+2025-11-21 18:13:36,045 - INFO - topK_SPLADE: 0
+2025-11-21 18:13:36,045 - INFO - topK_denseEmbedding: 0
+2025-11-21 18:13:36,045 - INFO - topK_crossEncoder: 0
+2025-11-21 18:13:36,045 - INFO - topK_LLM: 0
+2025-11-21 18:13:36,045 - INFO - score_threshold: None
+2025-11-21 18:13:36,045 - INFO - RRF_models: None
+2025-11-21 18:13:36,045 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'qiaojin/PubMedQA' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-21 18:13:40,011 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base/10-15-UltraMedical-batchsize8-bf16
+2025-11-21 18:14:08,262 - INFO - question 1/1000 answer:A correct_answer:A True
+2025-11-21 18:14:27,071 - INFO - question 2/1000 answer:A correct_answer:B False
+2025-11-21 18:14:52,424 - INFO - question 3/1000 answer:A correct_answer:A True
+2025-11-21 18:15:17,364 - INFO - question 4/1000 answer:B correct_answer:B True
+2025-11-21 18:15:32,039 - INFO - question 5/1000 answer:A correct_answer:A True
+2025-11-21 18:16:01,802 - INFO - question 6/1000 answer:A correct_answer:A True
+2025-11-21 18:16:20,674 - INFO - question 7/1000 answer:A correct_answer:C False
+2025-11-21 18:16:41,207 - INFO - question 8/1000 answer:A correct_answer:B False
+2025-11-21 18:16:58,710 - INFO - question 9/1000 answer:B correct_answer:B True
+2025-11-21 18:17:18,611 - INFO - question 10/1000 answer:A correct_answer:A True
+2025-11-21 18:17:36,584 - INFO - question 11/1000 answer:A correct_answer:A True
+2025-11-21 18:17:58,833 - INFO - question 12/1000 answer:B correct_answer:B True
+2025-11-21 18:18:23,258 - INFO - question 13/1000 answer:A correct_answer:A True
+2025-11-21 18:18:39,329 - INFO - question 14/1000 answer:B correct_answer:B True
+2025-11-21 18:18:50,926 - INFO - question 15/1000 answer:A correct_answer:A True
+2025-11-21 18:19:06,098 - INFO - question 16/1000 answer:A correct_answer:A True
+2025-11-21 18:19:34,793 - INFO - question 17/1000 answer:A correct_answer:A True
+2025-11-21 18:19:55,040 - INFO - question 18/1000 answer:A correct_answer:A True
+2025-11-21 18:20:09,766 - INFO - question 19/1000 answer:A correct_answer:A True
+2025-11-21 18:20:27,490 - INFO - question 20/1000 answer:A correct_answer:A True
+2025-11-21 18:20:51,712 - INFO - question 21/1000 answer:A correct_answer:A True
+2025-11-21 18:21:07,577 - INFO - question 22/1000 answer:A correct_answer:A True
+2025-11-21 18:21:27,132 - INFO - question 23/1000 answer:A correct_answer:A True
+2025-11-21 18:21:44,392 - INFO - question 24/1000 answer:A correct_answer:A True
+2025-11-21 18:22:06,449 - INFO - question 25/1000 answer:A correct_answer:A True
+2025-11-21 18:22:30,365 - INFO - question 26/1000 answer:B correct_answer:B True
+2025-11-21 18:22:55,423 - INFO - question 27/1000 answer:A correct_answer:A True
+2025-11-21 18:23:18,245 - INFO - question 28/1000 answer:A correct_answer:C False
+2025-11-21 18:23:36,449 - INFO - question 29/1000 answer:A correct_answer:A True
+2025-11-21 18:23:59,225 - INFO - question 30/1000 answer:A correct_answer:A True
+2025-11-21 18:24:21,641 - INFO - question 31/1000 answer:B correct_answer:B True
+2025-11-21 18:24:42,871 - INFO - question 32/1000 answer:A correct_answer:C False
+2025-11-21 18:24:57,366 - INFO - question 33/1000 answer:B correct_answer:B True
+2025-11-21 18:25:16,434 - INFO - question 34/1000 answer:A correct_answer:A True
+2025-11-21 18:25:39,786 - INFO - question 35/1000 answer:A correct_answer:A True
+2025-11-21 18:25:57,206 - INFO - question 36/1000 answer:A correct_answer:B False
+2025-11-21 18:26:25,571 - INFO - question 37/1000 answer:B correct_answer:B True
+2025-11-21 18:26:44,241 - INFO - question 38/1000 answer:B correct_answer:B True
+2025-11-21 18:27:06,992 - INFO - question 39/1000 answer:A correct_answer:A True
+2025-11-21 18:27:27,937 - INFO - question 40/1000 answer:B correct_answer:B True
+2025-11-21 18:27:55,934 - INFO - question 41/1000 answer:A correct_answer:A True
+2025-11-21 18:28:11,900 - INFO - question 42/1000 answer:A correct_answer:A True
+2025-11-21 18:28:34,715 - INFO - question 43/1000 answer:B correct_answer:C False
+2025-11-21 18:29:11,573 - INFO - question 44/1000 answer:B correct_answer:B True
+2025-11-21 18:29:40,230 - INFO - question 45/1000 answer:B correct_answer:A False
+2025-11-21 18:29:57,166 - INFO - question 46/1000 answer:A correct_answer:A True
+2025-11-21 18:30:17,397 - INFO - question 47/1000 answer:A correct_answer:A True
+2025-11-21 18:30:42,235 - INFO - question 48/1000 answer:A correct_answer:A True
+2025-11-21 18:30:55,381 - INFO - question 49/1000 answer:A correct_answer:A True
+2025-11-21 18:31:18,340 - INFO - question 50/1000 answer:A correct_answer:B False
+2025-11-21 18:31:44,098 - INFO - question 51/1000 answer:A correct_answer:C False
+2025-11-21 18:32:04,828 - INFO - question 52/1000 answer:A correct_answer:C False
+2025-11-21 18:32:25,068 - INFO - question 53/1000 answer:B correct_answer:B True
+2025-11-21 18:32:42,829 - INFO - question 54/1000 answer:A correct_answer:A True
+2025-11-21 18:32:56,689 - INFO - question 55/1000 answer:A correct_answer:C False
+2025-11-21 18:33:15,965 - INFO - question 56/1000 answer:A correct_answer:A True
+2025-11-21 18:33:30,845 - INFO - question 57/1000 answer:B correct_answer:B True
+2025-11-21 18:33:58,283 - INFO - question 58/1000 answer:B correct_answer:C False
+2025-11-21 18:34:27,773 - INFO - question 59/1000 answer:A correct_answer:B False
+2025-11-21 18:34:39,989 - INFO - question 60/1000 answer:A correct_answer:A True
+2025-11-21 18:34:59,661 - INFO - question 61/1000 answer:A correct_answer:A True
+2025-11-21 18:35:20,548 - INFO - question 62/1000 answer:B correct_answer:B True
+2025-11-21 18:35:33,034 - INFO - question 63/1000 answer:A correct_answer:A True
+2025-11-21 18:35:53,266 - INFO - question 64/1000 answer:A correct_answer:A True
+2025-11-21 18:36:18,774 - INFO - question 65/1000 answer:A correct_answer:B False
+2025-11-21 18:36:41,588 - INFO - question 66/1000 answer:A correct_answer:B False
+2025-11-21 18:36:56,131 - INFO - question 67/1000 answer:B correct_answer:B True
+2025-11-21 18:37:13,128 - INFO - question 68/1000 answer:A correct_answer:A True
+2025-11-21 18:37:40,666 - INFO - question 69/1000 answer:B correct_answer:B True
+2025-11-21 18:37:54,169 - INFO - question 70/1000 answer:A correct_answer:A True
+2025-11-21 18:38:10,697 - INFO - question 71/1000 answer:B correct_answer:C False
+2025-11-21 18:38:33,381 - INFO - question 72/1000 answer:A correct_answer:A True
+2025-11-21 18:38:51,471 - INFO - question 73/1000 answer:A correct_answer:A True
+2025-11-21 18:39:17,726 - INFO - question 74/1000 answer:A correct_answer:A True
+2025-11-21 18:39:35,374 - INFO - question 75/1000 answer:A correct_answer:A True
+2025-11-21 18:39:52,696 - INFO - question 76/1000 answer:A correct_answer:C False
+2025-11-21 18:40:08,598 - INFO - question 77/1000 answer:A correct_answer:A True
+2025-11-21 18:40:33,833 - INFO - question 78/1000 answer:A correct_answer:C False
+2025-11-21 18:40:53,494 - INFO - question 79/1000 answer:A correct_answer:A True
+2025-11-21 18:41:17,545 - INFO - question 80/1000 answer:A correct_answer:A True
+2025-11-21 18:41:37,846 - INFO - question 81/1000 answer:A correct_answer:A True
+2025-11-21 18:41:58,717 - INFO - question 82/1000 answer:A correct_answer:A True
+2025-11-21 18:42:15,376 - INFO - question 83/1000 answer:A correct_answer:A True
+2025-11-21 18:42:37,606 - INFO - question 84/1000 answer:A correct_answer:A True
+2025-11-21 18:42:55,495 - INFO - question 85/1000 answer:A correct_answer:C False
+2025-11-21 18:43:19,153 - INFO - question 86/1000 answer:A correct_answer:C False
+2025-11-21 18:43:41,678 - INFO - question 87/1000 answer:A correct_answer:C False
+2025-11-21 18:43:51,616 - INFO - question 88/1000 answer:A correct_answer:A True
+2025-11-21 18:44:09,633 - INFO - question 89/1000 answer:A correct_answer:A True
+2025-11-21 18:44:26,478 - INFO - question 90/1000 answer:B correct_answer:C False
+2025-11-21 18:44:52,562 - INFO - question 91/1000 answer:A correct_answer:A True
+2025-11-21 18:45:20,542 - INFO - question 92/1000 answer:B correct_answer:C False
+2025-11-21 18:45:44,481 - INFO - question 93/1000 answer:A correct_answer:A True
+2025-11-21 18:46:00,715 - INFO - question 94/1000 answer:A correct_answer:A True
+2025-11-21 18:46:17,798 - INFO - question 95/1000 answer:A correct_answer:B False
+2025-11-21 18:46:35,533 - INFO - question 96/1000 answer:B correct_answer:B True
+2025-11-21 18:47:02,173 - INFO - question 97/1000 answer:A correct_answer:A True
+2025-11-21 18:47:19,193 - INFO - question 98/1000 answer:A correct_answer:A True
+2025-11-21 18:47:38,571 - INFO - question 99/1000 answer:B correct_answer:B True
+2025-11-21 18:47:55,683 - INFO - question 100/1000 answer:A correct_answer:A True
+2025-11-21 18:48:22,333 - INFO - question 101/1000 answer:B correct_answer:A False
+2025-11-21 18:48:50,870 - INFO - question 102/1000 answer:A correct_answer:A True
+2025-11-21 18:49:07,210 - INFO - question 103/1000 answer:A correct_answer:A True
+2025-11-21 18:49:22,248 - INFO - question 104/1000 answer:A correct_answer:A True
+2025-11-21 18:49:46,186 - INFO - question 105/1000 answer:B correct_answer:C False
+2025-11-21 18:50:08,306 - INFO - question 106/1000 answer:A correct_answer:A True
+2025-11-21 18:50:28,607 - INFO - question 107/1000 answer:A correct_answer:C False
+2025-11-21 18:50:48,763 - INFO - question 108/1000 answer:B correct_answer:B True
+2025-11-21 18:51:13,883 - INFO - question 109/1000 answer:B correct_answer:A False
+2025-11-21 18:51:40,351 - INFO - question 110/1000 answer:A correct_answer:A True
+2025-11-21 18:51:51,250 - INFO - question 111/1000 answer:B correct_answer:C False
+2025-11-21 18:52:19,365 - INFO - question 112/1000 answer:A correct_answer:C False
+2025-11-21 18:52:47,623 - INFO - question 113/1000 answer:B correct_answer:B True
+2025-11-21 18:53:12,360 - INFO - question 114/1000 answer:B correct_answer:B True
+2025-11-21 18:53:29,232 - INFO - question 115/1000 answer:B correct_answer:B True
+2025-11-21 18:53:52,005 - INFO - question 116/1000 answer:A correct_answer:C False
+2025-11-21 18:54:08,738 - INFO - question 117/1000 answer:A correct_answer:A True
+2025-11-21 18:54:25,704 - INFO - question 118/1000 answer:A correct_answer:A True
+2025-11-21 18:54:47,623 - INFO - question 119/1000 answer:A correct_answer:A True
+2025-11-21 18:55:00,728 - INFO - question 120/1000 answer:A correct_answer:A True
+2025-11-21 18:55:28,187 - INFO - question 121/1000 answer:A correct_answer:A True
+2025-11-21 18:55:42,913 - INFO - question 122/1000 answer:A correct_answer:A True
+2025-11-21 18:55:58,560 - INFO - question 123/1000 answer:A correct_answer:A True
+2025-11-21 18:56:20,031 - INFO - question 124/1000 answer:A correct_answer:C False
+2025-11-21 18:56:39,595 - INFO - question 125/1000 answer:A correct_answer:A True
+2025-11-21 18:56:57,401 - INFO - question 126/1000 answer:A correct_answer:A True
+2025-11-21 18:57:13,667 - INFO - question 127/1000 answer:A correct_answer:C False
+2025-11-21 18:57:41,291 - INFO - question 128/1000 answer:A correct_answer:C False
+2025-11-21 18:58:02,602 - INFO - question 129/1000 answer:A correct_answer:C False
+2025-11-21 18:58:15,263 - INFO - question 130/1000 answer:A correct_answer:C False
+2025-11-21 18:58:38,761 - INFO - question 131/1000 answer:B correct_answer:B True
+2025-11-21 18:59:10,221 - INFO - question 132/1000 answer:A correct_answer:A True
+2025-11-21 18:59:36,582 - INFO - question 133/1000 answer:B correct_answer:B True
+2025-11-21 18:59:59,988 - INFO - question 134/1000 answer:A correct_answer:A True
+2025-11-21 19:00:18,821 - INFO - question 135/1000 answer:A correct_answer:A True
+2025-11-21 19:00:39,037 - INFO - question 136/1000 answer:A correct_answer:A True
+2025-11-21 19:01:04,925 - INFO - question 137/1000 answer:A correct_answer:A True
+2025-11-21 19:01:23,503 - INFO - question 138/1000 answer:A correct_answer:A True
+2025-11-21 19:01:43,032 - INFO - question 139/1000 answer:A correct_answer:C False
+2025-11-21 19:02:05,670 - INFO - question 140/1000 answer:A correct_answer:A True
+2025-11-21 19:02:29,083 - INFO - question 141/1000 answer:A correct_answer:A True
+2025-11-21 19:02:53,893 - INFO - question 142/1000 answer:A correct_answer:A True
+2025-11-21 19:03:10,109 - INFO - question 143/1000 answer:A correct_answer:C False
+2025-11-21 19:03:23,682 - INFO - question 144/1000 answer:B correct_answer:B True
+2025-11-21 19:03:52,606 - INFO - question 145/1000 answer:A correct_answer:A True
+2025-11-21 19:04:19,624 - INFO - question 146/1000 answer:A correct_answer:A True
+2025-11-21 19:04:34,809 - INFO - question 147/1000 answer:A correct_answer:B False
+2025-11-21 19:04:57,390 - INFO - question 148/1000 answer:A correct_answer:C False
+2025-11-21 19:05:12,657 - INFO - question 149/1000 answer:A correct_answer:A True
+2025-11-21 19:05:30,559 - INFO - question 150/1000 answer:A correct_answer:B False
+2025-11-21 19:05:47,145 - INFO - question 151/1000 answer:B correct_answer:B True
+2025-11-21 19:05:59,301 - INFO - question 152/1000 answer:B correct_answer:B True
+2025-11-21 19:06:26,643 - INFO - question 153/1000 answer:A correct_answer:A True
+2025-11-21 19:06:48,120 - INFO - question 154/1000 answer:A correct_answer:A True
+2025-11-21 19:07:09,574 - INFO - question 155/1000 answer:A correct_answer:A True
+2025-11-21 19:07:25,560 - INFO - question 156/1000 answer:A correct_answer:A True
+2025-11-21 19:07:48,825 - INFO - question 157/1000 answer:A correct_answer:A True
+2025-11-21 19:08:17,727 - INFO - question 158/1000 answer:C correct_answer:C True
+2025-11-21 19:08:44,855 - INFO - question 159/1000 answer:B correct_answer:C False
+2025-11-21 19:09:03,281 - INFO - question 160/1000 answer:B correct_answer:B True
+2025-11-21 19:09:22,843 - INFO - question 161/1000 answer:A correct_answer:A True
+2025-11-21 19:09:53,603 - INFO - question 162/1000 answer:A correct_answer:A True
+2025-11-21 19:10:13,951 - INFO - question 163/1000 answer:B correct_answer:B True
+2025-11-21 19:10:30,962 - INFO - question 164/1000 answer:B correct_answer:B True
+2025-11-21 19:10:46,533 - INFO - question 165/1000 answer:A correct_answer:A True
+2025-11-21 19:11:13,752 - INFO - question 166/1000 answer:A correct_answer:A True
+2025-11-21 19:11:29,062 - INFO - question 167/1000 answer:A correct_answer:A True
+2025-11-21 19:11:48,420 - INFO - question 168/1000 answer:A correct_answer:B False
+2025-11-21 19:12:07,164 - INFO - question 169/1000 answer:B correct_answer:B True
+2025-11-21 19:12:28,873 - INFO - question 170/1000 answer:A correct_answer:C False
+2025-11-21 19:12:52,149 - INFO - question 171/1000 answer:B correct_answer:B True
+2025-11-21 19:13:14,618 - INFO - question 172/1000 answer:B correct_answer:A False
+2025-11-21 19:13:27,402 - INFO - question 173/1000 answer:A correct_answer:A True
+2025-11-21 19:13:44,046 - INFO - question 174/1000 answer:A correct_answer:A True
+2025-11-21 19:13:59,850 - INFO - question 175/1000 answer:A correct_answer:A True
+2025-11-21 19:14:23,988 - INFO - question 176/1000 answer:A correct_answer:C False
+2025-11-21 19:14:43,215 - INFO - question 177/1000 answer:A correct_answer:A True
+2025-11-21 19:14:55,523 - INFO - question 178/1000 answer:B correct_answer:B True
+2025-11-21 19:15:12,441 - INFO - question 179/1000 answer:A correct_answer:A True
+2025-11-21 19:15:33,282 - INFO - question 180/1000 answer:B correct_answer:B True
+2025-11-21 19:15:46,934 - INFO - question 181/1000 answer:B correct_answer:B True
+2025-11-21 19:16:02,055 - INFO - question 182/1000 answer:A correct_answer:A True
+2025-11-21 19:16:28,510 - INFO - question 183/1000 answer:B correct_answer:A False
+2025-11-21 19:17:00,748 - INFO - question 184/1000 answer:A correct_answer:A True
+2025-11-21 19:17:14,580 - INFO - question 185/1000 answer:A correct_answer:A True
+2025-11-21 19:17:38,890 - INFO - question 186/1000 answer:A correct_answer:B False
+2025-11-21 19:17:55,453 - INFO - question 187/1000 answer:A correct_answer:C False
+2025-11-21 19:18:17,550 - INFO - question 188/1000 answer:A correct_answer:A True
+2025-11-21 19:18:41,108 - INFO - question 189/1000 answer:B correct_answer:B True
+2025-11-21 19:19:01,665 - INFO - question 190/1000 answer:B correct_answer:B True
+2025-11-21 19:19:19,107 - INFO - question 191/1000 answer:B correct_answer:B True
+2025-11-21 19:19:41,719 - INFO - question 192/1000 answer:A correct_answer:A True
+2025-11-21 19:20:11,052 - INFO - question 193/1000 answer:A correct_answer:A True
+2025-11-21 19:20:32,317 - INFO - question 194/1000 answer:B correct_answer:B True
+2025-11-21 19:20:52,836 - INFO - question 195/1000 answer:B correct_answer:B True
+2025-11-21 19:21:17,629 - INFO - question 196/1000 answer:B correct_answer:B True
+2025-11-21 19:21:49,240 - INFO - question 197/1000 answer:B correct_answer:C False
+2025-11-21 19:22:07,588 - INFO - question 198/1000 answer:B correct_answer:A False
+2025-11-21 19:22:35,484 - INFO - question 199/1000 answer:A correct_answer:A True
+2025-11-21 19:23:04,787 - INFO - question 200/1000 answer:A correct_answer:A True
+2025-11-21 19:23:34,765 - INFO - question 201/1000 answer:B correct_answer:A False
+2025-11-21 19:23:53,598 - INFO - question 202/1000 answer:A correct_answer:A True
+2025-11-21 19:24:18,603 - INFO - question 203/1000 answer:B correct_answer:C False
+2025-11-21 19:24:42,012 - INFO - question 204/1000 answer:B correct_answer:B True
+2025-11-21 19:25:00,990 - INFO - question 205/1000 answer:B correct_answer:B True
+2025-11-21 19:25:21,125 - INFO - question 206/1000 answer:B correct_answer:B True
+2025-11-21 19:25:45,848 - INFO - question 207/1000 answer:A correct_answer:A True
+2025-11-21 19:26:00,991 - INFO - question 208/1000 answer:A correct_answer:A True
+2025-11-21 19:26:30,467 - INFO - question 209/1000 answer:A correct_answer:A True
+2025-11-21 19:26:50,642 - INFO - question 210/1000 answer:A correct_answer:A True
+2025-11-21 19:27:17,758 - INFO - question 211/1000 answer:A correct_answer:B False
+2025-11-21 19:27:32,872 - INFO - question 212/1000 answer:A correct_answer:A True
+2025-11-21 19:27:54,845 - INFO - question 213/1000 answer:A correct_answer:A True
+2025-11-21 19:28:11,670 - INFO - question 214/1000 answer:A correct_answer:A True
+2025-11-21 19:28:39,763 - INFO - question 215/1000 answer:A correct_answer:A True
+2025-11-21 19:28:52,884 - INFO - question 216/1000 answer:B correct_answer:B True
+2025-11-21 19:29:20,363 - INFO - question 217/1000 answer:A correct_answer:A True
+2025-11-21 19:29:43,330 - INFO - question 218/1000 answer:B correct_answer:B True
+2025-11-21 19:30:05,313 - INFO - question 219/1000 answer:A correct_answer:A True
+2025-11-21 19:30:23,183 - INFO - question 220/1000 answer:A correct_answer:A True
+2025-11-21 19:30:43,425 - INFO - question 221/1000 answer:B correct_answer:B True
+2025-11-21 19:31:02,190 - INFO - question 222/1000 answer:B correct_answer:B True
+2025-11-21 19:31:29,099 - INFO - question 223/1000 answer:C correct_answer:C True
+2025-11-21 19:31:43,358 - INFO - question 224/1000 answer:B correct_answer:B True
+2025-11-21 19:32:01,313 - INFO - question 225/1000 answer:B correct_answer:C False
+2025-11-21 19:32:12,104 - INFO - question 226/1000 answer:A correct_answer:A True
+2025-11-21 19:32:34,378 - INFO - question 227/1000 answer:A correct_answer:B False
+2025-11-21 19:32:53,991 - INFO - question 228/1000 answer:B correct_answer:B True
+2025-11-21 19:33:14,823 - INFO - question 229/1000 answer:A correct_answer:C False
+2025-11-21 19:33:27,527 - INFO - question 230/1000 answer:B correct_answer:B True
+2025-11-21 19:33:56,769 - INFO - question 231/1000 answer:A correct_answer:A True
+2025-11-21 19:34:21,192 - INFO - question 232/1000 answer:A correct_answer:A True
+2025-11-21 19:34:54,491 - INFO - question 233/1000 answer:B correct_answer:A False
+2025-11-21 19:35:25,853 - INFO - question 234/1000 answer:B correct_answer:B True
+2025-11-21 19:35:45,319 - INFO - question 235/1000 answer:A correct_answer:A True
+2025-11-21 19:36:14,956 - INFO - question 236/1000 answer:B correct_answer:C False
+2025-11-21 19:36:44,058 - INFO - question 237/1000 answer:B correct_answer:A False
+2025-11-21 19:37:00,925 - INFO - question 238/1000 answer:B correct_answer:A False
+2025-11-21 19:37:19,740 - INFO - question 239/1000 answer:C correct_answer:C True
+2025-11-21 19:37:46,117 - INFO - question 240/1000 answer:A correct_answer:A True
+2025-11-21 19:38:08,561 - INFO - question 241/1000 answer:A correct_answer:A True
+2025-11-21 19:38:25,184 - INFO - question 242/1000 answer:A correct_answer:A True
+2025-11-21 19:38:49,920 - INFO - question 243/1000 answer:B correct_answer:C False
+2025-11-21 19:39:16,529 - INFO - question 244/1000 answer:A correct_answer:A True
+2025-11-21 19:39:35,691 - INFO - question 245/1000 answer:A correct_answer:C False
+2025-11-21 19:39:49,710 - INFO - question 246/1000 answer:B correct_answer:B True
+2025-11-21 19:40:03,034 - INFO - question 247/1000 answer:A correct_answer:A True
+2025-11-21 19:40:39,094 - INFO - question 248/1000 answer:A correct_answer:C False
+2025-11-21 19:40:52,148 - INFO - question 249/1000 answer:A correct_answer:A True
+2025-11-21 19:41:18,121 - INFO - question 250/1000 answer:B correct_answer:B True
+2025-11-21 19:41:41,224 - INFO - question 251/1000 answer:A correct_answer:A True
+2025-11-21 19:42:03,059 - INFO - question 252/1000 answer:A correct_answer:A True
+2025-11-21 19:42:29,304 - INFO - question 253/1000 answer:B correct_answer:B True
+2025-11-21 19:42:49,396 - INFO - question 254/1000 answer:B correct_answer:B True
+2025-11-21 19:43:15,936 - INFO - question 255/1000 answer:B correct_answer:B True
+2025-11-21 19:43:40,867 - INFO - question 256/1000 answer:A correct_answer:C False
+2025-11-21 19:43:59,379 - INFO - question 257/1000 answer:A correct_answer:A True
+2025-11-21 19:44:15,086 - INFO - question 258/1000 answer:B correct_answer:B True
+2025-11-21 19:44:37,736 - INFO - question 259/1000 answer:B correct_answer:B True
+2025-11-21 19:45:06,977 - INFO - question 260/1000 answer:A correct_answer:B False
+2025-11-21 19:45:22,405 - INFO - question 261/1000 answer:A correct_answer:A True
+2025-11-21 19:45:43,040 - INFO - question 262/1000 answer:A correct_answer:A True
+2025-11-21 19:46:02,095 - INFO - question 263/1000 answer:C correct_answer:B False
+2025-11-21 19:46:13,167 - INFO - question 264/1000 answer:B correct_answer:B True
+2025-11-21 19:46:37,744 - INFO - question 265/1000 answer:B correct_answer:B True
+2025-11-21 19:47:04,754 - INFO - question 266/1000 answer:A correct_answer:A True
+2025-11-21 19:47:20,487 - INFO - question 267/1000 answer:A correct_answer:A True
+2025-11-21 19:47:38,195 - INFO - question 268/1000 answer:A correct_answer:C False
+2025-11-21 19:47:54,570 - INFO - question 269/1000 answer:B correct_answer:B True
+2025-11-21 19:48:13,568 - INFO - question 270/1000 answer:A correct_answer:C False
+2025-11-21 19:48:33,554 - INFO - question 271/1000 answer:A correct_answer:A True
+2025-11-21 19:48:55,510 - INFO - question 272/1000 answer:A correct_answer:A True
+2025-11-21 19:49:11,007 - INFO - question 273/1000 answer:B correct_answer:B True
+2025-11-21 19:49:23,955 - INFO - question 274/1000 answer:A correct_answer:A True
+2025-11-21 19:49:35,111 - INFO - question 275/1000 answer:B correct_answer:B True
+2025-11-21 19:49:54,880 - INFO - question 276/1000 answer:A correct_answer:A True
+2025-11-21 19:50:12,615 - INFO - question 277/1000 answer:A correct_answer:A True
+2025-11-21 19:50:32,460 - INFO - question 278/1000 answer:A correct_answer:A True
+2025-11-21 19:50:53,516 - INFO - question 279/1000 answer:A correct_answer:A True
+2025-11-21 19:51:17,561 - INFO - question 280/1000 answer:B correct_answer:B True
+2025-11-21 19:51:33,554 - INFO - question 281/1000 answer:A correct_answer:A True
+2025-11-21 19:51:48,681 - INFO - question 282/1000 answer:A correct_answer:C False
+2025-11-21 19:51:58,522 - INFO - question 283/1000 answer:A correct_answer:A True
+2025-11-21 19:52:19,546 - INFO - question 284/1000 answer:A correct_answer:A True
+2025-11-21 19:52:34,065 - INFO - question 285/1000 answer:A correct_answer:A True
+2025-11-21 19:52:58,290 - INFO - question 286/1000 answer:A correct_answer:C False
+2025-11-21 19:53:24,325 - INFO - question 287/1000 answer:A correct_answer:B False
+2025-11-21 19:53:41,152 - INFO - question 288/1000 answer:A correct_answer:A True
+2025-11-21 19:53:58,165 - INFO - question 289/1000 answer:B correct_answer:A False
+2025-11-21 19:54:14,264 - INFO - question 290/1000 answer:B correct_answer:B True
+2025-11-21 19:54:39,658 - INFO - question 291/1000 answer:A correct_answer:A True
+2025-11-21 19:55:08,550 - INFO - question 292/1000 answer:A correct_answer:C False
+2025-11-21 19:55:36,140 - INFO - question 293/1000 answer:B correct_answer:B True
+2025-11-21 19:55:55,241 - INFO - question 294/1000 answer:B correct_answer:C False
+2025-11-21 19:56:17,487 - INFO - question 295/1000 answer:A correct_answer:A True
+2025-11-21 19:56:42,947 - INFO - question 296/1000 answer:A correct_answer:A True
+2025-11-21 19:57:08,582 - INFO - question 297/1000 answer:A correct_answer:A True
+2025-11-21 19:57:30,558 - INFO - question 298/1000 answer:A correct_answer:B False
+2025-11-21 19:57:54,196 - INFO - question 299/1000 answer:A correct_answer:A True
+2025-11-21 19:58:15,462 - INFO - question 300/1000 answer:A correct_answer:A True
+2025-11-21 19:58:31,371 - INFO - question 301/1000 answer:A correct_answer:A True
+2025-11-21 19:58:59,030 - INFO - question 302/1000 answer:B correct_answer:B True
+2025-11-21 19:59:29,694 - INFO - question 303/1000 answer:A correct_answer:B False
+2025-11-21 19:59:42,439 - INFO - question 304/1000 answer:A correct_answer:A True
+2025-11-21 20:00:02,882 - INFO - question 305/1000 answer:A correct_answer:A True
+2025-11-21 20:00:26,814 - INFO - question 306/1000 answer:A correct_answer:A True
+2025-11-21 20:00:45,932 - INFO - question 307/1000 answer:A correct_answer:A True
+2025-11-21 20:01:02,067 - INFO - question 308/1000 answer:A correct_answer:A True
+2025-11-21 20:01:17,425 - INFO - question 309/1000 answer:B correct_answer:A False
+2025-11-21 20:01:38,589 - INFO - question 310/1000 answer:A correct_answer:C False
+2025-11-21 20:02:05,509 - INFO - question 311/1000 answer:B correct_answer:A False
+2025-11-21 20:02:35,831 - INFO - question 312/1000 answer:A correct_answer:B False
+2025-11-21 20:02:57,842 - INFO - question 313/1000 answer:A correct_answer:A True
+2025-11-21 20:03:16,464 - INFO - question 314/1000 answer:A correct_answer:A True
+2025-11-21 20:03:39,836 - INFO - question 315/1000 answer:A correct_answer:A True
+2025-11-21 20:04:13,341 - INFO - question 316/1000 answer:B correct_answer:B True
+2025-11-21 20:04:23,630 - INFO - question 317/1000 answer:A correct_answer:A True
+2025-11-21 20:04:48,740 - INFO - question 318/1000 answer:A correct_answer:B False
+2025-11-21 20:04:59,117 - INFO - question 319/1000 answer:A correct_answer:A True
+2025-11-21 20:05:17,716 - INFO - question 320/1000 answer:A correct_answer:A True
+2025-11-21 20:05:47,993 - INFO - question 321/1000 answer:B correct_answer:B True
+2025-11-21 20:06:06,214 - INFO - question 322/1000 answer:B correct_answer:B True
+2025-11-21 20:06:27,831 - INFO - question 323/1000 answer:A correct_answer:C False
+2025-11-21 20:06:47,193 - INFO - question 324/1000 answer:A correct_answer:A True
+2025-11-21 20:07:06,764 - INFO - question 325/1000 answer:B correct_answer:B True
+2025-11-21 20:07:21,797 - INFO - question 326/1000 answer:A correct_answer:A True
+2025-11-21 20:07:38,010 - INFO - question 327/1000 answer:A correct_answer:A True
+2025-11-21 20:08:03,064 - INFO - question 328/1000 answer:A correct_answer:C False
+2025-11-21 20:08:21,607 - INFO - question 329/1000 answer:A correct_answer:B False
+2025-11-21 20:08:50,374 - INFO - question 330/1000 answer:A correct_answer:A True
+2025-11-21 20:09:07,703 - INFO - question 331/1000 answer:A correct_answer:A True
+2025-11-21 20:09:29,904 - INFO - question 332/1000 answer:A correct_answer:A True
+2025-11-21 20:09:50,142 - INFO - question 333/1000 answer:A correct_answer:A True
+2025-11-21 20:10:10,201 - INFO - question 334/1000 answer:A correct_answer:B False
+2025-11-21 20:10:25,330 - INFO - question 335/1000 answer:B correct_answer:B True
+2025-11-21 20:10:39,351 - INFO - question 336/1000 answer:B correct_answer:B True
+2025-11-21 20:11:00,152 - INFO - question 337/1000 answer:A correct_answer:A True
+2025-11-21 20:11:22,063 - INFO - question 338/1000 answer:B correct_answer:A False
+2025-11-21 20:11:40,870 - INFO - question 339/1000 answer:A correct_answer:A True
+2025-11-21 20:11:59,412 - INFO - question 340/1000 answer:A correct_answer:A True
+2025-11-21 20:12:14,989 - INFO - question 341/1000 answer:B correct_answer:C False
+2025-11-21 20:12:40,820 - INFO - question 342/1000 answer:B correct_answer:B True
+2025-11-21 20:13:07,260 - INFO - question 343/1000 answer:B correct_answer:B True
+2025-11-21 20:13:26,934 - INFO - question 344/1000 answer:B correct_answer:C False
+2025-11-21 20:13:44,808 - INFO - question 345/1000 answer:B correct_answer:B True
+2025-11-21 20:14:08,486 - INFO - question 346/1000 answer:A correct_answer:C False
+2025-11-21 20:14:34,634 - INFO - question 347/1000 answer:A correct_answer:B False
+2025-11-21 20:14:58,021 - INFO - question 348/1000 answer:A correct_answer:A True
+2025-11-21 20:15:17,295 - INFO - question 349/1000 answer:A correct_answer:A True
+2025-11-21 20:15:28,371 - INFO - question 350/1000 answer:A correct_answer:A True
+2025-11-21 20:15:45,062 - INFO - question 351/1000 answer:B correct_answer:B True
+2025-11-21 20:16:11,034 - INFO - question 352/1000 answer:B correct_answer:A False
+2025-11-21 20:16:37,054 - INFO - question 353/1000 answer:A correct_answer:C False
+2025-11-21 20:17:04,014 - INFO - question 354/1000 answer:A correct_answer:A True
+2025-11-21 20:17:17,859 - INFO - question 355/1000 answer:A correct_answer:A True
+2025-11-21 20:17:35,418 - INFO - question 356/1000 answer:A correct_answer:C False
+2025-11-21 20:17:53,396 - INFO - question 357/1000 answer:B correct_answer:B True
+2025-11-21 20:18:17,795 - INFO - question 358/1000 answer:B correct_answer:B True
+2025-11-21 20:18:37,699 - INFO - question 359/1000 answer:B correct_answer:B True
+2025-11-21 20:19:01,688 - INFO - question 360/1000 answer:B correct_answer:B True
+2025-11-21 20:19:14,324 - INFO - question 361/1000 answer:A correct_answer:A True
+2025-11-21 20:19:42,016 - INFO - question 362/1000 answer:B correct_answer:A False
+2025-11-21 20:20:06,339 - INFO - question 363/1000 answer:A correct_answer:A True
+2025-11-21 20:20:16,029 - INFO - question 364/1000 answer:B correct_answer:B True
+2025-11-21 20:20:27,637 - INFO - question 365/1000 answer:B correct_answer:B True
+2025-11-21 20:20:46,980 - INFO - question 366/1000 answer:A correct_answer:B False
+2025-11-21 20:21:13,631 - INFO - question 367/1000 answer:A correct_answer:A True
+2025-11-21 20:21:34,370 - INFO - question 368/1000 answer:A correct_answer:A True
+2025-11-21 20:21:52,377 - INFO - question 369/1000 answer:B correct_answer:B True
+2025-11-21 20:22:10,713 - INFO - question 370/1000 answer:A correct_answer:C False
+2025-11-21 20:22:28,531 - INFO - question 371/1000 answer:A correct_answer:A True
+2025-11-21 20:22:54,000 - INFO - question 372/1000 answer:A correct_answer:A True
+2025-11-21 20:23:17,691 - INFO - question 373/1000 answer:B correct_answer:B True
+2025-11-21 20:23:44,065 - INFO - question 374/1000 answer:A correct_answer:B False
+2025-11-21 20:23:55,077 - INFO - question 375/1000 answer:B correct_answer:B True
+2025-11-21 20:24:11,124 - INFO - question 376/1000 answer:A correct_answer:A True
+2025-11-21 20:24:28,606 - INFO - question 377/1000 answer:A correct_answer:A True
+2025-11-21 20:24:46,428 - INFO - question 378/1000 answer:A correct_answer:A True
+2025-11-21 20:25:00,464 - INFO - question 379/1000 answer:A correct_answer:A True
+2025-11-21 20:25:17,524 - INFO - question 380/1000 answer:B correct_answer:B True
+2025-11-21 20:25:43,135 - INFO - question 381/1000 answer:B correct_answer:B True
+2025-11-21 20:26:07,968 - INFO - question 382/1000 answer:A correct_answer:A True
+2025-11-21 20:26:30,049 - INFO - question 383/1000 answer:B correct_answer:B True
+2025-11-21 20:26:44,112 - INFO - question 384/1000 answer:A correct_answer:A True
+2025-11-21 20:27:20,117 - INFO - question 385/1000 answer:A correct_answer:C False
+2025-11-21 20:27:39,298 - INFO - question 386/1000 answer:A correct_answer:C False
+2025-11-21 20:28:12,031 - INFO - question 387/1000 answer:B correct_answer:B True
+2025-11-21 20:28:30,548 - INFO - question 388/1000 answer:A correct_answer:A True
+2025-11-21 20:28:48,284 - INFO - question 389/1000 answer:A correct_answer:A True
+2025-11-21 20:29:09,931 - INFO - question 390/1000 answer:A correct_answer:A True
+2025-11-21 20:29:26,501 - INFO - question 391/1000 answer:B correct_answer:B True
+2025-11-21 20:29:51,110 - INFO - question 392/1000 answer:B correct_answer:B True
+2025-11-21 20:30:12,048 - INFO - question 393/1000 answer:B correct_answer:B True
+2025-11-21 20:30:33,950 - INFO - question 394/1000 answer:A correct_answer:A True
+2025-11-21 20:30:57,577 - INFO - question 395/1000 answer:B correct_answer:B True
+2025-11-21 20:31:11,070 - INFO - question 396/1000 answer:A correct_answer:A True
+2025-11-21 20:31:37,052 - INFO - question 397/1000 answer:A correct_answer:A True
+2025-11-21 20:32:03,904 - INFO - question 398/1000 answer:A correct_answer:A True
+2025-11-21 20:32:18,287 - INFO - question 399/1000 answer:B correct_answer:B True
+2025-11-21 20:32:40,149 - INFO - question 400/1000 answer:A correct_answer:A True
+2025-11-21 20:33:07,831 - INFO - question 401/1000 answer:A correct_answer:B False
+2025-11-21 20:33:26,597 - INFO - question 402/1000 answer:A correct_answer:A True
+2025-11-21 20:33:44,849 - INFO - question 403/1000 answer:A correct_answer:A True
+2025-11-21 20:34:06,565 - INFO - question 404/1000 answer:A correct_answer:A True
+2025-11-21 20:34:19,286 - INFO - question 405/1000 answer:B correct_answer:B True
+2025-11-21 20:34:41,039 - INFO - question 406/1000 answer:A correct_answer:A True
+2025-11-21 20:35:00,385 - INFO - question 407/1000 answer:B correct_answer:B True
+2025-11-21 20:35:22,530 - INFO - question 408/1000 answer:A correct_answer:C False
+2025-11-21 20:35:36,049 - INFO - question 409/1000 answer:A correct_answer:A True
+2025-11-21 20:35:59,070 - INFO - question 410/1000 answer:A correct_answer:A True
+2025-11-21 20:36:16,461 - INFO - question 411/1000 answer:A correct_answer:A True
+2025-11-21 20:36:42,708 - INFO - question 412/1000 answer:A correct_answer:A True
+2025-11-21 20:36:56,637 - INFO - question 413/1000 answer:B correct_answer:B True
+2025-11-21 20:37:18,084 - INFO - question 414/1000 answer:B correct_answer:B True
+2025-11-21 20:37:44,406 - INFO - question 415/1000 answer:B correct_answer:B True
+2025-11-21 20:38:06,815 - INFO - question 416/1000 answer:A correct_answer:A True
+2025-11-21 20:38:26,348 - INFO - question 417/1000 answer:A correct_answer:C False
+2025-11-21 20:38:51,206 - INFO - question 418/1000 answer:A correct_answer:A True
+2025-11-21 20:39:06,271 - INFO - question 419/1000 answer:B correct_answer:B True
+2025-11-21 20:39:23,508 - INFO - question 420/1000 answer:B correct_answer:B True
+2025-11-21 20:39:36,950 - INFO - question 421/1000 answer:A correct_answer:C False
+2025-11-21 20:39:55,993 - INFO - question 422/1000 answer:A correct_answer:A True
+2025-11-21 20:40:13,597 - INFO - question 423/1000 answer:B correct_answer:A False
+2025-11-21 20:40:31,093 - INFO - question 424/1000 answer:A correct_answer:A True
+2025-11-21 20:40:51,917 - INFO - question 425/1000 answer:A correct_answer:A True
+2025-11-21 20:41:14,441 - INFO - question 426/1000 answer:A correct_answer:B False
+2025-11-21 20:41:28,006 - INFO - question 427/1000 answer:A correct_answer:A True
+2025-11-21 20:41:44,844 - INFO - question 428/1000 answer:A correct_answer:A True
+2025-11-21 20:42:06,626 - INFO - question 429/1000 answer:B correct_answer:B True
+2025-11-21 20:42:24,104 - INFO - question 430/1000 answer:A correct_answer:A True
+2025-11-21 20:42:40,150 - INFO - question 431/1000 answer:B correct_answer:A False
+2025-11-21 20:42:56,290 - INFO - question 432/1000 answer:A correct_answer:A True
+2025-11-21 20:43:10,825 - INFO - question 433/1000 answer:B correct_answer:B True
+2025-11-21 20:43:32,614 - INFO - question 434/1000 answer:A correct_answer:A True
+2025-11-21 20:43:43,696 - INFO - question 435/1000 answer:B correct_answer:B True
+2025-11-21 20:44:04,509 - INFO - question 436/1000 answer:B correct_answer:A False
+2025-11-21 20:44:22,066 - INFO - question 437/1000 answer:A correct_answer:A True
+2025-11-21 20:44:35,394 - INFO - question 438/1000 answer:B correct_answer:B True
+2025-11-21 20:44:58,885 - INFO - question 439/1000 answer:A correct_answer:A True
+2025-11-21 20:45:13,508 - INFO - question 440/1000 answer:A correct_answer:A True
+2025-11-21 20:45:31,352 - INFO - question 441/1000 answer:B correct_answer:B True
+2025-11-21 20:45:53,387 - INFO - question 442/1000 answer:B correct_answer:B True
+2025-11-21 20:46:16,505 - INFO - question 443/1000 answer:B correct_answer:B True
+2025-11-21 20:46:41,239 - INFO - question 444/1000 answer:A correct_answer:A True
+2025-11-21 20:46:57,259 - INFO - question 445/1000 answer:A correct_answer:A True
+2025-11-21 20:47:15,094 - INFO - question 446/1000 answer:B correct_answer:B True
+2025-11-21 20:47:32,283 - INFO - question 447/1000 answer:B correct_answer:B True
+2025-11-21 20:48:02,203 - INFO - question 448/1000 answer:A correct_answer:B False
+2025-11-21 20:48:13,894 - INFO - question 449/1000 answer:B correct_answer:B True
+2025-11-21 20:48:40,402 - INFO - question 450/1000 answer:A correct_answer:A True
+2025-11-21 20:48:59,466 - INFO - question 451/1000 answer:B correct_answer:A False
+2025-11-21 20:49:22,614 - INFO - question 452/1000 answer:A correct_answer:A True
+2025-11-21 20:49:44,392 - INFO - question 453/1000 answer:B correct_answer:B True
+2025-11-21 20:49:56,968 - INFO - question 454/1000 answer:A correct_answer:A True
+2025-11-21 20:50:10,901 - INFO - question 455/1000 answer:B correct_answer:B True
+2025-11-21 20:50:31,669 - INFO - question 456/1000 answer:B correct_answer:B True
+2025-11-21 20:50:49,475 - INFO - question 457/1000 answer:B correct_answer:B True
+2025-11-21 20:51:04,213 - INFO - question 458/1000 answer:B correct_answer:B True
+2025-11-21 20:51:28,978 - INFO - question 459/1000 answer:B correct_answer:B True
+2025-11-21 20:51:42,633 - INFO - question 460/1000 answer:B correct_answer:B True
+2025-11-21 20:51:53,929 - INFO - question 461/1000 answer:A correct_answer:A True
+2025-11-21 20:52:16,455 - INFO - question 462/1000 answer:B correct_answer:B True
+2025-11-21 20:52:33,364 - INFO - question 463/1000 answer:B correct_answer:B True
+2025-11-21 20:52:57,082 - INFO - question 464/1000 answer:A correct_answer:A True
+2025-11-21 20:53:19,537 - INFO - question 465/1000 answer:A correct_answer:A True
+2025-11-21 20:53:38,280 - INFO - question 466/1000 answer:A correct_answer:A True
+2025-11-21 20:54:02,673 - INFO - question 467/1000 answer:A correct_answer:A True
+2025-11-21 20:54:32,126 - INFO - question 468/1000 answer:A correct_answer:A True
+2025-11-21 20:54:55,024 - INFO - question 469/1000 answer:B correct_answer:B True
+2025-11-21 20:55:25,792 - INFO - question 470/1000 answer:C correct_answer:A False
+2025-11-21 20:55:50,490 - INFO - question 471/1000 answer:A correct_answer:A True
+2025-11-21 20:56:07,772 - INFO - question 472/1000 answer:A correct_answer:A True
+2025-11-21 20:56:31,165 - INFO - question 473/1000 answer:A correct_answer:A True
+2025-11-21 20:56:50,074 - INFO - question 474/1000 answer:A correct_answer:A True
+2025-11-21 20:57:11,272 - INFO - question 475/1000 answer:A correct_answer:A True
+2025-11-21 20:57:36,864 - INFO - question 476/1000 answer:A correct_answer:A True
+2025-11-21 20:57:54,587 - INFO - question 477/1000 answer:A correct_answer:A True
+2025-11-21 20:58:15,142 - INFO - question 478/1000 answer:A correct_answer:A True
+2025-11-21 20:58:39,786 - INFO - question 479/1000 answer:A correct_answer:C False
+2025-11-21 20:58:58,638 - INFO - question 480/1000 answer:B correct_answer:A False
+2025-11-21 20:59:26,299 - INFO - question 481/1000 answer:A correct_answer:A True
+2025-11-21 20:59:48,681 - INFO - question 482/1000 answer:B correct_answer:B True
+2025-11-21 21:00:13,657 - INFO - question 483/1000 answer:A correct_answer:A True
+2025-11-21 21:00:38,038 - INFO - question 484/1000 answer:A correct_answer:A True
+2025-11-21 21:00:52,513 - INFO - question 485/1000 answer:A correct_answer:A True
+2025-11-21 21:01:15,940 - INFO - question 486/1000 answer:A correct_answer:A True
+2025-11-21 21:01:38,198 - INFO - question 487/1000 answer:A correct_answer:A True
+2025-11-21 21:01:52,498 - INFO - question 488/1000 answer:A correct_answer:A True
+2025-11-21 21:02:18,887 - INFO - question 489/1000 answer:A correct_answer:A True
+2025-11-21 21:02:43,694 - INFO - question 490/1000 answer:B correct_answer:B True
+2025-11-21 21:03:02,343 - INFO - question 491/1000 answer:B correct_answer:B True
+2025-11-21 21:03:25,710 - INFO - question 492/1000 answer:A correct_answer:A True
+2025-11-21 21:03:44,700 - INFO - question 493/1000 answer:B correct_answer:B True
+2025-11-21 21:04:09,139 - INFO - question 494/1000 answer:A correct_answer:A True
+2025-11-21 21:04:29,269 - INFO - question 495/1000 answer:A correct_answer:A True
+2025-11-21 21:04:54,979 - INFO - question 496/1000 answer:A correct_answer:A True
+2025-11-21 21:05:18,668 - INFO - question 497/1000 answer:A correct_answer:A True
+2025-11-21 21:05:37,976 - INFO - question 498/1000 answer:B correct_answer:B True
+2025-11-21 21:06:00,522 - INFO - question 499/1000 answer:B correct_answer:B True
+2025-11-21 21:06:13,310 - INFO - question 500/1000 answer:B correct_answer:B True
+2025-11-21 21:06:28,284 - INFO - question 501/1000 answer:A correct_answer:C False
+2025-11-21 21:06:45,878 - INFO - question 502/1000 answer:A correct_answer:A True
+2025-11-21 21:07:01,306 - INFO - question 503/1000 answer:B correct_answer:B True
+2025-11-21 21:07:20,970 - INFO - question 504/1000 answer:A correct_answer:A True
+2025-11-21 21:07:34,113 - INFO - question 505/1000 answer:B correct_answer:B True
+2025-11-21 21:07:49,618 - INFO - question 506/1000 answer:B correct_answer:A False
+2025-11-21 21:08:22,522 - INFO - question 507/1000 answer:B correct_answer:B True
+2025-11-21 21:08:48,965 - INFO - question 508/1000 answer:A correct_answer:B False
+2025-11-21 21:09:02,425 - INFO - question 509/1000 answer:A correct_answer:A True
+2025-11-21 21:09:19,890 - INFO - question 510/1000 answer:A correct_answer:A True
+2025-11-21 21:09:38,734 - INFO - question 511/1000 answer:A correct_answer:A True
+2025-11-21 21:10:01,328 - INFO - question 512/1000 answer:B correct_answer:A False
+2025-11-21 21:10:26,519 - INFO - question 513/1000 answer:A correct_answer:B False
+2025-11-21 21:10:49,257 - INFO - question 514/1000 answer:A correct_answer:A True
+2025-11-21 21:11:08,465 - INFO - question 515/1000 answer:A correct_answer:C False
+2025-11-21 21:11:23,962 - INFO - question 516/1000 answer:B correct_answer:B True
+2025-11-21 21:11:36,107 - INFO - question 517/1000 answer:A correct_answer:A True
+2025-11-21 21:11:50,666 - INFO - question 518/1000 answer:A correct_answer:A True
+2025-11-21 21:12:14,086 - INFO - question 519/1000 answer:A correct_answer:B False
+2025-11-21 21:12:31,634 - INFO - question 520/1000 answer:A correct_answer:A True
+2025-11-21 21:12:54,331 - INFO - question 521/1000 answer:A correct_answer:A True
+2025-11-21 21:13:10,365 - INFO - question 522/1000 answer:A correct_answer:A True
+2025-11-21 21:13:38,518 - INFO - question 523/1000 answer:A correct_answer:A True
+2025-11-21 21:13:59,571 - INFO - question 524/1000 answer:B correct_answer:B True
+2025-11-21 21:14:19,606 - INFO - question 525/1000 answer:A correct_answer:A True
+2025-11-21 21:14:39,633 - INFO - question 526/1000 answer:A correct_answer:A True
+2025-11-21 21:14:57,901 - INFO - question 527/1000 answer:A correct_answer:A True
+2025-11-21 21:15:26,196 - INFO - question 528/1000 answer:A correct_answer:B False
+2025-11-21 21:15:47,620 - INFO - question 529/1000 answer:A correct_answer:A True
+2025-11-21 21:16:02,625 - INFO - question 530/1000 answer:A correct_answer:A True
+2025-11-21 21:16:19,432 - INFO - question 531/1000 answer:A correct_answer:A True
+2025-11-21 21:16:38,158 - INFO - question 532/1000 answer:A correct_answer:A True
+2025-11-21 21:17:02,459 - INFO - question 533/1000 answer:A correct_answer:A True
+2025-11-21 21:17:34,232 - INFO - question 534/1000 answer:A correct_answer:A True
+2025-11-21 21:17:54,302 - INFO - question 535/1000 answer:A correct_answer:A True
+2025-11-21 21:18:19,262 - INFO - question 536/1000 answer:A correct_answer:A True
+2025-11-21 21:18:41,019 - INFO - question 537/1000 answer:B correct_answer:B True
+2025-11-21 21:18:55,157 - INFO - question 538/1000 answer:B correct_answer:B True
+2025-11-21 21:19:08,873 - INFO - question 539/1000 answer:B correct_answer:B True
+2025-11-21 21:19:30,243 - INFO - question 540/1000 answer:A correct_answer:A True
+2025-11-21 21:19:50,520 - INFO - question 541/1000 answer:A correct_answer:A True
+2025-11-21 21:20:23,099 - INFO - question 542/1000 answer:A correct_answer:A True
+2025-11-21 21:20:46,641 - INFO - question 543/1000 answer:A correct_answer:A True
+2025-11-21 21:21:01,780 - INFO - question 544/1000 answer:B correct_answer:A False
+2025-11-21 21:21:14,637 - INFO - question 545/1000 answer:A correct_answer:A True
+2025-11-21 21:21:31,767 - INFO - question 546/1000 answer:A correct_answer:A True
+2025-11-21 21:21:46,043 - INFO - question 547/1000 answer:A correct_answer:A True
+2025-11-21 21:22:10,022 - INFO - question 548/1000 answer:A correct_answer:A True
+2025-11-21 21:22:34,802 - INFO - question 549/1000 answer:A correct_answer:A True
+2025-11-21 21:22:51,536 - INFO - question 550/1000 answer:B correct_answer:B True
+2025-11-21 21:23:15,955 - INFO - question 551/1000 answer:A correct_answer:A True
+2025-11-21 21:23:38,883 - INFO - question 552/1000 answer:B correct_answer:B True
+2025-11-21 21:24:05,347 - INFO - question 553/1000 answer:A correct_answer:A True
+2025-11-21 21:24:23,632 - INFO - question 554/1000 answer:B correct_answer:B True
+2025-11-21 21:24:55,680 - INFO - question 555/1000 answer:B correct_answer:B True
+2025-11-21 21:25:08,801 - INFO - question 556/1000 answer:A correct_answer:A True
+2025-11-21 21:25:32,250 - INFO - question 557/1000 answer:A correct_answer:A True
+2025-11-21 21:25:56,890 - INFO - question 558/1000 answer:B correct_answer:B True
+2025-11-21 21:26:29,128 - INFO - question 559/1000 answer:B correct_answer:A False
+2025-11-21 21:26:41,332 - INFO - question 560/1000 answer:B correct_answer:B True
+2025-11-21 21:26:59,111 - INFO - question 561/1000 answer:A correct_answer:B False
+2025-11-21 21:27:22,069 - INFO - question 562/1000 answer:B correct_answer:A False
+2025-11-21 21:27:46,337 - INFO - question 563/1000 answer:B correct_answer:B True
+2025-11-21 21:28:05,839 - INFO - question 564/1000 answer:A correct_answer:A True
+2025-11-21 21:28:27,866 - INFO - question 565/1000 answer:A correct_answer:A True
+2025-11-21 21:28:52,564 - INFO - question 566/1000 answer:B correct_answer:B True
+2025-11-21 21:29:14,284 - INFO - question 567/1000 answer:A correct_answer:A True
+2025-11-21 21:29:33,923 - INFO - question 568/1000 answer:A correct_answer:A True
+2025-11-21 21:29:49,181 - INFO - question 569/1000 answer:A correct_answer:A True
+2025-11-21 21:30:03,625 - INFO - question 570/1000 answer:A correct_answer:A True
+2025-11-21 21:30:35,291 - INFO - question 571/1000 answer:A correct_answer:A True
+2025-11-21 21:30:54,116 - INFO - question 572/1000 answer:A correct_answer:A True
+2025-11-21 21:31:04,558 - INFO - question 573/1000 answer:B correct_answer:B True
+2025-11-21 21:31:26,940 - INFO - question 574/1000 answer:A correct_answer:A True
+2025-11-21 21:31:44,513 - INFO - question 575/1000 answer:A correct_answer:A True
+2025-11-21 21:32:00,480 - INFO - question 576/1000 answer:A correct_answer:A True
+2025-11-21 21:32:30,473 - INFO - question 577/1000 answer:A correct_answer:A True
+2025-11-21 21:32:58,167 - INFO - question 578/1000 answer:B correct_answer:B True
+2025-11-21 21:33:15,893 - INFO - question 579/1000 answer:A correct_answer:A True
+2025-11-21 21:33:28,587 - INFO - question 580/1000 answer:A correct_answer:A True
+2025-11-21 21:33:53,629 - INFO - question 581/1000 answer:B correct_answer:B True
+2025-11-21 21:34:07,608 - INFO - question 582/1000 answer:A correct_answer:B False
+2025-11-21 21:34:29,696 - INFO - question 583/1000 answer:A correct_answer:A True
+2025-11-21 21:34:51,033 - INFO - question 584/1000 answer:A correct_answer:A True
+2025-11-21 21:35:05,462 - INFO - question 585/1000 answer:B correct_answer:B True
+2025-11-21 21:35:25,412 - INFO - question 586/1000 answer:B correct_answer:A False
+2025-11-21 21:35:42,606 - INFO - question 587/1000 answer:A correct_answer:C False
+2025-11-21 21:36:05,263 - INFO - question 588/1000 answer:A correct_answer:A True
+2025-11-21 21:36:20,816 - INFO - question 589/1000 answer:B correct_answer:B True
+2025-11-21 21:36:41,714 - INFO - question 590/1000 answer:A correct_answer:A True
+2025-11-21 21:37:07,827 - INFO - question 591/1000 answer:B correct_answer:B True
+2025-11-21 21:37:23,180 - INFO - question 592/1000 answer:A correct_answer:A True
+2025-11-21 21:37:38,780 - INFO - question 593/1000 answer:A correct_answer:C False
+2025-11-21 21:37:55,636 - INFO - question 594/1000 answer:B correct_answer:C False
+2025-11-21 21:38:21,959 - INFO - question 595/1000 answer:A correct_answer:C False
+2025-11-21 21:38:38,522 - INFO - question 596/1000 answer:B correct_answer:B True
+2025-11-21 21:39:03,043 - INFO - question 597/1000 answer:A correct_answer:A True
+2025-11-21 21:39:20,423 - INFO - question 598/1000 answer:B correct_answer:B True
+2025-11-21 21:39:32,312 - INFO - question 599/1000 answer:A correct_answer:A True
+2025-11-21 21:39:53,291 - INFO - question 600/1000 answer:A correct_answer:A True
+2025-11-21 21:40:16,381 - INFO - question 601/1000 answer:A correct_answer:A True
+2025-11-21 21:40:35,673 - INFO - question 602/1000 answer:A correct_answer:A True
+2025-11-21 21:40:58,125 - INFO - question 603/1000 answer:B correct_answer:A False
+2025-11-21 21:41:16,680 - INFO - question 604/1000 answer:A correct_answer:A True
+2025-11-21 21:41:40,150 - INFO - question 605/1000 answer:A correct_answer:A True
+2025-11-21 21:41:53,674 - INFO - question 606/1000 answer:A correct_answer:B False
+2025-11-21 21:42:06,774 - INFO - question 607/1000 answer:A correct_answer:A True
+2025-11-21 21:42:27,300 - INFO - question 608/1000 answer:A correct_answer:A True
+2025-11-21 21:42:46,677 - INFO - question 609/1000 answer:B correct_answer:B True
+2025-11-21 21:43:02,490 - INFO - question 610/1000 answer:A correct_answer:A True
+2025-11-21 21:43:16,199 - INFO - question 611/1000 answer:A correct_answer:A True
+2025-11-21 21:43:40,403 - ERROR - No such comm target registered: jupyter.widget.control
+2025-11-21 21:43:40,404 - WARNING - No such comm: 248a7b98-6a53-47c7-ad51-b9f0c2bdba6c
+2025-11-21 22:31:04,642 - INFO - use_RAG: False
+2025-11-21 22:31:04,642 - INFO - topK_searchEngine: 150
+2025-11-21 22:31:04,642 - INFO - topK_SPLADE: 0
+2025-11-21 22:31:04,642 - INFO - topK_denseEmbedding: 0
+2025-11-21 22:31:04,642 - INFO - topK_crossEncoder: 0
+2025-11-21 22:31:04,642 - INFO - topK_LLM: 0
+2025-11-21 22:31:04,642 - INFO - score_threshold: None
+2025-11-21 22:31:04,642 - INFO - RRF_models: None
+2025-11-21 22:31:04,642 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'qiaojin/PubMedQA' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-21 22:31:08,641 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base/10-15-UltraMedical-batchsize8-bf16
+2025-11-21 22:31:28,486 - INFO - question 1/389 num:612 answer:A correct_answer:B False
+2025-11-21 22:31:45,945 - INFO - question 2/389 num:613 answer:B correct_answer:B True
+2025-11-21 22:32:02,440 - INFO - question 3/389 num:614 answer:B correct_answer:C False
+2025-11-21 22:32:18,425 - INFO - question 4/389 num:615 answer:A correct_answer:A True
+2025-11-21 22:32:33,522 - INFO - question 5/389 num:616 answer:A correct_answer:A True
+2025-11-21 22:33:02,648 - INFO - question 6/389 num:617 answer:B correct_answer:B True
+2025-11-21 22:33:19,341 - INFO - question 7/389 num:618 answer:A correct_answer:A True
+2025-11-21 22:33:47,542 - INFO - question 8/389 num:619 answer:A correct_answer:A True
+2025-11-21 22:34:04,280 - INFO - question 9/389 num:620 answer:B correct_answer:B True
+2025-11-21 22:34:22,341 - INFO - question 10/389 num:621 answer:A correct_answer:A True
+2025-11-21 22:34:52,575 - INFO - question 11/389 num:622 answer:A correct_answer:A True
+2025-11-21 22:35:12,753 - INFO - question 12/389 num:623 answer:A correct_answer:A True
+2025-11-21 22:35:32,601 - INFO - question 13/389 num:624 answer:B correct_answer:B True
+2025-11-21 22:35:46,946 - INFO - question 14/389 num:625 answer:A correct_answer:A True
+2025-11-21 22:36:12,354 - INFO - question 15/389 num:626 answer:C correct_answer:A False
+2025-11-21 22:36:29,133 - INFO - question 16/389 num:627 answer:B correct_answer:B True
+2025-11-21 22:36:53,929 - INFO - question 17/389 num:628 answer:B correct_answer:B True
+2025-11-21 22:37:15,331 - INFO - question 18/389 num:629 answer:A correct_answer:A True
+2025-11-21 22:37:30,506 - INFO - question 19/389 num:630 answer:A correct_answer:C False
+2025-11-21 22:38:02,111 - INFO - question 20/389 num:631 answer:A correct_answer:A True
+2025-11-21 22:38:21,920 - INFO - question 21/389 num:632 answer:A correct_answer:A True
+2025-11-21 22:38:41,295 - INFO - question 22/389 num:633 answer:B correct_answer:B True
+2025-11-21 22:39:06,934 - INFO - question 23/389 num:634 answer:C correct_answer:B False
+2025-11-21 22:39:23,618 - INFO - question 24/389 num:635 answer:B correct_answer:B True
+2025-11-21 22:39:49,583 - INFO - question 25/389 num:636 answer:A correct_answer:B False
+2025-11-21 22:40:03,444 - INFO - question 26/389 num:637 answer:A correct_answer:A True
+2025-11-21 22:40:18,582 - INFO - question 27/389 num:638 answer:B correct_answer:B True
+2025-11-21 22:40:42,080 - INFO - question 28/389 num:639 answer:A correct_answer:A True
+2025-11-21 22:40:58,761 - INFO - question 29/389 num:640 answer:A correct_answer:A True
+2025-11-21 22:41:10,913 - INFO - question 30/389 num:641 answer:B correct_answer:B True
+2025-11-21 22:41:32,582 - INFO - question 31/389 num:642 answer:B correct_answer:B True
+2025-11-21 22:41:55,744 - INFO - question 32/389 num:643 answer:B correct_answer:B True
+2025-11-21 22:42:15,156 - INFO - question 33/389 num:644 answer:A correct_answer:A True
+2025-11-21 22:42:25,670 - INFO - question 34/389 num:645 answer:B correct_answer:B True
+2025-11-21 22:42:47,980 - INFO - question 35/389 num:646 answer:A correct_answer:B False
+2025-11-21 22:43:09,820 - INFO - question 36/389 num:647 answer:A correct_answer:A True
+2025-11-21 22:43:30,884 - INFO - question 37/389 num:648 answer:A correct_answer:A True
+2025-11-21 22:43:47,712 - INFO - question 38/389 num:649 answer:B correct_answer:B True
+2025-11-21 22:44:10,978 - INFO - question 39/389 num:650 answer:A correct_answer:A True
+2025-11-21 22:44:33,148 - INFO - question 40/389 num:651 answer:A correct_answer:B False
+2025-11-21 22:44:56,403 - INFO - question 41/389 num:652 answer:A correct_answer:B False
+2025-11-21 22:45:28,357 - INFO - question 42/389 num:653 answer:A correct_answer:B False
+2025-11-21 22:45:46,609 - INFO - question 43/389 num:654 answer:B correct_answer:B True
+2025-11-21 22:46:06,562 - INFO - question 44/389 num:655 answer:A correct_answer:A True
+2025-11-21 22:46:29,279 - INFO - question 45/389 num:656 answer:B correct_answer:B True
+2025-11-21 22:46:47,150 - INFO - question 46/389 num:657 answer:B correct_answer:B True
+2025-11-21 22:47:01,961 - INFO - question 47/389 num:658 answer:A correct_answer:A True
+2025-11-21 22:47:38,035 - INFO - question 48/389 num:659 answer:A correct_answer:A True
+2025-11-21 22:47:59,407 - INFO - question 49/389 num:660 answer:A correct_answer:A True
+2025-11-21 22:48:13,098 - INFO - question 50/389 num:661 answer:A correct_answer:A True
+2025-11-21 22:48:34,364 - INFO - question 51/389 num:662 answer:B correct_answer:B True
+2025-11-21 22:48:53,480 - INFO - question 52/389 num:663 answer:B correct_answer:B True
+2025-11-21 22:49:14,751 - INFO - question 53/389 num:664 answer:A correct_answer:A True
+2025-11-21 22:49:32,179 - INFO - question 54/389 num:665 answer:A correct_answer:A True
+2025-11-21 22:49:51,468 - INFO - question 55/389 num:666 answer:B correct_answer:B True
+2025-11-21 22:50:17,789 - INFO - question 56/389 num:667 answer:A correct_answer:A True
+2025-11-21 22:50:41,660 - INFO - question 57/389 num:668 answer:A correct_answer:A True
+2025-11-21 22:51:05,273 - INFO - question 58/389 num:669 answer:A correct_answer:B False
+2025-11-21 22:51:27,662 - INFO - question 59/389 num:670 answer:A correct_answer:A True
+2025-11-21 22:51:37,018 - INFO - question 60/389 num:671 answer:B correct_answer:B True
+2025-11-21 22:51:56,051 - INFO - question 61/389 num:672 answer:A correct_answer:B False
+2025-11-21 22:52:12,470 - INFO - question 62/389 num:673 answer:B correct_answer:B True
+2025-11-21 22:52:33,668 - INFO - question 63/389 num:674 answer:A correct_answer:A True
+2025-11-21 22:52:52,400 - INFO - question 64/389 num:675 answer:A correct_answer:A True
+2025-11-21 22:53:12,593 - INFO - question 65/389 num:676 answer:A correct_answer:A True
+2025-11-21 22:53:30,226 - INFO - question 66/389 num:677 answer:A correct_answer:A True
+2025-11-21 22:53:43,960 - INFO - question 67/389 num:678 answer:B correct_answer:B True
+2025-11-21 22:53:59,667 - INFO - question 68/389 num:679 answer:A correct_answer:A True
+2025-11-21 22:54:18,008 - INFO - question 69/389 num:680 answer:A correct_answer:A True
+2025-11-21 22:54:38,632 - INFO - question 70/389 num:681 answer:A correct_answer:A True
+2025-11-21 22:54:52,188 - INFO - question 71/389 num:682 answer:A correct_answer:A True
+2025-11-21 22:55:15,582 - INFO - question 72/389 num:683 answer:A correct_answer:A True
+2025-11-21 22:55:30,903 - INFO - question 73/389 num:684 answer:A correct_answer:A True
+2025-11-21 22:55:45,097 - INFO - question 74/389 num:685 answer:A correct_answer:B False
+2025-11-21 22:56:00,928 - INFO - question 75/389 num:686 answer:A correct_answer:A True
+2025-11-21 22:56:18,555 - INFO - question 76/389 num:687 answer:A correct_answer:A True
+2025-11-21 22:56:39,403 - INFO - question 77/389 num:688 answer:B correct_answer:B True
+2025-11-21 22:57:03,731 - INFO - question 78/389 num:689 answer:B correct_answer:B True
+2025-11-21 22:57:29,285 - INFO - question 79/389 num:690 answer:A correct_answer:A True
+2025-11-21 22:57:50,687 - INFO - question 80/389 num:691 answer:A correct_answer:A True
+2025-11-21 22:58:09,382 - INFO - question 81/389 num:692 answer:A correct_answer:A True
+2025-11-21 22:58:35,816 - INFO - question 82/389 num:693 answer:B correct_answer:B True
+2025-11-21 22:58:48,057 - INFO - question 83/389 num:694 answer:A correct_answer:A True
+2025-11-21 22:59:02,248 - INFO - question 84/389 num:695 answer:A correct_answer:A True
+2025-11-21 22:59:27,361 - INFO - question 85/389 num:696 answer:A correct_answer:B False
+2025-11-21 22:59:40,269 - INFO - question 86/389 num:697 answer:A correct_answer:A True
+2025-11-21 22:59:59,904 - INFO - question 87/389 num:698 answer:A correct_answer:A True
+2025-11-21 23:00:19,543 - INFO - question 88/389 num:699 answer:A correct_answer:A True
+2025-11-21 23:00:41,645 - INFO - question 89/389 num:700 answer:A correct_answer:C False
+2025-11-21 23:00:56,188 - INFO - question 90/389 num:701 answer:A correct_answer:A True
+2025-11-21 23:01:11,639 - INFO - question 91/389 num:702 answer:A correct_answer:A True
+2025-11-21 23:01:29,892 - INFO - question 92/389 num:703 answer:A correct_answer:A True
+2025-11-21 23:01:51,342 - INFO - question 93/389 num:704 answer:A correct_answer:A True
+2025-11-21 23:02:06,062 - INFO - question 94/389 num:705 answer:A correct_answer:A True
+2025-11-21 23:02:37,117 - INFO - question 95/389 num:706 answer:B correct_answer:B True
+2025-11-21 23:02:58,392 - INFO - question 96/389 num:707 answer:A correct_answer:A True
+2025-11-21 23:03:13,244 - INFO - question 97/389 num:708 answer:A correct_answer:A True
+2025-11-21 23:03:29,601 - INFO - question 98/389 num:709 answer:B correct_answer:B True
+2025-11-21 23:03:46,639 - INFO - question 99/389 num:710 answer:A correct_answer:B False
+2025-11-21 23:04:03,706 - INFO - question 100/389 num:711 answer:B correct_answer:B True
+2025-11-21 23:04:39,902 - INFO - question 101/389 num:712 answer:A correct_answer:A True
+2025-11-21 23:05:02,167 - INFO - question 102/389 num:713 answer:A correct_answer:B False
+2025-11-21 23:05:25,937 - INFO - question 103/389 num:714 answer:A correct_answer:A True
+2025-11-21 23:05:51,106 - INFO - question 104/389 num:715 answer:B correct_answer:B True
+2025-11-21 23:06:06,875 - INFO - question 105/389 num:716 answer:B correct_answer:B True
+2025-11-21 23:06:27,741 - INFO - question 106/389 num:717 answer:A correct_answer:A True
+2025-11-21 23:06:44,298 - INFO - question 107/389 num:718 answer:A correct_answer:C False
+2025-11-21 23:07:02,753 - INFO - question 108/389 num:719 answer:B correct_answer:B True
+2025-11-21 23:07:23,503 - INFO - question 109/389 num:720 answer:B correct_answer:B True
+2025-11-21 23:07:52,488 - INFO - question 110/389 num:721 answer:A correct_answer:C False
+2025-11-21 23:08:25,851 - INFO - question 111/389 num:722 answer:B correct_answer:A False
+2025-11-21 23:08:43,551 - INFO - question 112/389 num:723 answer:A correct_answer:A True
+2025-11-21 23:09:04,272 - INFO - question 113/389 num:724 answer:A correct_answer:A True
+2025-11-21 23:09:25,014 - INFO - question 114/389 num:725 answer:A correct_answer:A True
+2025-11-21 23:09:50,389 - INFO - question 115/389 num:726 answer:B correct_answer:B True
+2025-11-21 23:10:00,778 - INFO - question 116/389 num:727 answer:A correct_answer:A True
+2025-11-21 23:10:21,593 - INFO - question 117/389 num:728 answer:A correct_answer:A True
+2025-11-21 23:10:53,227 - INFO - question 118/389 num:729 answer:A correct_answer:C False
+2025-11-21 23:11:16,328 - INFO - question 119/389 num:730 answer:B correct_answer:B True
+2025-11-21 23:11:38,251 - INFO - question 120/389 num:731 answer:B correct_answer:B True
+2025-11-21 23:11:49,159 - INFO - question 121/389 num:732 answer:B correct_answer:B True
+2025-11-21 23:12:10,320 - INFO - question 122/389 num:733 answer:B correct_answer:B True
+2025-11-21 23:12:27,974 - INFO - question 123/389 num:734 answer:B correct_answer:C False
+2025-11-21 23:12:47,854 - INFO - question 124/389 num:735 answer:A correct_answer:A True
+2025-11-21 23:13:01,704 - INFO - question 125/389 num:736 answer:A correct_answer:C False
+2025-11-21 23:13:17,951 - INFO - question 126/389 num:737 answer:A correct_answer:A True
+2025-11-21 23:13:45,527 - INFO - question 127/389 num:738 answer:B correct_answer:B True
+2025-11-21 23:14:01,815 - INFO - question 128/389 num:739 answer:A correct_answer:A True
+2025-11-21 23:14:27,131 - INFO - question 129/389 num:740 answer:A correct_answer:B False
+2025-11-21 23:14:43,897 - INFO - question 130/389 num:741 answer:A correct_answer:A True
+2025-11-21 23:14:58,807 - INFO - question 131/389 num:742 answer:A correct_answer:A True
+2025-11-21 23:15:17,526 - INFO - question 132/389 num:743 answer:B correct_answer:B True
+2025-11-21 23:15:27,984 - INFO - question 133/389 num:744 answer:B correct_answer:B True
+2025-11-21 23:15:45,319 - INFO - question 134/389 num:745 answer:A correct_answer:A True
+2025-11-21 23:16:06,709 - INFO - question 135/389 num:746 answer:B correct_answer:B True
+2025-11-21 23:16:20,551 - INFO - question 136/389 num:747 answer:A correct_answer:A True
+2025-11-21 23:16:37,859 - INFO - question 137/389 num:748 answer:A correct_answer:A True
+2025-11-21 23:16:59,233 - INFO - question 138/389 num:749 answer:A correct_answer:C False
+2025-11-21 23:17:17,991 - INFO - question 139/389 num:750 answer:A correct_answer:A True
+2025-11-21 23:17:35,617 - INFO - question 140/389 num:751 answer:A correct_answer:A True
+2025-11-21 23:17:59,723 - INFO - question 141/389 num:752 answer:B correct_answer:C False
+2025-11-21 23:18:26,946 - INFO - question 142/389 num:753 answer:B correct_answer:B True
+2025-11-21 23:19:01,162 - INFO - question 143/389 num:754 answer:B correct_answer:A False
+2025-11-21 23:19:17,449 - INFO - question 144/389 num:755 answer:A correct_answer:A True
+2025-11-21 23:19:31,973 - INFO - question 145/389 num:756 answer:A correct_answer:A True
+2025-11-21 23:19:52,029 - INFO - question 146/389 num:757 answer:A correct_answer:A True
+2025-11-21 23:20:21,403 - INFO - question 147/389 num:758 answer:B correct_answer:B True
+2025-11-21 23:20:41,001 - INFO - question 148/389 num:759 answer:A correct_answer:A True
+2025-11-21 23:20:57,369 - INFO - question 149/389 num:760 answer:A correct_answer:C False
+2025-11-21 23:21:23,267 - INFO - question 150/389 num:761 answer:B correct_answer:A False
+2025-11-21 23:21:44,649 - INFO - question 151/389 num:762 answer:B correct_answer:B True
+2025-11-21 23:22:02,624 - INFO - question 152/389 num:763 answer:B correct_answer:B True
+2025-11-21 23:22:23,018 - INFO - question 153/389 num:764 answer:A correct_answer:C False
+2025-11-21 23:22:41,272 - INFO - question 154/389 num:765 answer:B correct_answer:B True
+2025-11-21 23:23:03,943 - INFO - question 155/389 num:766 answer:A correct_answer:A True
+2025-11-21 23:23:21,071 - INFO - question 156/389 num:767 answer:C correct_answer:C True
+2025-11-21 23:23:54,789 - INFO - question 157/389 num:768 answer:B correct_answer:B True
+2025-11-21 23:24:21,190 - INFO - question 158/389 num:769 answer:A correct_answer:C False
+2025-11-21 23:24:44,300 - INFO - question 159/389 num:770 answer:A correct_answer:B False
+2025-11-21 23:25:04,822 - INFO - question 160/389 num:771 answer:A correct_answer:A True
+2025-11-21 23:25:21,934 - INFO - question 161/389 num:772 answer:A correct_answer:A True
+2025-11-21 23:25:41,915 - INFO - question 162/389 num:773 answer:B correct_answer:B True
+2025-11-21 23:26:00,346 - INFO - question 163/389 num:774 answer:A correct_answer:B False
+2025-11-21 23:26:18,449 - INFO - question 164/389 num:775 answer:A correct_answer:A True
+2025-11-21 23:26:41,950 - INFO - question 165/389 num:776 answer:A correct_answer:C False
+2025-11-21 23:27:05,762 - INFO - question 166/389 num:777 answer:A correct_answer:A True
+2025-11-21 23:27:22,024 - INFO - question 167/389 num:778 answer:B correct_answer:B True
+2025-11-21 23:27:36,674 - INFO - question 168/389 num:779 answer:A correct_answer:A True
+2025-11-21 23:27:59,321 - INFO - question 169/389 num:780 answer:A correct_answer:A True
+2025-11-21 23:28:15,059 - INFO - question 170/389 num:781 answer:A correct_answer:A True
+2025-11-21 23:28:37,769 - INFO - question 171/389 num:782 answer:A correct_answer:A True
+2025-11-21 23:29:01,102 - INFO - question 172/389 num:783 answer:A correct_answer:C False
+2025-11-21 23:29:22,946 - INFO - question 173/389 num:784 answer:B correct_answer:B True
+2025-11-21 23:29:36,672 - INFO - question 174/389 num:785 answer:A correct_answer:A True
+2025-11-21 23:29:53,827 - INFO - question 175/389 num:786 answer:A correct_answer:C False
+2025-11-21 23:30:17,249 - INFO - question 176/389 num:787 answer:A correct_answer:A True
+2025-11-21 23:30:32,306 - INFO - question 177/389 num:788 answer:B correct_answer:B True
+2025-11-21 23:30:56,835 - INFO - question 178/389 num:789 answer:B correct_answer:B True
+2025-11-21 23:31:20,837 - INFO - question 179/389 num:790 answer:B correct_answer:B True
+2025-11-21 23:31:38,795 - INFO - question 180/389 num:791 answer:B correct_answer:B True
+2025-11-21 23:32:03,832 - INFO - question 181/389 num:792 answer:B correct_answer:B True
+2025-11-21 23:32:39,887 - INFO - question 182/389 num:793 answer:B correct_answer:B True
+2025-11-21 23:32:56,381 - INFO - question 183/389 num:794 answer:B correct_answer:B True
+2025-11-21 23:33:15,589 - INFO - question 184/389 num:795 answer:A correct_answer:A True
+2025-11-21 23:33:36,915 - INFO - question 185/389 num:796 answer:B correct_answer:B True
+2025-11-21 23:34:06,088 - INFO - question 186/389 num:797 answer:B correct_answer:B True
+2025-11-21 23:34:22,989 - INFO - question 187/389 num:798 answer:B correct_answer:A False
+2025-11-21 23:34:50,327 - INFO - question 188/389 num:799 answer:A correct_answer:C False
+2025-11-21 23:35:15,200 - INFO - question 189/389 num:800 answer:A correct_answer:A True
+2025-11-21 23:35:35,203 - INFO - question 190/389 num:801 answer:A correct_answer:A True
+2025-11-21 23:35:52,454 - INFO - question 191/389 num:802 answer:A correct_answer:C False
+2025-11-21 23:36:15,609 - INFO - question 192/389 num:803 answer:A correct_answer:A True
+2025-11-21 23:36:30,387 - INFO - question 193/389 num:804 answer:A correct_answer:A True
+2025-11-21 23:36:46,952 - INFO - question 194/389 num:805 answer:A correct_answer:A True
+2025-11-21 23:37:08,001 - INFO - question 195/389 num:806 answer:B correct_answer:B True
+2025-11-21 23:37:23,364 - INFO - question 196/389 num:807 answer:A correct_answer:A True
+2025-11-21 23:37:43,692 - INFO - question 197/389 num:808 answer:A correct_answer:A True
+2025-11-21 23:37:58,321 - INFO - question 198/389 num:809 answer:A correct_answer:A True
+2025-11-21 23:38:20,965 - INFO - question 199/389 num:810 answer:A correct_answer:A True
+2025-11-21 23:38:42,296 - INFO - question 200/389 num:811 answer:B correct_answer:B True
+2025-11-21 23:39:04,757 - INFO - question 201/389 num:812 answer:A correct_answer:A True
+2025-11-21 23:39:26,476 - INFO - question 202/389 num:813 answer:B correct_answer:B True
+2025-11-21 23:39:51,188 - INFO - question 203/389 num:814 answer:A correct_answer:A True
+2025-11-21 23:40:08,470 - INFO - question 204/389 num:815 answer:A correct_answer:A True
+2025-11-21 23:40:35,314 - INFO - question 205/389 num:816 answer:A correct_answer:B False
+2025-11-21 23:40:54,322 - INFO - question 206/389 num:817 answer:A correct_answer:A True
+2025-11-21 23:41:12,396 - INFO - question 207/389 num:818 answer:A correct_answer:A True
+2025-11-21 23:41:24,929 - INFO - question 208/389 num:819 answer:A correct_answer:A True
+2025-11-21 23:41:47,761 - INFO - question 209/389 num:820 answer:B correct_answer:B True
+2025-11-21 23:42:05,281 - INFO - question 210/389 num:821 answer:A correct_answer:A True
+2025-11-21 23:42:22,635 - INFO - question 211/389 num:822 answer:A correct_answer:A True
+2025-11-21 23:42:44,687 - INFO - question 212/389 num:823 answer:A correct_answer:A True
+2025-11-21 23:42:59,013 - INFO - question 213/389 num:824 answer:B correct_answer:B True
+2025-11-21 23:43:16,173 - INFO - question 214/389 num:825 answer:A correct_answer:A True
+2025-11-21 23:43:46,904 - INFO - question 215/389 num:826 answer:B correct_answer:B True
+2025-11-21 23:44:10,857 - INFO - question 216/389 num:827 answer:A correct_answer:A True
+2025-11-21 23:44:30,475 - INFO - question 217/389 num:828 answer:A correct_answer:A True
+2025-11-21 23:44:58,863 - INFO - question 218/389 num:829 answer:A correct_answer:C False
+2025-11-21 23:45:08,168 - INFO - question 219/389 num:830 answer:B correct_answer:B True
+2025-11-21 23:45:30,827 - INFO - question 220/389 num:831 answer:A correct_answer:A True
+2025-11-21 23:45:43,333 - INFO - question 221/389 num:832 answer:B correct_answer:B True
+2025-11-21 23:45:59,548 - INFO - question 222/389 num:833 answer:A correct_answer:A True
+2025-11-21 23:46:13,622 - INFO - question 223/389 num:834 answer:A correct_answer:B False
+2025-11-21 23:46:42,011 - INFO - question 224/389 num:835 answer:A correct_answer:A True
+2025-11-21 23:47:23,332 - INFO - question 225/389 num:836 answer:B correct_answer:B True
+2025-11-21 23:47:35,048 - INFO - question 226/389 num:837 answer:A correct_answer:A True
+2025-11-21 23:48:04,905 - INFO - question 227/389 num:838 answer:A correct_answer:A True
+2025-11-21 23:48:18,739 - INFO - question 228/389 num:839 answer:B correct_answer:B True
+2025-11-21 23:48:40,774 - INFO - question 229/389 num:840 answer:B correct_answer:B True
+2025-11-21 23:49:02,155 - INFO - question 230/389 num:841 answer:A correct_answer:A True
+2025-11-21 23:49:25,523 - INFO - question 231/389 num:842 answer:A correct_answer:B False
+2025-11-21 23:49:36,472 - INFO - question 232/389 num:843 answer:A correct_answer:A True
+2025-11-21 23:49:58,271 - INFO - question 233/389 num:844 answer:A correct_answer:A True
+2025-11-21 23:50:19,820 - INFO - question 234/389 num:845 answer:B correct_answer:B True
+2025-11-21 23:50:31,409 - INFO - question 235/389 num:846 answer:B correct_answer:B True
+2025-11-21 23:50:49,221 - INFO - question 236/389 num:847 answer:A correct_answer:A True
+2025-11-21 23:51:04,655 - INFO - question 237/389 num:848 answer:A correct_answer:A True
+2025-11-21 23:51:30,038 - INFO - question 238/389 num:849 answer:B correct_answer:B True
+2025-11-21 23:51:52,195 - INFO - question 239/389 num:850 answer:A correct_answer:B False
+2025-11-21 23:52:11,306 - INFO - question 240/389 num:851 answer:A correct_answer:A True
+2025-11-21 23:52:29,338 - INFO - question 241/389 num:852 answer:A correct_answer:A True
+2025-11-21 23:52:49,461 - INFO - question 242/389 num:853 answer:A correct_answer:A True
+2025-11-21 23:53:05,859 - INFO - question 243/389 num:854 answer:A correct_answer:A True
+2025-11-21 23:53:25,644 - INFO - question 244/389 num:855 answer:B correct_answer:B True
+2025-11-21 23:53:39,598 - INFO - question 245/389 num:856 answer:B correct_answer:A False
+2025-11-21 23:54:05,759 - INFO - question 246/389 num:857 answer:A correct_answer:C False
+2025-11-21 23:54:23,427 - INFO - question 247/389 num:858 answer:A correct_answer:A True
+2025-11-21 23:54:40,061 - INFO - question 248/389 num:859 answer:B correct_answer:B True
+2025-11-21 23:55:04,673 - INFO - question 249/389 num:860 answer:A correct_answer:A True
+2025-11-21 23:55:27,733 - INFO - question 250/389 num:861 answer:A correct_answer:A True
+2025-11-21 23:55:46,069 - INFO - question 251/389 num:862 answer:A correct_answer:A True
+2025-11-21 23:56:10,206 - INFO - question 252/389 num:863 answer:B correct_answer:A False
+2025-11-21 23:56:25,668 - INFO - question 253/389 num:864 answer:A correct_answer:A True
+2025-11-21 23:56:44,114 - INFO - question 254/389 num:865 answer:B correct_answer:B True
+2025-11-21 23:57:07,318 - INFO - question 255/389 num:866 answer:B correct_answer:B True
+2025-11-21 23:57:26,707 - INFO - question 256/389 num:867 answer:A correct_answer:A True
+2025-11-21 23:57:57,319 - INFO - question 257/389 num:868 answer:B correct_answer:A False
+2025-11-21 23:58:05,754 - INFO - question 258/389 num:869 answer:B correct_answer:B True
+2025-11-21 23:58:26,129 - INFO - question 259/389 num:870 answer:A correct_answer:A True
+2025-11-21 23:58:44,662 - INFO - question 260/389 num:871 answer:A correct_answer:C False
+2025-11-21 23:59:01,366 - INFO - question 261/389 num:872 answer:A correct_answer:B False
+2025-11-21 23:59:20,590 - INFO - question 262/389 num:873 answer:B correct_answer:B True
+2025-11-21 23:59:31,342 - INFO - question 263/389 num:874 answer:B correct_answer:B True
+2025-11-21 23:59:56,000 - INFO - question 264/389 num:875 answer:A correct_answer:A True
+2025-11-22 00:00:16,303 - INFO - question 265/389 num:876 answer:A correct_answer:A True
+2025-11-22 00:00:43,674 - INFO - question 266/389 num:877 answer:A correct_answer:C False
+2025-11-22 00:01:03,502 - INFO - question 267/389 num:878 answer:A correct_answer:A True
+2025-11-22 00:01:27,048 - INFO - question 268/389 num:879 answer:A correct_answer:A True
+2025-11-22 00:01:44,989 - INFO - question 269/389 num:880 answer:B correct_answer:A False
+2025-11-22 00:02:00,713 - INFO - question 270/389 num:881 answer:A correct_answer:B False
+2025-11-22 00:02:26,727 - INFO - question 271/389 num:882 answer:B correct_answer:A False
+2025-11-22 00:02:50,169 - INFO - question 272/389 num:883 answer:A correct_answer:C False
+2025-11-22 00:03:15,981 - INFO - question 273/389 num:884 answer:A correct_answer:A True
+2025-11-22 00:03:42,242 - INFO - question 274/389 num:885 answer:A correct_answer:C False
+2025-11-22 00:04:04,615 - INFO - question 275/389 num:886 answer:A correct_answer:A True
+2025-11-22 00:04:14,973 - INFO - question 276/389 num:887 answer:B correct_answer:B True
+2025-11-22 00:04:41,829 - INFO - question 277/389 num:888 answer:A correct_answer:A True
+2025-11-22 00:04:56,189 - INFO - question 278/389 num:889 answer:A correct_answer:A True
+2025-11-22 00:05:16,776 - INFO - question 279/389 num:890 answer:B correct_answer:B True
+2025-11-22 00:05:30,760 - INFO - question 280/389 num:891 answer:B correct_answer:B True
+2025-11-22 00:05:46,013 - INFO - question 281/389 num:892 answer:A correct_answer:C False
+2025-11-22 00:06:05,990 - INFO - question 282/389 num:893 answer:A correct_answer:A True
+2025-11-22 00:06:32,848 - INFO - question 283/389 num:894 answer:A correct_answer:A True
+2025-11-22 00:06:50,776 - INFO - question 284/389 num:895 answer:A correct_answer:A True
+2025-11-22 00:07:10,922 - INFO - question 285/389 num:896 answer:B correct_answer:B True
+2025-11-22 00:07:23,321 - INFO - question 286/389 num:897 answer:B correct_answer:B True
+2025-11-22 00:07:42,372 - INFO - question 287/389 num:898 answer:A correct_answer:A True
+2025-11-22 00:07:58,666 - INFO - question 288/389 num:899 answer:B correct_answer:B True
+2025-11-22 00:08:07,293 - INFO - question 289/389 num:900 answer:B correct_answer:B True
+2025-11-22 00:08:29,242 - INFO - question 290/389 num:901 answer:A correct_answer:B False
+2025-11-22 00:08:51,359 - INFO - question 291/389 num:902 answer:B correct_answer:B True
+2025-11-22 00:09:14,854 - INFO - question 292/389 num:903 answer:A correct_answer:A True
+2025-11-22 00:09:30,202 - INFO - question 293/389 num:904 answer:A correct_answer:A True
+2025-11-22 00:09:54,642 - INFO - question 294/389 num:905 answer:A correct_answer:A True
+2025-11-22 00:10:06,384 - INFO - question 295/389 num:906 answer:A correct_answer:A True
+2025-11-22 00:10:21,521 - INFO - question 296/389 num:907 answer:B correct_answer:B True
+2025-11-22 00:10:38,570 - INFO - question 297/389 num:908 answer:A correct_answer:C False
+2025-11-22 00:11:08,989 - INFO - question 298/389 num:909 answer:A correct_answer:C False
+2025-11-22 00:11:16,452 - INFO - question 299/389 num:910 answer:A correct_answer:C False
+2025-11-22 00:11:41,929 - INFO - question 300/389 num:911 answer:A correct_answer:A True
+2025-11-22 00:11:57,698 - INFO - question 301/389 num:912 answer:A correct_answer:A True
+2025-11-22 00:12:21,197 - INFO - question 302/389 num:913 answer:A correct_answer:A True
+2025-11-22 00:12:49,170 - INFO - question 303/389 num:914 answer:B correct_answer:B True
+2025-11-22 00:13:09,826 - INFO - question 304/389 num:915 answer:A correct_answer:A True
+2025-11-22 00:13:29,342 - INFO - question 305/389 num:916 answer:B correct_answer:B True
+2025-11-22 00:13:53,756 - INFO - question 306/389 num:917 answer:B correct_answer:C False
+2025-11-22 00:14:13,178 - INFO - question 307/389 num:918 answer:A correct_answer:A True
+2025-11-22 00:14:30,138 - INFO - question 308/389 num:919 answer:A correct_answer:A True
+2025-11-22 00:14:50,947 - INFO - question 309/389 num:920 answer:A correct_answer:A True
+2025-11-22 00:15:06,615 - INFO - question 310/389 num:921 answer:A correct_answer:A True
+2025-11-22 00:15:30,123 - INFO - question 311/389 num:922 answer:A correct_answer:A True
+2025-11-22 00:16:00,744 - INFO - question 312/389 num:923 answer:A correct_answer:C False
+2025-11-22 00:16:27,096 - INFO - question 313/389 num:924 answer:A correct_answer:A True
+2025-11-22 00:16:46,016 - INFO - question 314/389 num:925 answer:A correct_answer:A True
+2025-11-22 00:17:01,834 - INFO - question 315/389 num:926 answer:B correct_answer:B True
+2025-11-22 00:17:17,239 - INFO - question 316/389 num:927 answer:A correct_answer:C False
+2025-11-22 00:17:33,080 - INFO - question 317/389 num:928 answer:A correct_answer:A True
+2025-11-22 00:17:46,356 - INFO - question 318/389 num:929 answer:A correct_answer:A True
+2025-11-22 00:18:05,565 - INFO - question 319/389 num:930 answer:A correct_answer:A True
+2025-11-22 00:18:22,864 - INFO - question 320/389 num:931 answer:A correct_answer:A True
+2025-11-22 00:18:33,705 - INFO - question 321/389 num:932 answer:A correct_answer:A True
+2025-11-22 00:18:48,123 - INFO - question 322/389 num:933 answer:A correct_answer:A True
+2025-11-22 00:19:08,003 - INFO - question 323/389 num:934 answer:B correct_answer:B True
+2025-11-22 00:19:34,200 - INFO - question 324/389 num:935 answer:A correct_answer:A True
+2025-11-22 00:19:56,188 - INFO - question 325/389 num:936 answer:B correct_answer:B True
+2025-11-22 00:20:11,368 - INFO - question 326/389 num:937 answer:B correct_answer:B True
+2025-11-22 00:20:30,699 - INFO - question 327/389 num:938 answer:A correct_answer:A True
+2025-11-22 00:20:52,416 - INFO - question 328/389 num:939 answer:A correct_answer:A True
+2025-11-22 00:21:13,076 - INFO - question 329/389 num:940 answer:B correct_answer:B True
+2025-11-22 00:21:36,435 - INFO - question 330/389 num:941 answer:A correct_answer:B False
+2025-11-22 00:22:02,148 - INFO - question 331/389 num:942 answer:A correct_answer:A True
+2025-11-22 00:22:22,671 - INFO - question 332/389 num:943 answer:B correct_answer:B True
+2025-11-22 00:22:45,243 - INFO - question 333/389 num:944 answer:A correct_answer:A True
+2025-11-22 00:23:01,997 - INFO - question 334/389 num:945 answer:A correct_answer:A True
+2025-11-22 00:23:24,360 - INFO - question 335/389 num:946 answer:B correct_answer:B True
+2025-11-22 00:23:41,807 - INFO - question 336/389 num:947 answer:A correct_answer:C False
+2025-11-22 00:24:07,053 - INFO - question 337/389 num:948 answer:A correct_answer:A True
+2025-11-22 00:24:18,380 - INFO - question 338/389 num:949 answer:B correct_answer:B True
+2025-11-22 00:24:52,593 - INFO - question 339/389 num:950 answer:A correct_answer:B False
+2025-11-22 00:25:07,133 - INFO - question 340/389 num:951 answer:A correct_answer:A True
+2025-11-22 00:25:18,602 - INFO - question 341/389 num:952 answer:B correct_answer:B True
+2025-11-22 00:25:43,674 - INFO - question 342/389 num:953 answer:A correct_answer:A True
+2025-11-22 00:25:57,336 - INFO - question 343/389 num:954 answer:B correct_answer:B True
+2025-11-22 00:26:23,755 - INFO - question 344/389 num:955 answer:A correct_answer:C False
+2025-11-22 00:26:37,533 - INFO - question 345/389 num:956 answer:B correct_answer:B True
+2025-11-22 00:27:03,611 - INFO - question 346/389 num:957 answer:A correct_answer:B False
+2025-11-22 00:27:29,812 - INFO - question 347/389 num:958 answer:A correct_answer:A True
+2025-11-22 00:27:47,237 - INFO - question 348/389 num:959 answer:B correct_answer:B True
+2025-11-22 00:28:06,151 - INFO - question 349/389 num:960 answer:B correct_answer:A False
+2025-11-22 00:28:21,640 - INFO - question 350/389 num:961 answer:A correct_answer:A True
+2025-11-22 00:28:39,648 - INFO - question 351/389 num:962 answer:A correct_answer:A True
+2025-11-22 00:29:01,506 - INFO - question 352/389 num:963 answer:A correct_answer:A True
+2025-11-22 00:29:17,582 - INFO - question 353/389 num:964 answer:A correct_answer:A True
+2025-11-22 00:29:37,048 - INFO - question 354/389 num:965 answer:B correct_answer:B True
+2025-11-22 00:29:51,640 - INFO - question 355/389 num:966 answer:A correct_answer:C False
+2025-11-22 00:30:11,195 - INFO - question 356/389 num:967 answer:B correct_answer:B True
+2025-11-22 00:30:35,557 - INFO - question 357/389 num:968 answer:B correct_answer:B True
+2025-11-22 00:30:54,463 - INFO - question 358/389 num:969 answer:A correct_answer:B False
+2025-11-22 00:31:03,145 - INFO - question 359/389 num:970 answer:B correct_answer:C False
+2025-11-22 00:31:20,108 - INFO - question 360/389 num:971 answer:A correct_answer:A True
+2025-11-22 00:31:35,095 - INFO - question 361/389 num:972 answer:A correct_answer:A True
+2025-11-22 00:31:59,567 - INFO - question 362/389 num:973 answer:B correct_answer:B True
+2025-11-22 00:32:17,725 - INFO - question 363/389 num:974 answer:A correct_answer:A True
+2025-11-22 00:32:40,081 - INFO - question 364/389 num:975 answer:A correct_answer:A True
+2025-11-22 00:33:06,941 - INFO - question 365/389 num:976 answer:A correct_answer:B False
+2025-11-22 00:33:24,195 - INFO - question 366/389 num:977 answer:A correct_answer:A True
+2025-11-22 00:33:44,688 - INFO - question 367/389 num:978 answer:A correct_answer:C False
+2025-11-22 00:34:07,581 - INFO - question 368/389 num:979 answer:A correct_answer:A True
+2025-11-22 00:34:21,802 - INFO - question 369/389 num:980 answer:A correct_answer:A True
+2025-11-22 00:34:41,645 - INFO - question 370/389 num:981 answer:A correct_answer:A True
+2025-11-22 00:35:03,490 - INFO - question 371/389 num:982 answer:A correct_answer:A True
+2025-11-22 00:35:26,445 - INFO - question 372/389 num:983 answer:A correct_answer:A True
+2025-11-22 00:35:39,825 - INFO - question 373/389 num:984 answer:A correct_answer:A True
+2025-11-22 00:36:02,935 - INFO - question 374/389 num:985 answer:B correct_answer:B True
+2025-11-22 00:36:19,610 - INFO - question 375/389 num:986 answer:B correct_answer:B True
+2025-11-22 00:36:36,377 - INFO - question 376/389 num:987 answer:A correct_answer:A True
+2025-11-22 00:36:51,535 - INFO - question 377/389 num:988 answer:A correct_answer:A True
+2025-11-22 00:37:13,420 - INFO - question 378/389 num:989 answer:B correct_answer:B True
+2025-11-22 00:37:31,302 - INFO - question 379/389 num:990 answer:B correct_answer:B True
+2025-11-22 00:37:45,784 - INFO - question 380/389 num:991 answer:B correct_answer:C False
+2025-11-22 00:38:05,246 - INFO - question 381/389 num:992 answer:A correct_answer:A True
+2025-11-22 00:38:26,884 - INFO - question 382/389 num:993 answer:B correct_answer:B True
+2025-11-22 00:38:44,645 - INFO - question 383/389 num:994 answer:B correct_answer:B True
+2025-11-22 00:39:10,141 - INFO - question 384/389 num:995 answer:B correct_answer:B True
+2025-11-22 00:39:33,545 - INFO - question 385/389 num:996 answer:B correct_answer:B True
+2025-11-22 00:39:58,611 - INFO - question 386/389 num:997 answer:A correct_answer:B False
+2025-11-22 00:40:26,185 - INFO - question 387/389 num:998 answer:B correct_answer:B True
+2025-11-22 00:40:45,631 - INFO - question 388/389 num:999 answer:B correct_answer:A False
+2025-11-22 00:41:14,795 - INFO - question 389/389 num:1000 answer:B correct_answer:B True
+2025-11-22 00:41:14,796 - INFO - Total questions: 389, correct: 311, accuracy: 0.7994858611825193
+2025-11-22 00:41:14,797 - INFO - elapse_time: 7806.1549870967865
+2025-11-22 00:41:14,804 - ERROR - No such comm target registered: jupyter.widget.control
+2025-11-22 00:41:14,805 - WARNING - No such comm: 72bcc4a8-ef26-48de-b265-85d311450cd0

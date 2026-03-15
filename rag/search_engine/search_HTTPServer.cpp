@@ -28,47 +28,6 @@ std::string endpoint = "search";
 // 	std::cout << "time counter:" << std::chrono::duration_cast<std::chrono::milliseconds>(engine.timeCounter).count() << std::endl;
 // }
 
-std::string escapeJsonString(const std::string& input) {
-    std::ostringstream ss;
-    for (auto c : input) {
-        switch (c) {
-            case '"': ss << "\\\""; break;
-            case '\\': ss << "\\\\"; break;
-            case '\b': ss << "\\b"; break;
-            case '\f': ss << "\\f"; break;
-            case '\n': ss << "\\n"; break;
-            case '\r': ss << "\\r"; break;
-            case '\t': ss << "\\t"; break;
-            default:
-                if (static_cast<unsigned char>(c) < 0x20) {
-                    ss << "\\u" << std::hex << (int)c;
-                } else {
-                    ss << c;
-                }
-        }
-    }
-    return ss.str();
-}
-
-std::string convertResultsToJson(const std::vector<SearchResult>& results) {
-    std::ostringstream oss;
-    oss << "[";
-
-    for (size_t i = 0; i < results.size(); ++i) {
-        const auto& r = results[i];
-        oss << "{"
-            << "\"docId\":" << r.docId << ","
-            << "\"score\":" << r.score << ","
-            << "\"docNo\":\"" << escapeJsonString(r.docNo) << "\","
-            << "\"content\":\"" << escapeJsonString(r.content) << "\""
-            << "}";
-        if (i + 1 < results.size()) oss << ",";
-    }
-
-    oss << "]";
-    return oss.str();
-}
-
 int main() {
     httplib::Server server;
 
@@ -126,13 +85,11 @@ int main() {
             //         {"content", result.content}
             //     });
             // }
-
             // Solve CORS issue
             res.set_header("Access-Control-Allow-Origin", "*");
             res.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
             res.set_header("Access-Control-Allow-Headers", "Content-Type");
-
-            res.set_content(convertResultsToJson(results), "text/plain");
+            res.set_content(Utils::convertResultsToJson(results), "text/plain");
             // res.set_content(result_json.dump(2), "application/json");
         }
         else {

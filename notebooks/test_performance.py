@@ -267,6 +267,7 @@ class TestPerformance():
         
         text = self.tokenizer.batch_decode(outputs)[0]
         print("outputs text:", text)
+        logging.info(f"outputs text: {text}")
         if not self.is_encoder_decoder:
             text = text.split("<|assistant|>")[-1]
         # answer = tokenizer.decode(output[0], skip_special_tokens = True)
@@ -278,15 +279,59 @@ class TestPerformance():
         
         return answer
 
+    # def extract_answer(self, response):
+    #     # matchFirst = re.search(r'the answer is .(\w).', response)
+    #     matchFirst = re.search(r'correct answer is \[([A-D])\]', response)
+    #     if matchFirst:
+    #         return f"({matchFirst.group(1)})"
+    #     match = self.find_match(self.regex, response) 
+    #     if match:
+    #         return f"({match})"
+    #     return "[invalid]"
+    
     def extract_answer(self, response):
-        matchFirst = re.search(r'the answer is .(\w).', response)
-        if matchFirst:
-            return f"({matchFirst.group(1)})"
-        match = self.find_match(self.regex, response) 
-        if match:
-            return f"({match})"
+        # Pattern for either [A-D] or (A-D), allow optional spaces or ** around it
+        bracket_pattern = r'[\*\s]*[\[\(]\s*([A-D])\s*[\]\)][\*\s]*'
+    
+        # 1. Match "answer is ... [A]" or "(A)"
+        m1 = re.search(r'answer is[:\s]*' + bracket_pattern, response, re.IGNORECASE)
+        if m1:
+            return f"({m1.group(1)})"
+    
+        # 2. Match "is ... [A]" or "(A)"
+        m2 = re.search(r'is[:\s]*' + bracket_pattern, response, re.IGNORECASE)
+        if m2:
+            return f"({m2.group(1)})"
+    
+        # 3. Match the first [A] or (A) anywhere
+        m3 = re.search(bracket_pattern, response)
+        if m3:
+            return f"({m3.group(1)})"
+    
         return "[invalid]"
 
+    # def extract_answer(self, response):
+    #     """
+    #     Extract the final answer choice (A-D) from a model response.
+    #     Looks for patterns like [A], (B), **[C]**, etc.
+    #     Returns the last mention of 'Answer' or 'Correct answer' if present,
+    #     otherwise the first bracketed choice anywhere.
+    #     """
+    #     # Pattern to match [A-D] or (A-D), optionally surrounded by spaces or **
+    #     bracket_pattern = r'[\*\s]*[\[\(]\s*([A-D])\s*[\]\)][\*\s]*'
+    
+    #     # 1. Match all "Answer: [A]" or "Correct answer: (B)"
+    #     matches = re.findall(r'(?:Answer|Correct answer)[:\s]*' + bracket_pattern, response, re.IGNORECASE)
+    #     if matches:
+    #         return f"({matches[-1]})"  # return the last one
+    
+    #     # 2. If no explicit "Answer" found, match the first bracketed choice anywhere
+    #     m = re.search(bracket_pattern, response)
+    #     if m:
+    #         return f"({m.group(1)})"
+    
+    #     return "[invalid]"
+        
     def format_choices(self, choices, answer_key, mask_correct_answer):
         final_answers = []
         for i, (x, y) in enumerate(choices.items()):
@@ -329,7 +374,9 @@ class TestPerformance():
             format = '%(asctime)s - %(levelname)s - %(message)s',
             level = logging.INFO               # Log level
         )
-        
+
+        print(f"use_RAG: {use_RAG}")
+        logging.info(f"use_RAG: {use_RAG}")
         print(f"topK_searchEngine: {topK_searchEngine}")
         logging.info(f"topK_searchEngine: {topK_searchEngine}")
         print(f"topK_SPLADE: {topK_SPLADE}")
@@ -400,6 +447,10 @@ class TestPerformance():
                         for doc_index in doc_index_list:
                             context += doc_data_list[doc_index]["content"]
                             context += "\n\n"
+                        if context == "":
+                            prompt = prompt_normal
+                        else:
+                            prompt = prompt_RAG
                         content = prompt.format(context = context, question = question, choices = formated_choices)
                         content_list.append(content)
                     

@@ -5,7 +5,7 @@
 # #SBATCH --partition=aoraki # 'aoraki' or 'aoraki_gpu' (for gpu access)
 
 #SBATCH --job-name=llm
-#SBATCH --account=sheju347
+#SBATCH --account=sjy
 
 # #SBATCH --partition=aoraki
 # #SBATCH --nodes=1
@@ -21,7 +21,7 @@
 # #SBATCH --partition=aoraki_gpu_A100_80GB
 #SBATCH --gpus-per-node=1
 #SBATCH --mem=60GB
-#SBATCH --time=60:00:00
+#SBATCH --time=00:10:00
 
 # echo "hello world"
 

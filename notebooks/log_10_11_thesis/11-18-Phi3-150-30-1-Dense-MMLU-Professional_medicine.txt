@@ -1,0 +1,558 @@
+2025-11-18 12:54:27,044 - INFO - use_RAG: True
+2025-11-18 12:54:27,044 - INFO - topK_searchEngine: 150
+2025-11-18 12:54:27,044 - INFO - topK_SPLADE: 30
+2025-11-18 12:54:27,044 - INFO - topK_denseEmbedding: 1
+2025-11-18 12:54:27,044 - INFO - topK_crossEncoder: 0
+2025-11-18 12:54:27,044 - INFO - topK_LLM: 0
+2025-11-18 12:54:27,044 - INFO - score_threshold: None
+2025-11-18 12:54:27,044 - INFO - RRF_models: None
+2025-11-18 12:54:27,044 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'cais/mmlu' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-11-18 12:54:31,269 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/base/10-15-UltraMedical-batchsize8-bf16
+2025-11-18 12:54:36,761 - INFO - RAG data: [{'docId': 'pubmed23n0837_8722', 'BM25_score': 99.7072, 'BM25_ranking': 105, 'SPLADE_score': 100.06454467773438, 'SPLADE_ranking': 23, 'denseEmbedding_score': 0.623344361782074, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:54:45,635 - INFO - question 1/272 answer:C correct_answer:C True
+2025-11-18 12:54:48,695 - INFO - RAG data: [{'docId': 'pubmed23n0867_6567', 'BM25_score': 78.2632, 'BM25_ranking': 93, 'SPLADE_score': 77.5469970703125, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.7407169938087463, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:54:57,775 - INFO - question 2/272 answer:C correct_answer:C True
+2025-11-18 12:55:06,673 - INFO - RAG data: [{'docId': 'pubmed23n0961_23629', 'BM25_score': 105.067, 'BM25_ranking': 42, 'SPLADE_score': 87.58894348144531, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.5922656655311584, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:55:12,187 - INFO - question 3/272 answer:B correct_answer:B True
+2025-11-18 12:55:19,560 - INFO - RAG data: [{'docId': 'pubmed23n0495_3220', 'BM25_score': 123.762, 'BM25_ranking': 8, 'SPLADE_score': 96.18765258789062, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.693830132484436, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:55:29,439 - INFO - question 4/272 answer:C correct_answer:C True
+2025-11-18 12:55:33,867 - INFO - RAG data: [{'docId': 'pubmed23n0300_22557', 'BM25_score': 107.157, 'BM25_ranking': 53, 'SPLADE_score': 50.986629486083984, 'SPLADE_ranking': 21, 'denseEmbedding_score': 0.6959514021873474, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:55:43,006 - INFO - question 5/272 answer:D correct_answer:D True
+2025-11-18 12:55:45,464 - INFO - RAG data: [{'docId': 'pubmed23n0409_46', 'BM25_score': 120.784, 'BM25_ranking': 1, 'SPLADE_score': 105.27967834472656, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.5549702644348145, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:55:52,882 - INFO - question 6/272 answer:A correct_answer:A True
+2025-11-18 12:56:02,227 - INFO - RAG data: [{'docId': 'pubmed23n0412_18897', 'BM25_score': 93.3329, 'BM25_ranking': 105, 'SPLADE_score': 72.63369750976562, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.6194139719009399, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:56:12,155 - INFO - question 7/272 answer:D correct_answer:B False
+2025-11-18 12:56:15,159 - INFO - RAG data: [{'docId': 'pubmed23n0877_12844', 'BM25_score': 60.7684, 'BM25_ranking': 15, 'SPLADE_score': 63.95490264892578, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.6677982211112976, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:56:25,637 - INFO - question 8/272 answer:C correct_answer:C True
+2025-11-18 12:56:31,628 - INFO - RAG data: [{'docId': 'pubmed23n0855_9836', 'BM25_score': 81.8512, 'BM25_ranking': 10, 'SPLADE_score': 76.68257141113281, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7000905275344849, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:56:37,111 - INFO - question 9/272 answer:A correct_answer:D False
+2025-11-18 12:56:39,533 - INFO - RAG data: [{'docId': 'pubmed23n0597_15446', 'BM25_score': 61.2543, 'BM25_ranking': 28, 'SPLADE_score': 54.340538024902344, 'SPLADE_ranking': 26, 'denseEmbedding_score': 0.7222303748130798, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:56:48,841 - INFO - question 10/272 answer:C correct_answer:B False
+2025-11-18 12:56:54,563 - INFO - RAG data: [{'docId': 'pubmed23n0371_9614', 'BM25_score': 74.7271, 'BM25_ranking': 134, 'SPLADE_score': 67.00923919677734, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.5491639375686646, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:57:02,583 - INFO - question 11/272 answer:D correct_answer:D True
+2025-11-18 12:57:05,235 - INFO - RAG data: [{'docId': 'pubmed23n0877_12843', 'BM25_score': 55.0559, 'BM25_ranking': 85, 'SPLADE_score': 62.36994171142578, 'SPLADE_ranking': 21, 'denseEmbedding_score': 0.7601175904273987, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:57:12,759 - INFO - question 12/272 answer:D correct_answer:D True
+2025-11-18 12:57:17,975 - INFO - RAG data: [{'docId': 'pubmed23n1036_7589', 'BM25_score': 71.6565, 'BM25_ranking': 59, 'SPLADE_score': 71.03681945800781, 'SPLADE_ranking': 19, 'denseEmbedding_score': 0.6935153007507324, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:57:26,600 - INFO - question 13/272 answer:D correct_answer:D True
+2025-11-18 12:57:28,859 - INFO - RAG data: [{'docId': 'pubmed23n1050_719', 'BM25_score': 55.1539, 'BM25_ranking': 111, 'SPLADE_score': 52.77476501464844, 'SPLADE_ranking': 19, 'denseEmbedding_score': 0.6413421630859375, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:57:35,410 - INFO - question 14/272 answer:D correct_answer:D True
+2025-11-18 12:57:37,307 - INFO - RAG data: [{'docId': 'pubmed23n0906_16166', 'BM25_score': 60.1366, 'BM25_ranking': 99, 'SPLADE_score': 68.13548278808594, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.6702398061752319, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:57:45,345 - INFO - question 15/272 answer:C correct_answer:C True
+2025-11-18 12:57:48,046 - INFO - RAG data: [{'docId': 'pubmed23n1111_18824', 'BM25_score': 61.1272, 'BM25_ranking': 4, 'SPLADE_score': 57.886356353759766, 'SPLADE_ranking': 19, 'denseEmbedding_score': 0.5536250472068787, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:57:57,471 - INFO - question 16/272 answer:B correct_answer:B True
+2025-11-18 12:58:02,651 - INFO - RAG data: [{'docId': 'pubmed23n0744_24579', 'BM25_score': 89.732, 'BM25_ranking': 72, 'SPLADE_score': 76.2831802368164, 'SPLADE_ranking': 25, 'denseEmbedding_score': 0.7294549345970154, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:58:15,388 - INFO - question 17/272 answer:D correct_answer:D True
+2025-11-18 12:58:17,807 - INFO - RAG data: [{'docId': 'pubmed23n0268_7958', 'BM25_score': 112.002, 'BM25_ranking': 1, 'SPLADE_score': 115.24150848388672, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6505466103553772, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:58:24,684 - INFO - question 18/272 answer:B correct_answer:B True
+2025-11-18 12:58:31,699 - INFO - RAG data: [{'docId': 'pubmed23n1045_11514', 'BM25_score': 145.22, 'BM25_ranking': 25, 'SPLADE_score': 100.42533874511719, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.7772759199142456, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:58:42,910 - INFO - question 19/272 answer:C correct_answer:D False
+2025-11-18 12:58:46,131 - INFO - RAG data: [{'docId': 'pubmed23n0636_3290', 'BM25_score': 80.6439, 'BM25_ranking': 61, 'SPLADE_score': 73.54712677001953, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.7948718070983887, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:58:51,811 - INFO - question 20/272 answer:C correct_answer:C True
+2025-11-18 12:59:02,190 - INFO - RAG data: [{'docId': 'pubmed23n0412_18897', 'BM25_score': 146.656, 'BM25_ranking': 13, 'SPLADE_score': 99.97518157958984, 'SPLADE_ranking': 10, 'denseEmbedding_score': 0.764448344707489, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:59:12,789 - INFO - question 21/272 answer:D correct_answer:D True
+2025-11-18 12:59:22,131 - INFO - RAG data: [{'docId': 'pubmed23n0296_8382', 'BM25_score': 98.3656, 'BM25_ranking': 22, 'SPLADE_score': 78.70506286621094, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.7244727611541748, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:59:31,548 - INFO - question 22/272 answer:D correct_answer:D True
+2025-11-18 12:59:33,503 - INFO - RAG data: [{'docId': 'pubmed23n0591_3040', 'BM25_score': 55.5727, 'BM25_ranking': 46, 'SPLADE_score': 52.611934661865234, 'SPLADE_ranking': 13, 'denseEmbedding_score': 0.6398190259933472, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:59:40,899 - INFO - question 23/272 answer:A correct_answer:A True
+2025-11-18 12:59:45,384 - INFO - RAG data: [{'docId': 'pubmed23n0343_6310', 'BM25_score': 122.283, 'BM25_ranking': 6, 'SPLADE_score': 88.1312484741211, 'SPLADE_ranking': 18, 'denseEmbedding_score': 0.7452415227890015, 'denseEmbedding_ranking': 1}]
+2025-11-18 12:59:53,339 - INFO - question 24/272 answer:B correct_answer:B True
+2025-11-18 12:59:57,491 - INFO - RAG data: [{'docId': 'pubmed23n0268_19480', 'BM25_score': 65.5735, 'BM25_ranking': 100, 'SPLADE_score': 68.64616394042969, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.6967135667800903, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:00:08,684 - INFO - question 25/272 answer:C correct_answer:D False
+2025-11-18 13:00:12,609 - INFO - RAG data: [{'docId': 'pubmed23n0955_10265', 'BM25_score': 109.108, 'BM25_ranking': 9, 'SPLADE_score': 80.33399200439453, 'SPLADE_ranking': 10, 'denseEmbedding_score': 0.7055978775024414, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:00:22,262 - INFO - question 26/272 answer:D correct_answer:A False
+2025-11-18 13:00:25,131 - INFO - RAG data: [{'docId': 'pubmed23n0719_12410', 'BM25_score': 58.0736, 'BM25_ranking': 31, 'SPLADE_score': 53.62480163574219, 'SPLADE_ranking': 28, 'denseEmbedding_score': 0.6820390820503235, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:00:36,014 - INFO - question 27/272 answer:D correct_answer:D True
+2025-11-18 13:00:40,082 - INFO - RAG data: [{'docId': 'pubmed23n0126_1435', 'BM25_score': 106.538, 'BM25_ranking': 41, 'SPLADE_score': 105.50730895996094, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.6692836880683899, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:00:48,586 - INFO - question 28/272 answer:B correct_answer:D False
+2025-11-18 13:00:53,031 - INFO - RAG data: [{'docId': 'pubmed23n0616_15562', 'BM25_score': 78.1587, 'BM25_ranking': 13, 'SPLADE_score': 68.52175903320312, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6647390723228455, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:00:59,008 - INFO - question 29/272 answer:B correct_answer:B True
+2025-11-18 13:01:00,435 - INFO - RAG data: [{'docId': 'pubmed23n0740_18250', 'BM25_score': 59.5154, 'BM25_ranking': 28, 'SPLADE_score': 61.2548828125, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.5923721790313721, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:01:12,171 - INFO - question 30/272 answer:C correct_answer:D False
+2025-11-18 13:01:16,654 - INFO - RAG data: [{'docId': 'pubmed23n0863_6050', 'BM25_score': 101.596, 'BM25_ranking': 6, 'SPLADE_score': 67.55684661865234, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.6759160757064819, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:01:24,901 - INFO - question 31/272 answer:B correct_answer:B True
+2025-11-18 13:01:26,940 - INFO - RAG data: [{'docId': 'pubmed23n0827_19144', 'BM25_score': 93.6496, 'BM25_ranking': 15, 'SPLADE_score': 79.07102966308594, 'SPLADE_ranking': 25, 'denseEmbedding_score': 0.8290950059890747, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:01:35,816 - INFO - question 32/272 answer:B correct_answer:B True
+2025-11-18 13:01:38,202 - INFO - RAG data: [{'docId': 'pubmed23n0580_20445', 'BM25_score': 70.9048, 'BM25_ranking': 52, 'SPLADE_score': 82.12154388427734, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6893628835678101, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:01:45,643 - INFO - question 33/272 answer:C correct_answer:C True
+2025-11-18 13:01:49,770 - INFO - RAG data: [{'docId': 'pubmed23n0397_21682', 'BM25_score': 84.9685, 'BM25_ranking': 5, 'SPLADE_score': 64.75067901611328, 'SPLADE_ranking': 29, 'denseEmbedding_score': 0.7575817704200745, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:01:57,764 - INFO - question 34/272 answer:D correct_answer:A False
+2025-11-18 13:02:07,923 - INFO - RAG data: [{'docId': 'pubmed23n0495_3220', 'BM25_score': 143.603, 'BM25_ranking': 9, 'SPLADE_score': 97.37506103515625, 'SPLADE_ranking': 10, 'denseEmbedding_score': 0.7088924646377563, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:02:17,697 - INFO - question 35/272 answer:B correct_answer:B True
+2025-11-18 13:02:25,640 - INFO - RAG data: [{'docId': 'pubmed23n0973_18466', 'BM25_score': 184.844, 'BM25_ranking': 30, 'SPLADE_score': 108.59449768066406, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.7651664614677429, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:02:35,576 - INFO - question 36/272 answer:D correct_answer:D True
+2025-11-18 13:02:40,222 - INFO - RAG data: [{'docId': 'pubmed23n1037_7274', 'BM25_score': 156.033, 'BM25_ranking': 4, 'SPLADE_score': 90.97822570800781, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7835332155227661, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:02:51,057 - INFO - question 37/272 answer:A correct_answer:A True
+2025-11-18 13:02:57,125 - INFO - RAG data: [{'docId': 'pubmed23n0703_23019', 'BM25_score': 84.0041, 'BM25_ranking': 35, 'SPLADE_score': 66.17269134521484, 'SPLADE_ranking': 9, 'denseEmbedding_score': 0.6013530492782593, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:03:06,791 - INFO - question 38/272 answer:A correct_answer:A True
+2025-11-18 13:03:10,217 - INFO - RAG data: [{'docId': 'pubmed23n0476_23818', 'BM25_score': 89.664, 'BM25_ranking': 3, 'SPLADE_score': 64.0231704711914, 'SPLADE_ranking': 9, 'denseEmbedding_score': 0.5202934741973877, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:03:19,381 - INFO - question 39/272 answer:C correct_answer:C True
+2025-11-18 13:03:23,620 - INFO - RAG data: [{'docId': 'pubmed23n0798_5405', 'BM25_score': 80.002, 'BM25_ranking': 116, 'SPLADE_score': 82.11697387695312, 'SPLADE_ranking': 24, 'denseEmbedding_score': 0.7037194967269897, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:03:33,245 - INFO - question 40/272 answer:C correct_answer:C True
+2025-11-18 13:03:38,610 - INFO - RAG data: [{'docId': 'pubmed23n1121_19398', 'BM25_score': 87.8725, 'BM25_ranking': 43, 'SPLADE_score': 75.84493255615234, 'SPLADE_ranking': 30, 'denseEmbedding_score': 0.7399717569351196, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:03:46,686 - INFO - question 41/272 answer:C correct_answer:C True
+2025-11-18 13:03:48,282 - INFO - RAG data: [{'docId': 'pubmed23n0631_9333', 'BM25_score': 62.6844, 'BM25_ranking': 96, 'SPLADE_score': 74.32742309570312, 'SPLADE_ranking': 12, 'denseEmbedding_score': 0.6987566947937012, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:03:54,970 - INFO - question 42/272 answer:B correct_answer:B True
+2025-11-18 13:03:56,810 - INFO - RAG data: [{'docId': 'pubmed23n0124_12836', 'BM25_score': 59.237, 'BM25_ranking': 9, 'SPLADE_score': 51.18560791015625, 'SPLADE_ranking': 17, 'denseEmbedding_score': 0.7845280170440674, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:04:06,902 - INFO - question 43/272 answer:C correct_answer:A False
+2025-11-18 13:04:11,796 - INFO - RAG data: [{'docId': 'pubmed23n1013_20537', 'BM25_score': 114.763, 'BM25_ranking': 7, 'SPLADE_score': 65.14884185791016, 'SPLADE_ranking': 23, 'denseEmbedding_score': 0.7800695300102234, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:04:21,519 - INFO - question 44/272 answer:A correct_answer:A True
+2025-11-18 13:04:24,148 - INFO - RAG data: [{'docId': 'pubmed23n0728_13759', 'BM25_score': 63.7455, 'BM25_ranking': 26, 'SPLADE_score': 56.1347770690918, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.7097195386886597, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:04:32,383 - INFO - question 45/272 answer:D correct_answer:D True
+2025-11-18 13:04:38,278 - INFO - RAG data: [{'docId': 'pubmed23n0650_13044', 'BM25_score': 94.7268, 'BM25_ranking': 27, 'SPLADE_score': 63.42491912841797, 'SPLADE_ranking': 13, 'denseEmbedding_score': 0.6671181917190552, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:04:46,701 - INFO - question 46/272 answer:D correct_answer:D True
+2025-11-18 13:04:48,974 - INFO - RAG data: [{'docId': 'pubmed23n0613_19169', 'BM25_score': 61.2955, 'BM25_ranking': 68, 'SPLADE_score': 58.23711013793945, 'SPLADE_ranking': 17, 'denseEmbedding_score': 0.6394208669662476, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:04:58,657 - INFO - question 47/272 answer:A correct_answer:B False
+2025-11-18 13:05:00,220 - INFO - RAG data: [{'docId': 'pubmed23n0103_9049', 'BM25_score': 68.1844, 'BM25_ranking': 29, 'SPLADE_score': 71.72271728515625, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.5918524861335754, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:05:10,335 - INFO - question 48/272 answer:D correct_answer:D True
+2025-11-18 13:05:14,173 - INFO - RAG data: [{'docId': 'pubmed23n0641_13240', 'BM25_score': 117.59, 'BM25_ranking': 6, 'SPLADE_score': 81.63182830810547, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.6351084113121033, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:05:19,215 - INFO - question 49/272 answer:D correct_answer:C False
+2025-11-18 13:05:21,520 - INFO - RAG data: [{'docId': 'pubmed23n0934_19979', 'BM25_score': 75.7854, 'BM25_ranking': 68, 'SPLADE_score': 63.67641067504883, 'SPLADE_ranking': 25, 'denseEmbedding_score': 0.7176040410995483, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:05:29,496 - INFO - question 50/272 answer:C correct_answer:C True
+2025-11-18 13:05:35,910 - INFO - RAG data: [{'docId': 'pubmed23n1123_8266', 'BM25_score': 142.384, 'BM25_ranking': 13, 'SPLADE_score': 95.44735717773438, 'SPLADE_ranking': 15, 'denseEmbedding_score': 0.7772545218467712, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:05:45,096 - INFO - question 51/272 answer:A correct_answer:D False
+2025-11-18 13:05:46,859 - INFO - RAG data: [{'docId': 'pubmed23n0275_12830', 'BM25_score': 100.542, 'BM25_ranking': 60, 'SPLADE_score': 80.82810974121094, 'SPLADE_ranking': 26, 'denseEmbedding_score': 0.6668976545333862, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:05:56,651 - INFO - question 52/272 answer:D correct_answer:D True
+2025-11-18 13:06:02,711 - INFO - RAG data: [{'docId': 'pubmed23n0967_20374', 'BM25_score': 88.1502, 'BM25_ranking': 97, 'SPLADE_score': 89.59998321533203, 'SPLADE_ranking': 29, 'denseEmbedding_score': 0.6251365542411804, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:06:12,595 - INFO - question 53/272 answer:D correct_answer:C False
+2025-11-18 13:06:20,570 - INFO - RAG data: [{'docId': 'pubmed23n0806_8717', 'BM25_score': 150.351, 'BM25_ranking': 30, 'SPLADE_score': 98.26042175292969, 'SPLADE_ranking': 8, 'denseEmbedding_score': 0.7769861817359924, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:06:30,528 - INFO - question 54/272 answer:D correct_answer:D True
+2025-11-18 13:06:35,797 - INFO - RAG data: [{'docId': 'pubmed23n1085_25247', 'BM25_score': 116.572, 'BM25_ranking': 18, 'SPLADE_score': 75.67644500732422, 'SPLADE_ranking': 22, 'denseEmbedding_score': 0.6789225339889526, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:06:46,293 - INFO - question 55/272 answer:D correct_answer:D True
+2025-11-18 13:06:48,624 - INFO - RAG data: [{'docId': 'pubmed23n0892_24815', 'BM25_score': 84.6121, 'BM25_ranking': 6, 'SPLADE_score': 63.916648864746094, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7598109245300293, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:06:58,276 - INFO - question 56/272 answer:C correct_answer:C True
+2025-11-18 13:07:00,188 - INFO - RAG data: [{'docId': 'pubmed23n0704_21899', 'BM25_score': 108.002, 'BM25_ranking': 4, 'SPLADE_score': 72.13699340820312, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.7395951747894287, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:07:07,690 - INFO - question 57/272 answer:D correct_answer:D True
+2025-11-18 13:07:11,838 - INFO - RAG data: [{'docId': 'pubmed23n0896_11685', 'BM25_score': 120.404, 'BM25_ranking': 1, 'SPLADE_score': 69.60661315917969, 'SPLADE_ranking': 30, 'denseEmbedding_score': 0.6978439092636108, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:07:20,230 - INFO - question 58/272 answer:D correct_answer:D True
+2025-11-18 13:07:24,868 - INFO - RAG data: [{'docId': 'pubmed23n0726_18505', 'BM25_score': 85.945, 'BM25_ranking': 59, 'SPLADE_score': 89.96697998046875, 'SPLADE_ranking': 15, 'denseEmbedding_score': 0.6993967890739441, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:07:31,259 - INFO - question 59/272 answer:D correct_answer:D True
+2025-11-18 13:07:32,647 - INFO - RAG data: [{'docId': 'pubmed23n0722_6331', 'BM25_score': 70.7069, 'BM25_ranking': 78, 'SPLADE_score': 68.08439636230469, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.7426331043243408, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:07:39,607 - INFO - question 60/272 answer:C correct_answer:C True
+2025-11-18 13:07:45,029 - INFO - RAG data: [{'docId': 'pubmed23n0830_6507', 'BM25_score': 140.603, 'BM25_ranking': 54, 'SPLADE_score': 83.24858093261719, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.721578061580658, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:07:54,672 - INFO - question 61/272 answer:B correct_answer:B True
+2025-11-18 13:08:00,371 - INFO - RAG data: [{'docId': 'pubmed23n0602_4329', 'BM25_score': 73.9652, 'BM25_ranking': 85, 'SPLADE_score': 60.56439971923828, 'SPLADE_ranking': 20, 'denseEmbedding_score': 0.7440653443336487, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:08:14,437 - INFO - question 62/272 answer:B correct_answer:B True
+2025-11-18 13:08:18,993 - INFO - RAG data: [{'docId': 'pubmed23n0797_13919', 'BM25_score': 107.632, 'BM25_ranking': 6, 'SPLADE_score': 83.3892593383789, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7465729117393494, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:08:25,625 - INFO - question 63/272 answer:D correct_answer:D True
+2025-11-18 13:08:28,614 - INFO - RAG data: [{'docId': 'pubmed23n0687_10196', 'BM25_score': 66.3555, 'BM25_ranking': 87, 'SPLADE_score': 74.22571563720703, 'SPLADE_ranking': 28, 'denseEmbedding_score': 0.6849706172943115, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:08:40,451 - INFO - question 64/272 answer:B correct_answer:C False
+2025-11-18 13:08:42,302 - INFO - RAG data: [{'docId': 'pubmed23n0726_21016', 'BM25_score': 74.612, 'BM25_ranking': 55, 'SPLADE_score': 71.60853576660156, 'SPLADE_ranking': 16, 'denseEmbedding_score': 0.6900591254234314, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:08:50,796 - INFO - question 65/272 answer:B correct_answer:B True
+2025-11-18 13:08:55,395 - INFO - RAG data: [{'docId': 'pubmed23n1109_11163', 'BM25_score': 85.9096, 'BM25_ranking': 63, 'SPLADE_score': 82.25299835205078, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.750021755695343, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:09:03,938 - INFO - question 66/272 answer:A correct_answer:A True
+2025-11-18 13:09:10,698 - INFO - RAG data: [{'docId': 'pubmed23n0806_8717', 'BM25_score': 113.688, 'BM25_ranking': 146, 'SPLADE_score': 107.88458251953125, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.8139268159866333, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:09:20,784 - INFO - question 67/272 answer:C correct_answer:C True
+2025-11-18 13:09:24,109 - INFO - RAG data: [{'docId': 'pubmed23n0639_23286', 'BM25_score': 119.731, 'BM25_ranking': 12, 'SPLADE_score': 80.58771514892578, 'SPLADE_ranking': 18, 'denseEmbedding_score': 0.6838618516921997, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:09:31,274 - INFO - question 68/272 answer:D correct_answer:D True
+2025-11-18 13:09:33,598 - INFO - RAG data: [{'docId': 'pubmed23n0618_8209', 'BM25_score': 61.3983, 'BM25_ranking': 17, 'SPLADE_score': 77.1303939819336, 'SPLADE_ranking': 29, 'denseEmbedding_score': 0.6624842286109924, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:09:43,264 - INFO - question 69/272 answer:D correct_answer:D True
+2025-11-18 13:09:45,719 - INFO - RAG data: [{'docId': 'pubmed23n1061_14690', 'BM25_score': 45.2079, 'BM25_ranking': 54, 'SPLADE_score': 61.63426208496094, 'SPLADE_ranking': 24, 'denseEmbedding_score': 0.5121405124664307, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:09:54,714 - INFO - question 70/272 answer:B correct_answer:B True
+2025-11-18 13:09:58,627 - INFO - RAG data: [{'docId': 'pubmed23n0530_18595', 'BM25_score': 105.564, 'BM25_ranking': 68, 'SPLADE_score': 76.97120666503906, 'SPLADE_ranking': 13, 'denseEmbedding_score': 0.7456669211387634, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:10:06,445 - INFO - question 71/272 answer:D correct_answer:D True
+2025-11-18 13:10:10,903 - INFO - RAG data: [{'docId': 'pubmed23n1013_20536', 'BM25_score': 104.05, 'BM25_ranking': 96, 'SPLADE_score': 84.7048110961914, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.7908757328987122, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:10:17,779 - INFO - question 72/272 answer:B correct_answer:B True
+2025-11-18 13:10:20,575 - INFO - RAG data: [{'docId': 'pubmed23n0051_18175', 'BM25_score': 72.3112, 'BM25_ranking': 5, 'SPLADE_score': 80.78292083740234, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7568497657775879, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:10:29,611 - INFO - question 73/272 answer:D correct_answer:D True
+2025-11-18 13:10:31,615 - INFO - RAG data: [{'docId': 'pubmed23n0232_8824', 'BM25_score': 49.8449, 'BM25_ranking': 54, 'SPLADE_score': 75.51634979248047, 'SPLADE_ranking': 26, 'denseEmbedding_score': 0.5524492263793945, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:10:41,346 - INFO - question 74/272 answer:D correct_answer:C False
+2025-11-18 13:10:44,220 - INFO - RAG data: [{'docId': 'pubmed23n0753_3228', 'BM25_score': 92.6328, 'BM25_ranking': 68, 'SPLADE_score': 85.69525909423828, 'SPLADE_ranking': 20, 'denseEmbedding_score': 0.7209043502807617, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:10:54,538 - INFO - question 75/272 answer:D correct_answer:D True
+2025-11-18 13:10:58,536 - INFO - RAG data: [{'docId': 'pubmed23n0809_6815', 'BM25_score': 97.6401, 'BM25_ranking': 87, 'SPLADE_score': 83.97288513183594, 'SPLADE_ranking': 10, 'denseEmbedding_score': 0.6354761719703674, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:11:07,407 - INFO - question 76/272 answer:A correct_answer:A True
+2025-11-18 13:11:10,163 - INFO - RAG data: [{'docId': 'pubmed23n0045_6715', 'BM25_score': 56.2305, 'BM25_ranking': 67, 'SPLADE_score': 60.27497482299805, 'SPLADE_ranking': 15, 'denseEmbedding_score': 0.6537315845489502, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:11:19,483 - INFO - question 77/272 answer:B correct_answer:B True
+2025-11-18 13:11:22,734 - INFO - RAG data: [{'docId': 'pubmed23n0829_7875', 'BM25_score': 46.2262, 'BM25_ranking': 9, 'SPLADE_score': 51.676055908203125, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6578190326690674, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:11:33,589 - INFO - question 78/272 answer:A correct_answer:A True
+2025-11-18 13:11:36,743 - INFO - RAG data: [{'docId': 'pubmed23n0848_13176', 'BM25_score': 109.444, 'BM25_ranking': 87, 'SPLADE_score': 79.04269409179688, 'SPLADE_ranking': 14, 'denseEmbedding_score': 0.657136082649231, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:11:44,281 - INFO - question 79/272 answer:B correct_answer:D False
+2025-11-18 13:11:46,327 - INFO - RAG data: [{'docId': 'pubmed23n0867_4687', 'BM25_score': 51.7569, 'BM25_ranking': 10, 'SPLADE_score': 39.05381774902344, 'SPLADE_ranking': 20, 'denseEmbedding_score': 0.6772488355636597, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:11:56,219 - INFO - question 80/272 answer:D correct_answer:D True
+2025-11-18 13:11:58,425 - INFO - RAG data: [{'docId': 'pubmed23n1064_2938', 'BM25_score': 73.5777, 'BM25_ranking': 1, 'SPLADE_score': 65.95539855957031, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.6977932453155518, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:12:06,226 - INFO - question 81/272 answer:D correct_answer:D True
+2025-11-18 13:12:09,329 - INFO - RAG data: [{'docId': 'pubmed23n0711_8804', 'BM25_score': 75.1901, 'BM25_ranking': 34, 'SPLADE_score': 61.274471282958984, 'SPLADE_ranking': 9, 'denseEmbedding_score': 0.6799681186676025, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:12:18,589 - INFO - question 82/272 answer:D correct_answer:B False
+2025-11-18 13:12:22,517 - INFO - RAG data: [{'docId': 'pubmed23n1125_10085', 'BM25_score': 60.881, 'BM25_ranking': 60, 'SPLADE_score': 74.85896301269531, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.6957518458366394, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:12:33,460 - INFO - question 83/272 answer:B correct_answer:A False
+2025-11-18 13:12:38,093 - INFO - RAG data: [{'docId': 'pubmed23n0328_786', 'BM25_score': 67.1397, 'BM25_ranking': 113, 'SPLADE_score': 74.79725646972656, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7573680877685547, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:12:45,869 - INFO - question 84/272 answer:B correct_answer:B True
+2025-11-18 13:12:47,966 - INFO - RAG data: [{'docId': 'pubmed23n0134_18964', 'BM25_score': 87.1592, 'BM25_ranking': 2, 'SPLADE_score': 72.2384262084961, 'SPLADE_ranking': 24, 'denseEmbedding_score': 0.6725170612335205, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:12:56,515 - INFO - question 85/272 answer:A correct_answer:A True
+2025-11-18 13:12:59,594 - INFO - RAG data: [{'docId': 'pubmed23n0367_19651', 'BM25_score': 83.7692, 'BM25_ranking': 9, 'SPLADE_score': 68.27300262451172, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.4779199957847595, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:13:07,585 - INFO - question 86/272 answer:B correct_answer:B True
+2025-11-18 13:13:09,587 - INFO - RAG data: [{'docId': 'pubmed23n0859_17506', 'BM25_score': 90.0143, 'BM25_ranking': 86, 'SPLADE_score': 71.30880737304688, 'SPLADE_ranking': 13, 'denseEmbedding_score': 0.6562781929969788, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:13:18,106 - INFO - question 87/272 answer:B correct_answer:B True
+2025-11-18 13:13:19,982 - INFO - RAG data: [{'docId': 'pubmed23n0213_3679', 'BM25_score': 66.4054, 'BM25_ranking': 33, 'SPLADE_score': 72.94662475585938, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.7022157311439514, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:13:29,562 - INFO - question 88/272 answer:D correct_answer:D True
+2025-11-18 13:13:31,839 - INFO - RAG data: [{'docId': 'pubmed23n0390_10068', 'BM25_score': 61.343, 'BM25_ranking': 71, 'SPLADE_score': 47.9533805847168, 'SPLADE_ranking': 23, 'denseEmbedding_score': 0.7024421095848083, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:13:38,332 - INFO - question 89/272 answer:B correct_answer:B True
+2025-11-18 13:13:41,480 - INFO - RAG data: [{'docId': 'pubmed23n0673_13552', 'BM25_score': 87.8207, 'BM25_ranking': 127, 'SPLADE_score': 69.92959594726562, 'SPLADE_ranking': 22, 'denseEmbedding_score': 0.7876948118209839, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:13:51,420 - INFO - question 90/272 answer:D correct_answer:D True
+2025-11-18 13:13:56,865 - INFO - RAG data: [{'docId': 'pubmed23n0590_7584', 'BM25_score': 101.824, 'BM25_ranking': 55, 'SPLADE_score': 87.10743713378906, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7196887731552124, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:14:04,788 - INFO - question 91/272 answer:A correct_answer:B False
+2025-11-18 13:14:11,845 - INFO - RAG data: [{'docId': 'pubmed23n0623_4005', 'BM25_score': 135.588, 'BM25_ranking': 99, 'SPLADE_score': 95.98003387451172, 'SPLADE_ranking': 22, 'denseEmbedding_score': 0.6553769707679749, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:14:18,566 - INFO - question 92/272 answer:D correct_answer:D True
+2025-11-18 13:14:23,349 - INFO - RAG data: [{'docId': 'pubmed23n0870_24938', 'BM25_score': 115.265, 'BM25_ranking': 1, 'SPLADE_score': 96.6866226196289, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7949888110160828, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:14:33,546 - INFO - question 93/272 answer:B correct_answer:B True
+2025-11-18 13:14:37,553 - INFO - RAG data: [{'docId': 'pubmed23n1048_22319', 'BM25_score': 89.7063, 'BM25_ranking': 8, 'SPLADE_score': 75.5367431640625, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.7808061242103577, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:14:44,785 - INFO - question 94/272 answer:D correct_answer:D True
+2025-11-18 13:14:49,086 - INFO - RAG data: [{'docId': 'pubmed23n0960_4433', 'BM25_score': 69.2578, 'BM25_ranking': 76, 'SPLADE_score': 66.14527893066406, 'SPLADE_ranking': 14, 'denseEmbedding_score': 0.6272538900375366, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:14:56,511 - INFO - question 95/272 answer:A correct_answer:A True
+2025-11-18 13:15:02,631 - INFO - RAG data: [{'docId': 'pubmed23n0894_4546', 'BM25_score': 139.223, 'BM25_ranking': 2, 'SPLADE_score': 83.09979248046875, 'SPLADE_ranking': 26, 'denseEmbedding_score': 0.701508104801178, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:15:10,953 - INFO - question 96/272 answer:B correct_answer:D False
+2025-11-18 13:15:15,650 - INFO - RAG data: [{'docId': 'pubmed23n0785_6991', 'BM25_score': 96.5225, 'BM25_ranking': 25, 'SPLADE_score': 106.96415710449219, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7652120590209961, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:15:24,298 - INFO - question 97/272 answer:A correct_answer:A True
+2025-11-18 13:15:31,649 - INFO - RAG data: [{'docId': 'pubmed23n0294_12043', 'BM25_score': 62.8124, 'BM25_ranking': 14, 'SPLADE_score': 62.93323516845703, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.7532371878623962, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:15:42,219 - INFO - question 98/272 answer:A correct_answer:B False
+2025-11-18 13:15:44,674 - INFO - RAG data: [{'docId': 'pubmed23n0272_10614', 'BM25_score': 52.8063, 'BM25_ranking': 64, 'SPLADE_score': 62.320526123046875, 'SPLADE_ranking': 21, 'denseEmbedding_score': 0.6688278913497925, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:15:51,931 - INFO - question 99/272 answer:D correct_answer:D True
+2025-11-18 13:15:55,934 - INFO - RAG data: [{'docId': 'pubmed23n0968_1781', 'BM25_score': 119.816, 'BM25_ranking': 1, 'SPLADE_score': 74.24044036865234, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.7393951416015625, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:16:04,725 - INFO - question 100/272 answer:C correct_answer:C True
+2025-11-18 13:16:08,618 - INFO - RAG data: [{'docId': 'pubmed23n0835_14733', 'BM25_score': 88.1574, 'BM25_ranking': 117, 'SPLADE_score': 80.7919692993164, 'SPLADE_ranking': 20, 'denseEmbedding_score': 0.7664169073104858, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:16:17,485 - INFO - question 101/272 answer:B correct_answer:B True
+2025-11-18 13:16:19,317 - INFO - RAG data: [{'docId': 'pubmed23n0922_1133', 'BM25_score': 70.9212, 'BM25_ranking': 2, 'SPLADE_score': 66.8685531616211, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.721190869808197, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:16:27,397 - INFO - question 102/272 answer:A correct_answer:A True
+2025-11-18 13:16:28,956 - INFO - RAG data: [{'docId': 'pubmed23n0353_2081', 'BM25_score': 64.4726, 'BM25_ranking': 82, 'SPLADE_score': 64.92431640625, 'SPLADE_ranking': 30, 'denseEmbedding_score': 0.6369213461875916, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:16:35,312 - INFO - question 103/272 answer:C correct_answer:C True
+2025-11-18 13:16:41,959 - INFO - RAG data: [{'docId': 'pubmed23n0296_8382', 'BM25_score': 137.642, 'BM25_ranking': 13, 'SPLADE_score': 88.48553466796875, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.739635169506073, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:16:52,946 - INFO - question 104/272 answer:D correct_answer:D True
+2025-11-18 13:16:54,962 - INFO - RAG data: [{'docId': 'pubmed23n0591_13969', 'BM25_score': 74.9661, 'BM25_ranking': 15, 'SPLADE_score': 72.87904357910156, 'SPLADE_ranking': 13, 'denseEmbedding_score': 0.7226653099060059, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:17:01,849 - INFO - question 105/272 answer:C correct_answer:C True
+2025-11-18 13:17:08,906 - INFO - RAG data: [{'docId': 'pubmed23n0305_18321', 'BM25_score': 101.574, 'BM25_ranking': 10, 'SPLADE_score': 85.98829650878906, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.5277997255325317, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:17:17,333 - INFO - question 106/272 answer:C correct_answer:C True
+2025-11-18 13:17:28,106 - INFO - RAG data: [{'docId': 'pubmed23n0494_109', 'BM25_score': 120.518, 'BM25_ranking': 35, 'SPLADE_score': 70.39958190917969, 'SPLADE_ranking': 23, 'denseEmbedding_score': 0.6591013073921204, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:17:35,906 - INFO - question 107/272 answer:D correct_answer:D True
+2025-11-18 13:17:37,803 - INFO - RAG data: [{'docId': 'pubmed23n1016_482', 'BM25_score': 42.2715, 'BM25_ranking': 80, 'SPLADE_score': 60.416229248046875, 'SPLADE_ranking': 30, 'denseEmbedding_score': 0.5694612264633179, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:17:46,861 - INFO - question 108/272 answer:B correct_answer:B True
+2025-11-18 13:17:49,057 - INFO - RAG data: [{'docId': 'pubmed23n0827_24874', 'BM25_score': 64.6643, 'BM25_ranking': 51, 'SPLADE_score': 68.71431732177734, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.767021119594574, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:17:54,878 - INFO - question 109/272 answer:D correct_answer:D True
+2025-11-18 13:17:56,951 - INFO - RAG data: [{'docId': 'pubmed23n1074_20879', 'BM25_score': 59.5841, 'BM25_ranking': 39, 'SPLADE_score': 57.908470153808594, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.806708037853241, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:18:03,848 - INFO - question 110/272 answer:A correct_answer:A True
+2025-11-18 13:18:05,854 - INFO - RAG data: [{'docId': 'pubmed23n0905_1989', 'BM25_score': 63.8618, 'BM25_ranking': 11, 'SPLADE_score': 81.922607421875, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7059729099273682, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:18:14,905 - INFO - question 111/272 answer:A correct_answer:A True
+2025-11-18 13:18:25,196 - INFO - RAG data: [{'docId': 'pubmed23n1097_706', 'BM25_score': 112.256, 'BM25_ranking': 62, 'SPLADE_score': 86.46809387207031, 'SPLADE_ranking': 25, 'denseEmbedding_score': 0.7520683407783508, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:18:36,883 - INFO - question 112/272 answer:C correct_answer:C True
+2025-11-18 13:18:39,413 - INFO - RAG data: [{'docId': 'pubmed23n1090_688', 'BM25_score': 66.1415, 'BM25_ranking': 143, 'SPLADE_score': 54.64795684814453, 'SPLADE_ranking': 26, 'denseEmbedding_score': 0.6630825996398926, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:18:47,680 - INFO - question 113/272 answer:D correct_answer:D True
+2025-11-18 13:18:52,849 - INFO - RAG data: [{'docId': 'pubmed23n0506_8296', 'BM25_score': 80.78, 'BM25_ranking': 59, 'SPLADE_score': 67.41131591796875, 'SPLADE_ranking': 25, 'denseEmbedding_score': 0.6632051467895508, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:19:00,058 - INFO - question 114/272 answer:A correct_answer:A True
+2025-11-18 13:19:01,644 - INFO - RAG data: [{'docId': 'pubmed23n0643_11071', 'BM25_score': 56.6373, 'BM25_ranking': 51, 'SPLADE_score': 73.28853607177734, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.6524891257286072, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:19:11,056 - INFO - question 115/272 answer:B correct_answer:B True
+2025-11-18 13:19:13,674 - INFO - RAG data: [{'docId': 'pubmed23n0897_6567', 'BM25_score': 45.4605, 'BM25_ranking': 143, 'SPLADE_score': 63.31883239746094, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7718197107315063, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:19:20,783 - INFO - question 116/272 answer:D correct_answer:D True
+2025-11-18 13:19:25,330 - INFO - RAG data: [{'docId': 'pubmed23n0312_10496', 'BM25_score': 67.7241, 'BM25_ranking': 144, 'SPLADE_score': 86.68753814697266, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.6439498066902161, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:19:32,621 - INFO - question 117/272 answer:B correct_answer:B True
+2025-11-18 13:19:35,308 - INFO - RAG data: [{'docId': 'pubmed23n0695_21792', 'BM25_score': 90.2794, 'BM25_ranking': 2, 'SPLADE_score': 79.88838195800781, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7162585258483887, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:19:39,266 - INFO - question 118/272 answer:D correct_answer:D True
+2025-11-18 13:19:42,492 - INFO - RAG data: [{'docId': 'pubmed23n0831_3763', 'BM25_score': 102.398, 'BM25_ranking': 2, 'SPLADE_score': 81.24139404296875, 'SPLADE_ranking': 10, 'denseEmbedding_score': 0.4769192636013031, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:19:53,286 - INFO - question 119/272 answer:C correct_answer:C True
+2025-11-18 13:20:01,046 - INFO - RAG data: [{'docId': 'pubmed23n0086_6631', 'BM25_score': 129.993, 'BM25_ranking': 1, 'SPLADE_score': 97.01286315917969, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.7244325876235962, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:20:10,929 - INFO - question 120/272 answer:C correct_answer:C True
+2025-11-18 13:20:14,030 - INFO - RAG data: [{'docId': 'pubmed23n0477_10701', 'BM25_score': 63.1943, 'BM25_ranking': 39, 'SPLADE_score': 59.926300048828125, 'SPLADE_ranking': 19, 'denseEmbedding_score': 0.6362391710281372, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:20:24,209 - INFO - question 121/272 answer:C correct_answer:C True
+2025-11-18 13:20:28,392 - INFO - RAG data: [{'docId': 'pubmed23n0854_4701', 'BM25_score': 74.4963, 'BM25_ranking': 66, 'SPLADE_score': 50.986297607421875, 'SPLADE_ranking': 19, 'denseEmbedding_score': 0.7713232040405273, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:20:36,211 - INFO - question 122/272 answer:A correct_answer:A True
+2025-11-18 13:20:40,960 - INFO - RAG data: [{'docId': 'pubmed23n1083_22294', 'BM25_score': 80.9447, 'BM25_ranking': 30, 'SPLADE_score': 63.377017974853516, 'SPLADE_ranking': 28, 'denseEmbedding_score': 0.6516236066818237, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:20:48,966 - INFO - question 123/272 answer:C correct_answer:C True
+2025-11-18 13:20:51,201 - INFO - RAG data: [{'docId': 'pubmed23n0972_13704', 'BM25_score': 59.8229, 'BM25_ranking': 8, 'SPLADE_score': 66.27010345458984, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.7269672751426697, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:20:58,438 - INFO - question 124/272 answer:D correct_answer:D True
+2025-11-18 13:21:01,668 - INFO - RAG data: [{'docId': 'pubmed23n1098_24695', 'BM25_score': 73.5287, 'BM25_ranking': 23, 'SPLADE_score': 52.778804779052734, 'SPLADE_ranking': 14, 'denseEmbedding_score': 0.6774137616157532, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:21:11,032 - INFO - question 125/272 answer:A correct_answer:A True
+2025-11-18 13:21:13,787 - INFO - RAG data: [{'docId': 'pubmed23n0662_20874', 'BM25_score': 52.8169, 'BM25_ranking': 52, 'SPLADE_score': 63.130760192871094, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6501157283782959, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:21:20,368 - INFO - question 126/272 answer:D correct_answer:D True
+2025-11-18 13:21:24,498 - INFO - RAG data: [{'docId': 'pubmed23n0830_6507', 'BM25_score': 94.843, 'BM25_ranking': 1, 'SPLADE_score': 73.67306518554688, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.7104004621505737, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:21:32,096 - INFO - question 127/272 answer:D correct_answer:D True
+2025-11-18 13:21:34,934 - INFO - RAG data: [{'docId': 'pubmed23n0402_3745', 'BM25_score': 60.7976, 'BM25_ranking': 110, 'SPLADE_score': 50.63287353515625, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.5236856341362, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:21:42,035 - INFO - question 128/272 answer:D correct_answer:D True
+2025-11-18 13:21:46,548 - INFO - RAG data: [{'docId': 'pubmed23n0852_973', 'BM25_score': 97.2806, 'BM25_ranking': 2, 'SPLADE_score': 85.67333984375, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.6376687288284302, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:21:56,943 - INFO - question 129/272 answer:A correct_answer:A True
+2025-11-18 13:22:02,838 - INFO - RAG data: [{'docId': 'pubmed23n0614_19130', 'BM25_score': 84.2603, 'BM25_ranking': 21, 'SPLADE_score': 69.008544921875, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.6054990291595459, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:22:12,062 - INFO - question 130/272 answer:D correct_answer:D True
+2025-11-18 13:22:15,468 - INFO - RAG data: [{'docId': 'pubmed23n0847_16037', 'BM25_score': 59.0983, 'BM25_ranking': 33, 'SPLADE_score': 48.01778793334961, 'SPLADE_ranking': 13, 'denseEmbedding_score': 0.7003353834152222, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:22:25,837 - INFO - question 131/272 answer:D correct_answer:D True
+2025-11-18 13:22:34,195 - INFO - RAG data: [{'docId': 'pubmed23n0789_1950', 'BM25_score': 109.174, 'BM25_ranking': 52, 'SPLADE_score': 91.21111297607422, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6557905673980713, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:22:44,050 - INFO - question 132/272 answer:A correct_answer:A True
+2025-11-18 13:22:45,951 - INFO - RAG data: [{'docId': 'pubmed23n0281_22036', 'BM25_score': 53.3609, 'BM25_ranking': 30, 'SPLADE_score': 65.70463562011719, 'SPLADE_ranking': 26, 'denseEmbedding_score': 0.6719039082527161, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:22:56,875 - INFO - question 133/272 answer:A correct_answer:B False
+2025-11-18 13:22:59,829 - INFO - RAG data: [{'docId': 'pubmed23n0268_19480', 'BM25_score': 114.86, 'BM25_ranking': 1, 'SPLADE_score': 68.21783447265625, 'SPLADE_ranking': 19, 'denseEmbedding_score': 0.7478487491607666, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:23:07,169 - INFO - question 134/272 answer:D correct_answer:D True
+2025-11-18 13:23:10,982 - INFO - RAG data: [{'docId': 'pubmed23n0895_1206', 'BM25_score': 71.5282, 'BM25_ranking': 48, 'SPLADE_score': 62.00116729736328, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.711910605430603, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:23:17,654 - INFO - question 135/272 answer:D correct_answer:A False
+2025-11-18 13:23:22,222 - INFO - RAG data: [{'docId': 'pubmed23n1124_7556', 'BM25_score': 86.0079, 'BM25_ranking': 22, 'SPLADE_score': 72.559326171875, 'SPLADE_ranking': 14, 'denseEmbedding_score': 0.6674546599388123, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:23:30,436 - INFO - question 136/272 answer:B correct_answer:B True
+2025-11-18 13:23:38,905 - INFO - RAG data: [{'docId': 'pubmed23n0854_4701', 'BM25_score': 118.2, 'BM25_ranking': 69, 'SPLADE_score': 88.31690979003906, 'SPLADE_ranking': 23, 'denseEmbedding_score': 0.7683787941932678, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:23:46,880 - INFO - question 137/272 answer:D correct_answer:D True
+2025-11-18 13:23:49,903 - INFO - RAG data: [{'docId': 'pubmed23n0824_6126', 'BM25_score': 71.2633, 'BM25_ranking': 11, 'SPLADE_score': 72.99899291992188, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6096659302711487, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:23:58,160 - INFO - question 138/272 answer:A correct_answer:A True
+2025-11-18 13:24:02,777 - INFO - RAG data: [{'docId': 'pubmed23n0898_19463', 'BM25_score': 74.5602, 'BM25_ranking': 23, 'SPLADE_score': 78.77191162109375, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7702623605728149, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:24:09,925 - INFO - question 139/272 answer:D correct_answer:D True
+2025-11-18 13:24:14,348 - INFO - RAG data: [{'docId': 'pubmed23n0975_11660', 'BM25_score': 71.515, 'BM25_ranking': 58, 'SPLADE_score': 82.27875518798828, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.654502272605896, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:24:27,393 - INFO - question 140/272 answer:C correct_answer:C True
+2025-11-18 13:24:28,481 - INFO - RAG data: [{'docId': 'pubmed23n0844_23306', 'BM25_score': 36.5685, 'BM25_ranking': 92, 'SPLADE_score': 55.655757904052734, 'SPLADE_ranking': 20, 'denseEmbedding_score': 0.6970322728157043, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:24:33,763 - INFO - question 141/272 answer:B correct_answer:B True
+2025-11-18 13:24:38,131 - INFO - RAG data: [{'docId': 'pubmed23n0679_24624', 'BM25_score': 113.774, 'BM25_ranking': 5, 'SPLADE_score': 94.59069061279297, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.5953055024147034, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:24:47,077 - INFO - question 142/272 answer:A correct_answer:A True
+2025-11-18 13:24:49,577 - INFO - RAG data: [{'docId': 'pubmed23n0685_16186', 'BM25_score': 62.3779, 'BM25_ranking': 6, 'SPLADE_score': 78.79963684082031, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6164010763168335, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:24:59,486 - INFO - question 143/272 answer:A correct_answer:D False
+2025-11-18 13:25:03,767 - INFO - RAG data: [{'docId': 'pubmed23n0716_4535', 'BM25_score': 70.0171, 'BM25_ranking': 49, 'SPLADE_score': 53.94971466064453, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.6872854232788086, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:25:16,937 - INFO - question 144/272 answer:D correct_answer:D True
+2025-11-18 13:25:21,828 - INFO - RAG data: [{'docId': 'pubmed23n0262_9538', 'BM25_score': 95.6753, 'BM25_ranking': 10, 'SPLADE_score': 76.87488555908203, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.6956213712692261, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:25:29,346 - INFO - question 145/272 answer:A correct_answer:A True
+2025-11-18 13:25:37,867 - INFO - RAG data: [{'docId': 'pubmed23n0636_21433', 'BM25_score': 145.923, 'BM25_ranking': 66, 'SPLADE_score': 75.02032470703125, 'SPLADE_ranking': 26, 'denseEmbedding_score': 0.6446602940559387, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:25:46,979 - INFO - question 146/272 answer:B correct_answer:D False
+2025-11-18 13:25:49,172 - INFO - RAG data: [{'docId': 'pubmed23n0715_9251', 'BM25_score': 58.3607, 'BM25_ranking': 16, 'SPLADE_score': 74.02301788330078, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.7810088396072388, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:25:58,918 - INFO - question 147/272 answer:B correct_answer:B True
+2025-11-18 13:26:02,416 - INFO - RAG data: [{'docId': 'pubmed23n0495_23055', 'BM25_score': 72.4473, 'BM25_ranking': 14, 'SPLADE_score': 97.01905822753906, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6723636984825134, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:26:11,447 - INFO - question 148/272 answer:C correct_answer:C True
+2025-11-18 13:26:13,930 - INFO - RAG data: [{'docId': 'pubmed23n0369_14702', 'BM25_score': 55.1066, 'BM25_ranking': 7, 'SPLADE_score': 70.389404296875, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.6638257503509521, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:26:20,941 - INFO - question 149/272 answer:C correct_answer:D False
+2025-11-18 13:26:26,830 - INFO - RAG data: [{'docId': 'pubmed23n0049_10531', 'BM25_score': 77.7536, 'BM25_ranking': 73, 'SPLADE_score': 59.032798767089844, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.623798668384552, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:26:35,905 - INFO - question 150/272 answer:B correct_answer:D False
+2025-11-18 13:26:39,410 - INFO - RAG data: [{'docId': 'pubmed23n0295_24071', 'BM25_score': 116.568, 'BM25_ranking': 1, 'SPLADE_score': 117.86300659179688, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7040426135063171, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:26:50,148 - INFO - question 151/272 answer:D correct_answer:D True
+2025-11-18 13:26:53,470 - INFO - RAG data: [{'docId': 'pubmed23n0842_16133', 'BM25_score': 75.7971, 'BM25_ranking': 48, 'SPLADE_score': 55.8317756652832, 'SPLADE_ranking': 27, 'denseEmbedding_score': 0.6602268815040588, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:27:02,685 - INFO - question 152/272 answer:B correct_answer:B True
+2025-11-18 13:27:06,340 - INFO - RAG data: [{'docId': 'pubmed23n0615_2945', 'BM25_score': 91.2306, 'BM25_ranking': 67, 'SPLADE_score': 66.84558868408203, 'SPLADE_ranking': 27, 'denseEmbedding_score': 0.8052888512611389, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:27:18,809 - INFO - question 153/272 answer:D correct_answer:A False
+2025-11-18 13:27:25,218 - INFO - RAG data: [{'docId': 'pubmed23n0634_21710', 'BM25_score': 108.878, 'BM25_ranking': 9, 'SPLADE_score': 77.560546875, 'SPLADE_ranking': 23, 'denseEmbedding_score': 0.7000294327735901, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:27:32,747 - INFO - question 154/272 answer:D correct_answer:D True
+2025-11-18 13:27:35,276 - INFO - RAG data: [{'docId': 'pubmed23n0493_18496', 'BM25_score': 109.603, 'BM25_ranking': 13, 'SPLADE_score': 72.80659484863281, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.6258388161659241, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:27:45,683 - INFO - question 155/272 answer:B correct_answer:B True
+2025-11-18 13:27:47,197 - INFO - RAG data: [{'docId': 'pubmed23n0208_634', 'BM25_score': 67.152, 'BM25_ranking': 56, 'SPLADE_score': 68.65547180175781, 'SPLADE_ranking': 19, 'denseEmbedding_score': 0.5551652908325195, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:27:56,313 - INFO - question 156/272 answer:D correct_answer:D True
+2025-11-18 13:28:05,367 - INFO - RAG data: [{'docId': 'pubmed23n0705_19292', 'BM25_score': 153.999, 'BM25_ranking': 6, 'SPLADE_score': 115.56715393066406, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.763637900352478, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:28:13,874 - INFO - question 157/272 answer:B correct_answer:D False
+2025-11-18 13:28:21,639 - INFO - RAG data: [{'docId': 'pubmed23n0519_15730', 'BM25_score': 83.6063, 'BM25_ranking': 48, 'SPLADE_score': 64.49162292480469, 'SPLADE_ranking': 20, 'denseEmbedding_score': 0.6040337681770325, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:28:27,870 - INFO - question 158/272 answer:B correct_answer:B True
+2025-11-18 13:28:31,160 - INFO - RAG data: [{'docId': 'pubmed23n0725_9223', 'BM25_score': 67.666, 'BM25_ranking': 99, 'SPLADE_score': 68.28298950195312, 'SPLADE_ranking': 10, 'denseEmbedding_score': 0.7572258114814758, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:28:40,262 - INFO - question 159/272 answer:C correct_answer:C True
+2025-11-18 13:28:47,972 - INFO - RAG data: [{'docId': 'pubmed23n0729_13195', 'BM25_score': 122.519, 'BM25_ranking': 9, 'SPLADE_score': 43.27680206298828, 'SPLADE_ranking': 18, 'denseEmbedding_score': 0.39429762959480286, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:28:54,276 - INFO - question 160/272 answer:D correct_answer:D True
+2025-11-18 13:28:59,696 - INFO - RAG data: [{'docId': 'pubmed23n1128_3518', 'BM25_score': 80.4486, 'BM25_ranking': 129, 'SPLADE_score': 77.46027374267578, 'SPLADE_ranking': 12, 'denseEmbedding_score': 0.7496448755264282, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:29:10,434 - INFO - question 161/272 answer:B correct_answer:B True
+2025-11-18 13:29:13,063 - INFO - RAG data: [{'docId': 'pubmed23n0410_6615', 'BM25_score': 68.7138, 'BM25_ranking': 4, 'SPLADE_score': 74.90703582763672, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7444690465927124, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:29:17,715 - INFO - question 162/272 answer:B correct_answer:B True
+2025-11-18 13:29:20,678 - INFO - RAG data: [{'docId': 'pubmed23n0960_13522', 'BM25_score': 67.0651, 'BM25_ranking': 32, 'SPLADE_score': 65.81517028808594, 'SPLADE_ranking': 8, 'denseEmbedding_score': 0.5956718325614929, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:29:27,509 - INFO - question 163/272 answer:D correct_answer:D True
+2025-11-18 13:29:29,510 - INFO - RAG data: [{'docId': 'pubmed23n0704_18921', 'BM25_score': 54.6295, 'BM25_ranking': 86, 'SPLADE_score': 63.84223937988281, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.5939309597015381, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:29:36,737 - INFO - question 164/272 answer:B correct_answer:B True
+2025-11-18 13:29:40,624 - INFO - RAG data: [{'docId': 'pubmed23n1088_7139', 'BM25_score': 112.664, 'BM25_ranking': 5, 'SPLADE_score': 80.5074462890625, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.7427200675010681, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:29:45,946 - INFO - question 165/272 answer:D correct_answer:D True
+2025-11-18 13:29:48,233 - INFO - RAG data: [{'docId': 'pubmed23n0306_22038', 'BM25_score': 41.9059, 'BM25_ranking': 65, 'SPLADE_score': 55.99122619628906, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.729701578617096, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:29:55,717 - INFO - question 166/272 answer:D correct_answer:D True
+2025-11-18 13:29:57,390 - INFO - RAG data: [{'docId': 'pubmed23n0691_5614', 'BM25_score': 55.1479, 'BM25_ranking': 92, 'SPLADE_score': 65.88865661621094, 'SPLADE_ranking': 22, 'denseEmbedding_score': 0.7549591660499573, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:30:06,432 - INFO - question 167/272 answer:A correct_answer:D False
+2025-11-18 13:30:11,169 - INFO - RAG data: [{'docId': 'pubmed23n1045_11514', 'BM25_score': 99.7396, 'BM25_ranking': 15, 'SPLADE_score': 80.33998107910156, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.8247235417366028, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:30:21,160 - INFO - question 168/272 answer:D correct_answer:D True
+2025-11-18 13:30:22,793 - INFO - RAG data: [{'docId': 'pubmed23n0051_18413', 'BM25_score': 55.4885, 'BM25_ranking': 39, 'SPLADE_score': 68.92056274414062, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.6252283453941345, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:30:30,217 - INFO - question 169/272 answer:D correct_answer:D True
+2025-11-18 13:30:34,085 - INFO - RAG data: [{'docId': 'pubmed23n0277_21187', 'BM25_score': 85.4404, 'BM25_ranking': 18, 'SPLADE_score': 88.54036712646484, 'SPLADE_ranking': 15, 'denseEmbedding_score': 0.5716105103492737, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:30:41,569 - INFO - question 170/272 answer:B correct_answer:B True
+2025-11-18 13:30:46,660 - INFO - RAG data: [{'docId': 'pubmed23n0564_24292', 'BM25_score': 80.7724, 'BM25_ranking': 127, 'SPLADE_score': 73.41763305664062, 'SPLADE_ranking': 24, 'denseEmbedding_score': 0.5610095262527466, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:30:53,473 - INFO - question 171/272 answer:B correct_answer:B True
+2025-11-18 13:30:54,769 - INFO - RAG data: [{'docId': 'pubmed23n0605_19423', 'BM25_score': 61.3013, 'BM25_ranking': 61, 'SPLADE_score': 55.327232360839844, 'SPLADE_ranking': 17, 'denseEmbedding_score': 0.6451727747917175, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:31:07,004 - INFO - question 172/272 answer:C correct_answer:C True
+2025-11-18 13:31:09,247 - INFO - RAG data: [{'docId': 'pubmed23n1093_3529', 'BM25_score': 107.517, 'BM25_ranking': 52, 'SPLADE_score': 76.02347564697266, 'SPLADE_ranking': 14, 'denseEmbedding_score': 0.672099232673645, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:31:20,996 - INFO - question 173/272 answer:C correct_answer:C True
+2025-11-18 13:31:25,206 - INFO - RAG data: [{'docId': 'pubmed23n0929_9589', 'BM25_score': 69.4195, 'BM25_ranking': 68, 'SPLADE_score': 59.79924774169922, 'SPLADE_ranking': 22, 'denseEmbedding_score': 0.6565447449684143, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:31:33,549 - INFO - question 174/272 answer:B correct_answer:B True
+2025-11-18 13:31:40,251 - INFO - RAG data: [{'docId': 'pubmed23n0520_3702', 'BM25_score': 89.6573, 'BM25_ranking': 149, 'SPLADE_score': 74.23208618164062, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7063309550285339, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:31:49,738 - INFO - question 175/272 answer:B correct_answer:B True
+2025-11-18 13:31:52,699 - INFO - RAG data: [{'docId': 'pubmed23n0873_22027', 'BM25_score': 78.0413, 'BM25_ranking': 24, 'SPLADE_score': 78.68428802490234, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7660099267959595, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:32:00,923 - INFO - question 176/272 answer:A correct_answer:A True
+2025-11-18 13:32:02,641 - INFO - RAG data: [{'docId': 'pubmed23n0250_491', 'BM25_score': 50.1497, 'BM25_ranking': 58, 'SPLADE_score': 63.825191497802734, 'SPLADE_ranking': 15, 'denseEmbedding_score': 0.6785791516304016, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:32:10,136 - INFO - question 177/272 answer:A correct_answer:D False
+2025-11-18 13:32:12,469 - INFO - RAG data: [{'docId': 'pubmed23n0127_2776', 'BM25_score': 58.1328, 'BM25_ranking': 19, 'SPLADE_score': 60.19831848144531, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.6901297569274902, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:32:21,960 - INFO - question 178/272 answer:D correct_answer:D True
+2025-11-18 13:32:31,104 - INFO - RAG data: [{'docId': 'pubmed23n0918_18752', 'BM25_score': 144.282, 'BM25_ranking': 42, 'SPLADE_score': 81.57207489013672, 'SPLADE_ranking': 13, 'denseEmbedding_score': 0.6224868297576904, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:32:38,583 - INFO - question 179/272 answer:B correct_answer:B True
+2025-11-18 13:32:42,211 - INFO - RAG data: [{'docId': 'pubmed23n0912_15166', 'BM25_score': 99.0613, 'BM25_ranking': 37, 'SPLADE_score': 64.73548889160156, 'SPLADE_ranking': 16, 'denseEmbedding_score': 0.7491887211799622, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:32:49,112 - INFO - question 180/272 answer:D correct_answer:D True
+2025-11-18 13:32:52,375 - INFO - RAG data: [{'docId': 'pubmed23n0741_24890', 'BM25_score': 109.301, 'BM25_ranking': 5, 'SPLADE_score': 71.46827697753906, 'SPLADE_ranking': 21, 'denseEmbedding_score': 0.6781586408615112, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:33:05,874 - INFO - question 181/272 answer:A correct_answer:D False
+2025-11-18 13:33:12,359 - INFO - RAG data: [{'docId': 'pubmed23n0594_12502', 'BM25_score': 135.044, 'BM25_ranking': 1, 'SPLADE_score': 75.73552703857422, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.6509398818016052, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:33:23,278 - INFO - question 182/272 answer:D correct_answer:D True
+2025-11-18 13:33:25,938 - INFO - RAG data: [{'docId': 'pubmed23n0112_5190', 'BM25_score': 62.7255, 'BM25_ranking': 104, 'SPLADE_score': 79.91559600830078, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.6873034238815308, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:33:34,676 - INFO - question 183/272 answer:D correct_answer:D True
+2025-11-18 13:33:40,036 - INFO - RAG data: [{'docId': 'pubmed23n0633_15994', 'BM25_score': 81.6727, 'BM25_ranking': 44, 'SPLADE_score': 89.07212829589844, 'SPLADE_ranking': 29, 'denseEmbedding_score': 0.5928872227668762, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:33:49,742 - INFO - question 184/272 answer:B correct_answer:B True
+2025-11-18 13:33:52,070 - INFO - RAG data: [{'docId': 'pubmed23n0731_19225', 'BM25_score': 60.3962, 'BM25_ranking': 97, 'SPLADE_score': 67.11653900146484, 'SPLADE_ranking': 26, 'denseEmbedding_score': 0.7532771229743958, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:33:54,781 - INFO - question 185/272 answer:A correct_answer:D False
+2025-11-18 13:33:57,159 - INFO - RAG data: [{'docId': 'pubmed23n0761_15716', 'BM25_score': 208.703, 'BM25_ranking': 1, 'SPLADE_score': 72.90978240966797, 'SPLADE_ranking': 23, 'denseEmbedding_score': 0.72884601354599, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:34:02,530 - INFO - question 186/272 answer:A correct_answer:C False
+2025-11-18 13:34:13,075 - INFO - RAG data: [{'docId': 'pubmed23n1088_7139', 'BM25_score': 139.15, 'BM25_ranking': 3, 'SPLADE_score': 90.99451446533203, 'SPLADE_ranking': 18, 'denseEmbedding_score': 0.7046406269073486, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:34:24,574 - INFO - question 187/272 answer:D correct_answer:D True
+2025-11-18 13:34:31,309 - INFO - RAG data: [{'docId': 'pubmed23n0982_20748', 'BM25_score': 133.254, 'BM25_ranking': 4, 'SPLADE_score': 115.33143615722656, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7916854619979858, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:34:45,950 - INFO - question 188/272 answer:D correct_answer:B False
+2025-11-18 13:35:06,964 - INFO - RAG data: [{'docId': 'pubmed23n0712_25047', 'BM25_score': 117.867, 'BM25_ranking': 80, 'SPLADE_score': 113.3487777709961, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7291957139968872, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:35:19,560 - INFO - question 189/272 answer:D correct_answer:D True
+2025-11-18 13:35:21,660 - INFO - RAG data: [{'docId': 'pubmed23n0316_12040', 'BM25_score': 92.1747, 'BM25_ranking': 2, 'SPLADE_score': 86.55975341796875, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6336326003074646, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:35:31,474 - INFO - question 190/272 answer:A correct_answer:A True
+2025-11-18 13:35:33,774 - INFO - RAG data: [{'docId': 'pubmed23n0890_2317', 'BM25_score': 62.0416, 'BM25_ranking': 38, 'SPLADE_score': 67.54203796386719, 'SPLADE_ranking': 22, 'denseEmbedding_score': 0.7618938088417053, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:35:41,088 - INFO - question 191/272 answer:D correct_answer:D True
+2025-11-18 13:35:43,474 - INFO - RAG data: [{'docId': 'pubmed23n0923_21200', 'BM25_score': 79.3111, 'BM25_ranking': 7, 'SPLADE_score': 62.48530197143555, 'SPLADE_ranking': 8, 'denseEmbedding_score': 0.7036572694778442, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:35:51,845 - INFO - question 192/272 answer:C correct_answer:C True
+2025-11-18 13:35:56,611 - INFO - RAG data: [{'docId': 'pubmed23n1120_21432', 'BM25_score': 115.214, 'BM25_ranking': 4, 'SPLADE_score': 89.88007354736328, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.6533125042915344, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:36:04,807 - INFO - question 193/272 answer:A correct_answer:A True
+2025-11-18 13:36:08,471 - INFO - RAG data: [{'docId': 'pubmed23n0213_11290', 'BM25_score': 117.051, 'BM25_ranking': 16, 'SPLADE_score': 103.85578918457031, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7948550581932068, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:36:16,865 - INFO - question 194/272 answer:C correct_answer:D False
+2025-11-18 13:36:22,623 - INFO - RAG data: [{'docId': 'pubmed23n0798_5405', 'BM25_score': 111.731, 'BM25_ranking': 95, 'SPLADE_score': 96.58240509033203, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.7348529100418091, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:36:29,484 - INFO - question 195/272 answer:C correct_answer:C True
+2025-11-18 13:36:30,975 - INFO - RAG data: [{'docId': 'pubmed23n0549_4395', 'BM25_score': 52.6369, 'BM25_ranking': 137, 'SPLADE_score': 75.55255126953125, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.5780481696128845, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:36:40,194 - INFO - question 196/272 answer:D correct_answer:D True
+2025-11-18 13:36:48,613 - INFO - RAG data: [{'docId': 'pubmed23n0851_5978', 'BM25_score': 93.7911, 'BM25_ranking': 95, 'SPLADE_score': 101.82221221923828, 'SPLADE_ranking': 14, 'denseEmbedding_score': 0.7380236387252808, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:36:56,918 - INFO - question 197/272 answer:A correct_answer:A True
+2025-11-18 13:37:00,369 - INFO - RAG data: [{'docId': 'pubmed23n0924_24125', 'BM25_score': 77.6113, 'BM25_ranking': 1, 'SPLADE_score': 87.31903076171875, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6515865921974182, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:37:09,288 - INFO - question 198/272 answer:A correct_answer:A True
+2025-11-18 13:37:21,468 - INFO - RAG data: [{'docId': 'pubmed23n1097_706', 'BM25_score': 138.443, 'BM25_ranking': 23, 'SPLADE_score': 100.56114196777344, 'SPLADE_ranking': 10, 'denseEmbedding_score': 0.7095769047737122, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:37:29,673 - INFO - question 199/272 answer:D correct_answer:D True
+2025-11-18 13:37:39,481 - INFO - RAG data: [{'docId': 'pubmed23n0251_13914', 'BM25_score': 126.188, 'BM25_ranking': 88, 'SPLADE_score': 66.08869171142578, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.7091081142425537, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:37:49,233 - INFO - question 200/272 answer:D correct_answer:A False
+2025-11-18 13:37:52,341 - INFO - RAG data: [{'docId': 'pubmed23n0296_8382', 'BM25_score': 93.5657, 'BM25_ranking': 2, 'SPLADE_score': 92.7309799194336, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7633886337280273, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:37:58,327 - INFO - question 201/272 answer:B correct_answer:B True
+2025-11-18 13:38:05,977 - INFO - RAG data: [{'docId': 'pubmed23n0716_4535', 'BM25_score': 105.651, 'BM25_ranking': 24, 'SPLADE_score': 89.5328598022461, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.675153374671936, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:38:15,003 - INFO - question 202/272 answer:A correct_answer:A True
+2025-11-18 13:38:20,141 - INFO - RAG data: [{'docId': 'pubmed23n0234_5313', 'BM25_score': 148.829, 'BM25_ranking': 104, 'SPLADE_score': 59.578041076660156, 'SPLADE_ranking': 29, 'denseEmbedding_score': 0.5057114362716675, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:38:29,887 - INFO - question 203/272 answer:A correct_answer:A True
+2025-11-18 13:38:33,929 - INFO - RAG data: [{'docId': 'pubmed23n0886_1375', 'BM25_score': 98.4785, 'BM25_ranking': 22, 'SPLADE_score': 72.49990844726562, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7023839950561523, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:38:41,264 - INFO - question 204/272 answer:D correct_answer:D True
+2025-11-18 13:38:44,285 - INFO - RAG data: [{'docId': 'pubmed23n1053_14025', 'BM25_score': 62.0295, 'BM25_ranking': 38, 'SPLADE_score': 65.44268798828125, 'SPLADE_ranking': 9, 'denseEmbedding_score': 0.8017865419387817, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:38:54,616 - INFO - question 205/272 answer:C correct_answer:C True
+2025-11-18 13:38:56,443 - INFO - RAG data: [{'docId': 'pubmed23n0768_8897', 'BM25_score': 63.5504, 'BM25_ranking': 2, 'SPLADE_score': 57.29920196533203, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.7888801693916321, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:39:02,109 - INFO - question 206/272 answer:C correct_answer:C True
+2025-11-18 13:39:07,265 - INFO - RAG data: [{'docId': 'pubmed23n0769_16535', 'BM25_score': 122.429, 'BM25_ranking': 20, 'SPLADE_score': 87.33432006835938, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.585125744342804, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:39:14,329 - INFO - question 207/272 answer:D correct_answer:D True
+2025-11-18 13:39:17,074 - INFO - RAG data: [{'docId': 'pubmed23n0222_3211', 'BM25_score': 70.6098, 'BM25_ranking': 110, 'SPLADE_score': 53.8564338684082, 'SPLADE_ranking': 27, 'denseEmbedding_score': 0.624402642250061, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:39:24,588 - INFO - question 208/272 answer:D correct_answer:D True
+2025-11-18 13:39:27,179 - INFO - RAG data: [{'docId': 'pubmed23n0530_18595', 'BM25_score': 93.5993, 'BM25_ranking': 19, 'SPLADE_score': 65.67030334472656, 'SPLADE_ranking': 24, 'denseEmbedding_score': 0.7179954051971436, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:39:37,337 - INFO - question 209/272 answer:B correct_answer:D False
+2025-11-18 13:39:44,037 - INFO - RAG data: [{'docId': 'pubmed23n0830_7067', 'BM25_score': 110.636, 'BM25_ranking': 56, 'SPLADE_score': 100.17150115966797, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.777213454246521, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:39:55,961 - INFO - question 210/272 answer:D correct_answer:D True
+2025-11-18 13:40:00,221 - INFO - RAG data: [{'docId': 'pubmed23n0890_2317', 'BM25_score': 86.5785, 'BM25_ranking': 6, 'SPLADE_score': 65.85174560546875, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.7707177400588989, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:40:07,673 - INFO - question 211/272 answer:D correct_answer:D True
+2025-11-18 13:40:12,355 - INFO - RAG data: [{'docId': 'pubmed23n0862_23443', 'BM25_score': 119.944, 'BM25_ranking': 6, 'SPLADE_score': 76.87174987792969, 'SPLADE_ranking': 11, 'denseEmbedding_score': 0.6682583689689636, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:40:18,639 - INFO - question 212/272 answer:B correct_answer:B True
+2025-11-18 13:40:22,876 - INFO - RAG data: [{'docId': 'pubmed23n1128_3518', 'BM25_score': 65.901, 'BM25_ranking': 82, 'SPLADE_score': 48.35711669921875, 'SPLADE_ranking': 28, 'denseEmbedding_score': 0.7697492837905884, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:40:31,629 - INFO - question 213/272 answer:D correct_answer:D True
+2025-11-18 13:40:40,907 - INFO - RAG data: [{'docId': 'pubmed23n0663_3305', 'BM25_score': 170.3, 'BM25_ranking': 1, 'SPLADE_score': 87.19640350341797, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.6511900424957275, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:40:53,932 - INFO - question 214/272 answer:B correct_answer:D False
+2025-11-18 13:40:56,924 - INFO - RAG data: [{'docId': 'pubmed23n0052_3666', 'BM25_score': 82.0612, 'BM25_ranking': 20, 'SPLADE_score': 65.30000305175781, 'SPLADE_ranking': 27, 'denseEmbedding_score': 0.7702493667602539, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:41:04,191 - INFO - question 215/272 answer:A correct_answer:A True
+2025-11-18 13:41:08,868 - INFO - RAG data: [{'docId': 'pubmed23n0804_8505', 'BM25_score': 126.279, 'BM25_ranking': 15, 'SPLADE_score': 58.920433044433594, 'SPLADE_ranking': 10, 'denseEmbedding_score': 0.5677790641784668, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:41:15,474 - INFO - question 216/272 answer:A correct_answer:D False
+2025-11-18 13:41:18,647 - INFO - RAG data: [{'docId': 'pubmed23n1101_1839', 'BM25_score': 53.8775, 'BM25_ranking': 61, 'SPLADE_score': 58.455257415771484, 'SPLADE_ranking': 29, 'denseEmbedding_score': 0.7140646576881409, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:41:27,037 - INFO - question 217/272 answer:D correct_answer:D True
+2025-11-18 13:41:29,381 - INFO - RAG data: [{'docId': 'pubmed23n0651_5784', 'BM25_score': 57.9679, 'BM25_ranking': 66, 'SPLADE_score': 45.312522888183594, 'SPLADE_ranking': 23, 'denseEmbedding_score': 0.6431419253349304, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:41:35,851 - INFO - question 218/272 answer:D correct_answer:D True
+2025-11-18 13:41:38,272 - INFO - RAG data: [{'docId': 'pubmed23n0069_11693', 'BM25_score': 50.5151, 'BM25_ranking': 135, 'SPLADE_score': 52.08821105957031, 'SPLADE_ranking': 27, 'denseEmbedding_score': 0.5254859924316406, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:41:43,804 - INFO - question 219/272 answer:A correct_answer:A True
+2025-11-18 13:41:48,095 - INFO - RAG data: [{'docId': 'pubmed23n0258_20715', 'BM25_score': 84.6393, 'BM25_ranking': 35, 'SPLADE_score': 74.16001892089844, 'SPLADE_ranking': 27, 'denseEmbedding_score': 0.7616405487060547, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:42:01,985 - INFO - question 220/272 answer:D correct_answer:D True
+2025-11-18 13:42:06,424 - INFO - RAG data: [{'docId': 'pubmed23n0295_15971', 'BM25_score': 78.8221, 'BM25_ranking': 11, 'SPLADE_score': 73.5323257446289, 'SPLADE_ranking': 16, 'denseEmbedding_score': 0.6244525909423828, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:42:14,484 - INFO - question 221/272 answer:A correct_answer:A True
+2025-11-18 13:42:19,306 - INFO - RAG data: [{'docId': 'pubmed23n0530_1070', 'BM25_score': 93.9362, 'BM25_ranking': 19, 'SPLADE_score': 85.5210189819336, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7617886662483215, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:42:30,553 - INFO - question 222/272 answer:C correct_answer:D False
+2025-11-18 13:42:35,886 - INFO - RAG data: [{'docId': 'pubmed23n0530_1070', 'BM25_score': 87.2993, 'BM25_ranking': 22, 'SPLADE_score': 87.97630310058594, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7411821484565735, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:42:45,682 - INFO - question 223/272 answer:D correct_answer:D True
+2025-11-18 13:42:47,698 - INFO - RAG data: [{'docId': 'pubmed23n0713_3813', 'BM25_score': 100.852, 'BM25_ranking': 8, 'SPLADE_score': 83.46321105957031, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.6354057192802429, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:42:55,192 - INFO - question 224/272 answer:D correct_answer:D True
+2025-11-18 13:43:00,814 - INFO - RAG data: [{'docId': 'pubmed23n1033_16167', 'BM25_score': 89.3987, 'BM25_ranking': 134, 'SPLADE_score': 85.41248321533203, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.8127084374427795, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:43:09,937 - INFO - question 225/272 answer:D correct_answer:A False
+2025-11-18 13:43:11,675 - INFO - RAG data: [{'docId': 'pubmed23n0866_8694', 'BM25_score': 72.6708, 'BM25_ranking': 3, 'SPLADE_score': 86.21942901611328, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.6875646710395813, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:43:18,150 - INFO - question 226/272 answer:D correct_answer:D True
+2025-11-18 13:43:21,060 - INFO - RAG data: [{'docId': 'pubmed23n0869_20428', 'BM25_score': 86.2633, 'BM25_ranking': 35, 'SPLADE_score': 75.96408081054688, 'SPLADE_ranking': 12, 'denseEmbedding_score': 0.6689451932907104, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:43:29,287 - INFO - question 227/272 answer:B correct_answer:B True
+2025-11-18 13:43:32,526 - INFO - RAG data: [{'docId': 'pubmed23n0988_16249', 'BM25_score': 95.2106, 'BM25_ranking': 2, 'SPLADE_score': 81.87120056152344, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7812877893447876, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:43:39,359 - INFO - question 228/272 answer:C correct_answer:C True
+2025-11-18 13:43:41,349 - INFO - RAG data: [{'docId': 'pubmed23n0514_14596', 'BM25_score': 80.6221, 'BM25_ranking': 8, 'SPLADE_score': 61.36250305175781, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.8549834489822388, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:43:48,725 - INFO - question 229/272 answer:A correct_answer:A True
+2025-11-18 13:43:52,865 - INFO - RAG data: [{'docId': 'pubmed23n0278_1328', 'BM25_score': 83.8037, 'BM25_ranking': 49, 'SPLADE_score': 73.90678405761719, 'SPLADE_ranking': 9, 'denseEmbedding_score': 0.6636301875114441, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:44:01,023 - INFO - question 230/272 answer:D correct_answer:D True
+2025-11-18 13:44:06,229 - INFO - RAG data: [{'docId': 'pubmed23n0572_17089', 'BM25_score': 75.3191, 'BM25_ranking': 49, 'SPLADE_score': 61.11985397338867, 'SPLADE_ranking': 12, 'denseEmbedding_score': 0.7427039742469788, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:44:17,352 - INFO - question 231/272 answer:D correct_answer:D True
+2025-11-18 13:44:18,825 - INFO - RAG data: [{'docId': 'pubmed23n0400_18020', 'BM25_score': 55.6681, 'BM25_ranking': 9, 'SPLADE_score': 60.36186218261719, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.6281780004501343, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:44:27,831 - INFO - question 232/272 answer:B correct_answer:B True
+2025-11-18 13:44:34,822 - INFO - RAG data: [{'docId': 'pubmed23n1109_11164', 'BM25_score': 94.1088, 'BM25_ranking': 145, 'SPLADE_score': 81.03561401367188, 'SPLADE_ranking': 25, 'denseEmbedding_score': 0.7448794841766357, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:44:45,163 - INFO - question 233/272 answer:D correct_answer:D True
+2025-11-18 13:44:50,072 - INFO - RAG data: [{'docId': 'pubmed23n0933_22156', 'BM25_score': 90.1941, 'BM25_ranking': 4, 'SPLADE_score': 69.553466796875, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.7589160203933716, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:44:59,291 - INFO - question 234/272 answer:D correct_answer:C False
+2025-11-18 13:45:00,584 - INFO - RAG data: [{'docId': 'pubmed23n0579_10112', 'BM25_score': 59.9106, 'BM25_ranking': 54, 'SPLADE_score': 37.74715805053711, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.5016018748283386, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:45:08,883 - INFO - question 235/272 answer:A correct_answer:A True
+2025-11-18 13:45:16,602 - INFO - RAG data: [{'docId': 'pubmed23n0292_12183', 'BM25_score': 160.37, 'BM25_ranking': 1, 'SPLADE_score': 90.83006286621094, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.7409756779670715, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:45:24,889 - INFO - question 236/272 answer:A correct_answer:A True
+2025-11-18 13:45:34,353 - INFO - RAG data: [{'docId': 'pubmed23n0892_24815', 'BM25_score': 84.2964, 'BM25_ranking': 37, 'SPLADE_score': 63.603240966796875, 'SPLADE_ranking': 27, 'denseEmbedding_score': 0.6806312799453735, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:45:43,710 - INFO - question 237/272 answer:C correct_answer:C True
+2025-11-18 13:45:47,477 - INFO - RAG data: [{'docId': 'pubmed23n0495_3220', 'BM25_score': 145.13, 'BM25_ranking': 1, 'SPLADE_score': 91.40019226074219, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6945071816444397, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:45:57,034 - INFO - question 238/272 answer:D correct_answer:D True
+2025-11-18 13:45:59,079 - INFO - RAG data: [{'docId': 'pubmed23n1020_24667', 'BM25_score': 52.8219, 'BM25_ranking': 120, 'SPLADE_score': 55.88654327392578, 'SPLADE_ranking': 21, 'denseEmbedding_score': 0.6945424675941467, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:46:07,653 - INFO - question 239/272 answer:C correct_answer:A False
+2025-11-18 13:46:15,145 - INFO - RAG data: [{'docId': 'pubmed23n0829_608', 'BM25_score': 116.272, 'BM25_ranking': 35, 'SPLADE_score': 100.35118865966797, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.5796337127685547, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:46:22,692 - INFO - question 240/272 answer:C correct_answer:D False
+2025-11-18 13:46:25,975 - INFO - RAG data: [{'docId': 'pubmed23n0299_9977', 'BM25_score': 66.3057, 'BM25_ranking': 102, 'SPLADE_score': 87.0123291015625, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.6601027250289917, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:46:36,990 - INFO - question 241/272 answer:A correct_answer:D False
+2025-11-18 13:46:42,224 - INFO - RAG data: [{'docId': 'pubmed23n0273_1608', 'BM25_score': 67.7697, 'BM25_ranking': 145, 'SPLADE_score': 82.11096954345703, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.7091538310050964, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:46:53,671 - INFO - question 242/272 answer:D correct_answer:D True
+2025-11-18 13:46:55,128 - INFO - RAG data: [{'docId': 'pubmed23n0569_19780', 'BM25_score': 81.4746, 'BM25_ranking': 58, 'SPLADE_score': 69.31097412109375, 'SPLADE_ranking': 7, 'denseEmbedding_score': 0.6633755564689636, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:47:02,293 - INFO - question 243/272 answer:D correct_answer:A False
+2025-11-18 13:47:08,511 - INFO - RAG data: [{'docId': 'pubmed23n0495_3220', 'BM25_score': 132.24, 'BM25_ranking': 1, 'SPLADE_score': 97.49981689453125, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.5697393417358398, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:47:19,571 - INFO - question 244/272 answer:D correct_answer:D True
+2025-11-18 13:47:22,993 - INFO - RAG data: [{'docId': 'pubmed23n0567_8565', 'BM25_score': 77.5629, 'BM25_ranking': 1, 'SPLADE_score': 77.00094604492188, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.6864104866981506, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:47:33,254 - INFO - question 245/272 answer:A correct_answer:A True
+2025-11-18 13:47:37,258 - INFO - RAG data: [{'docId': 'pubmed23n0491_5584', 'BM25_score': 142.405, 'BM25_ranking': 71, 'SPLADE_score': 88.90563201904297, 'SPLADE_ranking': 14, 'denseEmbedding_score': 0.7334644794464111, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:47:47,426 - INFO - question 246/272 answer:D correct_answer:D True
+2025-11-18 13:47:51,600 - INFO - RAG data: [{'docId': 'pubmed23n0339_9302', 'BM25_score': 105.444, 'BM25_ranking': 22, 'SPLADE_score': 59.72260665893555, 'SPLADE_ranking': 8, 'denseEmbedding_score': 0.7345907688140869, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:48:00,641 - INFO - question 247/272 answer:D correct_answer:D True
+2025-11-18 13:48:04,703 - INFO - RAG data: [{'docId': 'pubmed23n0510_21581', 'BM25_score': 84.1291, 'BM25_ranking': 79, 'SPLADE_score': 94.14695739746094, 'SPLADE_ranking': 15, 'denseEmbedding_score': 0.5704883933067322, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:48:17,012 - INFO - question 248/272 answer:B correct_answer:B True
+2025-11-18 13:48:19,095 - INFO - RAG data: [{'docId': 'pubmed23n0942_12189', 'BM25_score': 67.621, 'BM25_ranking': 9, 'SPLADE_score': 46.95920944213867, 'SPLADE_ranking': 14, 'denseEmbedding_score': 0.6516565680503845, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:48:27,602 - INFO - question 249/272 answer:B correct_answer:D False
+2025-11-18 13:48:35,126 - INFO - RAG data: [{'docId': 'pubmed23n0851_5978', 'BM25_score': 111.536, 'BM25_ranking': 133, 'SPLADE_score': 96.90022277832031, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.7385395169258118, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:48:44,417 - INFO - question 250/272 answer:D correct_answer:A False
+2025-11-18 13:48:47,659 - INFO - RAG data: [{'docId': 'pubmed23n0812_24008', 'BM25_score': 72.1168, 'BM25_ranking': 11, 'SPLADE_score': 79.60162353515625, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.5273507237434387, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:48:57,103 - INFO - question 251/272 answer:C correct_answer:A False
+2025-11-18 13:49:04,318 - INFO - RAG data: [{'docId': 'pubmed23n0873_22027', 'BM25_score': 91.5215, 'BM25_ranking': 21, 'SPLADE_score': 68.7669448852539, 'SPLADE_ranking': 23, 'denseEmbedding_score': 0.7948442101478577, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:49:14,576 - INFO - question 252/272 answer:A correct_answer:D False
+2025-11-18 13:49:20,712 - INFO - RAG data: [{'docId': 'pubmed23n1040_1170', 'BM25_score': 120.905, 'BM25_ranking': 3, 'SPLADE_score': 76.86738586425781, 'SPLADE_ranking': 8, 'denseEmbedding_score': 0.6465120911598206, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:49:26,135 - INFO - question 253/272 answer:D correct_answer:D True
+2025-11-18 13:49:29,898 - INFO - RAG data: [{'docId': 'pubmed23n0129_2890', 'BM25_score': 54.5245, 'BM25_ranking': 145, 'SPLADE_score': 71.03845977783203, 'SPLADE_ranking': 19, 'denseEmbedding_score': 0.5866604447364807, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:49:38,873 - INFO - question 254/272 answer:C correct_answer:C True
+2025-11-18 13:49:42,981 - INFO - RAG data: [{'docId': 'pubmed23n1088_7139', 'BM25_score': 74.943, 'BM25_ranking': 29, 'SPLADE_score': 57.907196044921875, 'SPLADE_ranking': 15, 'denseEmbedding_score': 0.6618590950965881, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:49:51,729 - INFO - question 255/272 answer:D correct_answer:D True
+2025-11-18 13:49:57,467 - INFO - RAG data: [{'docId': 'pubmed23n0520_9818', 'BM25_score': 97.9375, 'BM25_ranking': 3, 'SPLADE_score': 79.77440643310547, 'SPLADE_ranking': 5, 'denseEmbedding_score': 0.7497400641441345, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:50:07,567 - INFO - question 256/272 answer:C correct_answer:C True
+2025-11-18 13:50:09,067 - INFO - RAG data: [{'docId': 'pubmed23n0768_19533', 'BM25_score': 45.6003, 'BM25_ranking': 109, 'SPLADE_score': 45.121986389160156, 'SPLADE_ranking': 27, 'denseEmbedding_score': 0.735460102558136, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:50:19,871 - INFO - question 257/272 answer:D correct_answer:D True
+2025-11-18 13:50:26,381 - INFO - RAG data: [{'docId': 'pubmed23n1097_706', 'BM25_score': 107.148, 'BM25_ranking': 2, 'SPLADE_score': 104.0838394165039, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.8013263940811157, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:50:34,464 - INFO - question 258/272 answer:D correct_answer:D True
+2025-11-18 13:50:36,776 - INFO - RAG data: [{'docId': 'pubmed23n0475_5732', 'BM25_score': 78.1697, 'BM25_ranking': 21, 'SPLADE_score': 69.71682739257812, 'SPLADE_ranking': 25, 'denseEmbedding_score': 0.7620540857315063, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:50:44,743 - INFO - question 259/272 answer:C correct_answer:A False
+2025-11-18 13:50:47,293 - INFO - RAG data: [{'docId': 'pubmed23n0644_13293', 'BM25_score': 107.963, 'BM25_ranking': 1, 'SPLADE_score': 66.27919006347656, 'SPLADE_ranking': 2, 'denseEmbedding_score': 0.7387845516204834, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:50:55,142 - INFO - question 260/272 answer:C correct_answer:D False
+2025-11-18 13:50:58,121 - INFO - RAG data: [{'docId': 'pubmed23n0661_7877', 'BM25_score': 62.9126, 'BM25_ranking': 33, 'SPLADE_score': 52.97484588623047, 'SPLADE_ranking': 22, 'denseEmbedding_score': 0.6475844979286194, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:51:05,229 - INFO - question 261/272 answer:D correct_answer:D True
+2025-11-18 13:51:07,058 - INFO - RAG data: [{'docId': 'pubmed23n0499_19672', 'BM25_score': 57.8258, 'BM25_ranking': 33, 'SPLADE_score': 69.15238189697266, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.6926673650741577, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:51:13,883 - INFO - question 262/272 answer:D correct_answer:D True
+2025-11-18 13:51:16,417 - INFO - RAG data: [{'docId': 'pubmed23n1037_7274', 'BM25_score': 63.0999, 'BM25_ranking': 18, 'SPLADE_score': 74.26898193359375, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7308264970779419, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:51:24,462 - INFO - question 263/272 answer:C correct_answer:C True
+2025-11-18 13:51:29,634 - INFO - RAG data: [{'docId': 'pubmed23n0663_3305', 'BM25_score': 92.7225, 'BM25_ranking': 2, 'SPLADE_score': 62.753971099853516, 'SPLADE_ranking': 6, 'denseEmbedding_score': 0.6792150735855103, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:51:35,168 - INFO - question 264/272 answer:A correct_answer:D False
+2025-11-18 13:51:37,705 - INFO - RAG data: [{'docId': 'pubmed23n0306_3152', 'BM25_score': 83.7748, 'BM25_ranking': 3, 'SPLADE_score': 83.54275512695312, 'SPLADE_ranking': 4, 'denseEmbedding_score': 0.5373367071151733, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:51:46,952 - INFO - question 265/272 answer:A correct_answer:C False
+2025-11-18 13:51:50,747 - INFO - RAG data: [{'docId': 'pubmed23n0825_11523', 'BM25_score': 77.505, 'BM25_ranking': 69, 'SPLADE_score': 70.24541473388672, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6786818504333496, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:51:58,488 - INFO - question 266/272 answer:B correct_answer:B True
+2025-11-18 13:52:02,646 - INFO - RAG data: [{'docId': 'pubmed23n1081_11840', 'BM25_score': 91.5154, 'BM25_ranking': 15, 'SPLADE_score': 71.67747497558594, 'SPLADE_ranking': 12, 'denseEmbedding_score': 0.77395099401474, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:52:08,608 - INFO - question 267/272 answer:C correct_answer:C True
+2025-11-18 13:52:10,242 - INFO - RAG data: [{'docId': 'pubmed23n0250_14351', 'BM25_score': 72.8547, 'BM25_ranking': 84, 'SPLADE_score': 70.15067291259766, 'SPLADE_ranking': 26, 'denseEmbedding_score': 0.7161685824394226, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:52:20,418 - INFO - question 268/272 answer:A correct_answer:A True
+2025-11-18 13:52:24,787 - INFO - RAG data: [{'docId': 'pubmed23n1130_20911', 'BM25_score': 103.088, 'BM25_ranking': 1, 'SPLADE_score': 93.19082641601562, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.6424781084060669, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:52:33,549 - INFO - question 269/272 answer:A correct_answer:B False
+2025-11-18 13:52:38,933 - INFO - RAG data: [{'docId': 'pubmed23n0814_21575', 'BM25_score': 74.7355, 'BM25_ranking': 27, 'SPLADE_score': 75.01835632324219, 'SPLADE_ranking': 3, 'denseEmbedding_score': 0.6505427360534668, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:52:47,042 - INFO - question 270/272 answer:D correct_answer:D True
+2025-11-18 13:52:50,656 - INFO - RAG data: [{'docId': 'pubmed23n0659_1439', 'BM25_score': 74.7316, 'BM25_ranking': 117, 'SPLADE_score': 98.13916778564453, 'SPLADE_ranking': 1, 'denseEmbedding_score': 0.7750598192214966, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:52:58,952 - INFO - question 271/272 answer:D correct_answer:D True
+2025-11-18 13:53:01,262 - INFO - RAG data: [{'docId': 'pubmed23n0923_10020', 'BM25_score': 90.1534, 'BM25_ranking': 2, 'SPLADE_score': 59.69719314575195, 'SPLADE_ranking': 27, 'denseEmbedding_score': 0.8090929985046387, 'denseEmbedding_ranking': 1}]
+2025-11-18 13:53:11,678 - INFO - question 272/272 answer:B correct_answer:B True
+2025-11-18 13:53:11,678 - INFO - Total questions: 272, correct: 215, accuracy: 0.7904411764705882
+2025-11-18 13:53:11,678 - INFO - elapse_time: 3520.4086232185364

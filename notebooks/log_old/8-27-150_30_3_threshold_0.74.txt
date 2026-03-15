@@ -1,0 +1,32 @@
+2025-08-27 18:01:48,728 - INFO - topK_searchEngine: 150
+2025-08-27 18:01:48,728 - INFO - topK_SPLADE: 30
+2025-08-27 18:01:48,728 - INFO - topK_crossEncoder: 3
+2025-08-27 18:01:48,728 - INFO - topK_LLM: 3
+2025-08-27 18:01:48,728 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-08-27 18:01:53,404 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-08-27 18:09:19,814 - INFO - topK_searchEngine: 150
+2025-08-27 18:09:19,814 - INFO - topK_SPLADE: 30
+2025-08-27 18:09:19,814 - INFO - topK_crossEncoder: 3
+2025-08-27 18:09:19,814 - INFO - topK_LLM: 3
+2025-08-27 18:09:19,815 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-08-27 18:09:23,633 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-08-27 18:09:40,179 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-08-27 18:09:58,921 - INFO - question 2/1273 answer:C correct_answer:D False
+2025-08-27 18:10:29,192 - INFO - question 3/1273 answer:B correct_answer:B True
+2025-08-27 18:11:38,890 - INFO - topK_searchEngine: 150
+2025-08-27 18:11:38,890 - INFO - topK_SPLADE: 30
+2025-08-27 18:11:38,890 - INFO - topK_crossEncoder: 3
+2025-08-27 18:11:38,890 - INFO - topK_LLM: 3
+2025-08-27 18:11:38,890 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-08-27 18:11:44,309 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-08-27 18:12:00,622 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-08-27 18:12:18,279 - INFO - question 2/1273 answer:C correct_answer:D False
+2025-08-27 18:12:46,872 - INFO - question 3/1273 answer:B correct_answer:B True
+2025-08-27 18:13:18,190 - INFO - question 4/1273 answer:D correct_answer:D True
+2025-08-27 18:13:37,812 - INFO - question 5/1273 answer:B correct_answer:B True

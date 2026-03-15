@@ -1,0 +1,52 @@
+2025-10-07 12:30:59,161 - INFO - topK_searchEngine: 150
+2025-10-07 12:30:59,161 - INFO - topK_SPLADE: 30
+2025-10-07 12:30:59,161 - INFO - topK_crossEncoder: 2
+2025-10-07 12:30:59,161 - INFO - topK_LLM: 0
+2025-10-07 12:30:59,161 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-10-07 12:31:02,262 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-10-07 12:31:05,838 - INFO - RAG data: [{'docId': 'pubmed23n0827_1593', 'BM25_score': 95.4198, 'BM25_ranking': 44, 'SPLADE_score': 54.33488464355469, 'SPLADE_ranking': 13, 'MonoT5_score': 0.9597430488962883, 'MonoT5_ranking': 1}, {'docId': 'pubmed23n0390_3257', 'BM25_score': 118.188, 'BM25_ranking': 2, 'SPLADE_score': 70.20608520507812, 'SPLADE_ranking': 2, 'MonoT5_score': 0.948427585061382, 'MonoT5_ranking': 2}]
+2025-10-07 12:31:12,187 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:31:16,561 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:31:19,780 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:31:25,874 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:31:29,358 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:31:34,181 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:31:37,896 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:31:43,540 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:31:50,091 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:31:56,211 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:00,222 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:04,454 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:09,280 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:13,323 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:16,758 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:20,845 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:26,180 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:29,753 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:34,192 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:39,253 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:43,855 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:49,071 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:32:55,807 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:33:00,292 - INFO - RAG data: [{'docId': 'pubmed23n0534_8739', 'BM25_score': 85.6484, 'BM25_ranking': 3, 'SPLADE_score': 78.36912536621094, 'SPLADE_ranking': 5, 'MonoT5_score': 0.33372217442368535, 'MonoT5_ranking': 1}, {'docId': 'pubmed23n0757_13408', 'BM25_score': 72.5415, 'BM25_ranking': 38, 'SPLADE_score': 71.61750793457031, 'SPLADE_ranking': 15, 'MonoT5_score': 0.27731388830430065, 'MonoT5_ranking': 2}]
+2025-10-07 12:33:05,722 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-10-07 12:33:11,407 - INFO - question 2/1273 answer:C correct_answer:D False
+2025-10-07 12:33:17,942 - INFO - question 2/1273 answer:C correct_answer:D False
+2025-10-07 12:33:23,814 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-10-07 12:33:29,625 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-10-07 12:33:35,375 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-10-07 12:33:40,851 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-10-07 12:33:46,821 - INFO - question 2/1273 answer:D correct_answer:D True
+2025-10-07 12:34:00,580 - INFO - topK_searchEngine: 150
+2025-10-07 12:34:00,581 - INFO - topK_SPLADE: 30
+2025-10-07 12:34:00,581 - INFO - topK_crossEncoder: 2
+2025-10-07 12:34:00,581 - INFO - topK_LLM: 0
+2025-10-07 12:34:00,581 - ERROR - `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'GBaker/MedQA-USMLE-4-options' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2025-10-07 12:34:02,999 - INFO - model: /projects/sciences/computing/sheju347/MedicalQA/train/saved_models/fine_tuned_model_entire_UltraMedical_batch_4
+2025-10-07 12:34:06,587 - INFO - RAG data: [{'docId': 'pubmed23n0390_3257', 'BM25_score': 118.188, 'BM25_ranking': 2, 'SPLADE_score': 70.20608520507812, 'SPLADE_ranking': 2, 'MonoT5_score': 0.948427585061382, 'MonoT5_ranking': 2}]
+2025-10-07 12:34:12,442 - INFO - question 1/1273 answer:A correct_answer:B False
+2025-10-07 12:34:16,927 - INFO - RAG data: [{'docId': 'pubmed23n0757_13408', 'BM25_score': 72.5415, 'BM25_ranking': 38, 'SPLADE_score': 71.61750793457031, 'SPLADE_ranking': 15, 'MonoT5_score': 0.27731388830430065, 'MonoT5_ranking': 2}]
