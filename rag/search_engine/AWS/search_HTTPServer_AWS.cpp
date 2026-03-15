@@ -116,6 +116,12 @@ int main() {
             //         {"content", result.content}
             //     });
             // }
+
+            // Solve CORS issue
+            res.set_header("Access-Control-Allow-Origin", "*");
+            res.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            res.set_header("Access-Control-Allow-Headers", "Content-Type");
+
             res.set_content(Utils::convertResultsToJson(results), "text/plain");
             // res.set_content(result_json.dump(2), "application/json");
         }
