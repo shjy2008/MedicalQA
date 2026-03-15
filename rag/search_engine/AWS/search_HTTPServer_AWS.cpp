@@ -6,7 +6,7 @@
 // std::string ip = "127.0.0.1"; // "localhost"
 std::string ip = "0.0.0.0"; // "localhost"
 int port = 8080;
-std::string endpoint = "search";
+std::string endpoint = "api/search";
 
 // int main() {
 //     std::chrono::steady_clock::time_point time_begin = std::chrono::steady_clock::now();
