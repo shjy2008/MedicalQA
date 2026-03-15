@@ -47,8 +47,8 @@ protected:
 
 public:
 	// For performance debugging
-	int calculateCounter;
-	std::chrono::steady_clock::duration timeCounter;
+	// static int calculateCounter;
+	// static std::chrono::steady_clock::duration timeCounter;
 
 	SearchEngine();
 

@@ -14,8 +14,8 @@
 #include "searchEngine.h"
 
 
-int SearchEngine::calculateCounter = 0;
-std::chrono::steady_clock::duration SearchEngine::timeCounter;
+// int SearchEngine::calculateCounter = 0;
+// std::chrono::steady_clock::duration SearchEngine::timeCounter;
 
 SearchEngine::SearchEngine() {
 	indexPath = "./";
@@ -228,7 +228,7 @@ inline SearchResult SearchEngine::calculateDocScore(std::vector<std::vector<Post
 			float score = Utils::getRankingScore(posting.tf, docLength, idf, this->averageDocumentLength);
 			currentScore += score;
 
-			calculateCounter += 1;
+			// calculateCounter += 1;
 
 			vecPostingsProgress[wordIndex] += 1; // Advance the progress
 
